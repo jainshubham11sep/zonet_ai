@@ -14,7 +14,7 @@ const caseStudies = [
     logo: '/images/Oj0hkdK9UWGd1CwTPer0RKGsgYQ.png',
     name: 'Writesonic',
     location: 'San Francisco, USA',
-    photo: '/images/2ruVv5YDP05Q2HMxhD0Xq8H6WL8.png',
+    photo: '/images/zonet/screenshot-1.png',
     badges: ['AI SaaS', 'Content', 'VC Backed'],
     description: [
       { text: "Designed the world's first " },
@@ -37,7 +37,7 @@ const caseStudies = [
     logo: '/images/iM9Iux2j56q05nR8KbQ8xubLATc.png',
     name: 'Sybill AI',
     location: 'Palo Alto, USA',
-    photo: '/images/038lIVTRwtwg9CZvkKNwupKc0.png',
+    photo: '/images/zonet/screenshot-4.png',
     badges: ['Sales AI', 'Series A'],
     description: [
       { text: 'Rebuilt the entire product UI for a ' },
@@ -45,7 +45,7 @@ const caseStudies = [
       { text: ', achieving ' },
       { text: '47% faster onboarding', highlight: 'blue' },
       { text: ' and a confirmed ' },
-      { text: '5-star Clutch review', highlight: 'yellow' },
+      { text: '5-star rating', highlight: 'yellow' },
       { text: '.' },
     ],
     stats: [
@@ -60,7 +60,7 @@ const caseStudies = [
     logo: '/images/KH6um2ORF1x7FHcn5pq9LinIs.png',
     name: 'Manyreach',
     location: 'Europe',
-    photo: '/images/Dj9JurmXp6kxW2DKecZTneI5g3s.png',
+    photo: '/images/zonet/screenshot-5.png',
     badges: ['B2B SaaS', 'Bootstrapped'],
     description: [
       { text: 'Built the ' },
@@ -83,7 +83,7 @@ const caseStudies = [
     logo: '/images/mTd8zLlvXduYRNhaJAYMBmnLTRg.png',
     name: 'Instadapp',
     location: 'Global',
-    photo: '/images/ub6LKW8jTFqQ6WWiQ8gIr3menBs.png',
+    photo: '/images/zonet/screenshot-2.png',
     badges: ['DeFi', 'Web3'],
     description: [
       { text: 'Redesigned the DeFi dashboard handling ' },
@@ -106,7 +106,7 @@ const caseStudies = [
     logo: '/images/brKMfWJ5jHeMsNAWwyFABDqRo6c.png', // reusing socialsonic logo as mockup
     name: 'JoyHealth',
     location: 'New York, USA',
-    photo: '/images/VTsAFrNs7VOLBmamTaMAupxxj4Q.png',
+    photo: '/images/zonet/screenshot-6.png',
     badges: ['HealthTech', 'B2C'],
     description: [
       { text: 'Revamped the patient portal leading to ' },
@@ -129,7 +129,7 @@ const caseStudies = [
     logo: '/images/pfA9SX6jwreKWvbr4PZSURK0m8.png', // Kearney logo as mockup
     name: 'Scale Jobs',
     location: 'London, UK',
-    photo: '/images/ayLPoJlOL2BmfSdDMrd4w8Bh00.png',
+    photo: '/images/zonet/screenshot-3.png',
     badges: ['Ed-Tech', 'Marketplace'],
     description: [
       { text: 'Redesigned landing pages yielding ' },

@@ -11,6 +11,7 @@ import DataDrivenStats from "@/components/DataDrivenStats";
 import VideoShowcase from "@/components/VideoShowcase";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
+import RelatedArticles from "@/components/RelatedArticles";
 import FAQ from "@/components/FAQ";
 
 export default function Home() {
@@ -59,7 +60,10 @@ export default function Home() {
       {/* 10. Testimonials */}
       <Testimonials />
 
-      {/* 11. FAQ */}
+      {/* 11. Related Articles */}
+      <RelatedArticles />
+
+      {/* 12. FAQ */}
       <FAQ />
 
       {/* Footer is in layout.js */}

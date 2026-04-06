@@ -5,15 +5,15 @@ import Image from 'next/image';
 
 const CreativesGrid = () => {
   const images = [
-    '/images/ub6LKW8jTFqQ6WWiQ8gIr3menBs.png',
-    '/images/VTsAFrNs7VOLBmamTaMAupxxj4Q.png',
-    '/images/ayLPoJlOL2BmfSdDMrd4w8Bh00.png',
-    '/images/ECp03YyC5hERqToL1FhnX3f6ys.png',
-    '/images/UN6pyiToPDKCeksYIYjpaMNVaLc.png',
-    '/images/5t0RodvqZEk7lkFYbTdxLjGY.png',
-    '/images/K2KSO4UKtXImqjy2Ws0Bh2oesCg.png',
-    '/images/1XQYyYgSoFYMUzlJHURSyG54.png',
-    '/images/pW43owwEJhkOk3Lpkgki4BpmWyo.png',
+    '/images/zonet/screenshot-1.png',
+    '/images/zonet/screenshot-2.png',
+    '/images/zonet/screenshot-3.png',
+    '/images/zonet/screenshot-4.png',
+    '/images/zonet/screenshot-5.png',
+    '/images/zonet/screenshot-6.png',
+    '/images/zonet/screenshot-1.png',
+    '/images/zonet/screenshot-2.png',
+    '/images/zonet/screenshot-3.png',
   ];
 
   const columns = [

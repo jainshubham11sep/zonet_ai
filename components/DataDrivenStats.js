@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 
 const stats = [
   { value: 50, suffix: '+', label: 'Projects Shipped', desc: 'Across Web, AI & Mobile' },
-  { value: 4.9, suffix: '/5', label: 'Clutch Rating', desc: 'Verified Client Reviews' },
+  { value: 4.9, suffix: '/5', label: 'Average Rating', desc: 'Verified Client Reviews' },
   { value: 7, suffix: ' Days', label: 'Avg. First Delivery', desc: 'From kickoff to live MVP' },
   { value: 3, suffix: 'x', label: 'Faster Than Agencies', desc: 'Thanks to AI workflows' },
 ];

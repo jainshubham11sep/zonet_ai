@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, MapPin, Phone, Globe, Share2, MessageSquare, Send } from 'lucide-react';
 
 const Footer = () => {
@@ -11,12 +12,8 @@ const Footer = () => {
           {/* Logo & Intro */}
           <div className="lg:col-span-2 space-y-8">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-full bg-footer-fg flex items-center justify-center">
-                <span className="text-footer-bg font-bold text-2xl">Z</span>
-              </div>
-              <span className="text-2xl font-bold tracking-tight text-footer-fg transition-colors">
-                ZonetTech
-              </span>
+              <Image src="/images/zonet/logo-dark.png" alt="ZonetTech Logo" width={180} height={50} className="w-auto h-8 md:h-10 object-contain dark:hidden" />
+              <Image src="/images/zonet/logo-light.png" alt="ZonetTech Logo" width={180} height={50} className="w-auto h-8 md:h-10 object-contain hidden dark:block" />
             </Link>
             <p className="text-footer-fg/50 text-lg leading-relaxed max-w-sm">
               The #1 Rated Fastest Website & UX Agency For B2B & AI SaaS. We build websites & products for fast-moving companies.

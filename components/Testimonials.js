@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 
 const testimonials = [
   {
-    text: "ZonetTech delivered our MVP in just 14 days. The design quality is unmatched, and the speed is exactly what we needed.",
-    author: "Sarah Chen",
-    role: "CTO, TechLead AI",
-    initials: "SC",
+    text: "Zonet is pretty good at the business level, Zonet helped increase our online presence, attracted the right kind of customers, and increased our sales. I like how their team of specialists uses AI-powered tools to bring the right message to the audience.",
+    author: "Verified Client",
+    role: "Business Owner",
+    initials: "VC",
   },
   {
     text: "The best design agency we've worked with. They truly understand SaaS and the level of polish required for a series A startup.",
@@ -42,10 +42,13 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  // We duplicate the array to create a seamless infinite marquee effect
+  const marqueeItems = [...testimonials, ...testimonials];
+
   return (
     <section className="py-24 bg-background border-t border-border-custom overflow-hidden">
       <div className="container mx-auto px-6">
-        {/* Header */}
+        {/* Header (BricxLabs Style) */}
         <div className="flex flex-col items-center text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -53,7 +56,7 @@ const Testimonials = () => {
             viewport={{ once: true }}
             className="px-3 py-1 rounded-full border border-badge-border bg-badge-bg text-[10px] font-bold text-muted mb-4 uppercase tracking-[0.2em]"
           >
-            Testimonials
+            Wall of Love
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -64,43 +67,53 @@ const Testimonials = () => {
             Loved by <span className="text-muted">Founders.</span>
           </motion.h2>
         </div>
+      </div>
 
-        {/* Masonry Grid */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 max-w-7xl mx-auto">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              viewport={{ once: true }}
-              className="break-inside-avoid mb-6 bg-card p-8 rounded-[28px] border border-border-custom shadow-sm hover:shadow-lg transition-all duration-500 flex flex-col gap-6"
+      {/* Infinite Horizontal Marquee (Bricxlabs design but minimal cards) */}
+      <div className="relative flex overflow-x-hidden group">
+        <motion.div
+           className="flex gap-6 whitespace-nowrap py-4 px-3"
+           animate={{ x: [0, -1035] }} // Move left continuously
+           transition={{
+             repeat: Infinity,
+             ease: "linear",
+             duration: 25, // Adjust speed
+           }}
+        >
+          {marqueeItems.map((t, idx) => (
+            <div
+              key={idx}
+              className="w-[320px] md:w-[400px] flex-shrink-0 bg-card p-6 md:p-8 rounded-[24px] border border-border-custom shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
+              style={{ whiteSpace: 'normal' }}
             >
-              {/* Stars */}
-              <div className="flex gap-1">
-                {[1,2,3,4,5].map(s => (
-                  <svg key={s} className="w-4 h-4 fill-foreground" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+              <div>
+                {/* Minimal Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} className="w-4 h-4 fill-emerald-500" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                <p className="text-foreground text-sm md:text-base leading-relaxed font-medium mb-6">
+                  "{t.text}"
+                </p>
               </div>
 
-              <p className="text-foreground text-lg leading-relaxed italic">
-                "{t.text}"
-              </p>
-
-              <div className="flex items-center gap-4 pt-2 border-t border-border-custom">
-                <div className="w-10 h-10 rounded-full bg-icon-bg border border-border-custom flex items-center justify-center text-sm font-bold text-foreground flex-shrink-0">
+              {/* Minimal Author Info */}
+              <div className="flex items-center gap-3 pt-4 border-t border-border-custom mt-auto">
+                <div className="w-9 h-9 rounded-full bg-button-bg flex items-center justify-center text-xs font-bold text-button-fg flex-shrink-0">
                   {t.initials}
                 </div>
-                <div>
-                  <p className="font-bold text-foreground text-sm">{t.author}</p>
-                  <p className="text-xs text-muted">{t.role}</p>
+                <div className="flex flex-col">
+                  <span className="font-bold text-foreground text-sm">{t.author}</span>
+                  <span className="text-xs text-muted">{t.role}</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

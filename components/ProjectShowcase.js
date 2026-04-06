@@ -34,9 +34,9 @@ const projects = [
     quote: "Their designs consistently balanced aesthetics with functionality and business objectives.",
     client: { name: 'Samanyou Garg', role: 'CEO @ Writesonic' },
     // Scrolling images (same as before)
-    mainImg: '/images/2ruVv5YDP05Q2HMxhD0Xq8H6WL8.png',
-    subImg1: '/images/2ruVv5YDP05Q2HMxhD0Xq8H6WL8.png',
-    subImg2: '/images/2ruVv5YDP05Q2HMxhD0Xq8H6WL8.png',
+    mainImg: '/images/zonet/screenshot-1.png',
+    subImg1: '/images/zonet/screenshot-2.png',
+    subImg2: '/images/zonet/screenshot-3.png',
   },
   {
     id: 'sybill',
@@ -50,19 +50,19 @@ const projects = [
       { text: ', achieving ' },
       { text: '47% faster onboarding', highlight: 'blue' },
       { text: ' and a confirmed ' },
-      { text: '5-star Clutch review', highlight: 'yellow' },
+      { text: '5-star rating', highlight: 'yellow' },
       { text: ' within 2 months of launch.' },
     ],
     stats: [
       { value: '47%', label: 'Faster Onboarding', color: 'green' },
-      { value: '5★', label: 'Clutch Rating', color: 'blue' },
+      { value: '5★', label: 'Client Rating', color: 'blue' },
       { value: '2x', label: 'Revenue Growth', color: 'yellow' },
     ],
     quote: "ZonetTech is our go-to partner for all things design. They ship fast and at a level of quality we've never seen elsewhere.",
     client: { name: 'Gorish Aggarwal', role: 'CEO @ Sybill' },
-    mainImg: '/images/038lIVTRwtwg9CZvkKNwupKc0.png',
-    subImg1: '/images/038lIVTRwtwg9CZvkKNwupKc0.png',
-    subImg2: '/images/038lIVTRwtwg9CZvkKNwupKc0.png',
+    mainImg: '/images/zonet/screenshot-4.png',
+    subImg1: '/images/zonet/screenshot-5.png',
+    subImg2: '/images/zonet/screenshot-6.png',
   },
   {
     id: 'manyreach',
@@ -86,9 +86,9 @@ const projects = [
     ],
     quote: "The level of attention to detail and speed of delivery is unmatched. They understood our vision perfectly.",
     client: { name: 'Elena Rodriguez', role: 'Product Head @ Manyreach' },
-    mainImg: '/images/Dj9JurmXp6kxW2DKecZTneI5g3s.png',
-    subImg1: '/images/Dj9JurmXp6kxW2DKecZTneI5g3s.png',
-    subImg2: '/images/Dj9JurmXp6kxW2DKecZTneI5g3s.png',
+    mainImg: '/images/zonet/screenshot-1.png',
+    subImg1: '/images/zonet/screenshot-5.png',
+    subImg2: '/images/zonet/screenshot-3.png',
   },
 ];
 
@@ -226,12 +226,12 @@ const ProjectShowcase = () => {
                 {/* Divider */}
                 <div className="h-px bg-border-custom" />
 
-                {/* 5. Clutch Stars */}
+                {/* 5. Star Rating */}
                 <div className="flex items-center gap-1.5">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star key={s} size={14} className="fill-foreground text-foreground" />
                   ))}
-                  <span className="text-xs font-bold text-muted ml-2 border-b border-muted pb-0.5">Clutch Review</span>
+                  <span className="text-xs font-bold text-muted ml-2 border-b border-muted pb-0.5">Client Review</span>
                 </div>
 
                 {/* 6. Testimonial quote */}

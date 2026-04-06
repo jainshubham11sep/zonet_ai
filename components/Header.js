@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,12 +43,8 @@ const Header = () => {
       }`}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-full bg-button-bg flex items-center justify-center">
-            <span className="text-button-fg font-bold text-xl">Z</span>
-          </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            ZonetTech
-          </span>
+          <Image src="/images/zonet/logo-dark.png" alt="ZonetTech Logo" width={150} height={40} className="w-auto h-7 md:h-8 object-contain dark:hidden" priority />
+          <Image src="/images/zonet/logo-light.png" alt="ZonetTech Logo" width={150} height={40} className="w-auto h-7 md:h-8 object-contain hidden dark:block" priority />
         </Link>
 
         {/* Center Desktop Nav (Pill Style) */}
