@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/gyBhhwUxId8gMGYQMKR3pzfaWI_RruM4mJPby1QNtA.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/gyBhhwUxId8gMGYQMKR3pzfaWI_RnOM4mJPby1QNtA.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('/fonts/ieVq2YZDLWuGJpnzaiwFXS9tYvBRzyFLlZg_f_NcGmFq5vBM.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== LIGHT MODE (default) ===== */
+:root {
+  --background: #F9F9F9;
+  --foreground: #242424;
+  --secondary: #404040;
+  --muted: #9CA3AF;
+  --accent: #17C257;
+  --border: #E3E3E3;
+  --card-bg: #FFFFFF;
+  --card-bg-alt: #F3F3F3;
+  --button-bg: #242424;
+  --button-fg: #FFFFFF;
+  --input-bg: #FFFFFF;
+  --input-border: #E3E3E3;
+  --section-alt: #EDEDED;
+  --footer-bg: #111111;
+  --footer-fg: #FFFFFF;
+  --marquee-fade: #F9F9F9;
+  --badge-bg: #FFFFFF;
+  --badge-border: #E3E3E3;
+  --icon-bg: #F9F9F9;
+  --progress-bar: #242424;
+}
+
+/* ===== DARK MODE ===== */
+.dark {
+  --background: #0A0A0A;
+  --foreground: #F0F0F0;
+  --secondary: #A0A0A0;
+  --muted: #6B7280;
+  --accent: #17C257;
+  --border: #1F1F1F;
+  --card-bg: #141414;
+  --card-bg-alt: #1A1A1A;
+  --button-bg: #FFFFFF;
+  --button-fg: #0A0A0A;
+  --input-bg: #1A1A1A;
+  --input-border: #2A2A2A;
+  --section-alt: #111111;
+  --footer-bg: #060606;
+  --footer-fg: #F0F0F0;
+  --marquee-fade: #0A0A0A;
+  --badge-bg: #1A1A1A;
+  --badge-border: #2A2A2A;
+  --icon-bg: #1A1A1A;
+  --progress-bar: #FFFFFF;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border-custom: var(--border);
+  --color-card: var(--card-bg);
+  --color-card-alt: var(--card-bg-alt);
+  --color-button-bg: var(--button-bg);
+  --color-button-fg: var(--button-fg);
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+  --color-section-alt: var(--section-alt);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-fg: var(--footer-fg);
+  --color-marquee-fade: var(--marquee-fade);
+  --color-badge-bg: var(--badge-bg);
+  --color-badge-border: var(--badge-border);
+  --color-icon-bg: var(--icon-bg);
+  --color-progress-bar: var(--progress-bar);
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Hanken Grotesk', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Base Radius Tokens */
+.radius-24 { border-radius: 24px; }
+.radius-32 { border-radius: 32px; }
+
+/* Custom Utilities for Bricx Style */
+.bricx-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.bricx-button {
+  background: var(--button-bg);
+  color: var(--button-fg);
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.bricx-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
