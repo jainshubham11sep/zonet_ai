@@ -81,9 +81,9 @@ const Header = () => {
           </Link>
           <Link 
             href="/contact" 
-            className="px-6 py-2.5 rounded-full bg-button-bg text-button-fg text-sm font-semibold hover:opacity-90 transition-all"
+            className="px-6 py-2.5 rounded-full bg-button-bg text-button-fg text-sm font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-2"
           >
-            Book a Call
+            <Phone size={14} className="fill-button-fg" /> Book a Call
           </Link>
         </div>
 
@@ -124,10 +124,10 @@ const Header = () => {
             <hr className="border-border-custom" />
             <Link 
               href="/contact" 
-              className="w-full py-4 rounded-2xl bg-button-bg text-button-fg text-center font-bold hover:opacity-90 transition-all"
+              className="w-full py-4 rounded-2xl bg-button-bg text-button-fg text-center font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Book a Call
+              <Phone size={18} className="fill-button-fg" /> Book a Call
             </Link>
           </div>
         </div>

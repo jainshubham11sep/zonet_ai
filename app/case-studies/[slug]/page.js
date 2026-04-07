@@ -1,32 +1,42 @@
 'use client';
 
+import { use } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Cpu, Zap, Globe } from 'lucide-react';
 import Link from 'next/link';
 import ContactForm from '@/components/ContactForm';
 
 const projects = {
-  'ai-dashboard': { 
-    title: 'Enterprise AI Dashboard', 
-    problem: 'The client needed a way to visualize complex real-time data from 50+ sources with AI-driven insights.', 
-    solution: 'We built a high-performance Next.js dashboard with a custom AI aggregation layer and real-time visualization.',
-    tech: ['Next.js', 'PostgreSQL', 'OpenAI API', 'Framer Motion'],
-    results: ['400% faster data processing', 'Real-time anomalies detection', '30-day delivery'],
-    img: 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=1200&auto=format&fit=crop&q=60'
+  'flipshope': { 
+    title: 'Flipshope: AI Shopping Assistant', 
+    problem: 'Shoppers struggle with volatile prices and manual coupon hunting, often missing the best deals across major e-commerce platforms like Amazon and Flipkart.', 
+    solution: 'We engineered an AI-powered browser extension and mobile app that automates price tracking, provides AI "Buy vs Wait" scores, and applies the best coupons instantly.',
+    tech: ['AI Aggregation', 'Browser Extension API', 'Next.js', 'Node.js'],
+    results: ['1.5M+ Active Users', 'Tracks 20 Crore Products', '4.5/5 Star User Rating'],
+    img: '/images/zonet/flipshope-1.png'
   },
-  'crypto-app': { 
-    title: 'Next-Gen Crypto Exchange', 
-    problem: 'A startup needed a secure, low-latency trading platform that could scale to millions of users.', 
-    solution: 'We developed a robust React application with an AI-powered risk management engine and sub-100ms trade execution.',
-    tech: ['React Native', 'Redis', 'TensorFlow', 'WebSockets'],
-    results: ['Sub-100ms latency', '99.99% uptime', '20-day build'],
-    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&auto=format&fit=crop&q=60'
+  'hyyzo': { 
+    title: 'Hyyzo: Next-Gen Rewards Platform', 
+    problem: 'Users lacked a high-paying, reliable cashback system that rewarded them not just for shopping, but for sharing deals with their community.', 
+    solution: 'We developed India\'s highest paying cashback platform featuring "Profit Links"—an automated affiliate link generator that enables users to earn from every shared purchase.',
+    tech: ['Affiliate API Engine', 'React Native', 'Next.js', 'Real-time Analytics'],
+    results: ['1 Lakh+ Active Earners', '200+ Partner Stores', '4.4★ Mobile App Rating'],
+    img: '/images/zonet/hyyzo-1.png'
+  },
+  'teacherdekho': { 
+    title: 'TeacherDekho: Verified Mentor Network', 
+    problem: 'Quality education is often inaccessible due to a lack of verified, affordable mentors and personalized learning tools.', 
+    solution: 'We architected a secure, marketplace-style platform connecting 50k+ students with over 2,000 verified teachers, complete with trial systems and progress analytics.',
+    tech: ['Verification Engine', 'WebRTC', 'Next.js', 'PostgreSQL'],
+    results: ['50k+ Student Enrolled', '2,000+ Verified Teachers', '4.8★ Learning Rating'],
+    img: '/images/zonet/teacherdekho-1.png'
   }
 };
 
 export default function CaseStudyDetail({ params }) {
-  const { slug } = params || { slug: 'ai-dashboard' };
-  const project = projects[slug] || projects['ai-dashboard'];
+  const unwrappedParams = use(params);
+  const slug = unwrappedParams?.slug || 'flipshope';
+  const project = projects[slug] || projects['flipshope'];
 
   return (
     <div className="pt-32 bg-black min-h-screen">

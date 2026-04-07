@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import Hero from "@/components/Hero";
-import ClientMarquee from "@/components/ClientMarquee";
+import ClientsGoGrowth from "@/components/ClientsGoGrowth";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import ServicesGrid from "@/components/ServicesGrid";
 import CreativesGrid from "@/components/CreativesGrid";
@@ -33,8 +33,9 @@ export default function Home() {
       {/* 1. Hero */}
       <Hero />
 
-      {/* 2. Our Clients */}
-      <ClientMarquee />
+      {/* 2. GoGrowth Style Clients Section */}
+      <ClientsGoGrowth />
+
 
       {/* 3. Case Studies */}
       <ProjectShowcase />

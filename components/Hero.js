@@ -63,19 +63,78 @@ const Hero = () => {
           <p className="text-xs font-bold text-muted uppercase tracking-widest">7-30 Days Fast Delivery</p>
         </motion.div>
 
-        {/* Trusted By */}
+        {/* Our Stack */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-20 flex flex-col items-center gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-24 flex flex-col items-center gap-8 w-full"
         >
-          <p className="text-xs font-bold text-muted uppercase tracking-[0.2em]">Trusted by 50+ SaaS backed by</p>
-          <div className="flex flex-wrap justify-center gap-10 opacity-30 grayscale saturate-0 pointer-events-none">
-            <div className="text-xl font-black text-foreground">Y Combinator</div>
-            <div className="text-xl font-black text-foreground">A16Z</div>
-            <div className="text-xl font-black text-foreground">SEQUOIA</div>
-            <div className="text-xl font-black text-foreground">INDEX</div>
+          <p className="text-[10px] font-bold text-muted uppercase tracking-[0.3em] opacity-80">Our Stack</p>
+          
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl px-4">
+            {/* Antigravity */}
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-border-custom bg-card-alt/50 backdrop-blur-sm hover:border-foreground/20 transition-all group cursor-default">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70 group-hover:text-amber-400 transition-colors">
+                <path d="M12 2v20M2 12h20" />
+                <path d="m17 7-5-5-5 5" />
+                <path d="m17 17-5 5-5-5" />
+              </svg>
+              <span className="text-sm font-bold text-foreground">Antigravity</span>
+            </div>
+
+            {/* Gemini */}
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-border-custom bg-card-alt/50 backdrop-blur-sm hover:border-foreground/20 transition-all group cursor-default">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70 group-hover:text-blue-400 transition-colors">
+                <path d="m12 3-1.912 5.813a2.001 2.001 0 0 1-1.275 1.275L3 12l5.813 1.912a2.001 2.001 0 0 1 1.275 1.275L12 21l1.912-5.813a2.001 2.001 0 0 1 1.275-1.275L21 12l-5.813-1.912a2.001 2.001 0 0 1-1.275-1.275L12 3Z" />
+              </svg>
+              <span className="text-sm font-bold text-foreground">Gemini</span>
+            </div>
+
+            {/* ChatGPT */}
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-border-custom bg-card-alt/50 backdrop-blur-sm hover:border-foreground/20 transition-all group cursor-default">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70 group-hover:text-emerald-400 transition-colors">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" />
+                <circle cx="12" cy="7" r="1.5" fill="currentColor" />
+                <circle cx="12" cy="17" r="1.5" fill="currentColor" />
+                <circle cx="7" cy="12" r="1.5" fill="currentColor" />
+                <circle cx="17" cy="12" r="1.5" fill="currentColor" />
+              </svg>
+              <span className="text-sm font-bold text-foreground">ChatGPT</span>
+            </div>
+
+            {/* Claude */}
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-border-custom bg-card-alt/50 backdrop-blur-sm hover:border-foreground/20 transition-all group cursor-default">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70 group-hover:text-orange-400 transition-colors">
+                <path d="M12 2L4.5 12l7.5 10l7.5-10L12 2z" />
+                <path d="M12 12l4-4" />
+                <path d="M12 12l-4-4" />
+                <path d="M12 12l4 4" />
+                <path d="M12 12l-4 4" />
+              </svg>
+              <span className="text-sm font-bold text-foreground">Claude</span>
+            </div>
+
+            {/* Cursor */}
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-border-custom bg-card-alt/50 backdrop-blur-sm hover:border-foreground/20 transition-all group cursor-default">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70 group-hover:text-indigo-400 transition-colors">
+                <rect x="9" y="9" width="6" height="6" rx="1" />
+                <path d="M15 9h-6v6h6V9z" />
+                <path d="M9 15v3a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-3" />
+                <path d="M9 9V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
+              </svg>
+              <span className="text-sm font-bold text-foreground">Cursor</span>
+            </div>
+
+            {/* Stitch */}
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-border-custom bg-card-alt/50 backdrop-blur-sm hover:border-foreground/20 transition-all group cursor-default">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70 group-hover:text-purple-400 transition-colors">
+                <path d="M12 2L2 12l10 10l10-10L12 2z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <span className="text-sm font-bold text-foreground">Stitch</span>
+            </div>
           </div>
         </motion.div>
       </div>
