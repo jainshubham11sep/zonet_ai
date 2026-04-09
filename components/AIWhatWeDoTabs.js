@@ -2,56 +2,201 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Bot, Smartphone } from 'lucide-react';
-import Image from 'next/image';
+import { Zap, BarChart3, Plug, ShieldCheck, Search, TestTubes, Activity, MessageSquare, Workflow, PieChart, Lock } from 'lucide-react';
 
 const tabs = [
   {
-    id: 'web',
-    label: 'Web Apps',
-    icon: Globe,
-    heading: 'We Build Web Apps That Drive Revenue',
-    desc: 'From marketing sites to complex SaaS dashboards — we design and build pixel-perfect, high-converting web experiences powered by Next.js, Framer, and AI.',
-    features: ['Lightning-fast Next.js builds', 'AI-powered UX personalization', 'CRO-optimized landing pages', 'Scalable design systems'],
-    visual: '/images/zonet/screenshot-1.png',
+    id: 'build',
+    label: 'Build with AI',
+    heading: 'AI-accelerated development at 3× speed',
+    desc: 'We use AI to compress development timelines without compromising quality. What takes others 3 months takes us 30 days.',
+    visual: 'timeline',
   },
   {
-    id: 'ai',
-    label: 'AI Products',
-    icon: Bot,
-    heading: 'AI-First Products Built for Scale',
-    desc: 'We integrate LLMs, AI agents, and automation pipelines directly into your product — transforming how your users interact with your software.',
-    features: ['Custom GPT-4 / Claude integrations', 'AI workflow automation', 'Intelligent chatbots & copilots', 'RAG systems & vector search'],
-    visual: '/images/zonet/screenshot-2.png',
+    id: 'optimize',
+    label: 'Optimize with AI',
+    heading: 'Continuous AI-driven performance gains',
+    desc: 'AI constantly monitors and improves your product\'s performance, SEO, and UX — even after launch. Our agents detect bottlenecks before they affect your users.',
+    visual: 'metrics',
   },
   {
-    id: 'mobile',
-    label: 'Mobile Apps',
-    icon: Smartphone,
-    heading: 'Mobile Apps Users Love to Use',
-    desc: 'We craft beautiful, high-performance iOS and Android apps using React Native. From MVP to App Store launch — we handle the full journey.',
-    features: ['React Native cross-platform', 'iOS & Android deployment', 'App Store optimization', 'Push notifications & analytics'],
-    visual: '/images/zonet/screenshot-3.png',
+    id: 'integrate',
+    label: 'Integrate AI',
+    heading: 'Embed intelligence directly into your product',
+    desc: 'From simple chatbots to advanced LLM pipelines — we embed AI where it drives the most value. Our integrations are designed to scale with your user base.',
+    visual: 'integration',
   },
 ];
 
+const TimelineCompare = () => (
+  <div className="space-y-5">
+    {/* Traditional Agency */}
+    <div className="flex items-center gap-4">
+      <span className="text-xs font-medium text-muted whitespace-nowrap w-36 text-right">Traditional Agency</span>
+      <div className="flex-1 h-10 rounded-lg bg-border-custom/30 relative overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: '100%' }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className="h-full rounded-lg bg-gradient-to-r from-red-600/60 to-red-500/40 flex items-center justify-end pr-4"
+        >
+          <span className="text-xs font-bold text-foreground">90 days</span>
+        </motion.div>
+      </div>
+    </div>
+    {/* Zonet */}
+    <div className="flex items-center gap-4">
+      <span className="text-xs font-medium text-muted whitespace-nowrap w-36 text-right">Zonet (AI-Powered)</span>
+      <div className="flex-1 h-10 rounded-lg bg-border-custom/30 relative overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: '35%' }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
+          viewport={{ once: true }}
+          className="h-full rounded-lg bg-gradient-to-r from-accent/80 to-accent/50 flex items-center justify-end pr-4"
+        >
+          <span className="text-xs font-bold text-white">30 days</span>
+        </motion.div>
+      </div>
+    </div>
+    {/* Badges */}
+    <div className="flex flex-wrap gap-2 mt-3">
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border-custom text-[10px] font-bold text-muted">
+        <Zap size={12} className="text-amber-500" /> 3× Faster Delivery
+      </span>
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border-custom text-[10px] font-bold text-muted">
+        💰 40% Cost Savings
+      </span>
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border-custom text-[10px] font-bold text-muted">
+        🎯 Same Quality Standard
+      </span>
+    </div>
+  </div>
+);
+
+const MetricsGrid = () => {
+  const metrics = [
+    { value: 97, label: 'Performance', color: '#6366F1' },
+    { value: 94, label: 'SEO Score', color: '#8B5CF6' },
+    { value: 98, label: 'Accessibility', color: '#A78BFA' },
+    { value: 92, label: 'Conversion', color: '#00ff88' },
+  ];
+
+  const features = [
+    { icon: Activity, text: 'Real-time Performance Monitoring' },
+    { icon: Search, text: 'AI-Driven SEO Adjustments' },
+    { icon: TestTubes, text: 'Automated A/B Testing' },
+    { icon: ShieldCheck, text: 'Predictive Security Patches' },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {metrics.map((m, i) => {
+          const circumference = 2 * Math.PI * 42;
+          const offset = circumference - (m.value / 100) * circumference;
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card/60 border border-border-custom"
+            >
+              <div className="relative w-20 h-20">
+                <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border-custom)" strokeWidth="6" />
+                  <motion.circle
+                    cx="50" cy="50" r="42"
+                    fill="none"
+                    stroke={m.color}
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeDasharray={circumference}
+                    initial={{ strokeDashoffset: circumference }}
+                    whileInView={{ strokeDashoffset: offset }}
+                    transition={{ duration: 1, delay: i * 0.15 }}
+                    viewport={{ once: true }}
+                  />
+                </svg>
+                <span className="absolute inset-0 flex items-center justify-center text-lg font-black text-foreground">{m.value}</span>
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-muted">{m.label}</span>
+            </motion.div>
+          );
+        })}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {features.map((f, i) => {
+          const Icon = f.icon;
+          return (
+            <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-card/40 border border-border-custom/50">
+              <Icon size={14} className="text-accent shrink-0" />
+              <span className="text-xs font-medium text-muted">{f.text}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const IntegrationFlow = () => {
+  const nodes = [
+    { icon: MessageSquare, text: 'AI Chatbot', sub: '24/7 Support' },
+    { icon: Workflow, text: 'Auto-Task', sub: 'Workflow AI' },
+    { icon: PieChart, text: 'Analytics', sub: 'Predictive Insights' },
+    { icon: Lock, text: 'Security', sub: 'Anomaly Detection' },
+  ];
+
+  return (
+    <div className="flex flex-col items-center gap-6">
+      <div className="px-6 py-3 rounded-2xl bg-accent/15 border border-accent/25 text-sm font-bold text-foreground">
+        Your Product
+      </div>
+      <div className="w-px h-6 bg-border-custom" />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+        {nodes.map((n, i) => {
+          const Icon = n.icon;
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card/60 border border-border-custom text-center"
+            >
+              <Icon size={20} className="text-accent" />
+              <span className="text-xs font-bold text-foreground">{n.text}</span>
+              <span className="text-[9px] text-muted">{n.sub}</span>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 const AIWhatWeDoTabs = () => {
-  const [activeTab, setActiveTab] = useState('web');
+  const [activeTab, setActiveTab] = useState('build');
   const activeData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section className="section-padding bg-background border-t border-border-custom relative overflow-hidden">
-      {/* Background Decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="section-padding bg-section-alt border-t border-border-custom relative overflow-hidden">
+      {/* Background subtle glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-12 md:mb-16">
+        <div className="flex flex-col items-start mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="section-label mb-6"
+            className="section-label mb-4"
           >
             What We Do
           </motion.div>
@@ -59,30 +204,35 @@ const AIWhatWeDoTabs = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-foreground tracking-tighter leading-[1] font-heading max-w-3xl"
+            className="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-[1.1] font-heading max-w-3xl"
           >
-            Full-Stack AI <br /><span className="text-muted">Product Studio</span>
+            We don&apos;t just build products. We make them <span className="text-accent">intelligent.</span>
           </motion.h2>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex justify-start md:justify-center mb-12 md:mb-16 -mx-6 px-6 overflow-hidden">
-          <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-card/40 backdrop-blur-md border border-border-custom shadow-xl overflow-x-auto no-scrollbar max-w-full touch-pan-x">
+        <div className="mb-10 md:mb-14">
+          <div className="flex items-center gap-0 border-b border-border-custom">
             {tabs.map((tab) => {
-              const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center gap-2.5 px-5 md:px-6 py-3 rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-500 whitespace-nowrap flex-shrink-0 ${
+                  className={`relative px-5 py-3 text-xs md:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
                     isActive
-                      ? 'bg-accent text-white shadow-lg shadow-accent/20 translate-y-[-1px]'
+                      ? 'text-foreground'
                       : 'text-muted hover:text-foreground'
                   }`}
                 >
-                  <Icon size={14} strokeWidth={ isActive ? 3 : 2 } />
                   {tab.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="whatwedo-underline"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </button>
               );
             })}
@@ -96,63 +246,20 @@ const AIWhatWeDoTabs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5, ease: 'circOut' }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto"
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="space-y-8"
           >
-            {/* Left: Text */}
-            <div className="space-y-8">
-              <h3 className="text-3xl md:text-5xl font-black text-foreground leading-[1] tracking-tighter font-heading">
-                {activeData.heading}
-              </h3>
-              <p className="text-lg md:text-xl text-muted leading-relaxed font-medium tracking-tight">
-                {activeData.desc}
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {activeData.features.map((f, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-3 text-foreground font-black text-xs uppercase tracking-widest"
-                  >
-                    <div className="w-6 h-6 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent">
-                      <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
-                        <path d="M2 5l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    {f}
-                  </motion.li>
-                ))}
-              </ul>
+            {/* Visual Panel */}
+            <div className="rounded-2xl bg-card/50 border border-border-custom p-6 md:p-10">
+              {activeData.visual === 'timeline' && <TimelineCompare />}
+              {activeData.visual === 'metrics' && <MetricsGrid />}
+              {activeData.visual === 'integration' && <IntegrationFlow />}
             </div>
 
-            {/* Right: Visual Card */}
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="relative rounded-[40px] w-full aspect-[4/3] flex items-center justify-center bg-card border border-border-custom overflow-hidden shadow-2xl group"
-            >
-              {/* Decorative grid */}
-              <div className="absolute inset-0 opacity-[0.03]" style={{
-                backgroundImage: `radial-gradient(circle, #6366F1 1px, transparent 1px)`,
-                backgroundSize: '32px 32px'
-              }} />
-
-              {/* Accent Glow inside card */}
-              <div className="absolute -top-1/4 -right-1/4 w-3/4 h-3/4 bg-accent/5 rounded-full blur-[80px]" />
-              
-              <div className="relative z-10 w-[88%] h-[88%] rounded-[24px] overflow-hidden border border-border-custom shadow-2xl group-hover:scale-[1.02] transition-transform duration-700">
-                <Image 
-                  src={activeData.visual} 
-                  alt={activeData.heading}
-                  fill
-                  className="object-cover object-top brightness-[0.9] group-hover:brightness-100 transition-all duration-700"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </motion.div>
+            {/* Description */}
+            <p className="text-sm md:text-base text-muted font-medium leading-relaxed max-w-2xl">
+              {activeData.desc}
+            </p>
           </motion.div>
         </AnimatePresence>
       </div>

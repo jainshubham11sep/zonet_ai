@@ -180,7 +180,7 @@ const ProjectShowcase = () => {
   return (
     <section id="work" className="section-padding bg-background border-t border-border-custom relative">
       {/* Section Header */}
-      <div className="container mx-auto px-6 mb-16 md:mb-32 flex flex-col items-start lg:items-center text-left lg:text-center">
+      <div className="container mx-auto px-6 mb-12 md:mb-16 flex flex-col items-start lg:items-center text-left lg:text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -193,15 +193,15 @@ const ProjectShowcase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tighter leading-[1] font-heading max-w-6xl"
+          className="text-3xl md:text-5xl font-black text-foreground tracking-tighter leading-[1.1] font-heading max-w-4xl"
         >
-          Building Iconic Products <br className="hidden lg:block" />
+          Building Iconic Products{' '}
           <span className="text-muted">For Visionary Founders</span>
         </motion.h2>
       </div>
 
       <div className="container mx-auto px-6">
-        <div className="flex flex-col gap-6 md:gap-8">
+        <div className="flex flex-col gap-20 md:gap-28">
           {projects.map((project, idx) => (
             <div
               key={project.id}
@@ -209,127 +209,119 @@ const ProjectShowcase = () => {
             >
 
               {/* ── LEFT: Sticky Text Column ── */}
-              <div className="w-full lg:w-[48%] h-fit lg:sticky lg:top-28 flex flex-col gap-6 md:gap-8">
+              <div className="w-full lg:w-[48%] h-fit lg:sticky lg:top-28 flex flex-col gap-4">
 
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 pb-10 border-b border-border-custom/50">
-                  {/* Left Side: Logo & Info */}
-                  <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-[24px] bg-white border border-gray-100 shadow-md flex items-center justify-center flex-shrink-0 p-3 overflow-hidden">
-                      <Image
-                        src={project.logo}
-                        alt={`${project.name} logo`}
-                        width={64}
-                        height={64}
-                        className="object-contain w-full h-full"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5 md:gap-3">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-2xl md:text-4xl font-black text-foreground font-heading tracking-tight leading-none">
+                {/* ─── Top Card: Identity + Stats ─── */}
+                <div className="rounded-2xl border border-border-custom/50 bg-card/30 overflow-hidden">
+                  {/* Header Bar */}
+                  <div className="px-5 py-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center shrink-0 p-2 overflow-hidden">
+                        <Image
+                          src={project.logo}
+                          alt={`${project.name} logo`}
+                          width={44}
+                          height={44}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-black text-foreground font-heading tracking-tight leading-none">
                           {project.name}
                         </h3>
-                        <Link
-                          href={`/case-studies/${project.id}`}
-                          className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-border-custom bg-card flex items-center justify-center text-muted hover:bg-accent hover:text-white transition-all shadow-sm"
-                        >
-                          <ArrowUpRight size={16} />
+                        <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-muted mt-1">
+                          <span>{project.location}</span>
+                          <span className="w-1 h-1 rounded-full bg-accent/40" />
+                          <span className="text-accent">{project.badges[0]}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      {project.platformLinks.web && (
+                        <Link href={project.platformLinks.web} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-background border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
+                          <Globe size={14} />
                         </Link>
-                      </div>
-                      <div className="flex items-center gap-3 text-muted text-[10px] md:text-xs font-black uppercase tracking-widest">
-                        <span>{project.location}</span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent/20" />
-                        <span className="text-accent">{project.badges[0]}</span>
-                      </div>
+                      )}
+                      {project.platformLinks.app && (
+                        <Link href={project.platformLinks.app} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-background border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
+                          <Smartphone size={14} />
+                        </Link>
+                      )}
+                      {project.platformLinks.extension && (
+                        <Link href={project.platformLinks.extension} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-background border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
+                          <Puzzle size={14} />
+                        </Link>
+                      )}
                     </div>
                   </div>
 
-                  {/* Right Side: Timeline & Platforms (Mobile Refined) */}
-                  <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-4">
-                    <div className="flex flex-col items-start sm:items-end">
-                      <div className="flex items-center gap-2 text-[9px] font-black text-muted uppercase tracking-[0.2em] mb-1.5 opacity-60">
-                         Timeline
+                  {/* Stats Highlight Strip */}
+                  <div className="grid grid-cols-3 bg-accent/[0.04] border-y border-border-custom/30">
+                    {project.stats.map((stat, i) => (
+                      <div
+                        key={i}
+                        className={`px-3 py-3 flex flex-col items-center justify-center gap-0.5 ${i < 2 ? 'border-r border-border-custom/30' : ''}`}
+                      >
+                        <span className="text-lg font-black text-accent leading-none font-heading tracking-tighter">
+                          {stat.value}
+                        </span>
+                        <span className="text-[7px] font-bold uppercase tracking-wider text-muted text-center leading-tight">
+                          {stat.label}
+                        </span>
                       </div>
-                      <div className="text-xs md:text-sm font-black text-foreground bg-card px-4 py-2 rounded-xl border border-border-custom shadow-sm whitespace-nowrap">
-                        {project.timeline}
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                        {project.platformLinks.web && (
-                          <Link href={project.platformLinks.web} target="_blank" className="flex items-center justify-center w-9 h-9 rounded-xl bg-card border border-border-custom text-foreground hover:bg-accent hover:text-white transition-all shadow-sm">
-                            <Globe size={16} />
-                          </Link>
-                        )}
-                        {project.platformLinks.app && (
-                          <Link href={project.platformLinks.app} target="_blank" className="flex items-center justify-center w-9 h-9 rounded-xl bg-card border border-border-custom text-foreground hover:bg-accent hover:text-white transition-all shadow-sm">
-                            <Smartphone size={16} />
-                          </Link>
-                        )}
-                        {project.platformLinks.extension && (
-                          <Link href={project.platformLinks.extension} target="_blank" className="flex items-center justify-center w-9 h-9 rounded-xl bg-card border border-border-custom text-foreground hover:bg-accent hover:text-white transition-all shadow-sm">
-                            <Puzzle size={16} />
-                          </Link>
-                        )}
-                    </div>
+                    ))}
+                  </div>
+
+                  {/* Timeline Badge */}
+                  <div className="px-5 py-3 flex items-center gap-3">
+                    <Timer size={13} className="text-accent" />
+                    <span className="text-[10px] font-black text-foreground uppercase tracking-widest">{project.timeline}</span>
                   </div>
                 </div>
 
-                {/* ── MOBILE CAROUSEL INJECTED HERE (Before Description) ── */}
+                {/* ── MOBILE CAROUSEL ── */}
                 {mounted && <MobileImageCarousel images={[project.mainImg, project.subImg1, project.subImg2]} projectName={project.name} />}
 
-                {/* 3. Description */}
-                <p className="text-muted text-lg md:text-2xl leading-relaxed font-medium tracking-tight">
-                  {project.description.map((seg, i) =>
-                    seg.highlight ? (
-                      <span key={i} className={highlightClass}>
-                        {seg.text}
-                      </span>
-                    ) : (
-                      <span key={i} className="text-foreground">{seg.text}</span>
-                    )
-                  )}
-                </p>
-
-                {/* 4. Stat Metric Boxes (Unified Design) */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {project.stats.map((stat, i) => (
-                    <div
-                      key={i}
-                      className={`rounded-[28px] px-6 py-7 flex flex-col items-center justify-center gap-2 ${statBoxClass}`}
-                    >
-                      <span className="text-3xl md:text-4xl font-black text-foreground leading-none font-heading tracking-tighter">
-                        {stat.value}
-                      </span>
-                      <span className="text-[10px] font-black uppercase tracking-[0.15em] text-muted text-center leading-tight">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
+                {/* ─── Middle: Description ─── */}
+                <div className="px-1">
+                  <p className="text-muted text-sm leading-relaxed font-medium">
+                    {project.description.map((seg, i) =>
+                      seg.highlight ? (
+                        <span key={i} className={highlightClass}>
+                          {seg.text}
+                        </span>
+                      ) : (
+                        <span key={i} className="text-foreground">{seg.text}</span>
+                      )
+                    )}
+                  </p>
                 </div>
 
-                {/* 5. Review Section */}
-                <div className="p-8 md:p-10 rounded-[40px] bg-card/40 border border-border-custom/50 flex flex-col gap-6 relative overflow-hidden group/quote">
-                   <div className="absolute top-0 right-0 p-8 text-accent/10 group-hover/quote:text-accent/20 transition-colors">
-                      <Star size={48} className="fill-current" />
-                   </div>
-                   <p className="text-lg md:text-xl text-foreground font-medium italic leading-relaxed relative z-10">
-                    "{project.quote}"
-                  </p>
-                  <div className="flex items-center gap-4 pt-6 border-t border-border-custom/50">
-                    <div className="flex flex-col">
-                      <span className="font-black text-foreground text-sm uppercase tracking-widest">{project.client.name}</span>
-                      <span className="text-[10px] font-bold text-muted uppercase tracking-widest mt-1">{project.client.role}</span>
+                {/* ─── Bottom: Review + CTA Row ─── */}
+                <div className="rounded-2xl border border-border-custom/50 bg-card/20 overflow-hidden">
+                  <div className="px-5 py-4">
+                    <p className="text-[13px] text-foreground/70 italic leading-relaxed mb-3">
+                      &ldquo;{project.quote}&rdquo;
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-[10px] font-black">
+                          {project.client.name.charAt(0)}
+                        </div>
+                        <div>
+                          <span className="font-bold text-foreground text-[11px] block leading-tight">{project.client.name}</span>
+                          <span className="text-[9px] font-medium text-muted leading-tight">{project.client.role}</span>
+                        </div>
+                      </div>
+                      <Link
+                        href={`/case-studies/${project.id}`}
+                        className="px-5 py-2.5 rounded-xl bg-accent text-white font-bold uppercase tracking-widest text-[9px] flex items-center gap-1.5 hover:opacity-90 transition-all shadow-lg shadow-accent/15 shrink-0"
+                      >
+                        Case Study <ArrowUpRight size={12} />
+                      </Link>
                     </div>
                   </div>
                 </div>
-
-                {/* Final Case Study Button */}
-                <Link
-                  href={`/case-studies/${project.id}`}
-                  className="px-8 py-5 rounded-2xl bg-accent text-white font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:opacity-90 transition-all shadow-xl shadow-accent/20 md:w-fit"
-                >
-                   View Detailed Case Study <ArrowUpRight size={18} />
-                </Link>
               </div>
 
               {/* ── RIGHT: 3 Scrolling Images (Hidden on Mobile) ── */}
@@ -356,7 +348,7 @@ const ProjectShowcase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-40 flex flex-col items-center gap-4 text-center"
+          className="mt-20 flex flex-col items-center gap-4 text-center"
         >
           <p className="text-muted text-sm md:text-base font-medium uppercase tracking-widest">
             Ready to be our next success story?

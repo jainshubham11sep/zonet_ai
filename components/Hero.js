@@ -69,7 +69,7 @@ const Hero = () => {
           >
             Start Your Project <ArrowUpRight size={20} />
           </button>
-          <p className="text-[9px] font-black text-muted uppercase tracking-[0.3em]">Built with ❤️ for Modern Brands</p>
+          <p className="text-[9px] font-black text-muted uppercase tracking-[0.3em] mt-4 opacity-60">Built with ❤️ for Modern Brands</p>
         </motion.div>
 
         {/* Our Stack */}
