@@ -2,77 +2,92 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const clients = [
   { name: 'Flipshope', category: 'Shopping AI', src: '/images/clients/flipshope-logo.png' },
   { name: 'Hyyzo', category: 'Cashback & Rewards', src: '/images/clients/hyyzo-logo.png' },
   { name: 'TeacherDekho', category: 'Ed-Tech', src: '/images/clients/teacherdekho-logo.png' },
-  { name: 'Puno Games', category: 'Gaming', src: '/images/clients/punogames-logo.png' },
-  { name: 'Karekasie', category: 'Consultancy', src: '/images/zonet/logo-light.png' }, // Placeholder for missing
-  { name: 'Twitch Adblocker', category: 'Browser Tool', src: '/images/zonet/logo-light.png' }, // Placeholder for missing
-  { name: 'Kroolo', category: 'Productivity', src: '/images/clients/kroolo-logo.png' },
+  { name: 'Puno Games', category: 'Gaming', src: '/images/clients/punogames-logo.png', href: 'https://punogames.com' },
+  { name: 'Karekaisee', category: 'Consultancy', src: '/images/zonet/logo-light.png', href: 'https://karekaisee.com' }, 
+  { name: 'Twitch Adblocker', category: 'Browser Tool', src: '/images/zonet/logo-light.png', href: 'https://chromewebstore.google.com/detail/twitch-adblock/hmaahgcbijnfogbgmnnjmlbfjoncneff' }, 
+  { name: 'Kroolo', category: 'Productivity', src: '/images/clients/kroolo-logo.png', href: 'https://kroolo.com' },
   { name: 'My Flipshope', category: 'HRMS SaaS', src: '/images/clients/flipshope-logo.png' },
-  { name: 'The Best Deals', category: 'Deals Platform', src: '/images/clients/thebestdeals-logo.png' },
-  { name: 'HyyFam', category: 'Social Rewards', src: '/images/clients/hyyfam-logo.png' },
-  { name: 'Hyzify', category: 'FinTech', src: '/images/clients/hyzify-logo.png' },
+  { name: 'The Best Deals', category: 'Deals Platform', src: '/images/clients/thebestdeals-logo.png', href: 'https://thebestdeals.app' },
+  { name: 'HyyFam', category: 'Social Rewards', src: '/images/clients/hyyfam-logo.png', href: 'https://hyyfam.com' },
+  { name: 'Hyzify', category: 'FinTech', src: '/images/clients/hyzify-logo.png', href: 'https://hyzify.in' },
 ];
 
 const ClientsGoGrowth = () => {
   return (
-    <section className="py-8 md:py-12 bg-black overflow-hidden flex flex-col items-center">
-      <div className="container mx-auto px-6 mb-12 flex flex-col items-center text-center">
+    <section className="section-padding bg-background overflow-hidden flex flex-col items-center border-t border-border-custom">
+      <div className="container mx-auto px-6 mb-16 flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="section-label mb-6"
+        >
+          Our Portfolio
+        </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-extrabold text-white tracking-tight font-heading"
+          className="text-4xl md:text-5xl font-black text-foreground tracking-tighter font-heading leading-tight"
         >
-          Our Clients
+          Trusted by <span className="text-muted">Global Brands</span>
         </motion.h2>
       </div>
 
-      <div className="relative w-full flex overflow-x-hidden group">
+      <div className="relative w-full flex overflow-x-clip group">
         <motion.div 
-          className="flex whitespace-nowrap gap-10 md:gap-16 items-center py-4"
-          animate={{ x: [0, -2000] }}
+          className="flex whitespace-nowrap gap-12 md:gap-20 items-center py-6"
+          animate={{ x: [0, -1500] }}
           transition={{ 
-            duration: 35, 
+            duration: 50, 
             repeat: Infinity, 
             ease: "linear" 
           }}
         >
-          {[...clients, ...clients, ...clients].map((client, idx) => (
-            <div key={idx} className="flex flex-col items-center gap-4 flex-shrink-0 min-w-[120px] group/card">
-              {/* Circular Logo Container */}
-              <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full bg-white border-[4px] border-white/5 shadow-xl flex items-center justify-center p-4 md:p-6 overflow-hidden transition-all duration-500 group-hover/card:scale-110 group-hover/card:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-                <Image 
-                  src={client.src} 
-                  alt={client.name} 
-                  width={60}
-                  height={60}
-                  className="object-contain w-full h-full"
-                />
-              </div>
+          {[...clients, ...clients, ...clients].map((client, idx) => {
+            const Wrapper = client.href ? Link : 'div';
+            return (
+              <Wrapper 
+                key={idx} 
+                href={client.href || '#'}
+                target={client.href ? "_blank" : undefined}
+                className={`flex flex-col items-center gap-5 flex-shrink-0 min-w-[140px] group/card ${client.href ? 'cursor-pointer' : ''}`}
+              >
+                {/* Circular Logo Container */}
+                <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-2 border-border-custom shadow-lg flex items-center justify-center p-5 md:p-8 overflow-hidden transition-all duration-500 group-hover/card:scale-110 group-hover/card:border-accent/30 group-hover/card:shadow-[0_0_30px_rgba(99,102,241,0.15)]">
+                  <Image 
+                    src={client.src} 
+                    alt={client.name} 
+                    width={80}
+                    height={80}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
 
-              {/* Client Info */}
-              <div className="text-center">
-                <h4 className="text-white font-bold text-base md:text-lg tracking-tight mb-0.5">
-                  {client.name}
-                </h4>
-                <p className="text-muted/60 text-[10px] md:text-xs font-medium">
-                  {client.category}
-                </p>
-              </div>
-            </div>
-          ))}
+                {/* Client Info */}
+                <div className="text-center">
+                  <h4 className={`text-foreground font-black text-sm md:text-base tracking-tight font-heading mb-1 ${client.href ? 'group-hover/card:text-accent transition-colors' : ''}`}>
+                    {client.name}
+                  </h4>
+                  <p className="text-muted text-[10px] md:text-xs font-black uppercase tracking-widest opacity-60">
+                    {client.category}
+                  </p>
+                </div>
+              </Wrapper>
+            );
+          })}
         </motion.div>
 
         {/* Improved Deep Gradient Overlays for smooth entry/exit */}
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
       </div>
-
-      <div className="mt-12 w-20 h-[1px] bg-white/10" />
     </section>
   );
 };

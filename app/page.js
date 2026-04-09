@@ -13,6 +13,7 @@ import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import RelatedArticles from "@/components/RelatedArticles";
 import FAQ from "@/components/FAQ";
+import AITimeline from "@/components/AITimeline";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -23,7 +24,7 @@ export default function Home() {
   });
 
   return (
-    <div className="relative bg-background">
+    <div className="relative bg-background overflow-x-clip">
       {/* Scroll Progress Bar */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-[3px] bg-progress-bar z-[100] origin-left"
@@ -48,6 +49,9 @@ export default function Home() {
 
       {/* 6. What We Do in AI Web App — Three Tabs */}
       <AIWhatWeDoTabs />
+
+      {/* 6.1 Our Working Process */}
+      <AITimeline />
 
       {/* 7. Data Driven Numbers */}
       <DataDrivenStats />

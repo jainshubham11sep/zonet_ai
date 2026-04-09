@@ -5,7 +5,11 @@ import Footer from "@/components/Footer";
 import AIChatWidget from "@/components/AIChatWidget";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  weight: ["400", "500", "700", "900"],
+  variable: '--font-inter',
+});
 
 export const metadata = {
   title: "ZonetTech | AI-Powered Development Agency",
@@ -14,8 +18,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-background text-foreground antialiased`}>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <head>
+        <template
+          dangerouslySetInnerHTML={{
+            __html: `<script src="/theme-init.js"></script>`,
+          }}
+        />
+      </head>
+      <body className="bg-background text-foreground antialiased font-sans">
         <ThemeProvider>
           <Header />
           <main>{children}</main>
