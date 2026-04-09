@@ -27,16 +27,16 @@ const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-border-custom last:border-0 overflow-hidden px-4 md:px-8">
+    <div className={`transition-all duration-300 border-b border-border-custom last:border-0 ${isOpen ? 'bg-accent/5' : 'hover:bg-card/40'}`}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-8 flex items-center justify-between text-left group"
+        className="w-full py-6 md:py-8 px-6 md:px-10 flex items-center justify-between text-left group"
       >
-        <span className={`text-xl md:text-2xl font-bold font-heading transition-colors ${isOpen ? 'text-foreground' : 'text-secondary hover:text-foreground'}`}>
+        <span className={`text-lg md:text-xl font-bold font-heading tracking-tight leading-tight transition-colors ${isOpen ? 'text-accent' : 'text-foreground group-hover:text-accent'}`}>
           {question}
         </span>
-        <div className={`p-2 rounded-full border transition-all flex-shrink-0 ${isOpen ? 'bg-button-bg text-button-fg border-button-bg' : 'text-muted border-border-custom'}`}>
-          {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+        <div className={`w-8 h-8 rounded-lg border transition-all flex-shrink-0 flex items-center justify-center ${isOpen ? 'bg-accent text-white border-accent rotate-180 shadow-md shadow-accent/20' : 'text-muted border-border-custom bg-card group-hover:border-accent/30'}`}>
+          {isOpen ? <Minus size={16} strokeWidth={3} /> : <Plus size={16} strokeWidth={3} />}
         </div>
       </button>
       <AnimatePresence>
@@ -45,9 +45,9 @@ const FAQItem = ({ question, answer }) => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
-            <div className="pb-8 text-muted text-lg leading-relaxed max-w-2xl">
+            <div className="pb-8 px-6 md:px-10 text-muted text-sm md:text-base leading-relaxed max-w-2xl">
               {answer}
             </div>
           </motion.div>
@@ -59,32 +59,81 @@ const FAQItem = ({ question, answer }) => {
 
 const FAQ = () => {
   return (
-    <section className="py-16 bg-background border-t border-border-custom">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="px-3 py-1 rounded-full border border-badge-border bg-badge-bg text-[10px] font-bold text-muted mb-4 uppercase tracking-widest"
-          >
-            Support
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold tracking-tight leading-tight font-heading text-foreground"
-          >
-            Common Questions
-          </motion.h2>
-        </div>
-        <div className="max-w-4xl mx-auto">
-          <div className="w-full bg-card rounded-[40px] border border-border-custom shadow-sm">
-            {faqs.map((faq, idx) => (
-              <FAQItem key={idx} {...faq} />
-            ))}
+    <section id="faq" className="section-padding bg-background relative overflow-hidden">
+      {/* Background visual detail */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          
+          {/* Left Column: Heading & Content */}
+          <div className="lg:col-span-5 flex flex-col justify-start">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="section-label mb-6 w-fit"
+            >
+              Support & Insights
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.1] font-heading text-foreground mb-8"
+            >
+              Everything You <br />
+              <span className="text-muted">Need To Know</span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-muted text-lg mb-10 max-w-md leading-relaxed"
+            >
+              Explore our most common inquiries and learn how Zonet leverages AI to build the future of digital products.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-[32px] bg-card/40 border border-border-custom backdrop-blur-sm hidden lg:block"
+            >
+              <h4 className="text-xl font-bold mb-3">Still have questions?</h4>
+              <p className="text-muted text-sm mb-6">Our senior engineers are ready to discuss your custom roadmap today.</p>
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-accent font-bold uppercase tracking-widest text-[11px] flex items-center gap-2 hover:gap-3 transition-all"
+              >
+                Connect With Us <span>→</span>
+              </button>
+            </motion.div>
           </div>
+
+          {/* Right Column: FAQ List */}
+          <div className="lg:col-span-7">
+            <div className="w-full bg-card/20 backdrop-blur-xl rounded-[40px] border border-border-custom overflow-hidden shadow-2xl">
+              {faqs.map((faq, idx) => (
+                <FAQItem key={idx} {...faq} />
+              ))}
+            </div>
+            
+            {/* Mobile-only CTA */}
+            <div className="mt-10 lg:hidden text-center">
+              <p className="text-muted mb-4">Still have questions?</p>
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-6 py-3 rounded-full bg-accent text-white text-[10px] font-black uppercase tracking-widest"
+              >
+                Contact Support
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

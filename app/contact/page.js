@@ -5,9 +5,9 @@ import { Mail, Phone, MapPin, Clock, Calendar } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 
 const contactInfo = [
-  { icon: Mail, label: 'Email Us', value: 'hello@zonettech.ai', sub: 'Responsive within 2 hours' },
-  { icon: Phone, label: 'Call Us', value: '+1 (555) 000-0000', sub: 'Mon-Fri, 9am - 6pm EST' },
-  { icon: MapPin, label: 'Our HQ', value: 'San Francisco, CA', sub: 'The Heart of AI Innovation' },
+  { icon: Mail, label: 'Email Us', value: 'business@zonettech.com', sub: 'Responsive within 2 hours' },
+  { icon: Phone, label: 'Call Us', value: '+91 9166572332', sub: 'Mon-Fri, 9am - 6pm EST' },
+  { icon: MapPin, label: 'Our HQ', value: 'Jaipur Rajastha,India', sub: 'The Heart of AI Innovation' },
 ];
 
 export default function Contact() {

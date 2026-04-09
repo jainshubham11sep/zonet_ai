@@ -24,12 +24,12 @@ const CreativesGrid = () => {
   ];
 
   return (
-    <section className="h-[600px] bg-section-alt overflow-hidden relative flex items-center justify-center border-t border-border-custom">
+    <section className="h-[500px] md:h-[650px] bg-section-alt overflow-hidden relative flex items-center justify-center border-t border-border-custom">
       {/* Section label overlay */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20 text-center pointer-events-none">
-        <span className="px-4 py-1.5 rounded-full border border-border-custom bg-card/80 backdrop-blur-sm text-[10px] font-bold text-muted uppercase tracking-[0.2em]">
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 z-20 text-center pointer-events-none">
+        <div className="section-label">
           Project Gallery
-        </span>
+        </div>
       </div>
 
       <div className="flex gap-4 md:gap-6 w-full max-w-[1400px] px-4">

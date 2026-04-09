@@ -45,23 +45,22 @@ const articles = [
 
 export default function RelatedArticles() {
   return (
-    <section className="py-24 bg-card-alt border-t border-border-custom overflow-hidden">
-      <div className="container mx-auto px-6 mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
-        <div>
+    <section className="section-padding bg-section-alt border-t border-border-custom overflow-hidden">
+      <div className="container mx-auto px-6 mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
+        <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-badge-border bg-badge-bg text-[10px] font-bold text-muted mb-4 uppercase tracking-[0.2em]"
+            className="section-label mb-6"
           >
-            <BookOpen size={14} className="text-foreground" />
             Insights & News
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-foreground tracking-tight font-heading leading-tight"
+            className="text-4xl md:text-6xl font-black text-foreground tracking-tighter font-heading leading-[1]"
           >
             Related <span className="text-muted">Articles</span>
           </motion.h2>
@@ -71,7 +70,7 @@ export default function RelatedArticles() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <Link href="https://www.zonettech.com/blogs" className="text-sm font-bold border-b border-foreground pb-1 hover:opacity-70 transition-opacity flex items-center gap-1">
+          <Link href="https://www.zonettech.com/blogs" className="text-xs font-black uppercase tracking-widest text-accent border-b-2 border-accent/20 pb-1.5 hover:text-foreground hover:border-foreground transition-all flex items-center gap-2">
             Read all articles <ArrowUpRight size={16} />
           </Link>
         </motion.div>
@@ -79,7 +78,7 @@ export default function RelatedArticles() {
 
       <div className="container mx-auto px-6">
         {/* Horizontal Scroll Snap Container */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 scrollbar-hide">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 scrollbar-hide">
           {articles.map((article, idx) => (
             <motion.div
               key={idx}
@@ -87,7 +86,7 @@ export default function RelatedArticles() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="snap-start min-w-[300px] md:min-w-[400px] w-[85vw] md:w-[400px] flex-shrink-0 group relative rounded-[24px] overflow-hidden bg-card border border-border-custom cursor-pointer"
+              className="snap-start min-w-[320px] md:min-w-[420px] w-[85vw] md:w-[420px] flex-shrink-0 group relative rounded-[32px] overflow-hidden bg-card/40 backdrop-blur-xl border border-border-custom hover:border-accent/40 transition-all duration-500 shadow-sm"
             >
               <Link href={article.link}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
@@ -97,20 +96,20 @@ export default function RelatedArticles() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10 text-[10px] font-bold uppercase tracking-widest">
+                  <div className="absolute top-6 left-6">
+                    <span className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md text-white border border-white/10 text-[9px] font-black uppercase tracking-widest shadow-lg">
                       {article.category}
                     </span>
                   </div>
                 </div>
-                <div className="p-6 md:p-8 flex flex-col justify-between items-start">
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground leading-snug font-heading group-hover:text-primary transition-colors">
+                <div className="p-8 md:p-10 flex flex-col justify-between items-start">
+                  <h3 className="text-xl md:text-2xl font-black text-foreground leading-tight font-heading tracking-tight transition-colors group-hover:text-accent">
                     {article.title}
                   </h3>
-                  <div className="mt-6 flex items-center justify-between w-full">
-                    <p className="text-sm font-bold text-muted">{article.readTime}</p>
-                    <div className="w-10 h-10 rounded-full border border-border-custom flex items-center justify-center text-foreground group-hover:bg-foreground group-hover:text-background transition-all">
-                      <ArrowUpRight size={18} />
+                  <div className="mt-8 flex items-center justify-between w-full">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted">{article.readTime}</p>
+                    <div className="w-12 h-12 rounded-2xl border border-border-custom bg-card flex items-center justify-center text-muted group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-300 shadow-sm">
+                      <ArrowUpRight size={20} />
                     </div>
                   </div>
                 </div>

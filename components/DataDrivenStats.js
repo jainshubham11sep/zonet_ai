@@ -45,13 +45,10 @@ const CountUp = ({ target, suffix, isDecimal }) => {
 
 const DataDrivenStats = () => {
   return (
-    <section className="py-24 bg-button-bg text-button-fg border-t border-border-custom overflow-hidden relative">
-      {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
-        backgroundSize: '40px 40px'
-      }} />
-
+    <section className="section-padding bg-background border-y border-border-custom overflow-hidden relative">
+      {/* Decorative background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+      
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
@@ -59,7 +56,7 @@ const DataDrivenStats = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-3 py-1 rounded-full border border-button-fg/20 text-[10px] font-bold text-button-fg/60 mb-4 uppercase tracking-[0.2em]"
+            className="section-label mb-6"
           >
             Data Driven
           </motion.div>
@@ -67,35 +64,37 @@ const DataDrivenStats = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold text-button-fg tracking-tighter leading-[1.1] font-heading"
+            className="text-4xl md:text-6xl font-black text-foreground tracking-tighter leading-[1] font-heading"
           >
-            Numbers That <span className="opacity-40">Speak</span>
+            Numbers That <span className="text-muted italic select-none">Actualize</span> Our Impact
           </motion.h2>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 max-w-6xl mx-auto">
           {stats.map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col gap-3 text-center lg:text-left"
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: 'easeOut' }}
+              viewport={{ once: true, margin: '-50px' }}
+              className="flex flex-col gap-3 text-center lg:text-left relative group bg-card/20 hover:bg-card/40 backdrop-blur-sm border border-border-custom p-8 rounded-[32px] transition-all duration-500"
             >
-              <div className="text-5xl md:text-6xl lg:text-7xl font-black text-button-fg font-heading tracking-tighter">
+              <div className="text-4xl md:text-5xl lg:text-6xl font-black text-accent font-heading tracking-tighter drop-shadow-sm transition-transform duration-500 group-hover:scale-105 origin-left">
                 <CountUp 
                   target={stat.value} 
                   suffix={stat.suffix}
                   isDecimal={!Number.isInteger(stat.value)}
                 />
               </div>
-              <div>
-                <p className="text-lg md:text-xl font-bold text-button-fg">{stat.label}</p>
-                <p className="text-sm text-button-fg/50 mt-1">{stat.desc}</p>
+              <div className="mt-2">
+                <p className="text-lg md:text-xl font-black text-foreground tracking-tight leading-tight font-heading">{stat.label}</p>
+                <p className="text-xs text-muted mt-2 font-bold uppercase tracking-widest leading-relaxed">{stat.desc}</p>
               </div>
-              <div className="w-12 h-0.5 bg-button-fg/20 mx-auto lg:mx-0 mt-2" />
+              <div className="absolute bottom-6 right-8 w-8 h-8 rounded-full bg-accent/5 border border-accent/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+              </div>
             </motion.div>
           ))}
         </div>

@@ -1,75 +1,62 @@
+/* ===== TYPOGRAPHY ===== */
 @import "tailwindcss";
-
-@font-face {
-  font-family: 'Geist';
-  src: url('/fonts/gyBhhwUxId8gMGYQMKR3pzfaWI_RruM4mJPby1QNtA.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Geist';
-  src: url('/fonts/gyBhhwUxId8gMGYQMKR3pzfaWI_RnOM4mJPby1QNtA.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: 'Hanken Grotesk';
   src: url('/fonts/ieVq2YZDLWuGJpnzaiwFXS9tYvBRzyFLlZg_f_NcGmFq5vBM.woff2') format('woff2');
-  font-weight: 600;
+  font-weight: 500 900;
   font-style: normal;
   font-display: swap;
 }
 
-/* ===== LIGHT MODE (default) ===== */
+/* ===== LIGHT MODE (Pure, Professional, High-Contrast) ===== */
 :root {
-  --background: #F9F9F9;
-  --foreground: #242424;
-  --secondary: #404040;
-  --muted: #9CA3AF;
-  --accent: #17C257;
-  --border: #E3E3E3;
-  --card-bg: #FFFFFF;
-  --card-bg-alt: #F3F3F3;
-  --button-bg: #242424;
+  --background: #FFFFFF;
+  --foreground: #0F172A;
+  --secondary: #334155;
+  --muted: #64748B;
+  --accent: #6366F1; /* Electric Indigo */
+  --accent-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --card-bg: #F8FAFC;
+  --card-bg-alt: #F1F5F9;
+  --button-bg: #0F172A;
   --button-fg: #FFFFFF;
   --input-bg: #FFFFFF;
-  --input-border: #E3E3E3;
-  --section-alt: #EDEDED;
-  --footer-bg: #111111;
-  --footer-fg: #FFFFFF;
-  --marquee-fade: #F9F9F9;
-  --badge-bg: #FFFFFF;
-  --badge-border: #E3E3E3;
-  --icon-bg: #F9F9F9;
-  --progress-bar: #242424;
+  --input-border: #E2E8F0;
+  --section-alt: #F8FAFC;
+  --footer-bg: #020617;
+  --footer-fg: #F1F5F9;
+  --marquee-fade: #FFFFFF;
+  --badge-bg: #F1F5F9;
+  --badge-border: #E2E8F0;
+  --icon-bg: #F1F5F9;
+  --progress-bar: #6366F1;
 }
 
-/* ===== DARK MODE ===== */
+/* ===== DARK MODE (Deep, Premium, Sophisticated) ===== */
 .dark {
-  --background: #0A0A0A;
-  --foreground: #F0F0F0;
-  --secondary: #A0A0A0;
-  --muted: #6B7280;
-  --accent: #17C257;
-  --border: #1F1F1F;
-  --card-bg: #141414;
-  --card-bg-alt: #1A1A1A;
-  --button-bg: #FFFFFF;
-  --button-fg: #0A0A0A;
-  --input-bg: #1A1A1A;
-  --input-border: #2A2A2A;
-  --section-alt: #111111;
-  --footer-bg: #060606;
-  --footer-fg: #F0F0F0;
-  --marquee-fade: #0A0A0A;
-  --badge-bg: #1A1A1A;
-  --badge-border: #2A2A2A;
-  --icon-bg: #1A1A1A;
-  --progress-bar: #FFFFFF;
+  --background: #020617;
+  --foreground: #F8FAFC;
+  --secondary: #94A3B8;
+  --muted: #64748B;
+  --accent: #6366F1;
+  --accent-foreground: #FFFFFF;
+  --border: #1E293B;
+  --card-bg: #0F172A;
+  --card-bg-alt: #1E293B;
+  --button-bg: #F8FAFC;
+  --button-fg: #020617;
+  --input-bg: #0F172A;
+  --input-border: #1E293B;
+  --section-alt: #020617;
+  --footer-bg: #000000;
+  --footer-fg: #F8FAFC;
+  --marquee-fade: #020617;
+  --badge-bg: #1E293B;
+  --badge-border: #334155;
+  --icon-bg: #1E293B;
+  --progress-bar: #6366F1;
 }
 
 @theme inline {
@@ -78,6 +65,8 @@
   --color-secondary: var(--secondary);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-blue: var(--accent); /* Legacy compatibility alias */
+  --color-accent-foreground: var(--accent-foreground);
   --color-border-custom: var(--border);
   --color-card: var(--card-bg);
   --color-card-alt: var(--card-bg-alt);
@@ -93,7 +82,7 @@
   --color-badge-border: var(--badge-border);
   --color-icon-bg: var(--icon-bg);
   --color-progress-bar: var(--progress-bar);
-  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Hanken Grotesk', sans-serif;
 }
 
@@ -104,38 +93,65 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Base Radius Tokens */
-.radius-24 { border-radius: 24px; }
-.radius-32 { border-radius: 32px; }
-
-/* Custom Utilities for Bricx Style */
-.bricx-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+/* Global Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
-.bricx-button {
-  background: var(--button-bg);
-  color: var(--button-fg);
-  padding: 12px 24px;
+/* Premium Utilities */
+.glass {
+  background: color-mix(in srgb, var(--card-bg), transparent 30%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--border), transparent 50%);
+}
+
+.mobile-hide {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .mobile-hide {
+    display: block !important;
+  }
+}
+
+.section-label {
+  display: inline-block;
+  padding: 4px 12px;
   border-radius: 9999px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  border-width: 1px;
+  border-color: var(--badge-border);
+  background-color: var(--badge-bg);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--muted);
 }
 
-.bricx-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.section-padding {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.overflow-x-clip {
+  overflow-x: clip; /* Modern alternative to hidden that doesn't mess with sticky */
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -144,7 +160,8 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 4px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
