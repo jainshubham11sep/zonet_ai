@@ -49,24 +49,23 @@ const processes = [
 
 export default function Services() {
   return (
-    <div className="relative bg-background overflow-x-clip min-h-screen">
+    <div className="relative bg-background overflow-x-clip min-h-screen font-sans">
       
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
       {/* ───────────────────────────────────────────────────
           HERO
       ─────────────────────────────────────────────────── */}
-      <section className="pt-28 pb-12 md:pt-40 md:pb-20 border-b border-border-custom px-6">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b border-border-custom px-6 relative flex flex-col items-center text-center">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto flex flex-col items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="section-label mb-8 bg-accent/10 border-accent/20 text-accent"
+              className="section-label mb-8"
             >
-              <Sparkles size={11} className="mr-1" />
               Our Core Expertise
             </motion.div>
             
@@ -74,19 +73,19 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-7xl font-black mb-8 text-foreground leading-[1.05] tracking-tighter font-heading"
+              className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 text-foreground leading-[1.1] md:leading-[1] tracking-tighter font-heading"
             >
-              Building the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">Next Frontier</span> of Digital Engineering.
+              We Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">Future</span> of Digital.
             </motion.h1>
 
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-medium"
+              className="text-base sm:text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-medium"
             >
-              Combining software engineering with cutting-edge AI to deliver production-ready 
-              solutions that scale alongside your success.
+              We specialize in engineering production-ready AI solutions and custom software 
+              that scales alongside your growth and success.
             </motion.p>
           </div>
         </div>
@@ -96,27 +95,27 @@ export default function Services() {
           SERVICE VERTICALS
       ─────────────────────────────────────────────────── */}
       <section className="section-padding">
-        <div className="container mx-auto px-6 space-y-24 md:space-y-36">
+        <div className="container mx-auto px-6 space-y-20 md:space-y-32">
           {services.map((service, idx) => (
             <motion.div 
               key={service.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className={`flex flex-col lg:flex-row gap-12 lg:gap-20 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+              viewport={{ once: true, margin: "-100px" }}
+              className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
             >
               {/* Content Side */}
-              <div className="lg:w-1/2 space-y-8">
+              <div className="lg:w-1/2 space-y-6">
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border border-border-custom shadow-sm ${service.bg} ${service.accent}`}>
-                  <service.icon size={28} strokeWidth={2.5} />
+                  <service.icon size={26} strokeWidth={2.5} />
                 </div>
                 
-                <div className="space-y-4">
-                  <h2 className="text-3xl md:text-5xl font-black text-foreground font-heading tracking-tight leading-[1.1]">
+                <div className="space-y-3">
+                  <h2 className="text-3xl md:text-4xl font-black text-foreground font-heading tracking-tight leading-tight">
                     {service.title}
                   </h2>
-                  <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed opacity-70">
+                  <p className="text-base md:text-lg text-foreground font-semibold leading-relaxed opacity-80">
                     {service.desc}
                   </p>
                 </div>
@@ -125,38 +124,38 @@ export default function Services() {
                   {service.details}
                 </p>
 
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-2">
                   {service.features.map(f => (
-                    <li key={f} className="flex items-start gap-3 p-4 rounded-2xl bg-card border border-border-custom shadow-sm group hover:border-accent/40 transition-all duration-300">
-                      <CheckCircle2 size={16} className="text-accent mt-0.5 flex-shrink-0" strokeWidth={3} />
-                      <span className="text-[10px] font-black text-foreground uppercase tracking-wider">{f}</span>
+                    <li key={f} className="flex items-start gap-2.5 p-3.5 rounded-xl bg-card/40 border border-border-custom shadow-sm group hover:border-accent/30 transition-all duration-300">
+                      <CheckCircle2 size={15} className="text-accent mt-0.5 flex-shrink-0" strokeWidth={3} />
+                      <span className="text-[9px] font-black text-foreground uppercase tracking-wider">{f}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Link 
                   href="/contact" 
-                  className="inline-flex items-center gap-2 group text-accent font-black text-base hover:underline underline-offset-8 transition-all"
+                  className="inline-flex items-center gap-1.5 group text-accent font-black text-base hover:underline underline-offset-4 transition-all"
                 >
-                  Configure Solution <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  Configure Solution <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Link>
               </div>
 
               {/* Visual Side */}
-              <div className="lg:w-1/2 w-full aspect-square md:aspect-video relative rounded-[32px] md:rounded-[48px] border border-border-custom overflow-hidden shadow-2xl group outline outline-4 outline-card/20">
+              <div className="lg:w-1/2 w-full aspect-square md:aspect-video relative rounded-[28px] md:rounded-[40px] border border-border-custom overflow-hidden shadow-xl group outline outline-4 outline-card-alt/30">
                 <div className="absolute inset-0 bg-gradient-to-br from-card to-background flex items-center justify-center">
-                  <div className="relative w-full h-full p-10 overflow-hidden">
-                    <div className="absolute top-[20%] left-[10%] w-[80%] h-[60%] bg-card border border-border-custom rounded-2xl shadow-xl p-6 transition-transform duration-700 group-hover:scale-[1.02] active:scale-[0.98]">
-                      <div className="w-full h-8 flex items-center gap-2 mb-6 border-b border-border-custom/50 pb-4">
-                        <div className="w-2 h-2 rounded-full bg-red-400" />
-                        <div className="w-2 h-2 rounded-full bg-amber-400" />
-                        <div className="w-2 h-2 rounded-full bg-green-400" />
+                  <div className="relative w-full h-full p-8 overflow-hidden bg-card-alt/10">
+                    <div className="absolute top-[20%] left-[10%] w-[80%] h-[60%] bg-card border border-border-custom rounded-2xl shadow-lg p-5 transition-transform duration-700 group-hover:scale-[1.01]">
+                      <div className="w-full h-1 h-2 flex items-center gap-1.5 mb-5 border-b border-border-custom/30 pb-3">
+                        <div className="w-2 h-2 rounded-full bg-red-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-amber-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-green-400/80" />
                       </div>
-                      <div className="space-y-4">
-                        <div className="h-3 w-[60%] bg-accent/20 rounded-full" />
-                        <div className="h-3 w-[40%] bg-muted/20 rounded-full" />
-                        <div className="h-24 w-full border border-border-custom rounded-xl flex items-center justify-center">
-                           <service.icon size={32} className={service.accent + " opacity-20"} strokeWidth={1} />
+                      <div className="space-y-3">
+                        <div className="h-3 w-[60%] bg-accent/15 rounded-full" />
+                        <div className="h-3 w-[40%] bg-muted/15 rounded-full" />
+                        <div className="h-20 w-full border border-border-custom/50 rounded-xl flex items-center justify-center">
+                           <service.icon size={28} className={service.accent + " opacity-20"} strokeWidth={1} />
                         </div>
                       </div>
                     </div>
@@ -173,18 +172,18 @@ export default function Services() {
       ─────────────────────────────────────────────────── */}
       <section className="section-padding border-t border-border-custom bg-card/5 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-            <div className="section-label mb-6">Our Workflow</div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground font-heading tracking-tighter leading-tight mb-6">
-              Precision from <span className="text-accent underline decoration-accent/20 underline-offset-4">Idea</span> to Impact.
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="section-label mb-5">Our Workflow</div>
+            <h2 className="text-3xl md:text-5xl font-black text-foreground font-heading tracking-tighter leading-tight mb-5">
+              Precision from <span className="text-accent italic">Idea</span> to Impact.
             </h2>
-            <p className="text-base text-muted font-medium">
-              We follow a rigorous, high-speed development cycle ensure quality and scalability 
+            <p className="text-sm md:text-base text-muted font-medium">
+              We follow a rigorous development cycle to ensure quality and scalability 
               at every milestone.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             {processes.map((proc, i) => (
               <motion.div 
                 key={proc.title}
@@ -192,12 +191,12 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-[28px] bg-card border border-border-custom hover:border-accent/30 transition-all group shadow-sm"
+                className="p-7 rounded-[24px] bg-card border border-border-custom hover:border-accent/20 transition-all group shadow-sm"
               >
-                <div className="w-11 h-11 rounded-xl bg-accent/5 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                  <proc.icon size={20} strokeWidth={2.5} />
+                <div className="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center text-accent mb-5 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                  <proc.icon size={18} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-lg font-black text-foreground font-heading mb-2.5 tracking-tight">{proc.title}</h3>
+                <h3 className="text-lg font-black text-foreground font-heading mb-2 tracking-tight">{proc.title}</h3>
                 <p className="text-muted text-[13px] font-medium leading-relaxed">{proc.desc}</p>
               </motion.div>
             ))}
@@ -208,27 +207,25 @@ export default function Services() {
       {/* ───────────────────────────────────────────────────
           BOTTOM CTA
       ─────────────────────────────────────────────────── */}
-      <section className="section-padding border-t border-border-custom text-center bg-background">
-        <div className="container mx-auto px-6 max-w-4xl">
-           <h2 className="text-4xl md:text-6xl font-black text-foreground font-heading tracking-tighter leading-tight mb-8">
+      <section className="section-padding border-t border-border-custom text-center bg-background px-6">
+        <div className="container mx-auto max-w-4xl">
+           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground font-heading tracking-tighter leading-tight mb-8">
             Ready to <span className="text-accent italic">Configure</span> Your Success?
           </h2>
-          <p className="text-lg md:text-xl text-muted font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
-            Stop waiting and start building with the engineering partner that prioritizes your ROI.
+          <p className="text-base md:text-lg text-muted font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+            Stop waiting and start building with the engineering partner that prioritizes your results.
           </p>
           
           <Link 
             href="/contact" 
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-accent text-white rounded-full font-black text-base transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(99,101,241,0.25)]"
+            className="group inline-flex items-center gap-3 px-10 py-5 bg-accent text-white rounded-full font-black text-base transition-all hover:scale-105 active:scale-95 shadow-xl shadow-accent/20"
           >
             Start Your Project <ArrowUpRight size={18} />
           </Link>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 pb-24">
-        <ContactForm />
-      </div>
+      <ContactForm />
     </div>
   );
 }

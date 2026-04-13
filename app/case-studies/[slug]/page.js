@@ -324,22 +324,10 @@ export default function CaseStudyDetail({ params }) {
       {/* ───────────────────────────────────────────────────
           BOTTOM SECTION
       ─────────────────────────────────────────────────── */}
-      <section className="section-padding border-t border-border-custom bg-card/5 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-accent/5 rounded-full blur-[140px] -z-10 pointer-events-none" />
-        
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-20 space-y-6">
-            <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter leading-tight font-heading mb-8">
-              Your Vision, <br />
-              <span className="text-accent italic">Engineered</span>.
-            </h2>
-            <p className="text-xl text-muted font-medium max-w-2xl mx-auto leading-normal">
-              We apply the same engineering-first approach to every challenge. Let's build your success story together.
-            </p>
-          </div>
-          <ContactForm />
-        </div>
-      </section>
+      <ContactForm />
+    </div>
+  );
+}
 
     </div>
   );
