@@ -56,7 +56,7 @@ const Header = () => {
             <Link 
               key={link.name} 
               href={link.href}
-              className="px-6 py-2 text-[13px] font-black uppercase tracking-widest text-muted hover:text-accent transition-all rounded-full hover:bg-card/60 font-heading"
+              className="px-6 py-2 text-[15px] font-black uppercase tracking-widest text-muted hover:text-accent transition-all rounded-full hover:bg-card/60 font-heading"
             >
               {link.name}
             </Link>
@@ -78,7 +78,7 @@ const Header = () => {
 
           <button 
             onClick={() => setIsCalendlyOpen(true)}
-            className="px-6 py-3 rounded-2xl bg-accent text-white text-[11px] font-black uppercase tracking-[0.15em] hover:bg-accent/90 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(99,102,241,0.2)] hover:shadow-[0_10px_30px_rgba(99,102,241,0.4)]"
+            className="px-8 py-4 rounded-[20px] bg-accent text-white text-[13px] font-black uppercase tracking-[0.2em] hover:bg-accent/90 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(99,102,241,0.25)] hover:scale-[1.02] active:scale-[0.98]"
           >
             Book a call
           </button>
@@ -111,7 +111,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="md:hidden absolute top-full left-6 right-6 mt-4 bg-card/90 backdrop-blur-2xl rounded-[32px] shadow-2xl border border-border-custom p-8 overflow-hidden z-[60]"
+            className="md:hidden absolute top-full left-4 right-4 mt-2 bg-card/95 backdrop-blur-2xl rounded-[32px] shadow-2xl border border-border-custom p-8 overflow-hidden z-[100]"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
