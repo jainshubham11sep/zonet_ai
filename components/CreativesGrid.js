@@ -24,14 +24,15 @@ const CreativesGrid = () => {
   ];
 
   return (
-    <section className="h-[500px] md:h-[650px] bg-section-alt overflow-hidden relative flex items-center justify-center border-t border-border-custom">
-      {/* Section label overlay */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 z-20 text-center pointer-events-none">
+    <section className="bg-section-alt overflow-hidden relative border-t border-border-custom">
+      {/* Section label - in normal flow */}
+      <div className="pt-16 pb-8 flex justify-center">
         <div className="section-label">
           Project Gallery
         </div>
       </div>
 
+      <div className="h-[450px] md:h-[580px] flex items-center justify-center overflow-hidden relative">
       <div className="flex gap-4 md:gap-6 w-full max-w-[1400px] px-4">
         {columns.map((col, i) => (
           <motion.div 
@@ -61,6 +62,7 @@ const CreativesGrid = () => {
             ))}
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

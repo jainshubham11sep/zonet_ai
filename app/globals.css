@@ -9,54 +9,54 @@
   font-display: swap;
 }
 
-/* ===== LIGHT MODE (Pure, Professional, High-Contrast) ===== */
+/* ===== LIGHT MODE ===== */
 :root {
-  --background: #FFFFFF;
-  --foreground: #0F172A;
-  --secondary: #334155;
-  --muted: #64748B;
-  --accent: #6366F1; /* Electric Indigo */
+  --background: #F9F9F9;
+  --foreground: #242424;
+  --secondary: #404040;
+  --muted: #9CA3AF;
+  --accent: #17C257;
   --accent-foreground: #FFFFFF;
-  --border: #E2E8F0;
-  --card-bg: #F8FAFC;
-  --card-bg-alt: #F1F5F9;
-  --button-bg: #0F172A;
+  --border: #E3E3E3;
+  --card-bg: #FFFFFF;
+  --card-bg-alt: #F3F3F3;
+  --button-bg: #242424;
   --button-fg: #FFFFFF;
   --input-bg: #FFFFFF;
-  --input-border: #E2E8F0;
-  --section-alt: #F8FAFC;
-  --footer-bg: #020617;
-  --footer-fg: #F1F5F9;
-  --marquee-fade: #FFFFFF;
-  --badge-bg: #F1F5F9;
-  --badge-border: #E2E8F0;
-  --icon-bg: #F1F5F9;
-  --progress-bar: #6366F1;
+  --input-border: #E3E3E3;
+  --section-alt: #EDEDED;
+  --footer-bg: #111111;
+  --footer-fg: #FFFFFF;
+  --marquee-fade: #F9F9F9;
+  --badge-bg: #FFFFFF;
+  --badge-border: #E3E3E3;
+  --icon-bg: #F9F9F9;
+  --progress-bar: #242424;
 }
 
-/* ===== DARK MODE (Deep, Premium, Sophisticated) ===== */
+/* ===== DARK MODE ===== */
 .dark {
-  --background: #020617;
-  --foreground: #F8FAFC;
-  --secondary: #94A3B8;
-  --muted: #64748B;
-  --accent: #6366F1;
+  --background: #0A0A0A;
+  --foreground: #F0F0F0;
+  --secondary: #A0A0A0;
+  --muted: #6B7280;
+  --accent: #17C257;
   --accent-foreground: #FFFFFF;
-  --border: #1E293B;
-  --card-bg: #0F172A;
-  --card-bg-alt: #1E293B;
-  --button-bg: #F8FAFC;
-  --button-fg: #020617;
-  --input-bg: #0F172A;
-  --input-border: #1E293B;
-  --section-alt: #020617;
-  --footer-bg: #000000;
-  --footer-fg: #F8FAFC;
-  --marquee-fade: #020617;
-  --badge-bg: #1E293B;
-  --badge-border: #334155;
-  --icon-bg: #1E293B;
-  --progress-bar: #6366F1;
+  --border: #1F1F1F;
+  --card-bg: #141414;
+  --card-bg-alt: #1A1A1A;
+  --button-bg: #FFFFFF;
+  --button-fg: #0A0A0A;
+  --input-bg: #1A1A1A;
+  --input-border: #2A2A2A;
+  --section-alt: #111111;
+  --footer-bg: #060606;
+  --footer-fg: #F0F0F0;
+  --marquee-fade: #0A0A0A;
+  --badge-bg: #1A1A1A;
+  --badge-border: #2A2A2A;
+  --icon-bg: #1A1A1A;
+  --progress-bar: #FFFFFF;
 }
 
 @theme inline {
@@ -122,24 +122,31 @@ h1, h2, h3, h4, h5, h6 {
 .section-label {
   display: inline-block;
   padding: 6px 16px;
+  padding: 6px 16px;
   border-radius: 9999px;
   border-width: 1.5px;
   border-color: var(--badge-border);
+  border: 1px solid var(--badge-border);
   background-color: var(--badge-bg);
   font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   color: var(--muted);
+  line-height: 1;
 }
 
 .section-padding {
   padding-top: 4rem;
   padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
     padding-top: 7rem;
     padding-bottom: 7rem;
   }
