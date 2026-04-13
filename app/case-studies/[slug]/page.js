@@ -329,6 +329,3 @@ export default function CaseStudyDetail({ params }) {
   );
 }
 
-    </div>
-  );
-}
