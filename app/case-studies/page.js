@@ -1,481 +1,278 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, Search, Filter } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Sparkles, TrendingUp, Users, Star, Smartphone, Globe, Puzzle, Rocket, BarChart3, ShieldCheck, Zap } from 'lucide-react';
+import { caseStudies, categories, industries } from '@/lib/case-studies-data';
 
-// BricxLabs + GoGrowth + AdYogi combined data schema
-const caseStudies = [
-  {
-    slug: 'flipshope',
-    category: 'Applications',
-    logo: '/images/clients/flipshope-logo.png',
-    name: 'Flipshope',
-    location: 'India',
-    photo: '/images/zonet/flipshope-1.png',
-    badges: ['AI Shopping', 'Extension', 'SaaS'],
-    description: [
-      { text: "Built an " },
-      { text: 'AI-driven shopping assistant', highlight: 'green' },
-      { text: ' with ' },
-      { text: 'real-time price tracking', highlight: 'blue' },
-      { text: ' for ' },
-      { text: '1.5M+ active users', highlight: 'yellow' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '1.5M', label: 'Users', color: 'green' },
-      { value: '4.5★', label: 'Rating', color: 'blue' },
-      { value: '10+', label: 'Stores', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'hyyzo',
-    category: 'AI Services',
-    logo: '/images/clients/hyyzo-logo.png',
-    name: 'Hyyzo',
-    location: 'India',
-    photo: '/images/zonet/hyyzo-1.png',
-    badges: ['Affiliate AI', 'Rewards', 'FinTech'],
-    description: [
-      { text: 'Architected India\'s ' },
-      { text: 'highest-paying rewards engine', highlight: 'green' },
-      { text: ' with ' },
-      { text: 'Profit Link automation', highlight: 'blue' },
-      { text: ' and ' },
-      { text: '200+ store integrations', highlight: 'yellow' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '100k+', label: 'Earners', color: 'green' },
-      { value: '200+', label: 'Stores', color: 'blue' },
-      { value: '4.4★', label: 'App Rank', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'teacherdekho',
-    category: 'Applications',
-    logo: '/images/clients/teacherdekho-logo.png',
-    name: 'TeacherDekho',
-    location: 'India',
-    photo: '/images/zonet/teacherdekho-1.png',
-    badges: ['Ed-Tech', 'Mentorship', 'Analytics'],
-    description: [
-      { text: 'Launched a ' },
-      { text: 'verified mentor marketplace', highlight: 'green' },
-      { text: ' connecting 50k+ students with ' },
-      { text: 'AI-powered progress tracking', highlight: 'blue' },
-      { text: ' and ' },
-      { text: 'personalized learning', highlight: 'yellow' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '50k+', label: 'Students', color: 'green' },
-      { value: '2k+', label: 'Mentors', color: 'blue' },
-      { value: '4.8★', label: 'Rating', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'punogames',
-    category: 'Websites',
-    logo: '/images/clients/punogames-logo.png',
-    name: 'Puno Games',
-    location: 'India',
-    photo: '/images/zonet/screenshot-1.png',
-    badges: ['Gaming', 'Platform'],
-    description: [
-      { text: "Scaled a " },
-      { text: 'high-performance gaming portal', highlight: 'blue' },
-      { text: ' with ' },
-      { text: 'real-time multiplayer support', highlight: 'green' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '500k+', label: 'Players', color: 'blue' },
-      { value: '99.9%', label: 'Uptime', color: 'green' },
-      { value: '4.7★', label: 'Rating', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'karekaisee',
-    category: 'Websites',
-    logo: '/images/zonet/logo-light.png',
-    name: 'Karekaisee',
-    location: 'India',
-    photo: '/images/zonet/screenshot-2.png',
-    badges: ['Consultancy', 'Service'],
-    description: [
-      { text: "Engineered a " },
-      { text: 'digital consultancy platform', highlight: 'green' },
-      { text: ' driving ' },
-      { text: '3x lead generation', highlight: 'yellow' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '3x', label: 'Leads', color: 'yellow' },
-      { value: '50+', label: 'Experts', color: 'blue' },
-      { value: '10k+', label: 'Clients', color: 'green' },
-    ],
-  },
-  {
-    slug: 'twitch-adblocker',
-    category: 'Applications',
-    logo: '/images/zonet/logo-light.png',
-    name: 'Twitch Adblocker',
-    location: 'Global',
-    photo: '/images/zonet/screenshot-3.png',
-    badges: ['Browser Tool', 'Extension'],
-    description: [
-      { text: "Developed a " },
-      { text: 'robust ad-blocking extension', highlight: 'blue' },
-      { text: ' providing a ' },
-      { text: 'seamless viewing experience', highlight: 'green' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '1M+', label: 'Installs', color: 'blue' },
-      { value: '4.9★', label: 'Rating', color: 'yellow' },
-      { value: '0', label: 'Ads', color: 'green' },
-    ],
-  },
-  {
-    slug: 'kroolo',
-    category: 'Applications',
-    logo: '/images/clients/kroolo-logo.png',
-    name: 'Kroolo',
-    location: 'Global',
-    photo: '/images/zonet/screenshot-4.png',
-    badges: ['Productivity', 'SaaS'],
-    description: [
-      { text: "Designed an " },
-      { text: 'all-in-one productivity suite', highlight: 'yellow' },
-      { text: ' to streamline ' },
-      { text: 'team collaboration', highlight: 'blue' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '100k+', label: 'Teams', color: 'blue' },
-      { value: '40%', label: 'Efficiency', color: 'green' },
-      { value: '5M+', label: 'Tasks', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'my-flipshope',
-    category: 'AI Services',
-    logo: '/images/clients/flipshope-logo.png',
-    name: 'My Flipshope',
-    location: 'India',
-    photo: '/images/zonet/screenshot-5.png',
-    badges: ['HRMS', 'SaaS'],
-    description: [
-      { text: "Built a " },
-      { text: 'comprehensive HRMS SaaS', highlight: 'green' },
-      { text: ' to automate ' },
-      { text: 'employee management', highlight: 'blue' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '200+', label: 'Companies', color: 'blue' },
-      { value: '10k+', label: 'Employees', color: 'green' },
-      { value: '24/7', label: 'Support', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'the-best-deals',
-    category: 'Websites',
-    logo: '/images/clients/thebestdeals-logo.png',
-    name: 'The Best Deals',
-    location: 'India',
-    photo: '/images/zonet/screenshot-6.png',
-    badges: ['Deals Platform', 'E-commerce'],
-    description: [
-      { text: "Launched a " },
-      { text: 'dynamic deals aggregator', highlight: 'yellow' },
-      { text: ' featuring ' },
-      { text: 'real-time offers', highlight: 'blue' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '500k+', label: 'Users', color: 'green' },
-      { value: '1M+', label: 'Deals', color: 'blue' },
-      { value: '₹1B+', label: 'Savings', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'hyyfam',
-    category: 'Applications',
-    logo: '/images/clients/hyyfam-logo.png',
-    name: 'HyyFam',
-    location: 'India',
-    photo: '/images/zonet/screenshot-1.png',
-    badges: ['Social Rewards', 'Community'],
-    description: [
-      { text: "Created a " },
-      { text: 'vibrant social rewards app', highlight: 'green' },
-      { text: ' fostering ' },
-      { text: 'community engagement', highlight: 'yellow' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '2M+', label: 'Members', color: 'blue' },
-      { value: '10M+', label: 'Posts', color: 'green' },
-      { value: '4.6★', label: 'Rating', color: 'yellow' },
-    ],
-  },
-  {
-    slug: 'hyzify',
-    category: 'AI Services',
-    logo: '/images/clients/hyzify-logo.png',
-    name: 'Hyzify',
-    location: 'India',
-    photo: '/images/zonet/screenshot-2.png',
-    badges: ['FinTech', 'Payments'],
-    description: [
-      { text: "Developed a " },
-      { text: 'secure FinTech solution', highlight: 'blue' },
-      { text: ' for ' },
-      { text: 'seamless financial transactions', highlight: 'green' },
-      { text: '.' },
-    ],
-    stats: [
-      { value: '100k+', label: 'Merchants', color: 'blue' },
-      { value: '₹5B+', label: 'Processed', color: 'green' },
-      { value: 'Bank-grade', label: 'Security', color: 'yellow' },
-    ],
-  }
-];
-
-const categories = ['All', 'Websites', 'Applications', 'AI Services'];
-
-const highlightText = {
-  green:  'text-emerald-500 dark:text-emerald-400',
-  blue:   'text-blue-500   dark:text-blue-400',
-  yellow: 'text-amber-500  dark:text-amber-400',
+const iconMap = {
+  Users, Star, TrendingUp, Globe, Smartphone, Puzzle, Rocket, BarChart3, ShieldCheck, Zap
 };
 
-const statBox = {
-  green:  'bg-emerald-500/10 dark:bg-emerald-500/15 border-emerald-300/40 dark:border-emerald-700/50 text-emerald-600 dark:text-emerald-400',
-  blue:   'bg-blue-500/10   dark:bg-blue-500/15   border-blue-300/40   dark:border-blue-700/50   text-blue-600   dark:text-blue-400',
-  yellow: 'bg-amber-500/10  dark:bg-amber-500/15  border-amber-300/40  dark:border-amber-700/50  text-amber-600  dark:text-amber-400',
-};
+/* ─────────────────────────────────────────────────────────
+   STAT BOX
+───────────────────────────────────────────────────────── */
+function StatBox({ value, label, icon: iconName, delay = 0 }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+  const Icon = iconMap[iconName] || Star;
 
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 10 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.4, delay }}
+      className="flex flex-col items-center justify-center gap-1 rounded-[16px] border border-border-custom bg-card/50 px-3 py-3.5 text-center hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 shadow-sm"
+    >
+      <Icon size={13} className="text-accent opacity-80 mb-0.5" />
+      <span className="text-lg font-black text-foreground font-heading tracking-tight leading-none">
+        {value}
+      </span>
+      <span className="text-[8px] font-black uppercase tracking-[0.15em] text-muted">
+        {label}
+      </span>
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+   INDUSTRY SELECT DROPDOWN
+───────────────────────────────────────────────────────── */
+function Select({ value, onChange, options }) {
+  return (
+    <div className="relative">
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="appearance-none pl-4 pr-9 py-2 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer outline-none transition-all bg-card border border-border-custom text-muted hover:border-accent/40 hover:text-foreground focus:border-accent/50"
+      >
+        {options.map((o) => (
+          <option key={o} value={o}>{o}</option>
+        ))}
+      </select>
+      <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted" />
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+   CASE STUDY CARD
+───────────────────────────────────────────────────────── */
+function CaseStudyCard({ cs, idx }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+
+  return (
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: (idx % 3) * 0.08 }}
+      className="group flex flex-col bg-card/40 backdrop-blur-xl border border-border-custom rounded-[28px] overflow-hidden hover:border-accent/40 hover:-translate-y-1 hover:shadow-xl transition-all duration-500 shadow-sm"
+    >
+      <Link href={`/case-studies/${cs.slug}`} className="relative block w-full overflow-hidden" style={{ aspectRatio: '16/10' }}>
+        <Image
+          src={cs.photo}
+          alt={cs.name}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+        <span className="absolute top-4 left-4 px-3 py-1.5 text-[8px] font-black uppercase tracking-widest rounded-full bg-accent text-white shadow-lg">
+          {cs.badge}
+        </span>
+        <div className="absolute bottom-4 left-5">
+          <span className="block text-2xl font-black font-heading text-white leading-none">
+            {cs.heroStat.value}
+          </span>
+          <span className="block text-[8px] font-black uppercase tracking-[0.18em] text-white/75 mt-0.5">
+            {cs.heroStat.label}
+          </span>
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-[2px]">
+          <span className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black text-white bg-accent shadow-xl border border-white/10">
+            View Story <ArrowUpRight size={14} />
+          </span>
+        </div>
+      </Link>
+
+      <div className="flex flex-col flex-1 p-6">
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden bg-white border border-border-custom p-1.5 shadow-sm">
+              <Image src={cs.logo} alt={`${cs.name} logo`} width={28} height={28} className="object-contain w-full h-full" />
+            </div>
+            <div>
+              <h3 className="text-base font-black text-foreground font-heading leading-tight tracking-tight">{cs.name}</h3>
+              <p className="text-[10px] font-bold text-accent mt-0.5">{cs.tagline}</p>
+            </div>
+          </div>
+          <Link href={`/case-studies/${cs.slug}`} className="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center border border-border-custom bg-card-alt text-muted hover:bg-accent hover:text-white transition-all shadow-sm">
+            <ArrowUpRight size={14} />
+          </Link>
+        </div>
+
+        <p className="text-sm text-muted leading-relaxed font-medium mb-6 flex-1">
+          {cs.description.map((seg, i) =>
+            seg.highlight ? (
+              <strong key={i} className="font-black text-foreground">{seg.text}</strong>
+            ) : (
+              <span key={i}>{seg.text}</span>
+            )
+          )}
+        </p>
+
+        <div className="border-t border-border-custom/60 mb-5" />
+
+        <div className="grid grid-cols-3 gap-2">
+          {cs.stats.map((stat, i) => (
+            <StatBox key={i} {...stat} delay={i * 0.07} />
+          ))}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+   PAGE
+───────────────────────────────────────────────────────── */
 export default function CaseStudies() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [activeIndustry, setActiveIndustry] = useState('All Industries');
 
-  const filteredStudies = caseStudies.filter(cs => {
-    const matchesCategory = activeCategory === 'All' || cs.category === activeCategory;
-    const matchesSearch = cs.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          cs.description.some(d => d.text.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
+  const filteredStudies = caseStudies.filter((cs) => {
+    const matchesCat = activeCategory === 'All' || cs.category === activeCategory;
+    const matchesInd = activeIndustry === 'All Industries' || cs.industry === activeIndustry;
+    return matchesCat && matchesInd;
   });
 
   return (
-    <div className="pt-32 bg-background min-h-screen pb-24">
+    <div className="relative bg-background overflow-x-clip min-h-screen">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-      {/* ── Page Hero: AdYogi + BricxLabs Style ── */}
-      <section className="pt-12 pb-20 border-b border-border-custom bg-card/30">
-        <div className="container mx-auto px-6 text-center max-w-4xl">
+      {/* Hero Section */}
+      <section className="pt-28 pb-12 md:pb-16 text-center border-b border-border-custom">
+        <div className="container mx-auto px-6 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-badge-border bg-badge-bg text-[11px] font-bold text-muted mb-8 uppercase tracking-[0.2em]"
+            className="section-label mb-6 bg-accent/10 border-accent/20 text-accent"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            Proven Growth, Real Results
+            <Sparkles size={11} className="mr-1" />
+            Proven Growth · Real Results
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl sm:text-4xl md:text-6xl font-black text-foreground leading-[1.1] tracking-tighter font-heading mb-6"
+          >
+            Our Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">Speaks For Itself.</span>
+          </motion.h1>
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black mb-6 text-foreground tracking-tight font-heading leading-[1.05]"
+            className="text-base sm:text-lg text-muted max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
           >
-            Our Work <br className="hidden md:block" />
-            <span className="text-muted">Speaks For Itself.</span>
-          </motion.h1>
-          
-          <motion.p 
+            We don't just build beautiful interfaces — we engineer product experiences that drive user adoption and scale revenue.
+          </motion.p>
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-muted leading-relaxed"
+            className="flex flex-wrap items-center justify-center gap-8"
           >
-            We don’t just build beautiful interfaces. We engineer product experiences 
-            that drive user adoption, slash acquisition costs, and scale revenue.
-          </motion.p>
+            {[
+              { n: '50+', l: 'Projects' },
+              { n: '10M+', l: 'Users' },
+              { n: '100%', l: 'Success' },
+            ].map(({ n, l }) => (
+              <div key={l} className="text-center">
+                <div className="text-2xl md:text-3xl font-black text-accent font-heading tracking-tight">{n}</div>
+                <div className="text-[9px] font-black uppercase tracking-widest text-muted mt-0.5">{l}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* ── Filters & Search (AdYogi Style) ── */}
-      <section className="sticky top-[72px] z-30 bg-background/80 backdrop-blur-xl border-b border-border-custom py-4">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            {/* Category Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-              <Filter size={16} className="text-muted mr-2 flex-shrink-0" />
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all border ${
-                    activeCategory === cat 
-                      ? 'bg-foreground text-background border-foreground shadow-md' 
-                      : 'bg-card border-border-custom text-muted hover:text-foreground hover:border-foreground/30'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            {/* Search Bar */}
-            <div className="w-full md:w-auto relative group">
-              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted group-focus-within:text-foreground transition-colors" />
-              <input 
-                type="text" 
-                placeholder="Search case studies..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full md:w-64 pl-11 pr-4 py-2.5 rounded-full bg-input-bg border border-input-border text-sm font-medium text-foreground outline-none focus:border-foreground/40 transition-all placeholder:text-muted/60"
-              />
-            </div>
-
+      {/* Sticky Filter Bar */}
+      <div className="relative z-20 bg-background/80 backdrop-blur-md border-b border-border-custom py-2.5 sticky top-16 md:top-20">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-3 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-3.5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all duration-300 border ${
+                  activeCategory === cat
+                    ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
+                    : 'bg-card border-border-custom text-muted hover:text-foreground'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
+          <Select value={activeIndustry} onChange={setActiveIndustry} options={industries} />
         </div>
-      </section>
+      </div>
 
-      {/* ── Case Study Cards (GoGrowth + BricxLabs Style) ── */}
-      <section className="pt-12">
+      {/* Cards Grid */}
+      <section className="section-padding">
         <div className="container mx-auto px-6">
+          <p className="text-[9px] font-black uppercase tracking-widest text-muted mb-8 opactiy-60">
+            Viewing {filteredStudies.length} {filteredStudies.length === 1 ? 'case study' : 'case studies'}
+          </p>
+
           <AnimatePresence mode="popLayout">
             {filteredStudies.length === 0 ? (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-32"
-              >
-                <div className="text-4xl mb-4">🔍</div>
-                <h3 className="text-2xl font-bold text-foreground">No case studies found</h3>
-                <p className="text-muted mt-2">Try adjusting your filters or search query.</p>
-                <button 
-                  onClick={() => { setActiveCategory('All'); setSearchQuery(''); }}
-                  className="mt-6 px-6 py-2 bg-button-bg text-button-fg rounded-full font-bold"
-                >
-                  Clear Filters
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-24">
+                <div className="text-4xl mb-6">🔍</div>
+                <h3 className="text-xl font-black text-foreground font-heading">No case studies matching your filter</h3>
+                <button onClick={() => { setActiveCategory('All'); setActiveIndustry('All Industries'); }} className="mt-8 px-6 py-2 rounded-full text-xs font-black bg-accent text-white hover:opacity-90 transition-opacity">
+                  Reset Filters
                 </button>
               </motion.div>
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+              <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                 {filteredStudies.map((cs, idx) => (
-                  <motion.div
-                    key={cs.slug}
-                    layout
-                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-                    transition={{ duration: 0.4, delay: idx * 0.05 }}
-                    className="group flex flex-col bg-card border border-border-custom rounded-[32px] overflow-hidden hover:border-foreground/30 hover:shadow-2xl transition-all duration-500"
-                  >
-                    {/* Visual Header (BricxLabs Image Layout) */}
-                    <Link href={`/case-studies/${cs.slug}`} className="relative w-full aspect-[16/9] overflow-hidden bg-card-alt block cursor-pointer">
-                      <Image
-                        src={cs.photo}
-                        alt={cs.name}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white font-bold tracking-wide border border-white/20 flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all">
-                          Read Case Study <ArrowUpRight size={18} />
-                        </div>
-                      </div>
-                      
-                      {/* Badges */}
-                      <div className="absolute top-5 left-5 flex gap-2">
-                        {cs.badges.map((b, i) => (
-                          <span key={i} className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-full bg-black/70 backdrop-blur-md text-white border border-white/20 shadow-sm">
-                            {b}
-                          </span>
-                        ))}
-                      </div>
-                    </Link>
-
-                    {/* Data Body (GoGrowth layout: Logo + Text + 3 Stats) */}
-                    <div className="flex flex-col flex-1 p-6 md:p-8">
-                      
-                      {/* Company Info */}
-                      <div className="flex items-center justify-between gap-4 mb-6">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-[14px] bg-white border border-gray-200 shadow-sm flex items-center justify-center flex-shrink-0 p-1.5">
-                            <Image
-                              src={cs.logo}
-                              alt={`${cs.name} logo`}
-                              width={40}
-                              height={40}
-                              className="object-contain w-full h-full"
-                            />
-                          </div>
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-bold text-foreground font-heading leading-tight">
-                              {cs.name}
-                            </h3>
-                            <p className="text-sm font-medium text-muted mt-1">{cs.location}</p>
-                          </div>
-                        </div>
-                        <Link
-                          href={`/case-studies/${cs.slug}`}
-                          className="w-10 h-10 flex-shrink-0 rounded-full border border-border-custom bg-card-alt flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-all shadow-sm"
-                        >
-                          <ArrowUpRight size={18} />
-                        </Link>
-                      </div>
-
-                      {/* GoGrowth Highlighted Description */}
-                      <p className="text-secondary text-base md:text-lg leading-relaxed mb-8 flex-1">
-                        {cs.description.map((seg, i) =>
-                          seg.highlight ? (
-                            <strong key={i} className={`font-bold ${highlightText[seg.highlight]}`}>
-                              {seg.text}
-                            </strong>
-                          ) : (
-                            <span key={i}>{seg.text}</span>
-                          )
-                        )}
-                      </p>
-
-                      {/* 3 Stat Boxes Data Row */}
-                      <div className="grid grid-cols-3 gap-3 md:gap-4 mt-auto">
-                        {cs.stats.map((stat, i) => (
-                          <div
-                            key={i}
-                            className={`rounded-[20px] border px-4 py-5 flex flex-col items-center justify-center gap-1.5 transition-all hover:scale-[1.02] ${statBox[stat.color]}`}
-                          >
-                            <span className="text-2xl md:text-3xl font-black leading-none font-heading tracking-tight">
-                              {stat.value}
-                            </span>
-                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-80 text-center leading-tight">
-                              {stat.label}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                    </div>
-                  </motion.div>
+                  <CaseStudyCard key={cs.slug} cs={cs} idx={idx} />
                 ))}
-              </div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
       </section>
-      
+
+      {/* Bottom CTA */}
+      <section className="section-padding border-t border-border-custom text-center relative overflow-hidden bg-card/5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10 max-w-3xl">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="section-label mb-6">
+            Ready to scale your product?
+          </motion.div>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-black text-foreground tracking-tighter leading-tight font-heading mb-6">
+            Let's build your <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">success story.</span>
+          </motion.h2>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-base text-muted max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+            Join the products we've scaled from idea to users — we know the path.
+          </motion.p>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-wrap items-center justify-center gap-4">
+            <Link href="/contact" className="group inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-full font-black text-base transition-all hover:scale-105 shadow-xl shadow-accent/20">
+              Start Your Project <ArrowUpRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
