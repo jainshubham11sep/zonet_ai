@@ -17,7 +17,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] bg-background glass pt-32 md:pt-40 pb-24 overflow-hidden flex flex-col items-center justify-center">
-      <div className="container mx-auto px-6 flex flex-col items-center text-center relative z-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+      <div className="container mx-auto px-6 flex flex-col items-center text-center relative z-10 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12">
         {/* Rating Badge */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
@@ -121,8 +121,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Decorative Background Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
       <WebGLBackground />
 
       {mounted && typeof document !== 'undefined' && (
