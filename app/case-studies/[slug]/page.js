@@ -150,7 +150,7 @@ export default function CaseStudyDetail({ params }) {
               <div className="w-full h-8 md:h-11 bg-card-alt border-b border-border-custom flex items-center px-6 gap-2.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" />
                 <div className="mx-auto text-[10px] font-black text-muted uppercase tracking-[0.2em] opacity-40">
                   {project.slug}.bricxlabs.com
                 </div>

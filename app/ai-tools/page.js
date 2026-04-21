@@ -77,7 +77,7 @@ export default function AITools() {
                 </div>
                 <span className={`px-4 py-1 rounded-full text-[10px] font-black tracking-widest border transition-all ${
                   tool.status === 'In Production' 
-                    ? 'border-green-500/50 text-green-500 bg-green-500/10' 
+                    ? 'border-blue-500/50 text-blue-500 bg-blue-500/10' 
                     : tool.status === 'BETA' 
                       ? 'border-accent-blue/50 text-accent-blue bg-accent-blue/10 animate-pulse'
                       : 'border-white/20 text-gray-500 bg-white/5'

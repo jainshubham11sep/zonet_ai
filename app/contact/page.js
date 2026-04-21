@@ -66,7 +66,7 @@ export default function Contact() {
             </div>
             <h2 className="text-3xl font-black text-white">Our AI Engineers are ready to start.</h2>
             <p className="text-gray-500 font-bold uppercase tracking-widest flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]"></span>
+              <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]"></span>
               Current Availability: High (2 Slots Remaining)
             </p>
           </div>

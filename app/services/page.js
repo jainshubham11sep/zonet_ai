@@ -149,7 +149,7 @@ export default function Services() {
                       <div className="w-full h-1 h-2 flex items-center gap-1.5 mb-5 border-b border-border-custom/30 pb-3">
                         <div className="w-2 h-2 rounded-full bg-red-400/80" />
                         <div className="w-2 h-2 rounded-full bg-amber-400/80" />
-                        <div className="w-2 h-2 rounded-full bg-green-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-blue-400/80" />
                       </div>
                       <div className="space-y-3">
                         <div className="h-3 w-[60%] bg-accent/15 rounded-full" />
