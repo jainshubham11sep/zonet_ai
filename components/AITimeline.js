@@ -7,27 +7,39 @@ import Link from 'next/link';
 const steps = [
   { 
     id: '01', 
-    title: 'Strategy & Audit', 
-    desc: 'Deep analysis of your product goals to define an AI-first growth roadmap.',
+    phase: 'Phase 1',
+    duration: 'Days 1-3',
+    title: 'Rapid Blueprinting', 
+    desc: 'Deep AI-audit & strategy. We define your competitive edge and engineering roadmap.',
     icon: Search,
+    details: ['Market Gap Analysis', 'Tech Stack Selection', 'AI Model Strategy']
   },
   { 
     id: '02', 
-    title: 'UX/UI Design', 
-    desc: 'High-fidelity mockups optimized for lightning-fast user adoption.',
+    phase: 'Phase 2',
+    duration: 'Days 4-7',
+    title: 'High-Velocity UI/UX', 
+    desc: 'Functional mockups & interactive prototypes optimized for rapid conversion.',
     icon: PenTool,
+    details: ['User Flow Design', 'Visual System', 'Prototype Testing']
   },
   { 
     id: '03', 
-    title: 'Development', 
-    desc: 'Next.js & Tailwind implementation with seamless AI model integrations.',
+    phase: 'Phase 3',
+    duration: 'Days 8-25',
+    title: 'AI Integration', 
+    desc: 'Production-ready code with custom LLM integrations and high-scale infrastructure.',
     icon: Code2,
+    details: ['Next.js 15 Implementation', 'API Development', 'Model Fine-Tuning']
   },
   { 
     id: '04', 
-    title: 'Launch & Scale', 
-    desc: 'Deployment with 24/7 support to ensure continuous product success.',
+    phase: 'Phase 4',
+    duration: 'Days 26-30',
+    title: 'Deployment & Scale', 
+    desc: 'Seamless production launch with performance monitoring and immediate scaling.',
     icon: Rocket,
+    details: ['Cloud Deployment', 'QA & Speed Audit', 'Growth Monitoring']
   }
 ];
 
@@ -58,7 +70,7 @@ const AITimeline = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
@@ -68,34 +80,50 @@ const AITimeline = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="relative flex flex-col group p-8 rounded-[32px] bg-card backdrop-blur-sm border border-border-custom hover:border-accent/40 hover:bg-card-alt transition-all duration-500"
+                className="relative flex flex-col group p-7 md:p-8 rounded-[36px] bg-card border border-border-custom hover:border-accent/40 transition-all duration-500 overflow-hidden"
               >
-                {/* Outline Number */}
-                <div className="text-6xl md:text-8xl font-black leading-none absolute top-6 right-8 pointer-events-none z-0 select-none opacity-[0.03] md:opacity-5 group-hover:opacity-10 transition-opacity font-heading text-foreground" style={{ WebkitTextStroke: '1px currentColor', color: 'transparent' }}>
-                  {step.id}
-                </div>
-                
-                {/* Icon Container */}
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 text-accent flex items-center justify-center mb-8 border border-accent/20 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm">
-                  <Icon size={24} strokeWidth={2.5} />
+                {/* Header: Icon + Phase + Duration in one line */}
+                <div className="flex items-center gap-4 mb-8 relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/5 text-accent flex items-center justify-center border border-accent/10 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm">
+                    <Icon size={20} strokeWidth={2.5} />
+                  </div>
+                  
+                  <div className="flex-grow flex flex-col justify-center">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-1 rounded-lg bg-accent/5 border border-accent/10 text-accent text-[8px] font-black uppercase tracking-widest">
+                        {step.phase}
+                      </span>
+                      <span className="text-[9px] font-bold text-muted uppercase tracking-widest opacity-60">
+                        {step.duration}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-black text-foreground font-heading tracking-tight mb-4 leading-tight">
+                <div className="relative z-10 flex-grow">
+                  <h3 className="text-lg font-black text-foreground font-heading tracking-tight mb-2 leading-tight group-hover:text-accent transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-muted text-base leading-relaxed mb-6 font-medium tracking-tight">
+                  <p className="text-muted text-[14px] leading-relaxed mb-6 font-medium tracking-tight">
                     {step.desc}
                   </p>
+                  
+                  {/* Technical Tags */}
+                  <div className="flex flex-col gap-2 pt-5 border-t border-border-custom/50">
+                    {step.details.map((detail, dIdx) => (
+                      <div key={dIdx} className="flex items-center gap-2 text-[9px] font-bold text-muted group-hover:text-foreground transition-colors">
+                        <div className="w-1 h-1 rounded-full bg-accent" />
+                        {detail}
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Arrow / Connector (Hidden on mobile/list) */}
-                {idx < 3 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 translate-y-[-50%] z-20 text-accent pointer-events-none opacity-20 group-hover:translate-x-1 group-hover:opacity-100 transition-all duration-500">
-                    <ArrowRight size={24} />
-                  </div>
-                )}
+                {/* Subtle Background Number */}
+                <div className="absolute -bottom-10 -right-4 text-[120px] font-black text-foreground opacity-[0.02] font-heading select-none pointer-events-none group-hover:opacity-5 group-hover:-translate-y-2 transition-all duration-700">
+                  {step.id}
+                </div>
               </motion.div>
             )
           })}
@@ -105,13 +133,24 @@ const AITimeline = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 flex justify-center"
+          className="mt-20 flex flex-col items-center gap-8"
         >
+          <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-card-alt border border-border-custom shadow-sm">
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="w-8 h-8 rounded-full border-2 border-card bg-accent/20" />
+              ))}
+            </div>
+            <p className="text-[10px] font-black uppercase tracking-widest text-muted">
+              <span className="text-foreground">240+</span> Products Launched
+            </p>
+          </div>
+
           <Link 
             href="/contact" 
-            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-accent text-white font-black uppercase tracking-widest text-[11px] hover:bg-accent/90 transition-all shadow-xl shadow-accent/20 group"
+            className="flex items-center gap-4 px-10 py-5 rounded-2xl bg-accent text-white font-black uppercase tracking-[0.2em] text-[11px] hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20 group"
           >
-            Start Your Project <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            Launch Your Idea <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
       </div>

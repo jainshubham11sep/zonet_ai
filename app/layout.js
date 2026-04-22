@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Preloader from "@/components/Preloader";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-background text-foreground antialiased font-sans">
         <ThemeProvider>
+          <Preloader />
           <Header />
           <main>{children}</main>
           <Footer />

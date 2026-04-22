@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import RelatedArticles from "@/components/RelatedArticles";
 import FAQ from "@/components/FAQ";
 import AITimeline from "@/components/AITimeline";
+import PartnersSection from "@/components/PartnersSection";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -40,6 +41,9 @@ export default function Home() {
 
       {/* 3. Case Studies */}
       <ProjectShowcase />
+
+      {/* 3.1 Integrated Partners */}
+      <PartnersSection />
 
       {/* 4. Our Services */}
       <ServicesGrid />

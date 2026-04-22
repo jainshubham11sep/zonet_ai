@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, CheckCircle2 } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle2, Phone } from 'lucide-react';
 import { useState } from 'react';
 
 const projectTypes = [
@@ -68,7 +68,16 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-muted uppercase tracking-widest">Email Us At</p>
-                  <p className="text-base font-black text-foreground font-heading">hello@zonettech.com</p>
+                  <p className="text-base font-black text-foreground font-heading">business@zonettech.com</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 group cursor-pointer">
+                <div className="w-12 h-12 rounded-2xl bg-accent/5 border border-border-custom flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-muted uppercase tracking-widest">Call Us</p>
+                  <p className="text-base font-black text-foreground font-heading">+91 9166572332</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 group cursor-pointer">
@@ -77,7 +86,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-muted uppercase tracking-widest">Our HQ</p>
-                  <p className="text-base font-black text-foreground font-heading">Jaipur Rajastha,India</p>
+                  <p className="text-base font-black text-foreground font-heading">Jaipur Rajasthan, India</p>
                 </div>
               </div>
             </div>

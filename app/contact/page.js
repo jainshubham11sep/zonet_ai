@@ -6,35 +6,49 @@ import ContactForm from '@/components/ContactForm';
 
 const contactInfo = [
   { icon: Mail, label: 'Email Us', value: 'business@zonettech.com', sub: 'Responsive within 2 hours' },
-  { icon: Phone, label: 'Call Us', value: '+91 9166572332', sub: 'Mon-Fri, 9am - 6pm EST' },
-  { icon: MapPin, label: 'Our HQ', value: 'Jaipur Rajastha,India', sub: 'The Heart of AI Innovation' },
+  { icon: Phone, label: 'Call Us', value: '+91 9166572332', sub: 'Mon-Fri, 10am - 7pm IST' },
+  { icon: MapPin, label: 'Our HQ', value: 'Jaipur Rajasthan, India', sub: 'The Heart of Tech Innovation' },
 ];
 
 export default function Contact() {
   return (
-    <div className="pt-32 bg-black min-h-screen">
-      {/* Header */}
-      <section className="py-20 border-b border-white/5 relative overflow-hidden text-center">
-        <div className="container mx-auto px-6">
+    <div className="bg-background min-h-screen font-sans">
+      
+      {/* Header Section */}
+      <section className="pt-32 pb-20 md:pt-48 md:pb-32 border-b border-border-custom relative overflow-hidden">
+        {/* Background visual detail */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-block p-4 rounded-full glass border border-accent/20 mb-8"
+            className="section-label mb-8"
           >
-            <Calendar className="text-accent" size={32} />
+            Start a Conversation
           </motion.div>
-          <h1 className="text-6xl md:text-8xl font-black mb-8 text-white tracking-tight leading-tight">
-            Book a <span className="text-accent italic lowercase tracking-widest">Call.</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-7xl lg:text-8xl font-black mb-8 text-foreground tracking-tighter leading-[1] font-heading"
+          >
+            Book a <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent italic">Consultation.</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-medium"
+          >
             Ready to bring your project to life with AI? Let's discuss your roadmap, 
             technical requirements, and how we can deliver in record time.
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Contact Grid */}
-      <section className="py-24">
+      <section className="section-padding">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
             {contactInfo.map((info, idx) => (
@@ -44,29 +58,29 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="p-10 glass rounded-[40px] border border-white/10 group hover:border-accent transition-all duration-500"
+                className="p-10 bg-card border border-border-custom rounded-[40px] group hover:border-accent/40 transition-all duration-500 shadow-sm"
               >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-110 transition-transform mb-8">
-                  <info.icon size={28} />
+                <div className="w-14 h-14 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 mb-8">
+                  <info.icon size={28} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">{info.label}</h3>
-                <p className="text-white font-medium text-lg mb-2">{info.value}</p>
-                <p className="text-gray-500 text-sm font-bold uppercase tracking-wider">{info.sub}</p>
+                <h3 className="text-[10px] font-black text-muted uppercase tracking-[0.2em] mb-3">{info.label}</h3>
+                <p className="text-2xl font-black text-foreground font-heading tracking-tight mb-2">{info.value}</p>
+                <p className="text-muted text-sm font-bold uppercase tracking-wider opacity-60">{info.sub}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="flex flex-col items-center justify-center p-12 glass-dark rounded-[56px] border border-white/10 text-center space-y-8 animate-pulse shadow-2xl">
+          <div className="flex flex-col items-center justify-center p-12 bg-card-alt border border-border-custom rounded-[56px] text-center space-y-8 shadow-sm">
             <div className="flex -space-x-4">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-16 h-16 rounded-full border-4 border-black bg-gray-800 flex items-center justify-center font-bold text-gray-500">
-                  Dev
+                <div key={i} className="w-16 h-16 rounded-full border-4 border-card bg-accent/10 flex items-center justify-center font-black text-accent text-xs uppercase tracking-widest">
+                  AI
                 </div>
               ))}
             </div>
-            <h2 className="text-3xl font-black text-white">Our AI Engineers are ready to start.</h2>
-            <p className="text-gray-500 font-bold uppercase tracking-widest flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]"></span>
+            <h2 className="text-3xl md:text-4xl font-black text-foreground font-heading tracking-tight">Our AI Engineers are ready to start.</h2>
+            <p className="text-accent font-black uppercase tracking-widest flex items-center gap-2 text-xs">
+              <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(79,70,229,0.5)]"></span>
               Current Availability: High (2 Slots Remaining)
             </p>
           </div>
@@ -75,11 +89,11 @@ export default function Contact() {
 
       <ContactForm />
 
-      <section className="py-20 text-center pb-32">
-        <div className="container mx-auto px-6 space-y-8">
-          <Clock className="text-accent mx-auto" size={48} />
-          <h2 className="text-4xl font-black text-white italic">Time is of the essence.</h2>
-          <p className="text-gray-500 text-lg max-w-md mx-auto">
+      <section className="py-20 text-center pb-40 px-6">
+        <div className="container mx-auto space-y-8">
+          <Clock className="text-accent mx-auto" size={48} strokeWidth={2.5} />
+          <h2 className="text-4xl md:text-5xl font-black text-foreground font-heading italic tracking-tighter">Time is of the essence.</h2>
+          <p className="text-muted text-lg md:text-xl max-w-md mx-auto font-medium leading-relaxed">
             Most visionary products are built in the first 30 days. Let's make yours one of them.
           </p>
         </div>

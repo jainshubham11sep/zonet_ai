@@ -85,7 +85,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3 text-muted group cursor-pointer hover:text-accent transition-all">
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-base font-medium">Jaipur Rajastha,India</span>
+                <span className="text-base font-medium">Jaipur Rajasthan, India</span>
               </li>
               <li className="flex items-start gap-3 text-muted group cursor-pointer hover:text-accent transition-all">
                 <Phone size={18} className="mt-1 flex-shrink-0" />
