@@ -9,90 +9,116 @@ const tools = [
     title: 'CodeAgent XL', 
     desc: 'Autonomous coding agent that handles complex refactors and boilerplate generation in seconds.', 
     icon: Code,
-    status: 'In Production'
+    status: 'Stable',
+    type: 'LLM Agent'
   },
   { 
     title: 'UI Synth', 
     desc: 'Generative UI engine that transforms wireframes into production-ready React components.', 
     icon: Layout,
-    status: 'BETA'
+    status: 'Beta',
+    type: 'Vision Engine'
   },
   { 
     title: 'Zonet Assistant', 
     desc: 'A full-stack project context manager that stays in sync with your codebase and design files.', 
     icon: Bot,
-    status: 'In Production'
+    status: 'Stable',
+    type: 'Context AI'
   },
   { 
     title: 'OptiDeploy', 
     desc: 'Automated CI/CD optimization layer that predicts and prevents deployment failures.', 
     icon: Zap,
-    status: 'Internal Use'
+    status: 'Internal',
+    type: 'DevOps AI'
   },
 ];
 
 export default function AITools() {
   return (
-    <div className="pt-32 bg-black min-h-screen">
-      {/* Header */}
-      <section className="py-20 border-b border-white/5 relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center animate-in fade-in duration-1000">
+    <div className="bg-background min-h-screen font-sans">
+      
+      {/* Header Section */}
+      <section className="pt-32 pb-20 md:pt-48 md:pb-32 border-b border-border-custom relative overflow-hidden">
+        {/* Background visual detail */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-block p-4 rounded-full glass border border-accent/20 mb-8"
+            className="section-label mb-8"
           >
-            <Cpu className="text-accent animate-pulse" size={32} />
+            Engineering Excellence
           </motion.div>
-          <h1 className="text-6xl md:text-8xl font-black mb-8 text-white tracking-tight leading-tight">
-            AI <span className="text-accent italic uppercase tracking-widest">Internal</span> Tools.
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            We don't just use AI; we build it. Explore the proprietary tools our team uses 
-            to deliver projects faster than anyone else in the industry.
-          </p>
-        </div>
-
-        {/* Floating Matrix Background Effect */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20 flex justify-center items-center">
-            <div className="w-[1000px] h-[1000px] border border-accent/10 rounded-full animate-spin duration-[100s]"></div>
-            <div className="absolute w-[800px] h-[800px] border border-accent/10 rounded-full animate-spin duration-[150s] animation-reverse"></div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-7xl lg:text-8xl font-black mb-8 text-foreground tracking-tighter leading-[1] font-heading"
+          >
+            Proprietary <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">AI Technology</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-medium"
+          >
+            We don't just use AI; we build it. Our proprietary suite of tools 
+            allows our team to deliver agency-grade results at 10x the speed.
+          </motion.p>
         </div>
       </section>
 
       {/* Tools Grid */}
-      <section className="py-32">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="section-padding">
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {tools.map((tool, idx) => (
             <motion.div
               key={tool.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-12 glass rounded-[48px] border border-white/10 group hover:border-accent transition-all duration-700 h-fit"
+              viewport={{ once: true }}
+              className="p-8 md:p-12 bg-card border border-border-custom rounded-[40px] group hover:border-accent/40 transition-all duration-500 shadow-sm flex flex-col h-full"
             >
-              <div className="flex justify-between items-start mb-12">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent/10 transition-colors">
-                  <tool.icon size={32} />
+              <div className="flex justify-between items-start mb-10">
+                <div className="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                  <tool.icon size={28} strokeWidth={2.5} />
                 </div>
-                <span className={`px-4 py-1 rounded-full text-[10px] font-black tracking-widest border transition-all ${
-                  tool.status === 'In Production' 
-                    ? 'border-blue-500/50 text-blue-500 bg-blue-500/10' 
-                    : tool.status === 'BETA' 
-                      ? 'border-accent/50 text-accent bg-accent/10 animate-pulse'
-                      : 'border-white/20 text-gray-500 bg-white/5'
-                }`}>
-                  {tool.status}
-                </span>
+                <div className="flex flex-col items-end gap-2">
+                  <span className={`px-3 py-1 rounded-lg text-[9px] font-black tracking-widest uppercase border ${
+                    tool.status === 'Stable' 
+                      ? 'border-emerald-500/30 text-emerald-500 bg-emerald-500/5' 
+                      : tool.status === 'Beta' 
+                        ? 'border-accent/30 text-accent bg-accent/5'
+                        : 'border-border-custom text-muted bg-card-alt'
+                  }`}>
+                    {tool.status}
+                  </span>
+                  <span className="text-[10px] font-bold text-muted/60 uppercase tracking-widest">{tool.type}</span>
+                </div>
               </div>
-              <h3 className="text-4xl font-bold text-white group-hover:text-accent transition-colors mb-6">{tool.title}</h3>
-              <p className="text-xl text-gray-400 leading-relaxed font-medium mb-10">
+
+              <h3 className="text-3xl font-black text-foreground font-heading mb-4 tracking-tight leading-tight group-hover:text-accent transition-colors">
+                {tool.title}
+              </h3>
+              <p className="text-lg text-muted leading-relaxed font-medium mb-12 flex-grow">
                 {tool.desc}
               </p>
               
-              <div className="flex items-center gap-4 text-sm font-bold text-gray-600">
-                <Terminal size={18} />
-                <span>Proprietary LLM Integration</span>
+              <div className="pt-8 border-t border-border-custom/50 flex items-center justify-between">
+                <div className="flex items-center gap-3 text-xs font-black text-muted uppercase tracking-widest">
+                  <Terminal size={16} className="text-accent" />
+                  <span>Proprietary Logic</span>
+                </div>
+                <div className="flex gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse delay-75" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse delay-150" />
+                </div>
               </div>
             </motion.div>
           ))}
@@ -100,17 +126,24 @@ export default function AITools() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20">
-        <div className="container mx-auto px-6 text-center glass-dark p-20 rounded-[64px] border border-white/10 overflow-hidden relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-8 relative z-10">Want to use our tools?</h2>
-          <p className="text-xl text-gray-400 mb-12 max-w-xl mx-auto relative z-10">
-            We selectively license our internal tools to enterprise partners 
-            looking to accelerate their internal development speed.
-          </p>
-          <button className="px-12 py-5 rounded-3xl bg-white text-black font-black text-xl hover:bg-accent hover:text-white transition-all shadow-xl relative z-10">
-            Inquire About Licensing
-          </button>
+      <section className="section-padding">
+        <div className="container mx-auto px-6">
+          <div className="bg-card border border-border-custom p-10 md:p-20 rounded-[56px] text-center relative overflow-hidden group shadow-2xl">
+            <div className="absolute top-0 left-0 w-full h-full bg-accent/[0.02] group-hover:bg-accent/[0.04] transition-colors duration-700" />
+            <h2 className="text-3xl md:text-6xl font-black text-foreground font-heading tracking-tighter mb-8 relative z-10">
+              Need a Custom <span className="text-accent italic">AI Solution</span>?
+            </h2>
+            <p className="text-lg md:text-xl text-muted mb-12 max-w-xl mx-auto relative z-10 font-medium leading-relaxed">
+              We leverage these proprietary tools to build high-performance software 
+              for enterprise partners looking to lead their industries.
+            </p>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-10 py-5 rounded-2xl bg-accent text-white font-black text-xs uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20 relative z-10"
+            >
+              Start Your AI Roadmap
+            </button>
+          </div>
         </div>
       </section>
 

@@ -12,26 +12,26 @@
 /* ===== LIGHT MODE ===== */
 :root {
   --background: #FFFFFF;
-  --foreground: #0F172A;
-  --secondary: #475569;
-  --muted: #94A3B8;
-  --accent: #6366F1;
+  --foreground: #020617;
+  --secondary: #1E293B;
+  --muted: #475569;
+  --accent: #4F46E5;
   --accent-foreground: #FFFFFF;
-  --border: #F1F5F9;
+  --border: #E2E8F0;
   --card-bg: #FFFFFF;
   --card-bg-alt: #F8FAFC;
   --button-bg: #0F172A;
   --button-fg: #FFFFFF;
   --input-bg: #FFFFFF;
-  --input-border: #E2E8F0;
-  --section-alt: #F8FAFC;
-  --footer-bg: #0F172A;
+  --input-border: #CBD5E1;
+  --section-alt: #F1F5F9;
+  --footer-bg: #020617;
   --footer-fg: #FFFFFF;
   --marquee-fade: #FFFFFF;
   --badge-bg: #F8FAFC;
   --badge-border: #E2E8F0;
   --icon-bg: #F1F5F9;
-  --progress-bar: #6366F1;
+  --progress-bar: #4F46E5;
 }
 
 /* ===== DARK MODE ===== */

@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const services = [
   { 
@@ -17,6 +18,8 @@ const services = [
     details: 'From high-performance landing pages that load in milliseconds to complex enterprise dashboards that handle millions of data points, we specialize in the modern web stack.',
     features: ['Next.js 15+ App Router', 'Tailwind CSS Systems', 'SSR & ISR Optimization', 'Headless CMS Integration'],
     icon: Globe,
+    image: '/images/zonet/web-engineering.png',
+    href: '/services/web-engineering',
     accent: 'text-accent',
     bg: 'bg-accent/5'
   },
@@ -26,6 +29,8 @@ const services = [
     details: 'We build utility-first mobile applications with real-time syncing, push notification systems, and smooth biometrics integration, ensuring your users get the best experience on iOS and Android.',
     features: ['React Native & Expo', 'Biometric Auth', 'Offline-First Cache', 'Apple & Play Store SEO'],
     icon: Smartphone,
+    image: '/images/zonet/mobile-app.png',
+    href: '/services/mobile-apps',
     accent: 'text-indigo-500',
     bg: 'bg-indigo-500/5'
   },
@@ -35,6 +40,8 @@ const services = [
     details: 'We integrate RAG (Retrieval-Augmented Generation) and vector databases to create internal company knowledge bases that your AI can use to solve tasks, draft replies, and analyze data.',
     features: ['Custom RAG Systems', 'Vector Search (Pinecone)', 'OpenAI & Claude Auth', 'Workflow Automation'],
     icon: Cpu,
+    image: '/images/zonet/ai-automation.png',
+    href: '/services/ai-automation',
     accent: 'text-emerald-500',
     bg: 'bg-emerald-500/5'
   },
@@ -134,7 +141,7 @@ export default function Services() {
                 </ul>
 
                 <Link 
-                  href="/contact" 
+                  href={service.href} 
                   className="inline-flex items-center gap-1.5 group text-accent font-black text-base hover:underline underline-offset-4 transition-all"
                 >
                   Configure Solution <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -142,25 +149,14 @@ export default function Services() {
               </div>
 
               {/* Visual Side */}
-              <div className="lg:w-1/2 w-full aspect-square md:aspect-video relative rounded-[28px] md:rounded-[40px] border border-border-custom overflow-hidden shadow-xl group outline outline-4 outline-card-alt/30">
-                <div className="absolute inset-0 bg-gradient-to-br from-card to-background flex items-center justify-center">
-                  <div className="relative w-full h-full p-8 overflow-hidden bg-card-alt/10">
-                    <div className="absolute top-[20%] left-[10%] w-[80%] h-[60%] bg-card border border-border-custom rounded-2xl shadow-lg p-5 transition-transform duration-700 group-hover:scale-[1.01]">
-                      <div className="w-full h-1 h-2 flex items-center gap-1.5 mb-5 border-b border-border-custom/30 pb-3">
-                        <div className="w-2 h-2 rounded-full bg-red-400/80" />
-                        <div className="w-2 h-2 rounded-full bg-amber-400/80" />
-                        <div className="w-2 h-2 rounded-full bg-blue-400/80" />
-                      </div>
-                      <div className="space-y-3">
-                        <div className="h-3 w-[60%] bg-accent/15 rounded-full" />
-                        <div className="h-3 w-[40%] bg-muted/15 rounded-full" />
-                        <div className="h-20 w-full border border-border-custom/50 rounded-xl flex items-center justify-center">
-                           <service.icon size={28} className={service.accent + " opacity-20"} strokeWidth={1} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="lg:w-1/2 w-full aspect-[4/3] md:aspect-video relative rounded-[28px] md:rounded-[40px] border border-border-custom overflow-hidden shadow-2xl group outline outline-4 outline-card-alt/30 bg-card">
+                <Image 
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </motion.div>
           ))}

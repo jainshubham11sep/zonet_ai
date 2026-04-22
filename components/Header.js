@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone, Sun, Moon } from 'lucide-react';
+import { Menu, X, Phone, Sun, Moon, ChevronDown, Globe, Smartphone, Cpu, LayoutGrid } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -27,9 +27,21 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Services', href: '/services' },
-    { name: 'Resources', href: '/resources' },
+    { 
+      name: 'Services', 
+      href: '/services',
+      dropdown: [
+        { name: 'Web Engineering', href: '/services/web-engineering', icon: Globe },
+        { name: 'Mobile Apps', href: '/services/mobile-apps', icon: Smartphone },
+        { name: 'AI Automation', href: '/services/ai-automation', icon: Cpu },
+        { name: 'View All', href: '/services', icon: LayoutGrid },
+      ]
+    },
+    { name: 'AI Tools', href: '/ai-tools' },
   ];
+
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(null);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
@@ -68,15 +80,53 @@ const Header = () => {
         </Link>
 
         {/* Center Desktop Nav (Pill Style) */}
-        <nav className="hidden md:flex items-center bg-background rounded-full p-1 border border-border-custom">
+        <nav className="hidden md:flex items-center bg-background rounded-full p-1 border border-border-custom relative">
           {navLinks.map((link) => (
-            <Link 
+            <div 
               key={link.name} 
-              href={link.href}
-              className="px-6 py-2 text-[15px] font-black uppercase tracking-widest text-foreground/70 hover:text-accent transition-all rounded-full hover:bg-card font-heading"
+              className="relative group"
+              onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
+              onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
             >
-              {link.name}
-            </Link>
+              <Link 
+                href={link.href}
+                className={`px-6 py-2 text-[15px] font-black uppercase tracking-widest transition-all rounded-full hover:bg-card font-heading flex items-center gap-1.5 ${
+                  activeDropdown === link.name ? 'text-accent bg-card' : 'text-foreground/70 hover:text-accent'
+                }`}
+              >
+                {link.name}
+                {link.dropdown && <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />}
+              </Link>
+
+              {/* Dropdown Menu */}
+              {link.dropdown && (
+                <AnimatePresence>
+                  {activeDropdown === link.name && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-2 w-64 bg-card border border-border-custom rounded-[24px] shadow-2xl p-3 z-[100] overflow-hidden"
+                    >
+                      {link.dropdown.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          className="flex items-center gap-4 p-3.5 rounded-[18px] hover:bg-accent/5 hover:text-accent text-foreground/80 transition-all group/item"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <div className="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center text-accent group-hover/item:bg-accent group-hover/item:text-white transition-all">
+                            <sub.icon size={18} />
+                          </div>
+                          <span className="text-sm font-black tracking-tight">{sub.name}</span>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -132,14 +182,41 @@ const Header = () => {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <Link 
-                  key={link.name} 
-                  href={link.href}
-                  className="text-2xl font-black text-foreground hover:text-accent font-heading tracking-tighter"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
+                <div key={link.name} className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between">
+                    <Link 
+                      href={link.href}
+                      className="text-2xl font-black text-foreground hover:text-accent font-heading tracking-tighter"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                    {link.dropdown && (
+                      <button 
+                        onClick={() => setMobileSubmenuOpen(mobileSubmenuOpen === link.name ? null : link.name)}
+                        className={`p-2 rounded-xl bg-card border border-border-custom transition-all ${mobileSubmenuOpen === link.name ? 'bg-accent text-white border-accent' : ''}`}
+                      >
+                        <ChevronDown size={20} className={`transition-transform ${mobileSubmenuOpen === link.name ? 'rotate-180' : ''}`} />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {link.dropdown && mobileSubmenuOpen === link.name && (
+                    <div className="grid grid-cols-1 gap-3 pl-4">
+                      {link.dropdown.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          className="flex items-center gap-4 p-4 rounded-2xl bg-card/50 border border-border-custom text-foreground/80 font-bold"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <sub.icon size={18} className="text-accent" />
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <hr className="border-border-custom/50" />
               <button 
