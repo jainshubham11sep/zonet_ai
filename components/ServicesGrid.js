@@ -92,9 +92,8 @@ const ServicesGrid = () => {
               >
                 {/* ── Folder Tab ── */}
                 <div className="relative">
-                  {/* Tab notch at top-left */}
                   <div className="absolute top-0 left-0 z-10 flex items-center">
-                    <div className="bg-card/90 backdrop-blur-sm border-b border-r border-border-custom rounded-br-2xl px-4 py-2 flex items-center gap-2">
+                    <div className="bg-card backdrop-blur-sm border-b border-r border-border-custom rounded-br-2xl px-4 py-2 flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
                         <Icon size={12} className="text-accent" strokeWidth={2.5} />
                       </div>

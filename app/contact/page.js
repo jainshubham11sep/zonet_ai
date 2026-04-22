@@ -19,12 +19,12 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-block p-4 rounded-full glass border border-accent-blue/20 mb-8"
+            className="inline-block p-4 rounded-full glass border border-accent/20 mb-8"
           >
-            <Calendar className="text-accent-blue" size={32} />
+            <Calendar className="text-accent" size={32} />
           </motion.div>
           <h1 className="text-6xl md:text-8xl font-black mb-8 text-white tracking-tight leading-tight">
-            Book a <span className="text-accent-blue italic lowercase tracking-widest">Call.</span>
+            Book a <span className="text-accent italic lowercase tracking-widest">Call.</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Ready to bring your project to life with AI? Let's discuss your roadmap, 
@@ -44,9 +44,9 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="p-10 glass rounded-[40px] border border-white/10 group hover:border-accent-blue transition-all duration-500"
+                className="p-10 glass rounded-[40px] border border-white/10 group hover:border-accent transition-all duration-500"
               >
-                <div className="w-14 h-14 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-accent-blue group-hover:scale-110 transition-transform mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-110 transition-transform mb-8">
                   <info.icon size={28} />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">{info.label}</h3>
@@ -77,7 +77,7 @@ export default function Contact() {
 
       <section className="py-20 text-center pb-32">
         <div className="container mx-auto px-6 space-y-8">
-          <Clock className="text-accent-blue mx-auto" size={48} />
+          <Clock className="text-accent mx-auto" size={48} />
           <h2 className="text-4xl font-black text-white italic">Time is of the essence.</h2>
           <p className="text-gray-500 text-lg max-w-md mx-auto">
             Most visionary products are built in the first 30 days. Let's make yours one of them.

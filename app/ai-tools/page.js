@@ -40,12 +40,12 @@ export default function AITools() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-block p-4 rounded-full glass border border-accent-blue/20 mb-8"
+            className="inline-block p-4 rounded-full glass border border-accent/20 mb-8"
           >
-            <Cpu className="text-accent-blue animate-pulse" size={32} />
+            <Cpu className="text-accent animate-pulse" size={32} />
           </motion.div>
           <h1 className="text-6xl md:text-8xl font-black mb-8 text-white tracking-tight leading-tight">
-            AI <span className="text-accent-purple italic uppercase tracking-widest">Internal</span> Tools.
+            AI <span className="text-accent italic uppercase tracking-widest">Internal</span> Tools.
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             We don't just use AI; we build it. Explore the proprietary tools our team uses 
@@ -55,8 +55,8 @@ export default function AITools() {
 
         {/* Floating Matrix Background Effect */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20 flex justify-center items-center">
-            <div className="w-[1000px] h-[1000px] border border-accent-blue/10 rounded-full animate-spin duration-[100s]"></div>
-            <div className="absolute w-[800px] h-[800px] border border-accent-purple/10 rounded-full animate-spin duration-[150s] animation-reverse"></div>
+            <div className="w-[1000px] h-[1000px] border border-accent/10 rounded-full animate-spin duration-[100s]"></div>
+            <div className="absolute w-[800px] h-[800px] border border-accent/10 rounded-full animate-spin duration-[150s] animation-reverse"></div>
         </div>
       </section>
 
@@ -69,23 +69,23 @@ export default function AITools() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-12 glass rounded-[48px] border border-white/10 group hover:border-accent-blue transition-all duration-700 h-fit"
+              className="p-12 glass rounded-[48px] border border-white/10 group hover:border-accent transition-all duration-700 h-fit"
             >
               <div className="flex justify-between items-start mb-12">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent-blue group-hover:bg-accent-blue/10 transition-colors">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent/10 transition-colors">
                   <tool.icon size={32} />
                 </div>
                 <span className={`px-4 py-1 rounded-full text-[10px] font-black tracking-widest border transition-all ${
                   tool.status === 'In Production' 
                     ? 'border-blue-500/50 text-blue-500 bg-blue-500/10' 
                     : tool.status === 'BETA' 
-                      ? 'border-accent-blue/50 text-accent-blue bg-accent-blue/10 animate-pulse'
+                      ? 'border-accent/50 text-accent bg-accent/10 animate-pulse'
                       : 'border-white/20 text-gray-500 bg-white/5'
                 }`}>
                   {tool.status}
                 </span>
               </div>
-              <h3 className="text-4xl font-bold text-white group-hover:text-accent-blue transition-colors mb-6">{tool.title}</h3>
+              <h3 className="text-4xl font-bold text-white group-hover:text-accent transition-colors mb-6">{tool.title}</h3>
               <p className="text-xl text-gray-400 leading-relaxed font-medium mb-10">
                 {tool.desc}
               </p>
@@ -102,13 +102,13 @@ export default function AITools() {
       {/* Call to Action */}
       <section className="py-20">
         <div className="container mx-auto px-6 text-center glass-dark p-20 rounded-[64px] border border-white/10 overflow-hidden relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 relative z-10">Want to use our tools?</h2>
           <p className="text-xl text-gray-400 mb-12 max-w-xl mx-auto relative z-10">
             We selectively license our internal tools to enterprise partners 
             looking to accelerate their internal development speed.
           </p>
-          <button className="px-12 py-5 rounded-3xl bg-white text-black font-black text-xl hover:bg-accent-blue transition-all shadow-xl relative z-10">
+          <button className="px-12 py-5 rounded-3xl bg-white text-black font-black text-xl hover:bg-accent hover:text-white transition-all shadow-xl relative z-10">
             Inquire About Licensing
           </button>
         </div>

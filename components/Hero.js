@@ -65,7 +65,7 @@ const Hero = () => {
         >
           <button 
             onClick={() => setIsCalendlyOpen(true)}
-            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-accent text-accent-foreground rounded-full font-black text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(99,101,241,0.25)] cursor-pointer"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-accent text-accent-foreground rounded-full font-black text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] cursor-pointer"
           >
             Start Your Project <ArrowUpRight size={20} />
           </button>

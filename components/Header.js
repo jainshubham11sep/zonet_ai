@@ -41,22 +41,39 @@ const Header = () => {
     >
       <div className={`flex items-center justify-between w-full max-w-7xl px-4 md:px-8 py-3 rounded-3xl md:rounded-full transition-all duration-500 ${
         isScrolled 
-          ? 'bg-card/80 md:bg-card/40 backdrop-blur-2xl md:backdrop-blur-xl shadow-2xl border border-border-custom' 
-          : 'bg-card/60 md:bg-card/20 backdrop-blur-xl md:backdrop-blur-md border border-border-custom/30'
+          ? 'bg-card shadow-2xl border border-border-custom' 
+          : 'bg-card/90 backdrop-blur-md border border-border-custom/30'
       }`}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group transition-transform hover:scale-[1.02] drop-shadow-sm">
-          <Image src="/images/zonet/logo-dark.png" alt="ZonetTech Logo" width={140} height={35} className="w-auto h-6 md:h-7 object-contain dark:hidden" priority />
-          <Image src="/images/zonet/logo-light.png" alt="ZonetTech Logo" width={140} height={35} className="w-auto h-6 md:h-7 object-contain hidden dark:block" priority />
+          {mounted ? (
+            <Image 
+              src={resolvedTheme === 'dark' ? "/images/zonet/logo-white.png" : "/images/zonet/logo-black.png"} 
+              alt="ZonetTech Logo" 
+              width={140} 
+              height={35} 
+              className="w-auto h-6 md:h-7 object-contain" 
+              priority 
+            />
+          ) : (
+            <Image 
+              src="/images/zonet/logo-black.png" 
+              alt="ZonetTech Logo" 
+              width={140} 
+              height={35} 
+              className="w-auto h-6 md:h-7 object-contain" 
+              priority 
+            />
+          )}
         </Link>
 
         {/* Center Desktop Nav (Pill Style) */}
-        <nav className="hidden md:flex items-center bg-background/30 rounded-full p-1 border border-border-custom/50">
+        <nav className="hidden md:flex items-center bg-background rounded-full p-1 border border-border-custom">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href}
-              className="px-6 py-2 text-[15px] font-black uppercase tracking-widest text-muted hover:text-accent transition-all rounded-full hover:bg-card/60 font-heading"
+              className="px-6 py-2 text-[15px] font-black uppercase tracking-widest text-foreground/70 hover:text-accent transition-all rounded-full hover:bg-card font-heading"
             >
               {link.name}
             </Link>
@@ -78,7 +95,7 @@ const Header = () => {
 
           <button 
             onClick={() => setIsCalendlyOpen(true)}
-            className="px-8 py-4 rounded-[20px] bg-accent text-white text-[13px] font-black uppercase tracking-[0.2em] hover:bg-accent/90 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(99,102,241,0.25)] hover:scale-[1.02] active:scale-[0.98]"
+            className="px-8 py-4 rounded-[20px] bg-accent text-white text-[13px] font-black uppercase tracking-[0.2em] hover:bg-accent/90 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:scale-[1.02] active:scale-[0.98]"
           >
             Book a call
           </button>
@@ -111,7 +128,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="md:hidden absolute top-full left-4 right-4 mt-2 bg-card/95 backdrop-blur-2xl rounded-[32px] shadow-2xl border border-border-custom p-8 overflow-hidden z-[100]"
+            className="md:hidden absolute top-full left-4 right-4 mt-2 bg-card rounded-[32px] shadow-2xl border border-border-custom p-8 overflow-hidden z-[100]"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (

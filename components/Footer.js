@@ -5,10 +5,12 @@ import Image from 'next/image';
 import { Mail, MapPin, Phone, Globe, Share2, MessageSquare, Send } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { useState, useEffect } from 'react';
+import { useTheme } from '@/components/ThemeProvider';
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -21,8 +23,23 @@ const Footer = () => {
           {/* Logo & Intro */}
           <div className="lg:col-span-2 space-y-8">
             <Link href="/" className="flex items-center gap-3 group">
-              <Image src="/images/zonet/logo-dark.png" alt="ZonetTech Logo" width={180} height={50} className="w-auto h-8 md:h-10 object-contain dark:hidden" />
-              <Image src="/images/zonet/logo-light.png" alt="ZonetTech Logo" width={180} height={50} className="w-auto h-8 md:h-10 object-contain hidden dark:block" />
+              {mounted ? (
+                <Image 
+                  src={resolvedTheme === 'dark' ? "/images/zonet/logo-white.png" : "/images/zonet/logo-black.png"} 
+                  alt="ZonetTech Logo" 
+                  width={180} 
+                  height={50} 
+                  className="w-auto h-8 md:h-10 object-contain" 
+                />
+              ) : (
+                <Image 
+                  src="/images/zonet/logo-black.png" 
+                  alt="ZonetTech Logo" 
+                  width={180} 
+                  height={50} 
+                  className="w-auto h-8 md:h-10 object-contain" 
+                />
+              )}
             </Link>
             <p className="text-muted text-lg leading-relaxed max-w-sm font-medium">
               The #1 Rated Fastest Website & UX Agency For B2B & AI SaaS. We build high-converting products for fast-moving companies.
@@ -80,7 +97,7 @@ const Footer = () => {
           {/* Availability & CTA */}
           <div className="lg:pl-4">
             <h4 className="text-foreground font-black text-lg mb-8 font-heading uppercase tracking-widest">Availability</h4>
-            <div className="bg-card/40 backdrop-blur-xl border border-border-custom p-6 rounded-3xl space-y-6">
+            <div className="bg-card backdrop-blur-xl border border-border-custom p-6 rounded-3xl space-y-6">
               <div className="flex items-center gap-2 text-xs font-black text-accent tracking-[0.2em] uppercase">
                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
                 2 Slots Open

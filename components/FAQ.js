@@ -101,7 +101,7 @@ const FAQ = () => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 rounded-[32px] bg-card/40 border border-border-custom backdrop-blur-sm hidden lg:block"
+              className="p-8 rounded-[32px] bg-card border border-border-custom backdrop-blur-sm hidden lg:block"
             >
               <h4 className="text-xl font-bold mb-3">Still have questions?</h4>
               <p className="text-muted text-sm mb-6">Our senior engineers are ready to discuss your custom roadmap today.</p>
@@ -116,7 +116,7 @@ const FAQ = () => {
 
           {/* Right Column: FAQ List */}
           <div className="lg:col-span-7">
-            <div className="w-full bg-card/20 backdrop-blur-xl rounded-[40px] border border-border-custom overflow-hidden shadow-2xl">
+            <div className="w-full bg-card backdrop-blur-xl rounded-[40px] border border-border-custom overflow-hidden shadow-2xl">
               {faqs.map((faq, idx) => (
                 <FAQItem key={idx} {...faq} />
               ))}

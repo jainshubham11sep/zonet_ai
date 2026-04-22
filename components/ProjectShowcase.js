@@ -212,11 +212,11 @@ const ProjectShowcase = () => {
               <div className="w-full lg:w-[48%] h-fit lg:sticky lg:top-28 flex flex-col gap-4">
 
                 {/* ─── Top Card: Identity + Stats ─── */}
-                <div className="rounded-2xl border border-border-custom/50 bg-card/30 overflow-hidden">
+                <div className="rounded-2xl border border-border-custom bg-card overflow-hidden">
                   {/* Header Bar */}
                   <div className="px-5 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center shrink-0 p-2 overflow-hidden">
+                      <div className="w-11 h-11 rounded-xl bg-white dark:bg-white/90 border border-gray-100 shadow-sm flex items-center justify-center shrink-0 p-2 overflow-hidden">
                         <Image
                           src={project.logo}
                           alt={`${project.name} logo`}
@@ -298,9 +298,9 @@ const ProjectShowcase = () => {
                 </div>
 
                 {/* ─── Bottom: Review + CTA Row ─── */}
-                <div className="rounded-2xl border border-border-custom/50 bg-card/20 overflow-hidden">
+                <div className="rounded-2xl border border-border-custom bg-card overflow-hidden">
                   <div className="px-5 py-4">
-                    <p className="text-[13px] text-foreground/70 italic leading-relaxed mb-3">
+                    <p className="text-[13px] text-foreground italic leading-relaxed mb-3">
                       &ldquo;{project.quote}&rdquo;
                     </p>
                     <div className="flex items-center justify-between">

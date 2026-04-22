@@ -92,7 +92,7 @@ const Testimonials = () => {
           {marqueeItems.slice(0, mounted && window.innerWidth < 768 ? testimonials.length : marqueeItems.length).map((t, idx) => (
             <div
               key={idx}
-              className="w-full md:w-[400px] flex-shrink-0 bg-card/40 backdrop-blur-xl p-8 rounded-[32px] border border-border-custom hover:border-accent/40 hover:bg-card/60 transition-all duration-500 flex flex-col justify-between group/card shadow-sm mx-auto max-w-lg md:max-w-none"
+              className="w-full md:w-[400px] flex-shrink-0 bg-card backdrop-blur-xl p-8 rounded-[32px] border border-border-custom hover:border-accent/40 hover:bg-card/60 transition-all duration-500 flex flex-col justify-between group/card shadow-sm mx-auto max-w-lg md:max-w-none"
               style={{ whiteSpace: 'normal' }}
             >
               <div>

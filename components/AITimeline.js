@@ -68,7 +68,7 @@ const AITimeline = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="relative flex flex-col group p-8 rounded-[32px] bg-card/40 backdrop-blur-sm border border-border-custom hover:border-accent/40 hover:bg-card/60 transition-all duration-500"
+                className="relative flex flex-col group p-8 rounded-[32px] bg-card backdrop-blur-sm border border-border-custom hover:border-accent/40 hover:bg-card-alt transition-all duration-500"
               >
                 {/* Outline Number */}
                 <div className="text-6xl md:text-8xl font-black leading-none absolute top-6 right-8 pointer-events-none z-0 select-none opacity-[0.03] md:opacity-5 group-hover:opacity-10 transition-opacity font-heading text-foreground" style={{ WebkitTextStroke: '1px currentColor', color: 'transparent' }}>

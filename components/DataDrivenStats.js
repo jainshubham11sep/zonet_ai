@@ -79,7 +79,7 @@ const DataDrivenStats = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.1, ease: 'easeOut' }}
               viewport={{ once: true, margin: '-50px' }}
-              className="flex flex-col gap-3 text-center lg:text-left relative group bg-card/20 hover:bg-card/40 backdrop-blur-sm border border-border-custom p-8 rounded-[32px] transition-all duration-500"
+              className="flex flex-col gap-3 text-center lg:text-left relative group bg-card hover:bg-card-alt backdrop-blur-sm border border-border-custom p-8 rounded-[32px] transition-all duration-500"
             >
               <div className="text-4xl md:text-5xl lg:text-6xl font-black text-accent font-heading tracking-tighter drop-shadow-sm transition-transform duration-500 group-hover:scale-105 origin-left">
                 <CountUp 

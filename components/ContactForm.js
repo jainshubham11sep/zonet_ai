@@ -208,7 +208,7 @@ const ContactForm = () => {
                     <div className="pt-4">
                       <button
                         type="submit"
-                        className="w-full bg-accent text-white rounded-2xl py-5 font-black text-lg hover:scale-[1.01] hover:bg-accent/90 active:scale-[0.99] transition-all flex items-center justify-center gap-4 group shadow-[0_20px_50px_rgba(99,102,241,0.3)] uppercase tracking-tighter"
+                        className="w-full bg-accent text-white rounded-2xl py-5 font-black text-lg hover:scale-[1.01] hover:bg-accent/90 active:scale-[0.99] transition-all flex items-center justify-center gap-4 group shadow-[0_20px_50px_rgba(0,0,0,0.1)] uppercase tracking-tighter"
                       >
                         Kickstart Your Project <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </button>

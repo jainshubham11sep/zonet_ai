@@ -86,7 +86,7 @@ export default function RelatedArticles() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="snap-start min-w-[320px] md:min-w-[420px] w-[85vw] md:w-[420px] flex-shrink-0 group relative rounded-[32px] overflow-hidden bg-card/40 backdrop-blur-xl border border-border-custom hover:border-accent/40 transition-all duration-500 shadow-sm"
+              className="snap-start min-w-[320px] md:min-w-[420px] w-[85vw] md:w-[420px] flex-shrink-0 group relative rounded-[32px] overflow-hidden bg-card backdrop-blur-xl border border-border-custom hover:border-accent/40 transition-all duration-500 shadow-sm"
             >
               <Link href={article.link}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">

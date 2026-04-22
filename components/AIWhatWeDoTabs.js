@@ -250,7 +250,7 @@ const AIWhatWeDoTabs = () => {
             className="space-y-8"
           >
             {/* Visual Panel */}
-            <div className="rounded-2xl bg-card/50 border border-border-custom p-6 md:p-10">
+            <div className="rounded-2xl bg-card border border-border-custom p-6 md:p-10">
               {activeData.visual === 'timeline' && <TimelineCompare />}
               {activeData.visual === 'metrics' && <MetricsGrid />}
               {activeData.visual === 'integration' && <IntegrationFlow />}

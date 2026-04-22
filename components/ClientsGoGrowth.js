@@ -60,7 +60,7 @@ const ClientsGoGrowth = () => {
                 className={`flex flex-col items-center gap-5 flex-shrink-0 min-w-[140px] group/card ${client.href ? 'cursor-pointer' : ''}`}
               >
                 {/* Circular Logo Container */}
-                <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-2 border-border-custom shadow-lg flex items-center justify-center p-5 md:p-8 overflow-hidden transition-all duration-500 group-hover/card:scale-110 group-hover/card:border-accent/30 group-hover/card:shadow-[0_0_30px_rgba(99,102,241,0.15)]">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-white dark:bg-white/90 border-2 border-border-custom shadow-lg flex items-center justify-center p-5 md:p-8 overflow-hidden transition-all duration-500 group-hover/card:scale-110 group-hover/card:border-accent/30 group-hover/card:shadow-[0_0_30px_rgba(99,102,241,0.15)]">
                   <Image 
                     src={client.src} 
                     alt={client.name} 

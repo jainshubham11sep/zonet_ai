@@ -178,7 +178,7 @@ const VideoShowcase = () => {
 
             {/* RIGHT: Scrollable Playlist Sidebar */}
             <div className="w-full lg:col-span-1 relative h-[400px] lg:h-auto overflow-hidden">
-              <div className="lg:absolute lg:inset-0 flex flex-col bg-card/40 backdrop-blur-xl rounded-[32px] border border-border-custom shadow-sm overflow-hidden h-full">
+              <div className="lg:absolute lg:inset-0 flex flex-col bg-card backdrop-blur-xl rounded-[32px] border border-border-custom shadow-sm overflow-hidden h-full">
                 {/* Header */}
                 <div className="p-5 border-b border-border-custom/30 flex items-center justify-between flex-shrink-0 bg-card/60">
                   <h4 className="text-[10px] font-black text-muted uppercase tracking-[0.2em]">
