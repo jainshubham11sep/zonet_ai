@@ -1,0 +1,176 @@
+/* ===== TYPOGRAPHY ===== */
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('/fonts/ieVq2YZDLWuGJpnzaiwFXS9tYvBRzyFLlZg_f_NcGmFq5vBM.woff2') format('woff2');
+  font-weight: 500 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== LIGHT MODE ===== */
+:root {
+  --background: #FFFFFF;
+  --foreground: #020617;
+  --secondary: #1E293B;
+  --muted: #475569;
+  --accent: #4F46E5;
+  --accent-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --card-bg: #FFFFFF;
+  --card-bg-alt: #F8FAFC;
+  --button-bg: #0F172A;
+  --button-fg: #FFFFFF;
+  --input-bg: #FFFFFF;
+  --input-border: #CBD5E1;
+  --section-alt: #F1F5F9;
+  --footer-bg: #020617;
+  --footer-fg: #FFFFFF;
+  --marquee-fade: #FFFFFF;
+  --badge-bg: #F8FAFC;
+  --badge-border: #E2E8F0;
+  --icon-bg: #F1F5F9;
+  --progress-bar: #4F46E5;
+}
+
+/* ===== DARK MODE ===== */
+.dark {
+  --background: #020617;
+  --foreground: #F8FAFC;
+  --secondary: #94A3B8;
+  --muted: #475569;
+  --accent: #818CF8;
+  --accent-foreground: #FFFFFF;
+  --border: #1E293B;
+  --card-bg: #0F172A;
+  --card-bg-alt: #1E293B;
+  --button-bg: #F8FAFC;
+  --button-fg: #020617;
+  --input-bg: #0F172A;
+  --input-border: #1E293B;
+  --section-alt: #0F172A;
+  --footer-bg: #010409;
+  --footer-fg: #F8FAFC;
+  --marquee-fade: #020617;
+  --badge-bg: #0F172A;
+  --badge-border: #1E293B;
+  --icon-bg: #1E293B;
+  --progress-bar: #818CF8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-blue: var(--accent); /* Legacy compatibility alias */
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border-custom: var(--border);
+  --color-card: var(--card-bg);
+  --color-card-alt: var(--card-bg-alt);
+  --color-button-bg: var(--button-bg);
+  --color-button-fg: var(--button-fg);
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+  --color-section-alt: var(--section-alt);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-fg: var(--footer-fg);
+  --color-marquee-fade: var(--marquee-fade);
+  --color-badge-bg: var(--badge-bg);
+  --color-badge-border: var(--badge-border);
+  --color-icon-bg: var(--icon-bg);
+  --color-progress-bar: var(--progress-bar);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Hanken Grotesk', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Global Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Premium Utilities */
+.glass {
+  background: color-mix(in srgb, var(--card-bg), transparent 30%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--border), transparent 50%);
+}
+
+.mobile-hide {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .mobile-hide {
+    display: block !important;
+  }
+}
+
+.section-label {
+  display: inline-block;
+  padding: 6px 16px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border-width: 1.5px;
+  border-color: var(--badge-border);
+  border: 1px solid var(--badge-border);
+  background-color: var(--badge-bg);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.overflow-x-clip {
+  overflow-x: clip; /* Modern alternative to hidden that doesn't mess with sticky */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
