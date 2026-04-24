@@ -1,103 +1,166 @@
-/* ===== TYPOGRAPHY ===== */
+/* ===== IMPORTS & TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Hanken Grotesk';
-  src: url('/fonts/ieVq2YZDLWuGJpnzaiwFXS9tYvBRzyFLlZg_f_NcGmFq5vBM.woff2') format('woff2');
-  font-weight: 500 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ===== LIGHT MODE ===== */
+/* ===== LIGHT MODE (ZoneTech Design System) ===== */
 :root {
-  --background: #FFFFFF;
-  --foreground: #020617;
-  --secondary: #1E293B;
-  --muted: #475569;
-  --accent: #4F46E5;
-  --accent-foreground: #FFFFFF;
-  --border: #E2E8F0;
+  /* Primary Colors */
+  --background: #F7F6F3;
+  --foreground: #1A1A1A;
+
+  /* Secondary & Muted */
+  --secondary: #686B6B;
+  --muted: #686B6B;
+
+  /* Accent Colors */
+  --accent: #E8C547;
+  --accent-yellow: #E8C547;
+  --accent-blue: #686BAB;
+  --accent-foreground: #1A1A1A;
+
+  /* Borders & Cards */
+  --border: #E6E4DF;
   --card-bg: #FFFFFF;
-  --card-bg-alt: #F8FAFC;
-  --button-bg: #0F172A;
+  --card-bg-alt: #F7F6F3;
+
+  /* Buttons & Inputs */
+  --button-bg: #111111;
   --button-fg: #FFFFFF;
+  --button-yellow-bg: #E8C547;
+  --button-yellow-fg: #1A1A1A;
   --input-bg: #FFFFFF;
-  --input-border: #CBD5E1;
-  --section-alt: #F1F5F9;
-  --footer-bg: #020617;
+  --input-border: #E6E4DF;
+
+  /* Section & Footer */
+  --section-alt: #F7F6F3;
+  --footer-bg: #1A1A1A;
   --footer-fg: #FFFFFF;
-  --marquee-fade: #FFFFFF;
-  --badge-bg: #F8FAFC;
-  --badge-border: #E2E8F0;
-  --icon-bg: #F1F5F9;
-  --progress-bar: #4F46E5;
+  --marquee-fade: #F7F6F3;
+
+  /* Badges & Icons */
+  --badge-bg: #F7F6F3;
+  --badge-border: #E6E4DF;
+  --icon-bg: #F7F6F3;
+  --progress-bar: #E8C547;
 }
 
-/* ===== DARK MODE ===== */
+/* ===== DARK MODE (ZoneTech Design System) ===== */
 .dark {
-  --background: #020617;
-  --foreground: #F8FAFC;
-  --secondary: #94A3B8;
-  --muted: #475569;
-  --accent: #818CF8;
-  --accent-foreground: #FFFFFF;
-  --border: #1E293B;
-  --card-bg: #0F172A;
-  --card-bg-alt: #1E293B;
-  --button-bg: #F8FAFC;
-  --button-fg: #020617;
-  --input-bg: #0F172A;
-  --input-border: #1E293B;
-  --section-alt: #0F172A;
-  --footer-bg: #010409;
-  --footer-fg: #F8FAFC;
-  --marquee-fade: #020617;
-  --badge-bg: #0F172A;
-  --badge-border: #1E293B;
-  --icon-bg: #1E293B;
-  --progress-bar: #818CF8;
+  --background: #1A1A1A;
+  --foreground: #F7F6F3;
+  --secondary: #C4C2B8;
+  --muted: #9C9A92;
+  --accent: #E8C547;
+  --accent-yellow: #E8C547;
+  --accent-blue: #686BAB;
+  --accent-foreground: #1A1A1A;
+  --border: #3a3936;
+  --card-bg: #232221;
+  --card-bg-alt: #2e2d2b;
+  --button-bg: #FFFFFF;
+  --button-fg: #1A1A1A;
+  --button-yellow-bg: #E8C547;
+  --button-yellow-fg: #1A1A1A;
+  --input-bg: #232221;
+  --input-border: #3a3936;
+  --section-alt: #232221;
+  --footer-bg: #0d0d0c;
+  --footer-fg: #F7F6F3;
+  --marquee-fade: #1A1A1A;
+  --badge-bg: #232221;
+  --badge-border: #3a3936;
+  --icon-bg: #2e2d2b;
+  --progress-bar: #E8C547;
+}
+
+.dark html, .dark body {
+  background-color: #1A1A1A;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-secondary: var(--secondary);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-blue: var(--accent); /* Legacy compatibility alias */
-  --color-accent-foreground: var(--accent-foreground);
-  --color-border-custom: var(--border);
-  --color-card: var(--card-bg);
-  --color-card-alt: var(--card-bg-alt);
-  --color-button-bg: var(--button-bg);
-  --color-button-fg: var(--button-fg);
-  --color-input-bg: var(--input-bg);
-  --color-input-border: var(--input-border);
-  --color-section-alt: var(--section-alt);
-  --color-footer-bg: var(--footer-bg);
-  --color-footer-fg: var(--footer-fg);
-  --color-marquee-fade: var(--marquee-fade);
-  --color-badge-bg: var(--badge-bg);
-  --color-badge-border: var(--badge-border);
-  --color-icon-bg: var(--icon-bg);
-  --color-progress-bar: var(--progress-bar);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Hanken Grotesk', sans-serif;
+  --colors-background: var(--background);
+  --colors-foreground: var(--foreground);
+  --colors-secondary: var(--secondary);
+  --colors-muted: var(--muted);
+  --colors-accent: var(--accent);
+  --colors-accent-yellow: var(--accent-yellow);
+  --colors-accent-blue: var(--accent-blue);
+  --colors-accent-foreground: var(--accent-foreground);
+  --colors-border-custom: var(--border);
+  --colors-card: var(--card-bg);
+  --colors-card-alt: var(--card-bg-alt);
+  --colors-button-bg: var(--button-bg);
+  --colors-button-fg: var(--button-fg);
+  --colors-button-yellow-bg: var(--button-yellow-bg);
+  --colors-button-yellow-fg: var(--button-yellow-fg);
+  --colors-input-bg: var(--input-bg);
+  --colors-input-border: var(--input-border);
+  --colors-section-alt: var(--section-alt);
+  --colors-footer-bg: var(--footer-bg);
+  --colors-footer-fg: var(--footer-fg);
+  --colors-marquee-fade: var(--marquee-fade);
+  --colors-badge-bg: var(--badge-bg);
+  --colors-badge-border: var(--badge-border);
+  --colors-icon-bg: var(--icon-bg);
+  --colors-progress-bar: var(--progress-bar);
+
+  /* ZoneTech Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-heading: 'Playfair Display', serif;
 }
 
-body {
-  background-color: var(--background);
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: #F7F6F3;
   color: var(--foreground);
   font-family: var(--font-sans);
-  scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Global Typography Overrides */
+/* ZoneTech Typography System */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Body typography */
+p, a, span {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+em {
+  font-style: italic;
   font-family: var(--font-heading);
 }
 
@@ -136,21 +199,36 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
+/* ZoneTech Spacing System (8px base unit) */
 .section-padding {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 6rem;    /* 96px */
+  padding-bottom: 6rem; /* 96px */
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 6rem;    /* 96px */
+    padding-bottom: 6rem; /* 96px */
   }
 }
+
+.section-py-sm {
+  padding-top: 3rem;    /* 48px */
+  padding-bottom: 3rem; /* 48px */
+}
+
+.section-py-lg {
+  padding-top: 8rem;    /* 128px */
+  padding-bottom: 8rem; /* 128px */
+}
+
+/* ZoneTech Component Patterns (use Tailwind classes directly) */
+/* See .claude/design/COMPONENTS-GUIDE.md for implementation patterns */
+
+/* Button Primary: px-5 py-2.5 rounded-full bg-[#111111] text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 */
+/* Button Secondary: px-5 py-2.5 rounded-full bg-[#E8C547] text-[#1A1A1A] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 */
+/* Card: rounded-2xl p-6 border border-[#E6E4DF] bg-white shadow-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-200 */
+/* Link: hover:underline underline-offset-4 transition-all duration-300 */
 
 .overflow-x-clip {
   overflow-x: clip; /* Modern alternative to hidden that doesn't mess with sticky */

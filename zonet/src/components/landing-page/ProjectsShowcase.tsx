@@ -178,7 +178,7 @@ const ProjectShowcase = () => {
   }, []);
 
   return (
-    <section id="work" className="section-padding bg-background border-t border-border-custom relative">
+    <section id="work" className="section-padding bg-[#F7F6F3] border-t border-border-custom relative">
       {/* Section Header */}
       <div className="container mx-auto px-6 mb-12 md:mb-16 flex flex-col items-start lg:items-center text-left lg:text-center">
         <motion.div
@@ -238,17 +238,17 @@ const ProjectShowcase = () => {
                     </div>
                     <div className="flex items-center gap-1.5">
                       {project.platformLinks.web && (
-                        <Link href={project.platformLinks.web} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-background border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
+                        <Link href={project.platformLinks.web} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F6F3] border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
                           <Globe size={14} />
                         </Link>
                       )}
                       {project.platformLinks.app && (
-                        <Link href={project.platformLinks.app} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-background border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
+                        <Link href={project.platformLinks.app} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F6F3] border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
                           <Smartphone size={14} />
                         </Link>
                       )}
                       {project.platformLinks.extension && (
-                        <Link href={project.platformLinks.extension} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-background border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
+                        <Link href={project.platformLinks.extension} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F6F3] border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
                           <Puzzle size={14} />
                         </Link>
                       )}

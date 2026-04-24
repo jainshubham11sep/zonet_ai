@@ -59,7 +59,7 @@ const FAQItem = ({ question, answer }) => {
 
 const FAQs = () => {
   return (
-    <section id="faq" className="section-padding bg-background relative overflow-hidden">
+    <section id="faq" className="section-padding bg-[#F7F6F3] relative overflow-hidden">
       {/* Background visual detail */}
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />

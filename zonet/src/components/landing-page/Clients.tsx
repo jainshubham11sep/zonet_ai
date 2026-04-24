@@ -20,7 +20,7 @@ const brands = [
 
 const Clients = () => {
   return (
-    <section className="section-padding bg-background overflow-hidden flex flex-col items-center border-t border-border-custom">
+    <section className="section-padding bg-[#F7F6F3] overflow-hidden flex flex-col items-center border-t border-border-custom">
       <div className="container mx-auto px-6 mb-16 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -85,8 +85,8 @@ const Clients = () => {
         </motion.div>
 
         {/* Improved Deep Gradient Overlays for smooth entry/exit */}
-        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[#F7F6F3] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[#F7F6F3] to-transparent z-10 pointer-events-none"></div>
       </div>
     </section>
   );

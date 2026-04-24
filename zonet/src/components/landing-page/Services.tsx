@@ -51,7 +51,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="section-padding bg-background border-t border-border-custom relative overflow-hidden">
+    <section className="section-padding bg-[#F7F6F3] border-t border-border-custom relative overflow-hidden">
       {/* Background Decorative Blurs */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
@@ -139,7 +139,7 @@ const Services = () => {
                   <div className="flex items-center justify-between mt-auto pt-4 border-t border-border-custom/30">
                     <div className="flex flex-wrap gap-1.5">
                       {service.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-0.5 text-[8px] font-black uppercase tracking-widest rounded-md border border-border-custom bg-background/50 text-muted group-hover:text-accent transition-colors">
+                        <span key={i} className="px-2 py-0.5 text-[8px] font-black uppercase tracking-widest rounded-md border border-border-custom bg-[#F7F6F3]/50 text-muted group-hover:text-accent transition-colors">
                           {tag}
                         </span>
                       ))}

@@ -45,7 +45,7 @@ const articles = [
 
 export default function RelatedArticles() {
   return (
-    <section className="section-padding bg-section-alt border-t border-border-custom overflow-hidden">
+    <section className="section-padding bg-[#F7F6F3] border-t border-border-custom overflow-hidden">
       <div className="container mx-auto px-6 mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
         <div className="max-w-2xl">
           <motion.div

@@ -77,7 +77,7 @@ const VideoShowcase = () => {
   const current = videos[activeVideo];
 
   return (
-    <section className="section-padding bg-section-alt border-t border-border-custom overflow-hidden">
+    <section className="section-padding bg-[#F7F6F3] border-t border-border-custom overflow-hidden">
       <div className="container mx-auto px-6">
         
         {/* Header */}

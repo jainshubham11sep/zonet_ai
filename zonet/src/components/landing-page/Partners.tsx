@@ -54,7 +54,7 @@ const Partners = () => {
   if (!mounted) return null;
 
   return (
-    <section className="py-24 bg-card-alt/30 border-y border-border-custom relative overflow-hidden">
+    <section className="py-24 bg-[#F7F6F3] border-y border-border-custom relative overflow-hidden">
       {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -76,8 +76,8 @@ const Partners = () => {
 
       <div className="space-y-4 relative">
         {/* Masking gradients for smooth marquee edges */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#F7F6F3] to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#F7F6F3] to-transparent z-10" />
         
         <Marquee items={consumerPartners} />
         <Marquee items={aiPartners} reverse={true} />

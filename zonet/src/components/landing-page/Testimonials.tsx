@@ -53,7 +53,7 @@ const Testimonials = () => {
   const marqueeItems = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section className="section-padding bg-background border-t border-border-custom overflow-hidden relative">
+    <section className="section-padding bg-[#F7F6F3] border-t border-border-custom overflow-hidden relative">
        {/* Background Glow */}
        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -120,8 +120,8 @@ const Testimonials = () => {
           ))}
         </motion.div>
 
-        <div className="hidden md:block absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="hidden md:block absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        <div className="hidden md:block absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#F7F6F3] to-transparent z-10 pointer-events-none" />
+        <div className="hidden md:block absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-[#F7F6F3] to-transparent z-10 pointer-events-none" />
       </div>
     </section>
   );

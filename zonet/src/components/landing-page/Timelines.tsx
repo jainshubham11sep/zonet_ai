@@ -45,7 +45,7 @@ const steps = [
 
 const Timelines = () => {
   return (
-    <section className="section-padding bg-background overflow-hidden border-t border-border-custom relative">
+    <section className="section-padding bg-[#F7F6F3] overflow-hidden border-t border-border-custom relative">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 

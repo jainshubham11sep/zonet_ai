@@ -185,7 +185,7 @@ const AIWhatWeDoTabs = () => {
   const activeData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section className="section-padding bg-section-alt border-t border-border-custom relative overflow-hidden">
+    <section className="section-padding bg-[#F7F6F3] border-t border-border-custom relative overflow-hidden">
       {/* Background subtle glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 

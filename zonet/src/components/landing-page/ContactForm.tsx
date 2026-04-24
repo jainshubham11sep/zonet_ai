@@ -36,7 +36,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-background overflow-hidden border-t border-border-custom relative">
+    <section id="contact" className="section-padding bg-[#F7F6F3] overflow-hidden border-t border-border-custom relative">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-7xl mx-auto">
           

@@ -24,7 +24,7 @@ const CreativesGrid = () => {
   ];
 
   return (
-    <section className="bg-section-alt overflow-hidden relative border-t border-border-custom">
+    <section className="bg-[#F7F6F3] overflow-hidden relative border-t border-border-custom">
       {/* Section label - in normal flow */}
       <div className="pt-16 pb-8 flex justify-center">
         <div className="section-label">
