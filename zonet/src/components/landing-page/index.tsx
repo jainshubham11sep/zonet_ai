@@ -42,7 +42,6 @@ const Homepage = () => {
       <DataDrivenStats />
       <VideoShowcase />
       <ContactForm />
-      <Timelines />
       <Testimonials />
       <RelatedArticles />
       <FAQs />

@@ -25,7 +25,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F7F6F3] border-b border-[#E6E4DF]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#faf8f5]! border-b border-[#E6E4DF]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -106,7 +106,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-[#E6E4DF] bg-[#F7F6F3]"
+            className="lg:hidden border-t border-[#E6E4DF] bg-[#faf8f5]!"
           >
             <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (

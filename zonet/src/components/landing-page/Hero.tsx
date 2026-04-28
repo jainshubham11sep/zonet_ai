@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, TrendingUp } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Hero = () => {
@@ -26,21 +27,28 @@ const Hero = () => {
 
             {/* Heading with inline underline */}
             <div className="mb-8">
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black text-[#1A1A1A] leading-[1.1] font-heading">
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl! font-bold! text-[#1A1A1A] leading-[1.1] font-heading">
                 We turn bold ideas<br />
-                into <span className="italic relative">
+                into {" "}
+                <em
+                  className="italic"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23F5C518' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "0 92%",
+                    backgroundSize: "100% 0.5em",
+                    paddingBottom: "0.05em",
+                  }}
+                >
                   digital products
-                  <svg className="absolute bottom-0 left-0 w-full h-3" viewBox="0 0 200 12" preserveAspectRatio="none">
-                    <path d="M0,8 Q50,0 100,8 T200,8" stroke="#E8C547" strokeWidth="6" fill="none" strokeLinecap="round" />
-                  </svg>
-                </span>
+                </em>
                 <br />
                 that scale.
               </h1>
             </div>
 
             {/* Subtitle */}
-            <p className="text-base lg:text-lg text-[#686B6B] mb-12 leading-relaxed max-w-xl">
+            <p className="text-xs text-[#686B6B] mb-12 leading-relaxed max-w-sm">
               Zonettech is a digital product agency for fast-moving companies. We blend strategy, design and engineering to build products people love and businesses rely on.
             </p>
 
@@ -66,47 +74,51 @@ const Hero = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden md:block relative h-[550px] -mr-32 mt-0"
+            className="hidden md:block relative h-[550px] w-full"
           >
-            {/* Main Illustration Placeholder */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
-              {/* Gradient background mimicking the 3D illustration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#B8C9E8] via-[#7A8DB0] to-[#1A1A1A]"></div>
+            {/* The Black Background Area */}
+            <div className="absolute top-[-54px] right-0 bottom-0 left-32 bg-[#1A1A1A] rounded-bl-2xl rounded-tl-2xl">
+              {/* Thin white lines */}
+              <div className="absolute left-[35%] top-[60%] w-px h-[40%] bg-white/20"></div>
+              <div className="absolute left-[35%] top-[60%] w-[65%] h-px bg-white/20"></div>
+              <svg className="absolute left-[calc(35%-60px)] top-[calc(60%-60px)] w-[60px] h-[60px]" viewBox="0 0 100 100">
+                <line x1="0" y1="0" x2="100" y2="100" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+              </svg>
+            </div>
 
-              {/* Placeholder for illustration */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="text-white/30 font-bold text-lg">3D Illustration</p>
-                  <p className="text-white/20 text-sm">Replace with your design</p>
+            {/* The Building Image */}
+            <div className="absolute w-100 top-10 left-[-64px] right-48 bottom-10 rounded-[24px] overflow-hidden shadow-2xl">
+              <Image
+                src="/images/zonet/hero-building.jpg"
+                alt="Architecture building"
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
+
+            {/* Built for Growth Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="absolute top-20 right-24 w-[240px] bg-[#FCFCF9] rounded-[20px] p-5 shadow-2xl z-10"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-[#E8C547] flex items-center justify-center">
+                  <TrendingUp size={20} className="text-[#1A1A1A]" strokeWidth={2.5} />
                 </div>
               </div>
-
-              {/* Black accent shape bottom left */}
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-black rounded-tr-full opacity-60"></div>
-
-              {/* "Built for Growth" Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="absolute top-12 right-8 w-72 bg-white rounded-2xl p-6 shadow-2xl z-10"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-[#E8C547] flex items-center justify-center text-xl">
-                    📈
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-[#1A1A1A] mb-3 font-heading">
-                  Built for Growth
-                </h3>
-                <p className="text-sm text-[#686B6B] mb-4 leading-relaxed">
-                  Digital products engineered to scale with your business.
-                </p>
-                <a href="#" className="text-sm font-bold text-[#1A1A1A] hover:text-[#E8C547] transition-colors inline-flex items-center gap-1.5">
-                  Learn more <ArrowRight size={16} />
-                </a>
-              </motion.div>
-            </div>
+              <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-2 font-heading">
+                Built for Growth
+              </h3>
+              <p className="text-[13px] text-[#686B6B] mb-5 leading-relaxed">
+                Digital products engineered to scale with your business.
+              </p>
+              <Link href="#" className="text-sm font-bold text-[#1A1A1A] hover:text-[#E8C547] transition-colors inline-flex items-center gap-1.5">
+                Learn more <ArrowRight size={16} className="-rotate-45" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>

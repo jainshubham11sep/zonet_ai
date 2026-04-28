@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Star, Globe, Smartphone, Puzzle, Timer, CheckCircle2 } from 'lucide-react';
-import { useState,useEffect } from 'react';
+import { ArrowUpRight, Globe, Smartphone, Puzzle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const projects = [
   {
@@ -25,14 +25,14 @@ const projects = [
       { text: 'AI-powered shopping assistant', highlight: true },
       { text: ' for 1.5M+ users, featuring ' },
       { text: 'real-time price tracking', highlight: true },
-      { text: ' and ' },
+      { text: ' and the ' },
       { text: '#1 auto-coupon engine', highlight: true },
       { text: ' in the region.' },
     ],
     stats: [
       { value: '1.5M+', label: 'Active Users' },
-      { value: '4.5/5', label: 'Play Store Rating' },
-      { value: '10+', label: 'Major Retailers' },
+      { value: '4.5/5', label: 'Store Rating' },
+      { value: '10+', label: 'Retailers' },
     ],
     quote: "The Zonet team transformed our complex data tracking into a seamless, high-performance UI that our users love.",
     client: { name: 'Ashutosh Goyal', role: 'Founder @ Flipshope' },
@@ -63,8 +63,8 @@ const projects = [
       { text: ' globally.' },
     ],
     stats: [
-      { value: '100k+', label: 'Active Earners' },
-      { value: '200+', label: 'Partner Brands' },
+      { value: '100k+', label: 'Earners' },
+      { value: '200+', label: 'Brands' },
       { value: '4.4★', label: 'App Rating' },
     ],
     quote: "ZonetTech built our Profit Links feature from scratch, and it's now our highest-converting acquisition channel.",
@@ -79,7 +79,7 @@ const projects = [
     name: 'TeacherDekho',
     location: 'India',
     badges: ['Ed-Tech'],
-    platforms: ['Web', 'App', 'Extension'],
+    platforms: ['Web', 'App'],
     platformLinks: {
       web: 'https://dev.thebestdeals.app',
       app: 'https://dev.thebestdeals.app',
@@ -88,7 +88,7 @@ const projects = [
     description: [
       { text: 'Architected a ' },
       { text: 'verified mentor network', highlight: true },
-      { text: ' for 50k+ students (live on dev.thebestdeals.app), delivering ' },
+      { text: ' for 50k+ students, delivering ' },
       { text: 'personalized learning paths', highlight: true },
       { text: ' and ' },
       { text: 'real-time progress analytics', highlight: true },
@@ -96,8 +96,8 @@ const projects = [
     ],
     stats: [
       { value: '50k+', label: 'Students' },
-      { value: '2k+', label: 'Verified Mentors' },
-      { value: '4.8★', label: 'Learning Rating' },
+      { value: '2k+', label: 'Mentors' },
+      { value: '4.8★', label: 'Rating' },
     ],
     quote: "Finding quality education shouldn't be a luxury. Zonet helped us build a platform that democratizes access to expert mentors.",
     client: { name: 'Himanshu Jain', role: 'Operations Lead @ TeacherDekho' },
@@ -107,12 +107,8 @@ const projects = [
   },
 ];
 
-// Unified, premium styles
-const highlightClass = 'text-foreground font-black border-b-2 border-accent/40 pb-0.5';
-const statBoxClass = 'bg-card border border-border-custom hover:border-accent/30 transition-all duration-300 shadow-sm';
-
-const ProjectImage = ({ src, alt }) => (
-  <div className="relative aspect-[1.3] w-full rounded-[24px] md:rounded-[36px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] border border-border-custom bg-card group">
+const ProjectImage = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="relative aspect-[4/3] w-full rounded-[32px] overflow-hidden shadow-sm border border-[#E5E5E5] bg-white group">
     <Image
       src={src}
       alt={alt}
@@ -122,7 +118,7 @@ const ProjectImage = ({ src, alt }) => (
   </div>
 );
 
-const MobileImageCarousel = ({ images, projectName }) => {
+const MobileImageCarousel = ({ images, projectName }: { images: string[]; projectName: string }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -133,14 +129,14 @@ const MobileImageCarousel = ({ images, projectName }) => {
   }, [images.length]);
 
   return (
-    <div className="relative w-full aspect-[1.3] rounded-[24px] overflow-hidden border border-border-custom bg-card group lg:hidden mb-8">
+    <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden border border-[#E5E5E5] bg-white lg:hidden mb-8 shadow-sm">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <Image
@@ -153,18 +149,13 @@ const MobileImageCarousel = ({ images, projectName }) => {
       </AnimatePresence>
       
       {/* Indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/20 backdrop-blur-md px-3 py-2 rounded-full">
         {images.map((_, i) => (
           <div 
             key={i} 
-            className={`h-1 rounded-full transition-all duration-500 ${i === index ? 'w-6 bg-accent' : 'w-1.5 bg-white/40'}`}
+            className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-4 bg-[#D1AC45]' : 'w-1.5 bg-white/70'}`}
           />
         ))}
-      </div>
-
-      {/* Glass Overlay for Title (Optional) */}
-      <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-[9px] font-black text-white uppercase tracking-widest z-20">
-        Project Preview
       </div>
     </div>
   );
@@ -178,154 +169,148 @@ const ProjectShowcase = () => {
   }, []);
 
   return (
-    <section id="work" className="section-padding bg-[#F7F6F3] border-t border-border-custom relative">
-      {/* Section Header */}
-      <div className="container mx-auto px-6 mb-12 md:mb-16 flex flex-col items-start lg:items-center text-left lg:text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="section-label mb-6"
-        >
-          Featured Success Stories
-        </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-black text-foreground tracking-tighter leading-[1.1] font-heading max-w-4xl"
-        >
-          Building Iconic Products{' '}
-          <span className="text-muted">For Visionary Founders</span>
-        </motion.h2>
-      </div>
+    <section id="work" className="py-24 md:py-32 bg-[#F8F6F0] relative border-t border-[#E5E5E5]">
+      
+      <div className="max-w-[1300px] mx-auto px-6">
+        
+        {/* Header Area */}
+        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 mb-20 md:mb-28">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-2 h-2 rounded-full bg-[#D1AC45]" />
+              <span className="text-[10px] font-black text-[#1A1A1A] tracking-[0.2em] uppercase">
+                Featured Work
+              </span>
+            </div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-[60px] font-medium text-[#1A1A1A] tracking-tight leading-[1.1] font-heading max-w-2xl"
+            >
+              Building Iconic Products <br />
+              <span className="relative inline-block">
+                <em className="italic pr-2 text-[#6A6A6A]">For Visionary Founders</em>
+                <svg className="absolute -bottom-1 left-0 w-full h-[12px] text-[#D1AC45]" viewBox="0 0 200 12" preserveAspectRatio="none">
+                  <path d="M2,10 Q50,0 100,5 T198,8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>
+            </motion.h2>
+          </div>
+        </div>
 
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col gap-20 md:gap-28">
+        <div className="flex flex-col gap-24 md:gap-32">
           {projects.map((project, idx) => (
             <div
               key={project.id}
-              className={`flex flex-col lg:flex-row gap-0 lg:gap-12 ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+              className={`flex flex-col lg:flex-row gap-8 lg:gap-16 ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
             >
 
-              {/* ── LEFT: Sticky Text Column ── */}
-              <div className="w-full lg:w-[48%] h-fit lg:sticky lg:top-28 flex flex-col gap-4">
-
-                {/* ─── Top Card: Identity + Stats ─── */}
-                <div className="rounded-2xl border border-border-custom bg-card overflow-hidden">
-                  {/* Header Bar */}
-                  <div className="px-5 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-white dark:bg-white/90 border border-gray-100 shadow-sm flex items-center justify-center shrink-0 p-2 overflow-hidden">
-                        <Image
-                          src={project.logo}
-                          alt={`${project.name} logo`}
-                          width={44}
-                          height={44}
-                          className="object-contain w-full h-full"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-black text-foreground font-heading tracking-tight leading-none">
-                          {project.name}
-                        </h3>
-                        <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-muted mt-1">
-                          <span>{project.location}</span>
-                          <span className="w-1 h-1 rounded-full bg-accent/40" />
-                          <span className="text-accent">{project.badges[0]}</span>
-                        </div>
+              {/* ── LEFT: Sticky unified Card ── */}
+              <div className="w-full lg:w-[45%] h-fit lg:sticky lg:top-32 flex flex-col gap-8 bg-white p-8 lg:p-10 rounded-[32px] border border-[#E5E5E5] shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
+                
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+                  <div className="flex items-center gap-5">
+                    <div className="w-[68px] h-[68px] rounded-[20px] bg-white border border-[#E5E5E5] shadow-sm flex items-center justify-center shrink-0 p-3 overflow-hidden">
+                      <Image
+                        src={project.logo}
+                        alt={`${project.name} logo`}
+                        width={60}
+                        height={60}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <h3 className="text-[28px] lg:text-[32px] font-heading font-medium text-[#1A1A1A] leading-none tracking-tight">
+                        {project.name}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-[9.5px] font-black uppercase tracking-[0.2em] text-[#6A6A6A]">{project.location}</span>
+                        <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
+                        <span className="text-[9.5px] font-black uppercase tracking-[0.2em] text-[#D1AC45]">{project.badges[0]}</span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      {project.platformLinks.web && (
-                        <Link href={project.platformLinks.web} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F6F3] border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
-                          <Globe size={14} />
-                        </Link>
-                      )}
-                      {project.platformLinks.app && (
-                        <Link href={project.platformLinks.app} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F6F3] border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
-                          <Smartphone size={14} />
-                        </Link>
-                      )}
-                      {project.platformLinks.extension && (
-                        <Link href={project.platformLinks.extension} target="_blank" className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F6F3] border border-border-custom text-muted hover:bg-accent hover:text-white transition-all">
-                          <Puzzle size={14} />
-                        </Link>
-                      )}
-                    </div>
                   </div>
-
-                  {/* Stats Highlight Strip */}
-                  <div className="grid grid-cols-3 bg-accent/[0.04] border-y border-border-custom/30">
-                    {project.stats.map((stat, i) => (
-                      <div
-                        key={i}
-                        className={`px-3 py-3 flex flex-col items-center justify-center gap-0.5 ${i < 2 ? 'border-r border-border-custom/30' : ''}`}
-                      >
-                        <span className="text-lg font-black text-accent leading-none font-heading tracking-tighter">
-                          {stat.value}
-                        </span>
-                        <span className="text-[7px] font-bold uppercase tracking-wider text-muted text-center leading-tight">
-                          {stat.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Timeline Badge */}
-                  <div className="px-5 py-3 flex items-center gap-3">
-                    <Timer size={13} className="text-accent" />
-                    <span className="text-[10px] font-black text-foreground uppercase tracking-widest">{project.timeline}</span>
+                  
+                  {/* Platform Links */}
+                  <div className="flex gap-2">
+                    {project.platformLinks.web && (
+                      <Link href={project.platformLinks.web} target="_blank" className="w-10 h-10 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[#1A1A1A] hover:bg-[#F8F6F0] transition-colors" aria-label="Website">
+                        <Globe size={16} />
+                      </Link>
+                    )}
+                    {project.platformLinks.app && (
+                      <Link href={project.platformLinks.app} target="_blank" className="w-10 h-10 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[#1A1A1A] hover:bg-[#F8F6F0] transition-colors" aria-label="Mobile App">
+                        <Smartphone size={16} />
+                      </Link>
+                    )}
+                    {project.platformLinks.extension && (
+                      <Link href={project.platformLinks.extension} target="_blank" className="w-10 h-10 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[#1A1A1A] hover:bg-[#F8F6F0] transition-colors" aria-label="Browser Extension">
+                        <Puzzle size={16} />
+                      </Link>
+                    )}
                   </div>
                 </div>
 
                 {/* ── MOBILE CAROUSEL ── */}
                 {mounted && <MobileImageCarousel images={[project.mainImg, project.subImg1, project.subImg2]} projectName={project.name} />}
 
-                {/* ─── Middle: Description ─── */}
-                <div className="px-1">
-                  <p className="text-muted text-sm leading-relaxed font-medium">
-                    {project.description.map((seg, i) =>
-                      seg.highlight ? (
-                        <span key={i} className={highlightClass}>
-                          {seg.text}
-                        </span>
-                      ) : (
-                        <span key={i} className="text-foreground">{seg.text}</span>
-                      )
-                    )}
-                  </p>
-                </div>
+                {/* Description */}
+                <p className="text-[14.5px] leading-[1.8] text-[#6A6A6A]">
+                  {project.description.map((seg, i) =>
+                    seg.highlight ? (
+                      <span key={i} className="text-[#1A1A1A] font-bold">
+                        {seg.text}
+                      </span>
+                    ) : (
+                      <span key={i}>{seg.text}</span>
+                    )
+                  )}
+                </p>
 
-                {/* ─── Bottom: Review + CTA Row ─── */}
-                <div className="rounded-2xl border border-border-custom bg-card overflow-hidden">
-                  <div className="px-5 py-4">
-                    <p className="text-[13px] text-foreground italic leading-relaxed mb-3">
-                      &ldquo;{project.quote}&rdquo;
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-[10px] font-black">
-                          {project.client.name.charAt(0)}
-                        </div>
-                        <div>
-                          <span className="font-bold text-foreground text-[11px] block leading-tight">{project.client.name}</span>
-                          <span className="text-[9px] font-medium text-muted leading-tight">{project.client.role}</span>
-                        </div>
-                      </div>
-                      <Link
-                        href={`/case-studies/${project.id}`}
-                        className="px-5 py-2.5 rounded-xl bg-accent text-white font-bold uppercase tracking-widest text-[9px] flex items-center gap-1.5 hover:opacity-90 transition-all shadow-lg shadow-accent/15 shrink-0"
-                      >
-                        Case Study <ArrowUpRight size={12} />
-                      </Link>
+                {/* Stats Grid */}
+                <div className="w-full h-px bg-[#E5E5E5]" />
+                <div className="grid grid-cols-3 gap-4">
+                  {project.stats.map((stat, i) => (
+                    <div key={i} className={`flex flex-col gap-1.5 ${i !== project.stats.length - 1 ? 'border-r border-[#E5E5E5]' : ''}`}>
+                      <span className="text-[22px] font-heading font-medium text-[#1A1A1A] leading-none">{stat.value}</span>
+                      <span className="text-[8.5px] font-black uppercase tracking-[0.2em] text-[#6A6A6A] leading-tight">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="w-full h-px bg-[#E5E5E5]" />
+
+                {/* Quote Box */}
+                <div className="bg-[#F8F6F0] rounded-[24px] p-7 flex flex-col gap-5 border border-[#E5E5E5]/50">
+                  <p className="text-[14px] italic text-[#1A1A1A] leading-relaxed">
+                    "{project.quote}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-[#D1AC45] text-white flex items-center justify-center text-[11px] font-black shadow-sm">
+                      {project.client.name.charAt(0)}
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <span className="text-[11px] font-bold text-[#1A1A1A] mb-0.5">{project.client.name}</span>
+                      <span className="text-[8.5px] font-black text-[#6A6A6A] uppercase tracking-widest">{project.client.role}</span>
                     </div>
                   </div>
+                </div>
+
+                {/* CTA */}
+                <div className="pt-2">
+                  <Link 
+                    href={`/case-studies/${project.id}`} 
+                    className="w-full flex items-center justify-center gap-3 px-8 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white hover:bg-black transition-all group shadow-xl shadow-black/5"
+                  >
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em]">Read Case Study</span>
+                    <ArrowUpRight size={16} className="text-[#D1AC45] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
                 </div>
               </div>
 
               {/* ── RIGHT: 3 Scrolling Images (Hidden on Mobile) ── */}
-              <div className="hidden lg:flex w-full lg:w-[50%] flex-col gap-6 md:gap-10">
+              <div className="hidden lg:flex w-full lg:w-[55%] flex-col gap-8">
                 {[project.mainImg, project.subImg1, project.subImg2].map((img, i) => (
                   <motion.div
                     key={i}
@@ -348,17 +333,22 @@ const ProjectShowcase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 flex flex-col items-center gap-4 text-center"
+          className="mt-32 flex flex-col items-center gap-6 text-center"
         >
-          <p className="text-muted text-sm md:text-base font-medium uppercase tracking-widest">
-            Ready to be our next success story?
-          </p>
+          <div className="flex items-center gap-3">
+            <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
+            <span className="text-[10px] font-black text-[#6A6A6A] tracking-[0.2em] uppercase">
+              Ready to be our next success story?
+            </span>
+            <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
+          </div>
+          
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-accent text-white font-black uppercase tracking-widest text-sm md:text-base hover:opacity-90 active:scale-95 transition-all duration-200 shadow-xl shadow-accent/25 group"
+            className="inline-flex items-center gap-3 px-10 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white font-black uppercase tracking-[0.2em] text-[11px] hover:bg-black active:scale-95 transition-all shadow-xl shadow-black/10 group"
           >
             Discover All Projects
-            <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight size={18} className="text-[#D1AC45] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </motion.div>
       </div>

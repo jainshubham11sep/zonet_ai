@@ -2,10 +2,23 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MapPin, Phone, Globe, Share2, MessageSquare, Send } from 'lucide-react';
-// import { PopupModal } from 'react-calendly';
+import { Mail, MapPin, Phone, Globe, MessageSquare, Send, ArrowUpRight, Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+
+const XLogo = ({ size = 18, className = "" }: { size?: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
+
+const LinkedinLogo = ({ size = 18, className = "" }: { size?: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
@@ -17,19 +30,20 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-background text-foreground pt-24 md:pt-32 pb-16 border-t border-border-custom">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-16 mb-24">
+    <footer className="bg-[#FAF9F6] dark:bg-background text-foreground pt-20 md:pt-28 pb-8 border-t border-border-custom">
+      <div className="container mx-auto px-6 max-w-[1400px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+          
           {/* Logo & Intro */}
-          <div className="lg:col-span-2 space-y-8">
-            <Link href="/" className="flex items-center gap-3 group">
+          <div className="lg:col-span-4 flex flex-col items-start lg:pr-8">
+            <Link href="/" className="flex items-center gap-3 mb-10">
               {mounted ? (
                 <Image 
                   src={resolvedTheme === 'dark' ? "/images/zonet/logo-white.png" : "/images/zonet/logo-black.png"} 
                   alt="ZonetTech Logo" 
                   width={180} 
                   height={50} 
-                  className="w-auto h-8 md:h-10 object-contain" 
+                  className="w-auto h-8 md:h-9 object-contain" 
                 />
               ) : (
                 <Image 
@@ -37,37 +51,54 @@ const Footer = () => {
                   alt="ZonetTech Logo" 
                   width={180} 
                   height={50} 
-                  className="w-auto h-8 md:h-10 object-contain" 
+                  className="w-auto h-8 md:h-9 object-contain" 
                 />
               )}
             </Link>
-            <p className="text-muted text-lg leading-relaxed max-w-sm font-medium">
-              The #1 Rated Fastest Website & UX Agency For B2B & AI SaaS. We build high-converting products for fast-moving companies.
+            
+            <h3 className="text-[22px] md:text-[26px] font-serif text-foreground mb-6 leading-snug tracking-tight">
+              The #1 Rated Fastest Website<br />
+              & UX Agency For <span className="relative inline-block whitespace-nowrap"><span className="italic">B2B & AI SaaS.</span><svg className="absolute w-[105%] h-3 -bottom-1 -left-1 text-[#F4BE37]" viewBox="0 0 100 20" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 15 Q 50 2 98 12" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/></svg></span>
+            </h3>
+            
+            <p className="text-muted text-[15px] leading-relaxed max-w-xs mb-10 font-medium">
+              We build high-converting digital products for fast-moving companies.
             </p>
-            <div className="flex items-center gap-6">
-              {[Globe, Share2, MessageSquare, Send].map((Icon, idx) => (
+            
+            <div className="flex items-center gap-3">
+              {[
+                { icon: Globe, label: "Website" },
+                { icon: LinkedinLogo, label: "LinkedIn" },
+                { icon: XLogo, label: "X" },
+                { icon: MessageSquare, label: "Messages" },
+                { icon: Send, label: "Telegram" }
+              ].map((item, idx) => (
                 <a 
                   key={idx} 
                   href="#" 
-                  className="text-muted hover:text-accent transition-all transform hover:scale-110 active:scale-95"
+                  aria-label={item.label}
+                  className="w-11 h-11 flex items-center justify-center rounded-2xl border border-black/5 dark:border-white/10 text-muted hover:text-foreground hover:border-foreground/30 hover:shadow-sm transition-all bg-white dark:bg-transparent"
                 >
-                  <Icon size={20} spellCheck={2} />
+                  <item.icon size={18} className={item.icon === XLogo ? "" : "stroke-[1.5]"} />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-foreground font-black text-lg mb-8 font-heading uppercase tracking-widest">Company</h4>
-            <ul className="space-y-4">
-              {['Home', 'Case Studies', 'Services', 'AI Tools', 'Contact'].map((item) => (
-                <li key={item}>
+          <div className="lg:col-span-2 lg:pl-4">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-2 h-2 rounded-full bg-[#EAB308]"></div>
+              <h4 className="text-foreground font-black text-xs uppercase tracking-[0.15em]">Company</h4>
+            </div>
+            <ul className="flex flex-col">
+              {['Home', 'Case Studies', 'Services', 'AI Tools', 'Contact'].map((item, idx, arr) => (
+                <li key={item} className={`py-3.5 ${idx !== arr.length - 1 ? 'border-b border-black/5 dark:border-white/10' : ''}`}>
                   <Link 
                     href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-muted hover:text-accent transition-all text-base font-medium flex items-center gap-2 group"
+                    className="flex items-center gap-4 text-muted hover:text-foreground transition-all text-[15px] font-medium"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-all -ml-3.5" />
+                    <div className="w-1.5 h-1.5 rounded-full border-[1.5px] border-muted-foreground/40 shrink-0" />
                     {item}
                   </Link>
                 </li>
@@ -76,69 +107,90 @@ const Footer = () => {
           </div>
 
           {/* Contact Details */}
-          <div>
-            <h4 className="text-foreground font-black text-lg mb-8 font-heading uppercase tracking-widest">Contact</h4>
+          <div className="lg:col-span-3 lg:pl-4">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-2 h-2 rounded-full bg-[#EAB308]"></div>
+              <h4 className="text-foreground font-black text-xs uppercase tracking-[0.15em]">Contact</h4>
+            </div>
             <ul className="space-y-5">
-              <li className="flex items-start gap-3 text-muted group cursor-pointer hover:text-accent transition-all">
-                <Mail size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-base font-medium">business@zonettech.com</span>
+              <li className="flex items-start gap-4">
+                <div className="w-[46px] h-[46px] rounded-[18px] border border-black/5 dark:border-white/10 flex items-center justify-center shrink-0 bg-white dark:bg-transparent">
+                  <Mail size={20} className="text-muted" strokeWidth={1.5} />
+                </div>
+                <div className="flex flex-col justify-center pt-1">
+                  <span className="text-[15px] font-semibold text-foreground">business@zonettech.com</span>
+                  <span className="text-[9px] font-black text-muted uppercase tracking-[0.15em] mt-1">Email</span>
+                </div>
               </li>
-              <li className="flex items-start gap-3 text-muted group cursor-pointer hover:text-accent transition-all">
-                <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-base font-medium">Jaipur Rajasthan, India</span>
+              <li className="flex items-start gap-4">
+                <div className="w-[46px] h-[46px] rounded-[18px] border border-black/5 dark:border-white/10 flex items-center justify-center shrink-0 bg-white dark:bg-transparent">
+                  <MapPin size={20} className="text-muted" strokeWidth={1.5} />
+                </div>
+                <div className="flex flex-col justify-center pt-1">
+                  <span className="text-[15px] font-semibold text-foreground">Jaipur Rajasthan, India</span>
+                  <span className="text-[9px] font-black text-muted uppercase tracking-[0.15em] mt-1">Location</span>
+                </div>
               </li>
-              <li className="flex items-start gap-3 text-muted group cursor-pointer hover:text-accent transition-all">
-                <Phone size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-base font-medium">+91 9166572332</span>
+              <li className="flex items-start gap-4">
+                <div className="w-[46px] h-[46px] rounded-[18px] border border-black/5 dark:border-white/10 flex items-center justify-center shrink-0 bg-white dark:bg-transparent">
+                  <Phone size={20} className="text-muted" strokeWidth={1.5} />
+                </div>
+                <div className="flex flex-col justify-center pt-1">
+                  <span className="text-[15px] font-semibold text-foreground">+91 9166572332</span>
+                  <span className="text-[9px] font-black text-muted uppercase tracking-[0.15em] mt-1">Phone</span>
+                </div>
               </li>
             </ul>
           </div>
 
           {/* Availability & CTA */}
-          <div className="lg:pl-4">
-            <h4 className="text-foreground font-black text-lg mb-8 font-heading uppercase tracking-widest">Availability</h4>
-            <div className="bg-card backdrop-blur-xl border border-border-custom p-6 rounded-3xl space-y-6">
-              <div className="flex items-center gap-2 text-xs font-black text-accent tracking-[0.2em] uppercase">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+          <div className="lg:col-span-3">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-2 h-2 rounded-full bg-[#EAB308]"></div>
+              <h4 className="text-foreground font-black text-xs uppercase tracking-[0.15em]">Availability</h4>
+            </div>
+            <div className="relative bg-white dark:bg-card/50 border border-black/5 dark:border-white/10 p-7 rounded-[2rem] overflow-hidden shadow-sm">
+              {/* Diagonal lines pattern for top right */}
+              <div 
+                className="absolute -top-16 -right-16 w-48 h-48 opacity-[0.03] dark:opacity-10 pointer-events-none rounded-full" 
+                style={{ backgroundImage: 'repeating-linear-gradient(-45deg, #000, #000 1.5px, transparent 1.5px, transparent 8px)' }}
+              ></div>
+              
+              <div className="flex items-center gap-2.5 text-[11px] font-black text-[#EAB308] uppercase tracking-[0.15em] mb-5 pb-5 border-b border-black/5 dark:border-white/10">
+                <div className="w-2 h-2 rounded-full bg-[#EAB308]"></div>
                 2 Slots Open
               </div>
-              <p className="text-muted text-xs leading-relaxed font-bold">
+              <p className="text-foreground text-[15px] leading-relaxed font-semibold mb-6 pr-2">
                 We're currently accepting new projects for Q2 2026.
               </p>
               <button
                 onClick={() => setIsCalendlyOpen(true)}
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-accent text-white font-black text-xs uppercase tracking-widest hover:bg-accent/90 transition-all shadow-lg shadow-accent/20"
+                className="w-full flex items-center justify-between px-6 py-4 rounded-[1.25rem] bg-[#111] dark:bg-white text-white dark:text-black font-black text-xs uppercase tracking-[0.15em] hover:opacity-90 transition-all shadow-md group"
               >
                 Book a call
+                <ArrowUpRight size={18} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-border-custom/50 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-muted font-medium">
+        <div className="pt-6 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-[13px] text-muted font-semibold">
             <p>© {new Date().getFullYear()} ZonetTech. All Rights Reserved.</p>
-            <div className="hidden md:block w-px h-4 bg-border-custom"></div>
-            <div className="flex gap-8">
-              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
-             </div>
+            <div className="hidden sm:block w-px h-3.5 bg-black/10 dark:bg-white/20"></div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+            </div>
           </div>
           
-          <div className="flex items-center gap-4 text-[10px] font-black text-muted tracking-widest uppercase ornament-list">
+          <div className="flex items-center gap-2 text-[10px] font-black text-muted uppercase tracking-[0.15em]">
+            <Heart className="w-[14px] h-[14px] text-[#EAB308] fill-[#EAB308]" />
             Made with passion for SaaS
           </div>
         </div>
       </div>
-      {/* {mounted && typeof document !== 'undefined' && (
-        <PopupModal
-          url="https://calendly.com/zonettech/30min"
-          onModalClose={() => setIsCalendlyOpen(false)}
-          open={isCalendlyOpen}
-          rootElement={document.body}
-        />
-      )} */}
     </footer>
   );
 };
