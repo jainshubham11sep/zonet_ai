@@ -207,7 +207,7 @@ const ProjectShowcase = () => {
             >
 
               {/* ── LEFT: Sticky unified Card ── */}
-              <div className="w-full lg:w-[45%] h-fit lg:sticky lg:top-32 flex flex-col gap-8 bg-white p-8 lg:p-10 rounded-[32px] border border-[#E5E5E5] shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
+              <div className="w-full lg:w-[45%] h-fit lg:sticky lg:top-[88px] flex flex-col gap-8 bg-white p-8 lg:p-10 rounded-[32px] border border-[#E5E5E5] shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
                 
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">

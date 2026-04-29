@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Rocket, Star, Clock, Zap, Users, Globe, TrendingUp, BadgeCheck } from 'lucide-react';
 
-const INDIGO = '#4F46E5';
-const ICON_BG = '#EDEEFF';
-const SUBLABEL = '#8588C2';
+const INDIGO = '#E8901A';
+const ICON_BG = '#FFF3D6';
+const SUBLABEL = '#A07840';
 
 const primaryStats = [
   {
@@ -221,8 +221,8 @@ const DataDrivenStats = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
           viewport={{ once: true, margin: '-40px' }}
-          className="rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-[#C8C4F0]"
-          style={{ background: 'linear-gradient(135deg, #E2DEFF 0%, #E8E5FF 50%, #E0DCFF 100%)' }}
+          className="rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-[#F5D990]"
+          style={{ background: 'linear-gradient(135deg, #FFF3D6 0%, #FEF0CC 50%, #FFF8E8 100%)' }}
         >
           {secondaryStats.map((stat, idx) => (
             <div
