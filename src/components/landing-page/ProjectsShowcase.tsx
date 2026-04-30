@@ -108,12 +108,14 @@ const projects = [
 ];
 
 const ProjectImage = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="relative aspect-[4/3] w-full rounded-[32px] overflow-hidden shadow-sm border border-[#E5E5E5] bg-white group">
+  <div className="w-full rounded-3xl overflow-hidden shadow-sm border border-[#E5E5E5] bg-white group">
     <Image
       src={src}
       alt={alt}
-      fill
-      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+      width={0}
+      height={0}
+      sizes="100vw"
+      className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
     />
   </div>
 );
@@ -310,7 +312,7 @@ const ProjectShowcase = () => {
               </div>
 
               {/* ── RIGHT: 3 Scrolling Images (Hidden on Mobile) ── */}
-              <div className="hidden lg:flex w-full lg:w-[55%] flex-col gap-8">
+              <div className="hidden lg:flex w-full lg:w-[55%] flex-col gap-4">
                 {[project.mainImg, project.subImg1, project.subImg2].map((img, i) => (
                   <motion.div
                     key={i}
