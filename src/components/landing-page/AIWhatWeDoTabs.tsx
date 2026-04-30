@@ -1,268 +1,250 @@
-'use client';
-
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, BarChart3, Plug, ShieldCheck, Search, TestTubes, Activity, MessageSquare, Workflow, PieChart, Lock } from 'lucide-react';
-
-const tabs = [
-  {
-    id: 'build',
-    label: 'Build with AI',
-    heading: 'AI-accelerated development at 3× speed',
-    desc: 'We use AI to compress development timelines without compromising quality. What takes others 3 months takes us 30 days.',
-    visual: 'timeline',
-  },
-  {
-    id: 'optimize',
-    label: 'Optimize with AI',
-    heading: 'Continuous AI-driven performance gains',
-    desc: 'AI constantly monitors and improves your product\'s performance, SEO, and UX — even after launch. Our agents detect bottlenecks before they affect your users.',
-    visual: 'metrics',
-  },
-  {
-    id: 'integrate',
-    label: 'Integrate AI',
-    heading: 'Embed intelligence directly into your product',
-    desc: 'From simple chatbots to advanced LLM pipelines — we embed AI where it drives the most value. Our integrations are designed to scale with your user base.',
-    visual: 'integration',
-  },
-];
-
-const TimelineCompare = () => (
-  <div className="space-y-5">
-    {/* Traditional Agency */}
-    <div className="flex items-center gap-4">
-      <span className="text-xs font-medium text-muted whitespace-nowrap w-36 text-right">Traditional Agency</span>
-      <div className="flex-1 h-10 rounded-lg bg-border-custom/30 relative overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: '100%' }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          viewport={{ once: true }}
-          className="h-full rounded-lg bg-gradient-to-r from-red-600/60 to-red-500/40 flex items-center justify-end pr-4"
-        >
-          <span className="text-xs font-bold text-foreground">90 days</span>
-        </motion.div>
-      </div>
-    </div>
-    {/* Zonet */}
-    <div className="flex items-center gap-4">
-      <span className="text-xs font-medium text-muted whitespace-nowrap w-36 text-right">Zonet (AI-Powered)</span>
-      <div className="flex-1 h-10 rounded-lg bg-border-custom/30 relative overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: '35%' }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-          viewport={{ once: true }}
-          className="h-full rounded-lg bg-gradient-to-r from-accent/80 to-accent/50 flex items-center justify-end pr-4"
-        >
-          <span className="text-xs font-bold text-white">30 days</span>
-        </motion.div>
-      </div>
-    </div>
-    {/* Badges */}
-    <div className="flex flex-wrap gap-2 mt-3">
-      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border-custom text-[10px] font-bold text-muted">
-        <Zap size={12} className="text-amber-500" /> 3× Faster Delivery
-      </span>
-      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border-custom text-[10px] font-bold text-muted">
-        💰 40% Cost Savings
-      </span>
-      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border-custom text-[10px] font-bold text-muted">
-        🎯 Same Quality Standard
-      </span>
-    </div>
-  </div>
-);
-
-const MetricsGrid = () => {
-  const metrics = [
-    { value: 97, label: 'Performance', color: '#6366F1' },
-    { value: 94, label: 'SEO Score', color: '#8B5CF6' },
-    { value: 98, label: 'Accessibility', color: '#A78BFA' },
-    { value: 92, label: 'Conversion', color: '#00ff88' },
-  ];
-
-  const features = [
-    { icon: Activity, text: 'Real-time Performance Monitoring' },
-    { icon: Search, text: 'AI-Driven SEO Adjustments' },
-    { icon: TestTubes, text: 'Automated A/B Testing' },
-    { icon: ShieldCheck, text: 'Predictive Security Patches' },
-  ];
-
-  return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {metrics.map((m, i) => {
-          const circumference = 2 * Math.PI * 42;
-          const offset = circumference - (m.value / 100) * circumference;
-          return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card/60 border border-border-custom"
-            >
-              <div className="relative w-20 h-20">
-                <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                  <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border-custom)" strokeWidth="6" />
-                  <motion.circle
-                    cx="50" cy="50" r="42"
-                    fill="none"
-                    stroke={m.color}
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                    strokeDasharray={circumference}
-                    initial={{ strokeDashoffset: circumference }}
-                    whileInView={{ strokeDashoffset: offset }}
-                    transition={{ duration: 1, delay: i * 0.15 }}
-                    viewport={{ once: true }}
-                  />
-                </svg>
-                <span className="absolute inset-0 flex items-center justify-center text-lg font-black text-foreground">{m.value}</span>
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-muted">{m.label}</span>
-            </motion.div>
-          );
-        })}
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-        {features.map((f, i) => {
-          const Icon = f.icon;
-          return (
-            <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-card/40 border border-border-custom/50">
-              <Icon size={14} className="text-accent shrink-0" />
-              <span className="text-xs font-medium text-muted">{f.text}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const IntegrationFlow = () => {
-  const nodes = [
-    { icon: MessageSquare, text: 'AI Chatbot', sub: '24/7 Support' },
-    { icon: Workflow, text: 'Auto-Task', sub: 'Workflow AI' },
-    { icon: PieChart, text: 'Analytics', sub: 'Predictive Insights' },
-    { icon: Lock, text: 'Security', sub: 'Anomaly Detection' },
-  ];
-
-  return (
-    <div className="flex flex-col items-center gap-6">
-      <div className="px-6 py-3 rounded-2xl bg-accent/15 border border-accent/25 text-sm font-bold text-foreground">
-        Your Product
-      </div>
-      <div className="w-px h-6 bg-border-custom" />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
-        {nodes.map((n, i) => {
-          const Icon = n.icon;
-          return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card/60 border border-border-custom text-center"
-            >
-              <Icon size={20} className="text-accent" />
-              <span className="text-xs font-bold text-foreground">{n.text}</span>
-              <span className="text-[9px] text-muted">{n.sub}</span>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
 const AIWhatWeDoTabs = () => {
-  const [activeTab, setActiveTab] = useState('build');
-  const activeData = tabs.find(t => t.id === activeTab);
-
   return (
-    <section className="section-padding bg-[#F7F6F3] border-t border-border-custom relative overflow-hidden">
-      {/* Background subtle glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="bg-[#F7F6F3] px-12 pt-14 pb-10 max-w-[1200px] mx-auto relative overflow-hidden">
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="flex flex-col items-start mb-12 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="section-label mb-4"
-          >
-            What We Do
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-[1.1] font-heading max-w-3xl"
-          >
-            We don&apos;t just build products. We make them <span className="text-accent">intelligent.</span>
-          </motion.h2>
+      {/* Badge */}
+      <span className="inline-block border border-[#E6E4DF] rounded-[20px] px-[14px] py-1 text-[11px] font-semibold tracking-[.08em] text-[#686B6B] mb-[18px] bg-white/60">
+        WHAT WE DO
+      </span>
+
+      {/* Header Row */}
+      <div className="flex justify-between items-start gap-6">
+        <div className="flex-1">
+          <h1 className="font-serif text-[38px] font-bold leading-[1.18] text-[#1A1A1A] mb-[14px]">
+            We don&apos;t just build products.<br />
+            We turn them into <span className="text-[#686BAB]">intelligent systems.</span>
+          </h1>
+          <p className="text-sm text-[#686B6B] leading-[1.65] max-w-[460px]">
+            Zonnetech combines design, engineering, and AI to deliver digital products that are fast, scalable, and future-ready.
+          </p>
         </div>
+        <div className="w-[220px] shrink-0 relative h-[140px]">
+          <svg
+            className="absolute right-0 top-[-10px]"
+            width="210"
+            height="150"
+            viewBox="0 0 210 150"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ellipse cx="105" cy="130" rx="80" ry="18" fill="#E6E4DF" opacity="0.5" />
+            <g opacity="0.6">
+              <path d="M55 105 L105 90 L155 105 L105 120 Z" fill="#ECEAE4" stroke="#C4C0B8" strokeWidth="1" />
+              <path d="M55 105 L55 118 L105 133 L105 120 Z" fill="#E4E1DA" stroke="#C4C0B8" strokeWidth="1" />
+              <path d="M155 105 L155 118 L105 133 L105 120 Z" fill="#E8E5DF" stroke="#C4C0B8" strokeWidth="1" />
+            </g>
+            <g opacity="0.78">
+              <path d="M62 75 L105 62 L148 75 L105 88 Z" fill="#E6E3DC" stroke="#B8B4AC" strokeWidth="1" />
+              <path d="M62 75 L62 87 L105 100 L105 88 Z" fill="#DEDAD2" stroke="#B8B4AC" strokeWidth="1" />
+              <path d="M148 75 L148 87 L105 100 L105 88 Z" fill="#E2DED6" stroke="#B8B4AC" strokeWidth="1" />
+            </g>
+            <g>
+              <path d="M70 44 L105 33 L140 44 L105 55 Z" fill="#DAD6CE" stroke="#ADA9A0" strokeWidth="1.2" />
+              <path d="M70 44 L70 56 L105 67 L105 55 Z" fill="#D0CCCA" stroke="#ADA9A0" strokeWidth="1.2" />
+              <path d="M140 44 L140 56 L105 67 L105 55 Z" fill="#D8D4CC" stroke="#ADA9A0" strokeWidth="1.2" />
+            </g>
+            <circle cx="170" cy="30" r="3" fill="#C4C0B8" opacity="0.5" />
+            <circle cx="185" cy="20" r="2" fill="#C4C0B8" opacity="0.4" />
+            <circle cx="178" cy="50" r="2" fill="#C4C0B8" opacity="0.3" />
+            <circle cx="195" cy="60" r="2.5" fill="#C4C0B8" opacity="0.3" />
+            <circle cx="35" cy="80" r="2.5" fill="#C4C0B8" opacity="0.3" />
+            <circle cx="20" cy="65" r="2" fill="#C4C0B8" opacity="0.25" />
+            <line x1="170" y1="30" x2="185" y2="20" stroke="#C4C0B8" strokeWidth="0.8" opacity="0.5" />
+            <line x1="178" y1="50" x2="195" y2="60" stroke="#C4C0B8" strokeWidth="0.8" opacity="0.4" />
+          </svg>
+        </div>
+      </div>
 
-        {/* Tab Switcher */}
-        <div className="mb-10 md:mb-14">
-          <div className="flex items-center gap-0 border-b border-border-custom">
-            {tabs.map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`relative px-5 py-3 text-xs md:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
-                    isActive
-                      ? 'text-foreground'
-                      : 'text-muted hover:text-foreground'
-                  }`}
-                >
-                  {tab.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="whatwedo-underline"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
+      {/* Service Cards */}
+      <div className="grid grid-cols-3 gap-4 mt-9">
+
+        {/* Card 1: Build */}
+        <div className="bg-white border border-[#E6E4DF] rounded-[18px] pt-6 px-[22px] pb-5 relative transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5">
+          <div className="text-[10px] font-bold tracking-[.1em] text-[#1A1A1A] mb-[10px]">01. BUILD</div>
+          <div className="w-[46px] h-[46px] rounded-xl flex items-center justify-center mb-3 bg-[#F7F6F3] text-[#1A1A1A]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <div className="font-serif text-[17px] font-semibold text-[#1A1A1A] leading-[1.3] mb-[14px]">
+            Digital Products<br />That Scale
+          </div>
+          <ul className="flex flex-col gap-2">
+            {['Custom Web & App Development', 'Scalable Architecture', 'AI-Ready Foundation'].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-[13px] text-[#686B6B]">
+                <span className="w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 text-[10px] bg-[#F7F6F3] text-[#1A1A1A]">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="absolute bottom-5 right-5 w-8 h-8 rounded-full border border-[#E6E4DF] flex items-center justify-center text-[#686B6B] text-sm cursor-pointer transition-all duration-200 hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A]">
+            →
           </div>
         </div>
 
-        {/* Tab Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="space-y-8"
-          >
-            {/* Visual Panel */}
-            <div className="rounded-2xl bg-card border border-border-custom p-6 md:p-10">
-              {activeData.visual === 'timeline' && <TimelineCompare />}
-              {activeData.visual === 'metrics' && <MetricsGrid />}
-              {activeData.visual === 'integration' && <IntegrationFlow />}
-            </div>
+        {/* Card 2: Optimize — featured / active */}
+        <div className="bg-white border border-[#E8C547] rounded-[18px] pt-6 px-[22px] pb-5 relative transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5">
+          <div className="text-[10px] font-bold tracking-[.1em] text-[#686BAB] mb-[10px]">02. OPTIMIZE</div>
+          <div className="w-[46px] h-[46px] rounded-xl flex items-center justify-center mb-3 bg-[#EEEEF6] text-[#686BAB]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+          </div>
+          <div className="font-serif text-[17px] font-semibold text-[#1A1A1A] leading-[1.3] mb-[14px]">
+            Improve Performance<br />&amp; User Experience
+          </div>
+          <ul className="flex flex-col gap-2">
+            {['Speed & SEO Optimization', 'Conversion & Analytics', 'Continuous UX Improvements'].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-[13px] text-[#686B6B]">
+                <span className="w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 text-[10px] bg-[#EEEEF6] text-[#686BAB]">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="absolute bottom-5 right-5 w-8 h-8 rounded-full border border-[#E6E4DF] flex items-center justify-center text-[#686B6B] text-sm cursor-pointer transition-all duration-200 hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A]">
+            →
+          </div>
+        </div>
 
-            {/* Description */}
-            <p className="text-sm md:text-base text-muted font-medium leading-relaxed max-w-2xl">
-              {activeData.desc}
-            </p>
-          </motion.div>
-        </AnimatePresence>
+        {/* Card 3: Automate */}
+        <div className="bg-white border border-[#E6E4DF] rounded-[18px] pt-6 px-[22px] pb-5 relative transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5">
+          <div className="text-[10px] font-bold tracking-[.1em] text-[#16a34a] mb-[10px]">03. AUTOMATE</div>
+          <div className="w-[46px] h-[46px] rounded-xl flex items-center justify-center mb-3 bg-[#d1fae5] text-[#16a34a]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div className="font-serif text-[17px] font-semibold text-[#1A1A1A] leading-[1.3] mb-[14px]">
+            AI Automation<br />That Works
+          </div>
+          <ul className="flex flex-col gap-2">
+            {['AI Chatbots & Assistants', 'Workflow Automation', 'Smart Integrations'].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-[13px] text-[#686B6B]">
+                <span className="w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 text-[10px] bg-[#d1fae5] text-[#16a34a]">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="absolute bottom-5 right-5 w-8 h-8 rounded-full border border-[#d1fae5] flex items-center justify-center text-[#16a34a] text-sm cursor-pointer transition-all duration-200 hover:bg-[#16a34a] hover:text-white hover:border-[#16a34a]">
+            →
+          </div>
+        </div>
+
       </div>
+
+      {/* Pipeline */}
+      <div className="bg-white border border-[#E6E4DF] rounded-[18px] px-6 py-5 mt-5">
+        <div className="text-center text-[10px] font-bold tracking-[.12em] text-[#686B6B] mb-[14px]">
+          AI-POWERED DELIVERY FRAMEWORK
+        </div>
+        <div className="flex items-center gap-[10px]">
+          <div className="border border-[#E6E4DF] rounded-xl px-4 py-[10px] flex items-center gap-2 text-[13px] font-semibold text-[#1A1A1A] whitespace-nowrap bg-white">
+            <span>💡</span> Your Idea
+          </div>
+          <span className="text-[#686B6B] text-base shrink-0">→</span>
+          <div
+            className="flex-1 rounded-[14px] px-[18px] py-3 flex items-center gap-[14px] text-white"
+            style={{ background: 'linear-gradient(135deg, #1A1A1A 0%, #2d2d2a 100%)' }}
+          >
+            <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-lg shrink-0">🔄</div>
+            <div className="text-[11px] font-extrabold tracking-[.04em] leading-[1.2] shrink-0">
+              ZONNETECH<br />AI ENGINE
+            </div>
+            <div className="flex gap-2 flex-wrap flex-1">
+              {[
+                { icon: '🧠', label: 'Intelligence' },
+                { icon: '🤖', label: 'Automation' },
+                { icon: '📊', label: 'Analytics' },
+                { icon: '🛡️', label: 'Security' },
+              ].map(({ icon, label }) => (
+                <div key={label} className="flex items-center gap-[5px] text-[11px] font-medium text-white/80 whitespace-nowrap">
+                  <span className="text-sm">{icon}</span> {label}
+                </div>
+              ))}
+            </div>
+          </div>
+          <span className="text-[#686B6B] text-base shrink-0">→</span>
+          <div className="border border-[#E8C547] rounded-xl px-[14px] py-[10px] flex items-center gap-2 text-xs font-bold text-[#1A1A1A] bg-[#FFFBEA] whitespace-nowrap">
+            <span>🚀</span>
+            <span>Smarter Product<br />Better Results</span>
+          </div>
+        </div>
+      </div>
+
+      {/* VS Section */}
+      <div className="grid grid-cols-[1fr_auto_1fr] mt-5 rounded-[18px] overflow-hidden border border-[#E6E4DF]">
+        <div className="bg-white px-6 py-[22px] border-r border-[#E6E4DF]">
+          <div className="text-[10px] font-bold tracking-[.1em] text-[#ef4444] mb-[6px]">TRADITIONAL AGENCY</div>
+          <div className="font-serif text-[28px] font-bold leading-none text-[#1A1A1A]">
+            3 Months+
+          </div>
+          <div className="text-[13px] font-semibold text-[#686B6B] mt-0.5 mb-[14px]">To Launch</div>
+          <ul className="flex flex-col gap-[7px]">
+            {['Slow Development', 'High Communication Cost', 'Manual & Repetitive Work'].map((item) => (
+              <li key={item} className="text-[12.5px] text-[#686B6B] flex items-center gap-[6px]">
+                <span className="text-[#ef4444] font-bold">✗</span> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="bg-[#F7F6F3] flex items-center justify-center px-5 font-serif text-lg font-bold text-[#686B6B] border-r border-[#E6E4DF]">
+          VS
+        </div>
+        <div className="bg-[#F7F6F3] px-6 py-[22px] flex gap-5 items-center">
+          <div className="flex-1">
+            <div className="text-[10px] font-bold tracking-[.1em] text-[#16a34a] mb-[6px]">ZONNETECH (AI-POWERED)</div>
+            <div className="font-serif text-[28px] font-bold leading-none text-[#16a34a]">
+              30 Days
+            </div>
+            <div className="text-[13px] font-semibold text-[#686B6B] mt-0.5 mb-[14px]">To Launch</div>
+            <ul className="flex flex-col gap-[7px]">
+              {['3x Faster Delivery', '40% Cost Savings', 'AI-Powered Workflows'].map((item) => (
+                <li key={item} className="text-[12.5px] text-[#686B6B] flex items-center gap-[6px]">
+                  <span className="text-[#16a34a] font-bold">✓</span> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className="w-[72px] h-[72px] rounded-full flex flex-col items-center justify-center text-white shrink-0 text-[10px] font-bold tracking-[.04em] leading-[1.4] text-center"
+            style={{ background: 'linear-gradient(135deg, #16a34a 0%, #22c55e 100%)' }}
+          >
+            <span className="text-lg mb-0.5">⚡</span>
+            Smarter<br />Faster<br />Better
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Strip */}
+      <div className="mt-5 flex items-center bg-white border border-[#E6E4DF] rounded-[18px] px-6 py-[18px]">
+        <div className="flex-[1.2] flex items-start gap-[14px] border-r border-[#E6E4DF] pr-6 mr-6">
+          <span className="text-[22px] text-[#1A1A1A] shrink-0 mt-0.5">🛡</span>
+          <p className="text-[12.5px] text-[#686B6B] leading-[1.6]">
+            We use AI to compress development timelines without compromising quality.<br />
+            <strong className="text-[#1A1A1A] font-bold">What takes others 3 months, takes us 30 days.</strong>
+          </p>
+        </div>
+        <div className="flex-[2] flex gap-8">
+          {[
+            { icon: '🛡', title: 'Enterprise Security', sub: 'Built-in Protection', green: false },
+            { icon: '👥', title: 'Agile & Transparent', sub: 'Daily Updates', green: false },
+            { icon: '∞', title: 'Future Ready', sub: 'Scalable & Flexible', green: true },
+          ].map(({ icon, title, sub, green }) => (
+            <div key={title} className="flex items-start gap-[10px]">
+              <span className={`text-xl shrink-0 ${green ? 'text-[#16a34a]' : 'text-[#1A1A1A]'}`}>{icon}</span>
+              <div>
+                <h4 className="text-[13px] font-bold text-[#1A1A1A]">{title}</h4>
+                <p className="text-[11.5px] text-[#686B6B] mt-px">{sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </section>
   );
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const TECH = [
   // Row 1
@@ -345,19 +346,24 @@ export default function TrustedIntegrations() {
                 transform: 'translate(-50%, -50%)',
                 width: 82,
                 height: 82,
-                background: 'linear-gradient(145deg, #1C1814, #3A2E26)',
+                background: '#FFFFFF',
                 borderRadius: 22,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 zIndex: 10,
-                boxShadow: '0 8px 36px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.06)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04)',
                 animation: 'ti-popIn 0.9s 2.4s cubic-bezier(.22,1,.36,1) both',
               }}
             >
-              <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', color: '#F0EBE3', fontSize: 34, fontWeight: 700 }}>
-                Z
-              </span>
+              <Image
+                src="/images/zonet/logo-icon.png"
+                alt="Zonet Tech"
+                width={42}
+                height={42}
+                className='object-contain'
+
+              />
             </div>
 
             {/* Keyframes injected once */}
