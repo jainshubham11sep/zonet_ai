@@ -14,10 +14,10 @@ const iconMap = {
 /* ─────────────────────────────────────────────────────────
    STAT BOX
 ───────────────────────────────────────────────────────── */
-function StatBox({ value, label, icon: iconName, delay = 0 }) {
+function StatBox({ value, label, icon: iconName, delay = 0 }: { value: string | number; label: string; icon: keyof typeof iconMap | string; delay?: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const Icon = iconMap[iconName] || Star;
+  const Icon = iconMap[iconName as keyof typeof iconMap] || Star;
 
   return (
     <motion.div
@@ -41,7 +41,7 @@ function StatBox({ value, label, icon: iconName, delay = 0 }) {
 /* ─────────────────────────────────────────────────────────
    INDUSTRY SELECT DROPDOWN
 ───────────────────────────────────────────────────────── */
-function Select({ value, onChange, options }) {
+function Select({ value, onChange, options }: { value: string; onChange: (val: string) => void; options: string[] }) {
   return (
     <div className="relative">
       <select
@@ -61,7 +61,7 @@ function Select({ value, onChange, options }) {
 /* ─────────────────────────────────────────────────────────
    CASE STUDY CARD
 ───────────────────────────────────────────────────────── */
-function CaseStudyCard({ cs, idx }) {
+function CaseStudyCard({ cs, idx }: { cs: any; idx: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
@@ -117,7 +117,7 @@ function CaseStudyCard({ cs, idx }) {
         </div>
 
         <p className="text-sm text-muted leading-relaxed font-medium mb-6 flex-1">
-          {cs.description.map((seg, i) =>
+          {cs.description.map((seg: any, i: number) =>
             seg.highlight ? (
               <strong key={i} className="font-black text-foreground">{seg.text}</strong>
             ) : (
@@ -129,7 +129,7 @@ function CaseStudyCard({ cs, idx }) {
         <div className="border-t border-border-custom/60 mb-5" />
 
         <div className="grid grid-cols-3 gap-2">
-          {cs.stats.map((stat, i) => (
+          {cs.stats.map((stat: any, i: number) => (
             <StatBox key={i} {...stat} delay={i * 0.07} />
           ))}
         </div>
