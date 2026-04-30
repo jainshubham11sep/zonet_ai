@@ -1,20 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { useState } from 'react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const navLinks = [
     { name: 'Work', href: '/case-studies' },
@@ -29,25 +22,14 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          {mounted ? (
-            <Image
-              src={resolvedTheme === 'dark' ? '/images/zonet/logo-white.png' : '/images/zonet/logo-black.png'}
-              alt="ZonetTech"
-              width={140}
-              height={35}
-              className="w-auto h-7"
-              priority
-            />
-          ) : (
-            <Image
-              src="/images/zonet/logo-black.png"
-              alt="ZonetTech"
-              width={140}
-              height={35}
-              className="w-auto h-7"
-              priority
-            />
-          )}
+          <Image
+            src="/images/zonet/logo-black.png"
+            alt="ZonetTech"
+            width={140}
+            height={35}
+            className="w-auto h-7"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -65,21 +47,6 @@ const Header = () => {
 
         {/* Right Section */}
         <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
-          {mounted && (
-            <button
-              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-              className="w-10 h-10 flex items-center justify-center rounded-lg border border-border-custom text-foreground hover:bg-card transition-colors"
-              aria-label="Toggle theme"
-            >
-              {resolvedTheme === 'dark' ? (
-                <Sun size={18} />
-              ) : (
-                <Moon size={18} />
-              )}
-            </button>
-          )}
-
           {/* CTA Button - Desktop */}
           <Link
             href="/"

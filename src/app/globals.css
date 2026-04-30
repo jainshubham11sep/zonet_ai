@@ -43,38 +43,6 @@
   --progress-bar: #E8C547;
 }
 
-/* ===== DARK MODE (ZoneTech Design System) ===== */
-.dark {
-  --background: #1A1A1A;
-  --foreground: #F7F6F3;
-  --secondary: #C4C2B8;
-  --muted: #9C9A92;
-  --accent: #E8C547;
-  --accent-yellow: #E8C547;
-  --accent-blue: #686BAB;
-  --accent-foreground: #1A1A1A;
-  --border: #3a3936;
-  --card-bg: #232221;
-  --card-bg-alt: #2e2d2b;
-  --button-bg: #FFFFFF;
-  --button-fg: #1A1A1A;
-  --button-yellow-bg: #E8C547;
-  --button-yellow-fg: #1A1A1A;
-  --input-bg: #232221;
-  --input-border: #3a3936;
-  --section-alt: #232221;
-  --footer-bg: #0d0d0c;
-  --footer-fg: #F7F6F3;
-  --marquee-fade: #1A1A1A;
-  --badge-bg: #232221;
-  --badge-border: #3a3936;
-  --icon-bg: #2e2d2b;
-  --progress-bar: #E8C547;
-}
-
-.dark html, .dark body {
-  background-color: #1A1A1A;
-}
 
 @theme inline {
   --colors-background: var(--background);
@@ -120,7 +88,6 @@ html, body {
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ZoneTech Typography System */
