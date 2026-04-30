@@ -1,7 +1,7 @@
 'use client';
 
 import ContactForm from '@/components/landing-page/ContactForm';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Cpu, Terminal, Zap, Bot, Code, Layout } from 'lucide-react';
 
 const tools = [

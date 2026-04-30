@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Mail, MapPin, CheckCircle2, Phone, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 

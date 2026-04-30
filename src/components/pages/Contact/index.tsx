@@ -1,7 +1,7 @@
 'use client';
 
 import ContactForm from '@/components/landing-page/ContactForm';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Calendar } from 'lucide-react';
 
 const contactInfo = [

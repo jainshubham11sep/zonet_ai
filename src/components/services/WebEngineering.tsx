@@ -1,7 +1,7 @@
 'use client';
 
 import { caseStudies } from '@/lib/case-studies';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { 
   Globe, Zap, ArrowUpRight, CheckCircle2, 
   Layers, Code2, Rocket, BarChart3, 

@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Preloader from "@/components/shared/Preloader";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 
-const inter = Inter({ 
-  subsets: ["latin"], 
-  weight: ["400", "500", "700", "900"],
-  variable: '--font-inter',
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-playfair",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +36,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning className={inter.variable}
+      suppressHydrationWarning
+      className={`${inter.variable} ${playfair.variable}`}
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

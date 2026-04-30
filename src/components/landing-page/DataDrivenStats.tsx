@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import { Rocket, Star, Clock, Zap, Users, Globe, TrendingUp, BadgeCheck } from 'lucide-react';
 
 const INDIGO = '#E8901A';

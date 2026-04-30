@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'motion/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, ChevronDown, Sparkles, TrendingUp, Users, Star, Smartphone, Globe, Puzzle, Rocket, BarChart3, ShieldCheck, Zap } from 'lucide-react';

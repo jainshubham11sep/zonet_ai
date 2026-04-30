@@ -1,7 +1,7 @@
 'use client';
 
 import { use, useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { 
   ArrowLeft, ArrowRight, CheckCircle2, Cpu, Zap, Globe, 
   Smartphone, Puzzle, Rocket, BarChart3, ShieldCheck, 
