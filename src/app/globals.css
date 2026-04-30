@@ -1,0 +1,254 @@
+/* ===== IMPORTS & TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* ===== LIGHT MODE (ZoneTech Design System) ===== */
+:root {
+  /* Primary Colors */
+  --background: #faf8f5;
+  --foreground: #1A1A1A;
+
+  /* Secondary & Muted */
+  --secondary: #686B6B;
+  --muted: #686B6B;
+
+  /* Accent Colors */
+  --accent: #E8C547;
+  --accent-yellow: #E8C547;
+  --accent-blue: #686BAB;
+  --accent-foreground: #1A1A1A;
+
+  /* Borders & Cards */
+  --border: #E6E4DF;
+  --card-bg: #FFFFFF;
+  --card-bg-alt: #F7F6F3;
+
+  /* Buttons & Inputs */
+  --button-bg: #111111;
+  --button-fg: #FFFFFF;
+  --button-yellow-bg: #E8C547;
+  --button-yellow-fg: #1A1A1A;
+  --input-bg: #FFFFFF;
+  --input-border: #E6E4DF;
+
+  /* Section & Footer */
+  --section-alt: #F7F6F3;
+  --footer-bg: #1A1A1A;
+  --footer-fg: #FFFFFF;
+  --marquee-fade: #F7F6F3;
+
+  /* Badges & Icons */
+  --badge-bg: #F7F6F3;
+  --badge-border: #E6E4DF;
+  --icon-bg: #F7F6F3;
+  --progress-bar: #E8C547;
+}
+
+/* ===== DARK MODE (ZoneTech Design System) ===== */
+.dark {
+  --background: #1A1A1A;
+  --foreground: #F7F6F3;
+  --secondary: #C4C2B8;
+  --muted: #9C9A92;
+  --accent: #E8C547;
+  --accent-yellow: #E8C547;
+  --accent-blue: #686BAB;
+  --accent-foreground: #1A1A1A;
+  --border: #3a3936;
+  --card-bg: #232221;
+  --card-bg-alt: #2e2d2b;
+  --button-bg: #FFFFFF;
+  --button-fg: #1A1A1A;
+  --button-yellow-bg: #E8C547;
+  --button-yellow-fg: #1A1A1A;
+  --input-bg: #232221;
+  --input-border: #3a3936;
+  --section-alt: #232221;
+  --footer-bg: #0d0d0c;
+  --footer-fg: #F7F6F3;
+  --marquee-fade: #1A1A1A;
+  --badge-bg: #232221;
+  --badge-border: #3a3936;
+  --icon-bg: #2e2d2b;
+  --progress-bar: #E8C547;
+}
+
+.dark html, .dark body {
+  background-color: #1A1A1A;
+}
+
+@theme inline {
+  --colors-background: var(--background);
+  --colors-foreground: var(--foreground);
+  --colors-secondary: var(--secondary);
+  --colors-muted: var(--muted);
+  --colors-accent: var(--accent);
+  --colors-accent-yellow: var(--accent-yellow);
+  --colors-accent-blue: var(--accent-blue);
+  --colors-accent-foreground: var(--accent-foreground);
+  --colors-border-custom: var(--border);
+  --colors-card: var(--card-bg);
+  --colors-card-alt: var(--card-bg-alt);
+  --colors-button-bg: var(--button-bg);
+  --colors-button-fg: var(--button-fg);
+  --colors-button-yellow-bg: var(--button-yellow-bg);
+  --colors-button-yellow-fg: var(--button-yellow-fg);
+  --colors-input-bg: var(--input-bg);
+  --colors-input-border: var(--input-border);
+  --colors-section-alt: var(--section-alt);
+  --colors-footer-bg: var(--footer-bg);
+  --colors-footer-fg: var(--footer-fg);
+  --colors-marquee-fade: var(--marquee-fade);
+  --colors-badge-bg: var(--badge-bg);
+  --colors-badge-border: var(--badge-border);
+  --colors-icon-bg: var(--icon-bg);
+  --colors-progress-bar: var(--progress-bar);
+
+  /* ZoneTech Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: #F7F6F3;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ZoneTech Typography System */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Body typography */
+p, a, span {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+em {
+  font-style: italic;
+  font-family: var(--font-heading);
+}
+
+/* Premium Utilities */
+.glass {
+  background: color-mix(in srgb, var(--card-bg), transparent 30%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--border), transparent 50%);
+}
+
+.mobile-hide {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .mobile-hide {
+    display: block !important;
+  }
+}
+
+.section-label {
+  display: inline-block;
+  padding: 6px 16px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border-width: 1.5px;
+  border-color: var(--badge-border);
+  border: 1px solid var(--badge-border);
+  background-color: var(--badge-bg);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+/* ZoneTech Spacing System (8px base unit) */
+.section-padding {
+  padding-top: 6rem;    /* 96px */
+  padding-bottom: 6rem; /* 96px */
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;    /* 96px */
+    padding-bottom: 6rem; /* 96px */
+  }
+}
+
+.section-py-sm {
+  padding-top: 3rem;    /* 48px */
+  padding-bottom: 3rem; /* 48px */
+}
+
+.section-py-lg {
+  padding-top: 8rem;    /* 128px */
+  padding-bottom: 8rem; /* 128px */
+}
+
+/* ZoneTech Component Patterns (use Tailwind classes directly) */
+/* See .claude/design/COMPONENTS-GUIDE.md for implementation patterns */
+
+/* Button Primary: px-5 py-2.5 rounded-full bg-[#111111] text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 */
+/* Button Secondary: px-5 py-2.5 rounded-full bg-[#E8C547] text-[#1A1A1A] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 */
+/* Card: rounded-2xl p-6 border border-[#E6E4DF] bg-white shadow-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-200 */
+/* Link: hover:underline underline-offset-4 transition-all duration-300 */
+
+.overflow-x-clip {
+  overflow-x: clip; /* Modern alternative to hidden that doesn't mess with sticky */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
