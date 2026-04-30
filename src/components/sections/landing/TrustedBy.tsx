@@ -56,45 +56,49 @@ const partners = [
 
 const TrustedBy = () => {
   return (
-    <section className="bg-[#F7F6F3] border-t border-black/5 py-10">
-      <div className="max-w-[1440px] mx-auto px-[50px] flex items-center">
-        {/* Left — label */}
-        <motion.div
-          variants={slideInLeft}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="shrink-0 mr-[60px]"
-        >
-          <p className="text-[10px] font-bold text-[#777777] tracking-[1px] leading-snug uppercase">
-            Trusted<br />Tech Stack
-          </p>
-        </motion.div>
+    <section className="bg-[#F7F6F3] border-t border-black/5 py-10 md:py-12">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[50px]">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
 
-        {/* Right — logos */}
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex items-center justify-start gap-12"
-        >
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 0.5, y: 0 }}
-              whileHover={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ opacity: { duration: 0.25 }, y: { duration: 0.4, delay: 0.1 + index * 0.08 } }}
-              className="flex items-center gap-2 text-[#1A1A1A] font-semibold text-[18px] whitespace-nowrap cursor-default grayscale hover:grayscale-0 hover:text-[#E8C547] transition-[filter,color] duration-300"
-            >
-              {partner.icon}
-              {partner.name}
-            </motion.div>
-          ))}
-        </motion.div>
+          {/* Label */}
+          <motion.div
+            variants={slideInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="lg:shrink-0 lg:mr-[60px]"
+          >
+            <p className="text-[10px] font-bold text-[#777777] tracking-[1px] leading-snug uppercase">
+              Trusted<br className="hidden lg:block" /> Tech Stack
+            </p>
+          </motion.div>
+
+          {/* Logos */}
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap items-center gap-x-8 gap-y-5 lg:gap-x-12 lg:gap-y-0"
+          >
+            {partners.map((partner, index) => (
+              <motion.div
+                key={partner.name}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 0.5, y: 0 }}
+                whileHover={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ opacity: { duration: 0.25 }, y: { duration: 0.4, delay: 0.1 + index * 0.08 } }}
+                className="flex items-center gap-2 text-[#1A1A1A] font-semibold text-[16px] md:text-[18px] whitespace-nowrap cursor-default grayscale hover:grayscale-0 hover:text-[#E8C547] transition-[filter,color] duration-300"
+              >
+                {partner.icon}
+                {partner.name}
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
