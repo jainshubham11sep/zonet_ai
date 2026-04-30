@@ -20,7 +20,7 @@ const iconMap = {
    REUSABLE COMPONENTS
 ───────────────────────────────────────────────────────── */
 
-function Breadcrumbs({ name }) {
+function Breadcrumbs({ name }: { name: string }) {
   return (
     <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-muted mb-6">
       <Link href="/" className="hover:text-accent transition-colors">Home</Link>
@@ -32,8 +32,8 @@ function Breadcrumbs({ name }) {
   );
 }
 
-function HighlightCard({ title, desc, icon: iconName, variant = 'indigo' }) {
-  const Icon = iconMap[iconName] || Zap;
+function HighlightCard({ title, desc, icon: iconName, variant = 'indigo' }: { title: string; desc: React.ReactNode; icon: keyof typeof iconMap | string; variant?: 'indigo' | 'amber' | 'emerald' }) {
+  const Icon = iconMap[iconName as keyof typeof iconMap] || Zap;
   const colors = {
     indigo: 'text-indigo-500 bg-indigo-500/5 border-indigo-500/10',
     amber: 'text-amber-500 bg-amber-500/5 border-amber-500/10',
@@ -57,7 +57,7 @@ function HighlightCard({ title, desc, icon: iconName, variant = 'indigo' }) {
    MAIN PAGE
 ───────────────────────────────────────────────────────── */
 
-export default function CaseStudyDetail({ params }) {
+export default function CaseStudyDetail({ params }: { params: Promise<{ slug: string }> }) {
   const unwrappedParams = use(params);
   const slug = unwrappedParams?.slug;
   const project = caseStudies.find(p => p.slug === slug) || caseStudies[0];
