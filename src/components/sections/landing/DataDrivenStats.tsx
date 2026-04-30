@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'motion/react';
+import { fadeUp, staggerFast } from '@/lib/animations';
 import { Rocket, Star, Clock, Zap, Users, Globe, TrendingUp, BadgeCheck } from 'lucide-react';
 
 const INDIGO = '#E8901A';
@@ -153,8 +154,9 @@ const DataDrivenStats = () => {
           </div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             className="text-[48px] md:text-[60px] lg:text-[68px] font-bold text-[#1A1A1A] tracking-tight leading-[1.1] font-heading mb-5"
           >
@@ -180,14 +182,17 @@ const DataDrivenStats = () => {
         </div>
 
         {/* Top row — 4 white cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4"
+          variants={staggerFast}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+        >
           {primaryStats.map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: idx * 0.08, ease: 'easeOut' }}
-              viewport={{ once: true, margin: '-40px' }}
+              variants={fadeUp}
               className="bg-white border border-[#E8E6E1] rounded-2xl p-6 flex flex-col gap-0"
             >
               <IconCircle Icon={stat.icon} />
@@ -213,14 +218,15 @@ const DataDrivenStats = () => {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom bar — lavender background, 4 items */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
+          transition={{ delay: 0.2 }}
           className="rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-[#F5D990]"
           style={{ background: 'linear-gradient(135deg, #FFF3D6 0%, #FEF0CC 50%, #FFF8E8 100%)' }}
         >

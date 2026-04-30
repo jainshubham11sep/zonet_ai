@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { fadeUp, staggerContainer } from '@/lib/animations';
 import { Search, PenTool, Code, Rocket, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -65,9 +66,10 @@ const Timelines = () => {
                 Our Process
               </span>
             </div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="text-4xl md:text-5xl lg:text-[60px] font-medium text-[#1A1A1A] tracking-tight leading-[1.1] font-heading max-w-2xl"
             >
@@ -81,9 +83,10 @@ const Timelines = () => {
             </motion.h2>
           </div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="lg:mt-10"
@@ -95,14 +98,17 @@ const Timelines = () => {
         </div>
 
         {/* Timeline Grid */}
-        <div className="flex flex-col lg:grid lg:grid-cols-4 rounded-[24px] overflow-hidden shadow-sm border border-[#E5E5E5] bg-white">
+        <motion.div
+          className="flex flex-col lg:grid lg:grid-cols-4 rounded-[24px] overflow-hidden shadow-sm border border-[#E5E5E5] bg-white"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {steps.map((step, i) => (
-            <motion.div 
+            <motion.div
               key={step.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
+              variants={fadeUp}
               className={`flex flex-col h-full bg-white ${i !== steps.length - 1 ? 'lg:border-r lg:border-[#E5E5E5]' : ''}`}
             >
               {/* Top White Section */}
@@ -134,12 +140,13 @@ const Timelines = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA Area */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
           className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6"

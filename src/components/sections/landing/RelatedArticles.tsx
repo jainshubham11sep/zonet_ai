@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -58,9 +59,10 @@ export default function RelatedArticles() {
               </span>
             </div>
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-heading mb-8 tracking-[-0.02em]"
             >
@@ -80,8 +82,9 @@ export default function RelatedArticles() {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="text-[#686B6B] text-[15px] mb-12 max-w-[340px] leading-relaxed"
             >
@@ -89,8 +92,9 @@ export default function RelatedArticles() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
             >
               <Link 
@@ -107,14 +111,17 @@ export default function RelatedArticles() {
             {/* Faint connecting line behind cards */}
             <div className="absolute top-[50%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E6E4DF] to-transparent z-0 hidden lg:block"></div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {articles.map((article, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  variants={fadeUp}
                   className="group relative rounded-[20px] overflow-hidden bg-[#FCFCF9] border border-[#E6E4DF] hover:border-[#1A1A1A]/20 transition-all duration-300 flex flex-col h-full shadow-sm"
                 >
                   <Link href={article.link} className="flex flex-col h-full">
@@ -151,7 +158,7 @@ export default function RelatedArticles() {
                   </Link>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
         </div>

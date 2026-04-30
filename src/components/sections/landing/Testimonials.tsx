@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { fadeUp, fadeIn, scaleIn } from '@/lib/animations';
 import { Star, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -92,8 +93,9 @@ const Testimonials = () => {
           </div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             className="text-4xl md:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-heading mb-6 tracking-tight"
           >
@@ -113,8 +115,9 @@ const Testimonials = () => {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             className="text-[#686B6B] text-[15px] max-w-[500px] leading-relaxed mx-auto"
           >
@@ -123,9 +126,10 @@ const Testimonials = () => {
         </div>
 
         {/* Carousel Area */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+        <motion.div
+          variants={scaleIn}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
           className="flex items-center justify-center gap-6 w-full relative"
         >

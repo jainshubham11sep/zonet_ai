@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { slideInLeft, fadeIn } from '@/lib/animations';
 
 const partners = [
   {
@@ -59,10 +60,10 @@ const TrustedBy = () => {
       <div className="max-w-[1440px] mx-auto px-[50px] flex items-center">
         {/* Left — label */}
         <motion.div
-          initial={{ opacity: 0, x: -16 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          variants={slideInLeft}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="shrink-0 mr-[60px]"
         >
           <p className="text-[10px] font-bold text-[#777777] tracking-[1px] leading-snug uppercase">
@@ -72,10 +73,11 @@ const TrustedBy = () => {
 
         {/* Right — logos */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ delay: 0.2 }}
           className="flex items-center justify-start gap-12"
         >
           {partners.map((partner, index) => (

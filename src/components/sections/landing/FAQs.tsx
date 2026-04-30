@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { fadeUp, fadeIn } from '@/lib/animations';
 import { Plus, Minus, ChevronUp, ChevronDown, MessageSquare, ArrowRight } from 'lucide-react';
 
 const faqs = [
@@ -83,9 +84,10 @@ const FAQs = () => {
               </span>
             </div>
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="text-4xl lg:text-5xl xl:text-[64px] font-bold text-[#1A1A1A] leading-[1.1] font-heading mb-8 tracking-[-0.02em]"
             >
@@ -105,8 +107,9 @@ const FAQs = () => {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="text-[#686B6B] text-[15px] mb-12 max-w-[380px] leading-relaxed"
             >
@@ -114,8 +117,9 @@ const FAQs = () => {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="p-6 md:p-8 rounded-[24px] bg-[#FCFCF9] border border-[#E6E4DF] shadow-sm hidden lg:block"
             >

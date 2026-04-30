@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { ArrowRight, TrendingUp } from 'lucide-react';
+import { slideInLeft, slideInRight, fadeUp } from '@/lib/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,9 +13,9 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-8 items-start md:items-center">
           {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            variants={slideInLeft}
+            initial="hidden"
+            animate="visible"
             className="pt-8"
           >
             {/* Yellow Dot Badge */}
@@ -71,9 +72,10 @@ const Hero = () => {
 
           {/* Right Column - Hidden on Mobile */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            variants={slideInRight}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.2 }}
             className="hidden md:block relative h-[550px] w-full"
           >
             {/* The Black Background Area */}
@@ -99,9 +101,10 @@ const Hero = () => {
 
             {/* Built for Growth Card */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.4 }}
               className="absolute top-20 right-24 w-[240px] bg-[#FCFCF9] rounded-[20px] p-5 shadow-2xl z-10"
             >
               <div className="flex items-center gap-3 mb-4">

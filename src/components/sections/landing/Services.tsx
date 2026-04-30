@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
+import { fadeUp, staggerContainer } from "@/lib/animations";
 import Image from "next/image";
 
 const projects = [
@@ -185,15 +185,9 @@ const services = [
    CARD
 ───────────────────────────────────────────── */
 function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 64 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 64 }}
-      transition={{ duration: 0.72, delay: (index % 3) * 0.13, ease: [0.22, 1, 0.36, 1] }}
+      variants={fadeUp}
       whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
       className="cursor-pointer group relative"
       style={{ borderRadius: 24, overflow: "hidden" }}
@@ -325,16 +319,13 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
    SECTION
 ───────────────────────────────────────────── */
 export default function ServicesSection() {
-  const headerRef = useRef(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-40px" });
-
   return (
     <section className="bg-[#f2ede8] py-20 px-6">
       <motion.div
-        ref={headerRef}
-        initial={{ opacity: 0, y: 36 }}
-        animate={headerInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
         className="text-center mb-14 max-w-3xl mx-auto"
       >
         <div className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-gray-500 mb-7 bg-white/60 backdrop-blur-sm uppercase">
@@ -353,11 +344,17 @@ export default function ServicesSection() {
         </p>
       </motion.div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div
+        className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+      >
         {services.map((service, i) => (
           <ServiceCard key={service.title} service={service} index={i} />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
