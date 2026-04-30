@@ -5,9 +5,9 @@ import { motion, useInView } from 'motion/react';
 import { fadeUp, staggerFast } from '@/lib/animations';
 import { Rocket, Star, Clock, Zap, Users, Globe, TrendingUp, BadgeCheck } from 'lucide-react';
 
-const INDIGO = '#E8901A';
+const ACCENT = '#E8C547';
 const ICON_BG = '#FFF3D6';
-const SUBLABEL = '#A07840';
+const SUBLABEL = '#686B6B';
 
 const primaryStats = [
   {
@@ -128,12 +128,12 @@ function IconCircle({ Icon }: { Icon: React.ComponentType<{ size?: number; strok
         className="w-11 h-11 rounded-full flex items-center justify-center"
         style={{ backgroundColor: ICON_BG }}
       >
-        <Icon size={20} color={INDIGO} strokeWidth={1.75} />
+        <Icon size={20} color={ACCENT} strokeWidth={1.75} />
       </div>
       {/* Decorative dot */}
       <div
         className="absolute top-0.5 right-0.5 w-[7px] h-[7px] rounded-full border-2 border-white"
-        style={{ backgroundColor: INDIGO }}
+        style={{ backgroundColor: ACCENT }}
       />
     </div>
   );
@@ -200,7 +200,7 @@ const DataDrivenStats = () => {
               <div className="mt-5 mb-1">
                 <p
                   className="text-[40px] font-bold leading-none tracking-tight"
-                  style={{ color: INDIGO }}
+                  style={{ color: ACCENT }}
                 >
                   <CountUp
                     target={stat.value}
@@ -240,7 +240,7 @@ const DataDrivenStats = () => {
               <div className="flex flex-col">
                 <p
                   className="text-[28px] font-bold leading-none tracking-tight"
-                  style={{ color: INDIGO }}
+                  style={{ color: ACCENT }}
                 >
                   <CountUp
                     target={stat.value}

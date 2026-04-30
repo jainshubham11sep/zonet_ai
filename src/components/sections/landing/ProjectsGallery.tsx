@@ -36,13 +36,13 @@ const ProjectsGallery = () => {
       {/* ── Section Header ── */}
       <div className="pt-16 pb-12 flex flex-col items-center text-center px-6">
         <div className="inline-flex items-center gap-2 section-label mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E8901A] shrink-0" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E8C547] shrink-0" />
           Project Gallery
         </div>
 
         <h2 className="text-4xl md:text-[52px] font-black text-[#1A1A1A] font-heading tracking-tight leading-[1.1] max-w-2xl mb-4">
           Work that speaks{' '}
-          <span className="text-[#E8901A]">for itself</span>
+          <span className="text-[#E8C547]">for itself</span>
         </h2>
 
         <p className="text-[#686B6B] text-base leading-relaxed max-w-md">
@@ -101,7 +101,7 @@ const ProjectsGallery = () => {
                           className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
                           sizes="(max-width: 768px) 50vw, 25vw"
                         />
-                        <div className="absolute inset-0 bg-[#E8901A]/0 group-hover:bg-[#E8901A]/5 transition-colors duration-300" />
+                        <div className="absolute inset-0 bg-[#E8C547]/0 group-hover:bg-[#E8C547]/5 transition-colors duration-300" />
                       </div>
                     ))}
                   </motion.div>

@@ -31,8 +31,8 @@ const services = [
     icon: Smartphone,
     image: '/images/zonet/mobile-app.png',
     href: '/services/mobile-apps',
-    accent: 'text-indigo-500',
-    bg: 'bg-indigo-500/5'
+    accent: 'text-[#686BAB]',
+    bg: 'bg-[#686BAB]/5'
   },
   { 
     title: 'AI Agents & Automation', 
@@ -42,8 +42,8 @@ const services = [
     icon: Cpu,
     image: '/images/zonet/ai-automation.png',
     href: '/services/ai-automation',
-    accent: 'text-emerald-500',
-    bg: 'bg-emerald-500/5'
+    accent: 'text-[#E8C547]',
+    bg: 'bg-[#E8C547]/5'
   },
 ];
 
@@ -60,7 +60,7 @@ export default function Services() {
       
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute top-1/4 left-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-80 h-80 bg-[#686BAB]/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
       {/* ───────────────────────────────────────────────────
           HERO
@@ -82,7 +82,7 @@ export default function Services() {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 text-foreground leading-[1.1] md:leading-[1] tracking-tighter font-heading"
             >
-              We Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">Future</span> of Digital.
+              We Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#D4A830] to-accent">Future</span> of Digital.
             </motion.h1>
 
             <motion.p 

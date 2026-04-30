@@ -51,7 +51,7 @@ export default function MobileApps() {
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px] -z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#686BAB]/10 rounded-full blur-[120px] -z-10" />
         
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -63,7 +63,7 @@ export default function MobileApps() {
               <div className="section-label mb-6">Service Vertical</div>
               <h1 className="text-5xl md:text-7xl font-black text-foreground font-heading tracking-tighter leading-[1] mb-8">
                 Mobile App <br />
-                <span className="text-indigo-500 italic">Development</span>
+                <span className="text-[#686BAB] italic">Development</span>
               </h1>
               <p className="text-xl text-muted font-medium leading-relaxed mb-10 max-w-lg">
                 We design and build fluid, high-performance mobile experiences that 
@@ -71,7 +71,7 @@ export default function MobileApps() {
               </p>
               <Link 
                 href="/contact" 
-                className="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-xl shadow-indigo-500/20"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#1A1A1A] text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-xl shadow-[#686BAB]/20"
               >
                 Start Building <ArrowUpRight size={18} />
               </Link>
@@ -129,9 +129,9 @@ export default function MobileApps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-[32px] bg-card border border-border-custom hover:border-indigo-500/20 transition-all group"
+                className="p-8 rounded-[32px] bg-card border border-border-custom hover:border-[#686BAB]/20 transition-all group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-indigo-500/5 flex items-center justify-center text-indigo-500 mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-[#686BAB]/5 flex items-center justify-center text-[#686BAB] mb-6 group-hover:bg-[#686BAB] group-hover:text-white transition-all duration-300">
                   <feature.icon size={22} strokeWidth={2.5} />
                 </div>
                 <h3 className="text-2xl font-black text-foreground font-heading mb-3 tracking-tight">{feature.title}</h3>
@@ -150,7 +150,7 @@ export default function MobileApps() {
               <div className="space-y-4">
                 <div className="section-label">Mobile Lifecycle</div>
                 <h2 className="text-4xl md:text-5xl font-black text-foreground font-heading tracking-tighter leading-tight">
-                  From Design to <span className="text-indigo-500 italic">App Store</span>
+                  From Design to <span className="text-[#686BAB] italic">App Store</span>
                 </h2>
               </div>
 
@@ -161,7 +161,7 @@ export default function MobileApps() {
                   { step: '03', title: 'Store Submission', desc: 'Handling the entire process of Apple App Store and Google Play Store reviews and optimization.' }
                 ].map((item) => (
                   <div key={item.step} className="flex gap-6">
-                    <div className="text-4xl font-black text-indigo-500/20 font-heading leading-none">{item.step}</div>
+                    <div className="text-4xl font-black text-[#686BAB]/20 font-heading leading-none">{item.step}</div>
                     <div>
                       <h4 className="text-xl font-black text-foreground font-heading mb-2 tracking-tight">{item.title}</h4>
                       <p className="text-muted leading-relaxed font-medium">{item.desc}</p>
@@ -177,21 +177,21 @@ export default function MobileApps() {
                   <div className="relative w-full h-full bg-card p-6">
                     <div className="mt-8 space-y-6">
                       <div className="flex items-center justify-between">
-                         <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500">
+                         <div className="w-12 h-12 rounded-2xl bg-[#686BAB]/10 flex items-center justify-center text-[#686BAB]">
                             <Zap size={20} />
                          </div>
                          <div className="flex -space-x-3">
-                            <div className="w-8 h-8 rounded-full bg-slate-200 border-2 border-card" />
-                            <div className="w-8 h-8 rounded-full bg-indigo-200 border-2 border-card" />
-                            <div className="w-8 h-8 rounded-full bg-slate-100 border-2 border-card" />
+                            <div className="w-8 h-8 rounded-full bg-[#E6E4DF] border-2 border-card" />
+                            <div className="w-8 h-8 rounded-full bg-[#686BAB]/20 border-2 border-card" />
+                            <div className="w-8 h-8 rounded-full bg-[#F7F6F3] border-2 border-card" />
                          </div>
                       </div>
                       <div className="space-y-3">
                          <div className="h-4 w-full bg-foreground/5 rounded-full" />
                          <div className="h-4 w-3/4 bg-foreground/5 rounded-full" />
                       </div>
-                      <div className="aspect-[4/3] rounded-3xl bg-indigo-500/5 border border-indigo-500/10 flex items-center justify-center">
-                         <Map className="text-indigo-500/20" size={40} />
+                      <div className="aspect-[4/3] rounded-3xl bg-[#686BAB]/5 border border-[#686BAB]/10 flex items-center justify-center">
+                         <Map className="text-[#686BAB]/20" size={40} />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                          <div className="h-20 rounded-2xl bg-foreground/5" />
@@ -201,7 +201,7 @@ export default function MobileApps() {
                   </div>
                </div>
                {/* Decorative floating elements */}
-               <div className="absolute -top-10 -right-10 w-24 h-24 bg-indigo-500/10 rounded-3xl blur-xl animate-pulse" />
+               <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#686BAB]/10 rounded-3xl blur-xl animate-pulse" />
                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/10 rounded-full blur-2xl" />
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function MobileApps() {
                 Mobile <span className="text-muted">Success Stories</span>
               </h2>
             </div>
-            <Link href="/case-studies" className="text-indigo-500 font-black uppercase tracking-widest text-[11px] hover:underline underline-offset-8">
+            <Link href="/case-studies" className="text-[#686BAB] font-black uppercase tracking-widest text-[11px] hover:underline underline-offset-8">
               View All Projects →
             </Link>
           </div>
@@ -239,7 +239,7 @@ export default function MobileApps() {
                     </span>
                   </div>
                 </div>
-                <h3 className="text-2xl font-black text-foreground font-heading mb-2 group-hover:text-indigo-500 transition-colors">{project.name}</h3>
+                <h3 className="text-2xl font-black text-foreground font-heading mb-2 group-hover:text-[#686BAB] transition-colors">{project.name}</h3>
                 <p className="text-muted font-medium line-clamp-2">{project.tagline}</p>
               </Link>
             ))}

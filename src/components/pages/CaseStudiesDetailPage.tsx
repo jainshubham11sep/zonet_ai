@@ -35,9 +35,9 @@ function Breadcrumbs({ name }: { name: string }) {
 function HighlightCard({ title, desc, icon: iconName, variant = 'indigo' }: { title: string; desc: React.ReactNode; icon: keyof typeof iconMap | string; variant?: 'indigo' | 'amber' | 'emerald' }) {
   const Icon = iconMap[iconName as keyof typeof iconMap] || Zap;
   const colors = {
-    indigo: 'text-indigo-500 bg-indigo-500/5 border-indigo-500/10',
-    amber: 'text-amber-500 bg-amber-500/5 border-amber-500/10',
-    emerald: 'text-emerald-500 bg-emerald-500/5 border-emerald-500/10',
+    indigo: 'text-[#686BAB] bg-[#686BAB]/5 border-[#686BAB]/10',
+    amber: 'text-[#E8C547] bg-[#E8C547]/5 border-[#E8C547]/10',
+    emerald: 'text-[#E8C547] bg-[#E8C547]/5 border-[#E8C547]/10',
   };
 
   return (
@@ -103,7 +103,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-[1.05] tracking-tighter font-heading"
               >
                 {project.name.split(' ')[0]} <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#686BAB] to-accent">
                   {project.name.split(' ').slice(1).join(' ')}
                 </span>
               </motion.h1>
@@ -168,7 +168,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
 
             {/* Decorative Side Accents */}
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/5 rounded-full blur-[60px] -z-10" />
-            <div className="absolute -bottom-16 -left-16 w-52 h-52 bg-indigo-500/5 rounded-full blur-[60px] -z-10" />
+            <div className="absolute -bottom-16 -left-16 w-52 h-52 bg-[#686BAB]/5 rounded-full blur-[60px] -z-10" />
           </motion.div>
         </div>
       </section>
@@ -195,8 +195,8 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 </div>
 
                 <div className="space-y-6">
-                  <h2 className="text-xl font-black text-foreground font-heading uppercase tracking-widest text-indigo-500 flex items-center gap-4">
-                    <span className="w-10 h-0.5 bg-indigo-500 rounded-full" />
+                  <h2 className="text-xl font-black text-foreground font-heading uppercase tracking-widest text-[#686BAB] flex items-center gap-4">
+                    <span className="w-10 h-0.5 bg-[#686BAB] rounded-full" />
                     The Strategy
                   </h2>
                   <p className="text-lg text-muted leading-relaxed font-medium">
@@ -223,7 +223,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[80px] -z-10" />
                 
                 <h2 className="text-xl font-black text-foreground font-heading uppercase tracking-widest mb-12 flex items-center gap-4">
-                   <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                   <div className="w-10 h-10 rounded-xl bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547]">
                     <CheckCircle2 size={22} strokeWidth={3} />
                    </div>
                    Verified Impact
@@ -254,7 +254,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 
                 {/* Tech Stack Card */}
                 <div className="p-10 rounded-[40px] bg-card border border-border-custom shadow-xl space-y-10 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent to-indigo-500" />
+                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent to-[#686BAB]" />
                   
                   <div>
                     <h3 className="text-[10px] font-black text-muted uppercase tracking-[0.3em] mb-6">Expertise Stack</h3>
@@ -269,7 +269,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
 
                   <div className="space-y-8 pt-8 border-t border-border-custom">
                     <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 rounded-[20px] bg-indigo-500/5 flex items-center justify-center text-indigo-500 border border-indigo-500/10">
+                      <div className="w-14 h-14 rounded-[20px] bg-[#686BAB]/5 flex items-center justify-center text-[#686BAB] border border-[#686BAB]/10">
                         <Cpu size={24} strokeWidth={2} />
                       </div>
                       <div>
@@ -279,7 +279,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                     </div>
 
                     <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 rounded-[20px] bg-emerald-500/5 flex items-center justify-center text-emerald-500 border border-emerald-500/10">
+                      <div className="w-14 h-14 rounded-[20px] bg-[#E8C547]/5 flex items-center justify-center text-[#E8C547] border border-[#E8C547]/10">
                         <Globe size={24} strokeWidth={2} />
                       </div>
                       <div>

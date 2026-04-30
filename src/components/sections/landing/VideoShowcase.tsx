@@ -58,11 +58,11 @@ const videos = [
 ];
 
 const categoryColors: Record<string, string> = {
-  'Case Study': '#4F46E5',
-  'Process': '#7C3AED',
-  'Speed Run': '#0891B2',
-  'AI Special': '#059669',
-  'Mobile': '#D97706',
+  'Case Study': '#E8C547',
+  'Process': '#E8C547',
+  'Speed Run': '#E8C547',
+  'AI Special': '#E8C547',
+  'Mobile': '#E8C547',
 };
 
 const VideoShowcase = () => {
@@ -70,7 +70,7 @@ const VideoShowcase = () => {
   const [playing, setPlaying] = useState(false);
 
   const current = videos[activeVideo];
-  const categoryColor = categoryColors[current.category] ?? '#4F46E5';
+  const categoryColor = categoryColors[current.category] ?? '#E8C547';
 
   return (
     <section className="py-24 md:py-32 bg-[#F7F6F3] overflow-hidden relative border-t border-[#E6E4DF]">

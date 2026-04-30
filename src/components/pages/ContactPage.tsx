@@ -33,7 +33,7 @@ export default function Contact() {
             className="text-4xl md:text-7xl lg:text-8xl font-black mb-8 text-foreground tracking-tighter leading-[1] font-heading"
           >
             Book a <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent italic">Consultation.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#D4A830] to-accent italic">Consultation.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function Contact() {
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-foreground font-heading tracking-tight">Our AI Engineers are ready to start.</h2>
             <p className="text-accent font-black uppercase tracking-widest flex items-center gap-2 text-xs">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(79,70,229,0.5)]"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(232,197,71,0.5)]"></span>
               Current Availability: High (2 Slots Remaining)
             </p>
           </div>

@@ -115,7 +115,7 @@ const services = [
   {
     image: '/images/zonet/screenshot-1.png',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8901A" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
         <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
       </svg>
     ),
@@ -126,7 +126,7 @@ const services = [
   {
     image: '/images/zonet/screenshot-2.png',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8901A" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
         <rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
     ),
@@ -137,7 +137,7 @@ const services = [
   {
     image: '/images/zonet/screenshot-3.png',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8901A" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
         <circle cx="12" cy="12" r="3" />
         <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
       </svg>
@@ -149,7 +149,7 @@ const services = [
   {
     image: '/images/zonet/flipshope-1.png',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8901A" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
@@ -160,7 +160,7 @@ const services = [
   {
     image: '/images/zonet/hyyzo-1.png',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8901A" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
         <path d="M21.5 2l-11 20-3-8-8-3 22-9z" />
       </svg>
     ),
@@ -171,7 +171,7 @@ const services = [
   {
     image: '/images/zonet/teacherdekho-1.png',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8901A" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
         <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
       </svg>
     ),
@@ -205,7 +205,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
             height: 240,
             top: -20,
             left: 20,
-            background: "#F1C21B",
+            background: "#E8C547",
             opacity: 0.35,
             clipPath: `path('${BLOB_PATH}')`,
             zIndex: 0,
@@ -255,13 +255,13 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
         {/* Body */}
         <div className="relative z-10 p-4">
           <h3
-            className="font-bold text-slate-900 tracking-tight mb-3"
+            className="font-bold text-[#1A1A1A] tracking-tight mb-3"
             style={{ fontSize: 22, lineHeight: 1.3 }}
           >
             {service.title}
           </h3>
 
-          <p className="text-slate-500 text-xs leading-relaxed mb-6">
+          <p className="text-[#686B6B] text-xs leading-relaxed mb-6">
             {service.desc}
           </p>
 
@@ -271,9 +271,9 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
               {service.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="font-semibold text-gray-600"
+                  className="font-semibold text-[#686B6B]"
                   style={{
-                    background: "#fcefdc",
+                    background: "#FFF3D6",
                     padding: "4px 10px",
                     borderRadius: 6,
                     fontSize: 11,
@@ -287,11 +287,11 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
 
             <motion.button
               whileHover="hovered"
-              className="shrink-0 flex items-center justify-center transition-all duration-300 group-hover:bg-[#E8901A] group-hover:border-[#E8901A] group-hover:text-white"
+              className="shrink-0 flex items-center justify-center transition-all duration-300 group-hover:bg-[#E8C547] group-hover:border-[#E8C547] group-hover:text-white"
               style={{
                 width: 40,
                 height: 40,
-                border: "1px solid #fcefdc",
+                border: "1px solid #E6E4DF",
                 borderRadius: 100,
                 color: "#111",
                 background: "transparent",
@@ -320,7 +320,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
 ───────────────────────────────────────────── */
 export default function ServicesSection() {
   return (
-    <section className="bg-[#f2ede8] py-20 px-6">
+    <section className="bg-[#F7F6F3] py-20 px-6">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -328,17 +328,17 @@ export default function ServicesSection() {
         viewport={{ once: true, margin: "-40px" }}
         className="text-center mb-14 max-w-3xl mx-auto"
       >
-        <div className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-gray-500 mb-7 bg-white/60 backdrop-blur-sm uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E8901A]" />
+        <div className="inline-flex items-center gap-2 border border-[#E6E4DF] rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-[#686B6B] mb-7 bg-white/60 backdrop-blur-sm uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E8C547]" />
           Our Services
         </div>
-        <h2 className="text-[42px] md:text-5xl font-black text-gray-900 leading-[1.1] mb-5 tracking-tight font-heading">
+        <h2 className="text-[42px] md:text-5xl font-black text-[#1A1A1A] leading-[1.1] mb-5 tracking-tight font-heading">
           Your full-stack design partner to
           <br />
           solve all your{" "}
-          <em className="not-italic text-[#E8901A]">creative problems</em>
+          <em className="not-italic text-[#E8C547]">creative problems</em>
         </h2>
-        <p className="text-gray-500 text-base leading-relaxed max-w-lg mx-auto">
+        <p className="text-[#686B6B] text-base leading-relaxed max-w-lg mx-auto">
           We combine strategy, design and technology to build digital products
           that are beautiful, functional and built to scale.
         </p>

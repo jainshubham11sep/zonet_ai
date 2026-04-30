@@ -172,7 +172,7 @@ export default function CaseStudies() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl sm:text-4xl md:text-6xl font-black text-foreground leading-[1.1] tracking-tighter font-heading mb-6"
           >
-            Our Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">Speaks For Itself.</span>
+            Our Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#D4A830] to-accent">Speaks For Itself.</span>
           </motion.h1>
 
           <motion.p
@@ -261,7 +261,7 @@ export default function CaseStudies() {
             Ready to scale your product?
           </motion.div>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-black text-foreground tracking-tighter leading-tight font-heading mb-6">
-            Let's build your <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">success story.</span>
+            Let's build your <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#D4A830] to-accent">success story.</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-base text-muted max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
             Join the products we've scaled from idea to users — we know the path.

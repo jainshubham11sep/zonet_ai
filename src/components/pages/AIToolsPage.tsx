@@ -58,7 +58,7 @@ export default function AITools() {
             className="text-4xl md:text-7xl lg:text-8xl font-black mb-8 text-foreground tracking-tighter leading-[1] font-heading"
           >
             Proprietary <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-indigo-400 to-accent">AI Technology</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#686BAB] to-accent">AI Technology</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +91,7 @@ export default function AITools() {
                 <div className="flex flex-col items-end gap-2">
                   <span className={`px-3 py-1 rounded-lg text-[9px] font-black tracking-widest uppercase border ${
                     tool.status === 'Stable' 
-                      ? 'border-emerald-500/30 text-emerald-500 bg-emerald-500/5' 
+                      ? 'border-[#E8C547]/30 text-[#E8C547] bg-[#E8C547]/5' 
                       : tool.status === 'Beta' 
                         ? 'border-accent/30 text-accent bg-accent/5'
                         : 'border-border-custom text-muted bg-card-alt'
