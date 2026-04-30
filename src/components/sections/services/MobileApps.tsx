@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ContactForm from '../landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 
 const mobileCaseStudies = caseStudies.filter(cs => cs.category === 'Applications' || cs.slug === 'hyyfam');
 

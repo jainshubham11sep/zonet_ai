@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ContactForm from '../landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 import { caseStudies } from '@/lib/case-studies';
 
 const aiCaseStudies = caseStudies.filter(cs => cs.category === 'AI Services' || cs.slug === 'hyzify');

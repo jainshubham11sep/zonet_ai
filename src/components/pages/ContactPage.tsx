@@ -1,6 +1,6 @@
 'use client';
 
-import ContactForm from '@/components/landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Calendar } from 'lucide-react';
 

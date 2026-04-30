@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Preloader from "@/components/shared/Preloader";
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
+import Preloader from "@/components/layout/Preloader";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],

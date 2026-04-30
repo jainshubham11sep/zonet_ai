@@ -10,7 +10,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
-import ContactForm from '@/components/landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 
 const iconMap = {
   Users, Star, TrendingUp, Globe, Smartphone, Puzzle, Rocket, BarChart3, ShieldCheck, Zap, PlayCircle, MessageSquare

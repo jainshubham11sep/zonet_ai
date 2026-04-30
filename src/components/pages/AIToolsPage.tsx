@@ -1,6 +1,6 @@
 'use client';
 
-import ContactForm from '@/components/landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 import { motion } from 'motion/react';
 import { Cpu, Terminal, Zap, Bot, Code, Layout } from 'lucide-react';
 

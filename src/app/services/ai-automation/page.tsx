@@ -1,4 +1,4 @@
-import Automation from '@/components/services/Automation'
+import Automation from '@/components/sections/services/Automation'
 
 const AutomationRouter = () => {
   return (

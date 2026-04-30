@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ContactForm from '../landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 
 const webCaseStudies = caseStudies.filter(cs => cs.category === 'Websites' || cs.slug === 'hyyzo');
 

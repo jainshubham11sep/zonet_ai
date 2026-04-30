@@ -1,4 +1,4 @@
-import CaseStudies from '@/components/pages/case-studies'
+import CaseStudies from '@/components/pages/CaseStudiesPage'
 import React from 'react'
 
 const CaseStudiesPage = () => {

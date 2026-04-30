@@ -1,4 +1,4 @@
-import WebEngineering from '@/components/services/WebEngineering'
+import WebEngineering from '@/components/sections/services/WebEngineering'
 import React from 'react'
 
 const WebEngineeringRouter = () => {

@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ContactForm from '../landing-page/ContactForm';
+import ContactForm from '@/components/sections/landing/ContactForm';
 
 const services = [
   { 

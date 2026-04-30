@@ -1,4 +1,4 @@
-import AITools from '@/components/pages/ai-tools'
+import AITools from '@/components/pages/AIToolsPage'
 
 const AIToolsPage = () => {
   return (
