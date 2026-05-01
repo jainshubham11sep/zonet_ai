@@ -1,4 +1,4 @@
-import Homepage from "@/components/landing-page";
+import Homepage from "@/components/pages/LandingPage";
 
 export default function HomeRouter() {
   return (

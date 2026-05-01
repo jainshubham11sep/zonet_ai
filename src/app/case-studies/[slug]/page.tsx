@@ -1,4 +1,4 @@
-import CaseStudiesDetailPage from "@/components/pages/case-studies/CaseStudiesDetailPage"
+import CaseStudiesDetailPage from "@/components/pages/CaseStudiesDetailPage"
 
 const CaseStudyDetailPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   return (

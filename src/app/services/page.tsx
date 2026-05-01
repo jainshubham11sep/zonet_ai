@@ -1,4 +1,4 @@
-import Services from '@/components/services'
+import Services from '@/components/pages/ServicesPage'
 import React from 'react'
 
 const ServicesRouter = () => {
