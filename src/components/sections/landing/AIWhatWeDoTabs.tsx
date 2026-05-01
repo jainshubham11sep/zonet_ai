@@ -1,6 +1,6 @@
 const AIWhatWeDoTabs = () => {
   return (
-    <section className="bg-[#F7F6F3] px-12 pt-14 pb-10 max-w-[1200px] mx-auto relative overflow-hidden">
+    <section className="bg-[#F7F6F3] px-4 sm:px-6 md:px-10 lg:px-12 pt-12 md:pt-14 pb-10 max-w-[1200px] mx-auto relative overflow-hidden">
 
       {/* Badge */}
       <span className="inline-block border border-[#E6E4DF] rounded-[20px] px-[14px] py-1 text-[11px] font-semibold tracking-[.08em] text-[#686B6B] mb-[18px] bg-white/60">
@@ -10,7 +10,7 @@ const AIWhatWeDoTabs = () => {
       {/* Header Row */}
       <div className="flex justify-between items-start gap-6">
         <div className="flex-1">
-          <h1 className="font-serif text-[38px] font-bold leading-[1.18] text-[#1A1A1A] mb-[14px]">
+          <h1 className="font-serif text-[26px] sm:text-[32px] md:text-[38px] font-bold leading-[1.18] text-[#1A1A1A] mb-[14px]">
             We don&apos;t just build products.<br />
             We turn them into <span className="text-[#686BAB]">intelligent systems.</span>
           </h1>
@@ -18,7 +18,8 @@ const AIWhatWeDoTabs = () => {
             Zonnetech combines design, engineering, and AI to deliver digital products that are fast, scalable, and future-ready.
           </p>
         </div>
-        <div className="w-[220px] shrink-0 relative h-[140px]">
+        {/* Decorative SVG — hidden on mobile */}
+        <div className="w-[220px] shrink-0 relative h-[140px] hidden lg:block">
           <svg
             className="absolute right-0 top-[-10px]"
             width="210"
@@ -55,8 +56,8 @@ const AIWhatWeDoTabs = () => {
         </div>
       </div>
 
-      {/* Service Cards */}
-      <div className="grid grid-cols-3 gap-4 mt-9">
+      {/* Service Cards — 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-9">
 
         {/* Card 1: Build */}
         <div className="bg-white border border-[#E6E4DF] rounded-[18px] pt-6 px-[22px] pb-5 relative transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5">
@@ -109,7 +110,7 @@ const AIWhatWeDoTabs = () => {
         </div>
 
         {/* Card 3: Automate */}
-        <div className="bg-white border border-[#E6E4DF] rounded-[18px] pt-6 px-[22px] pb-5 relative transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5">
+        <div className="bg-white border border-[#E6E4DF] rounded-[18px] pt-6 px-[22px] pb-5 relative transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 sm:col-span-2 lg:col-span-1">
           <div className="text-[10px] font-bold tracking-[.1em] text-[#16a34a] mb-[10px]">03. AUTOMATE</div>
           <div className="w-[46px] h-[46px] rounded-xl flex items-center justify-center mb-3 bg-[#d1fae5] text-[#16a34a]">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -137,24 +138,24 @@ const AIWhatWeDoTabs = () => {
       </div>
 
       {/* Pipeline */}
-      <div className="bg-white border border-[#E6E4DF] rounded-[18px] px-6 py-5 mt-5">
+      <div className="bg-white border border-[#E6E4DF] rounded-[18px] px-4 sm:px-6 py-5 mt-5">
         <div className="text-center text-[10px] font-bold tracking-[.12em] text-[#686B6B] mb-[14px]">
           AI-POWERED DELIVERY FRAMEWORK
         </div>
-        <div className="flex items-center gap-[10px]">
-          <div className="border border-[#E6E4DF] rounded-xl px-4 py-[10px] flex items-center gap-2 text-[13px] font-semibold text-[#1A1A1A] whitespace-nowrap bg-white">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-[10px]">
+          <div className="border border-[#E6E4DF] rounded-xl px-4 py-[10px] flex items-center gap-2 text-[13px] font-semibold text-[#1A1A1A] bg-white self-start sm:self-auto whitespace-nowrap">
             <span>💡</span> Your Idea
           </div>
-          <span className="text-[#686B6B] text-base shrink-0">→</span>
+          <span className="hidden sm:block text-[#686B6B] text-base shrink-0">→</span>
           <div
-            className="flex-1 rounded-[14px] px-[18px] py-3 flex items-center gap-[14px] text-white"
+            className="flex-1 rounded-[14px] px-4 sm:px-[18px] py-3 flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-[14px] text-white"
             style={{ background: 'linear-gradient(135deg, #1A1A1A 0%, #2d2d2a 100%)' }}
           >
             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-lg shrink-0">🔄</div>
             <div className="text-[11px] font-extrabold tracking-[.04em] leading-[1.2] shrink-0">
               ZONNETECH<br />AI ENGINE
             </div>
-            <div className="flex gap-2 flex-wrap flex-1">
+            <div className="flex gap-2 flex-wrap">
               {[
                 { icon: '🧠', label: 'Intelligence' },
                 { icon: '🤖', label: 'Automation' },
@@ -167,17 +168,17 @@ const AIWhatWeDoTabs = () => {
               ))}
             </div>
           </div>
-          <span className="text-[#686B6B] text-base shrink-0">→</span>
-          <div className="border border-[#E8C547] rounded-xl px-[14px] py-[10px] flex items-center gap-2 text-xs font-bold text-[#1A1A1A] bg-[#FFFBEA] whitespace-nowrap">
+          <span className="hidden sm:block text-[#686B6B] text-base shrink-0">→</span>
+          <div className="border border-[#E8C547] rounded-xl px-[14px] py-[10px] flex items-center gap-2 text-xs font-bold text-[#1A1A1A] bg-[#FFFBEA] self-start sm:self-auto whitespace-nowrap">
             <span>🚀</span>
             <span>Smarter Product<br />Better Results</span>
           </div>
         </div>
       </div>
 
-      {/* VS Section */}
-      <div className="grid grid-cols-[1fr_auto_1fr] mt-5 rounded-[18px] overflow-hidden border border-[#E6E4DF]">
-        <div className="bg-white px-6 py-[22px] border-r border-[#E6E4DF]">
+      {/* VS Section — stacked on mobile, side-by-side on sm+ */}
+      <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] mt-5 rounded-[18px] overflow-hidden border border-[#E6E4DF]">
+        <div className="bg-white px-6 py-[22px] border-b sm:border-b-0 sm:border-r border-[#E6E4DF]">
           <div className="text-[10px] font-bold tracking-[.1em] text-[#ef4444] mb-[6px]">TRADITIONAL AGENCY</div>
           <div className="font-serif text-[28px] font-bold leading-none text-[#1A1A1A]">
             3 Months+
@@ -191,7 +192,7 @@ const AIWhatWeDoTabs = () => {
             ))}
           </ul>
         </div>
-        <div className="bg-[#F7F6F3] flex items-center justify-center px-5 font-serif text-lg font-bold text-[#686B6B] border-r border-[#E6E4DF]">
+        <div className="bg-[#F7F6F3] flex items-center justify-center px-5 py-3 sm:py-0 font-serif text-lg font-bold text-[#686B6B] border-b sm:border-b-0 sm:border-r border-[#E6E4DF]">
           VS
         </div>
         <div className="bg-[#F7F6F3] px-6 py-[22px] flex gap-5 items-center">
@@ -220,15 +221,15 @@ const AIWhatWeDoTabs = () => {
       </div>
 
       {/* Footer Strip */}
-      <div className="mt-5 flex items-center bg-white border border-[#E6E4DF] rounded-[18px] px-6 py-[18px]">
-        <div className="flex-[1.2] flex items-start gap-[14px] border-r border-[#E6E4DF] pr-6 mr-6">
+      <div className="mt-5 flex flex-col sm:flex-row sm:items-center bg-white border border-[#E6E4DF] rounded-[18px] px-4 sm:px-6 py-[18px] gap-5 sm:gap-0">
+        <div className="flex items-start gap-[14px] sm:flex-[1.2] sm:border-r border-[#E6E4DF] sm:pr-6 sm:mr-6 pb-5 sm:pb-0 border-b sm:border-b-0">
           <span className="text-[22px] text-[#1A1A1A] shrink-0 mt-0.5">🛡</span>
           <p className="text-[12.5px] text-[#686B6B] leading-[1.6]">
             We use AI to compress development timelines without compromising quality.<br />
             <strong className="text-[#1A1A1A] font-bold">What takes others 3 months, takes us 30 days.</strong>
           </p>
         </div>
-        <div className="flex-[2] flex gap-8">
+        <div className="grid grid-cols-3 gap-4 sm:flex-[2] sm:flex sm:gap-8">
           {[
             { icon: '🛡', title: 'Enterprise Security', sub: 'Built-in Protection', green: false },
             { icon: '👥', title: 'Agile & Transparent', sub: 'Daily Updates', green: false },
@@ -237,8 +238,8 @@ const AIWhatWeDoTabs = () => {
             <div key={title} className="flex items-start gap-[10px]">
               <span className={`text-xl shrink-0 ${green ? 'text-[#16a34a]' : 'text-[#1A1A1A]'}`}>{icon}</span>
               <div>
-                <h4 className="text-[13px] font-bold text-[#1A1A1A]">{title}</h4>
-                <p className="text-[11.5px] text-[#686B6B] mt-px">{sub}</p>
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-[#1A1A1A]">{title}</h4>
+                <p className="text-[11px] sm:text-[11.5px] text-[#686B6B] mt-px">{sub}</p>
               </div>
             </div>
           ))}

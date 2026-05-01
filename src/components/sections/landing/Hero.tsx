@@ -54,18 +54,18 @@ const Hero = () => {
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4 md:gap-6">
+            <div className="flex flex-nowrap items-center gap-3 sm:gap-4 md:gap-6">
               <Link
                 href="/case-studies"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#1A1A1A] text-white font-bold text-sm rounded-full hover:bg-[#2A2A2A] transition-all hover:scale-105 active:scale-95"
+                className="inline-flex shrink-0 items-center gap-2 px-5 py-3 sm:px-8 sm:py-3.5 bg-[#1A1A1A] text-white font-bold text-sm rounded-full hover:bg-[#2A2A2A] transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
               >
-                See Our Work <ArrowRight size={18} />
+                See Our Work <ArrowRight size={16} />
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 text-[#1A1A1A] font-bold text-sm hover:underline"
+                className="inline-flex shrink-0 items-center gap-2 px-5 py-3 sm:px-8 sm:py-3.5 text-[#1A1A1A] font-bold text-sm hover:underline whitespace-nowrap"
               >
-                Explore Services <ArrowRight size={18} />
+                Explore Services <ArrowRight size={16} />
               </Link>
             </div>
           </motion.div>
