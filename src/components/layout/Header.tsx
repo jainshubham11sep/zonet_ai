@@ -6,6 +6,7 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -49,7 +50,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {/* CTA Button - Desktop */}
           <Link
-            href="/"
+            href="/strategy-call"
             className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-[#111111] text-white rounded-full font-bold text-sm hover:bg-[#1a1a1a] transition-colors"
           >
             Start a Project <ArrowRight size={16} />
@@ -88,7 +89,7 @@ const Header = () => {
               ))}
               <hr className="border-[#E6E4DF] my-2" />
               <Link
-                href="/"
+                href="/strategy-call"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-[#111111] text-white rounded-full font-bold text-sm w-full hover:bg-[#1a1a1a] transition-colors"
               >
