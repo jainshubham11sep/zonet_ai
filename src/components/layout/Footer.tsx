@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Mail, MapPin, Phone, Globe, MessageSquare, Send, ArrowUpRight, Heart } from 'lucide-react';
 import { useState } from 'react';
@@ -20,7 +21,10 @@ const LinkedinLogo = ({ size = 18, className = "" }: { size?: number, className?
 );
 
 const Footer = () => {
+  const pathname = usePathname();
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+
+  if (pathname === '/strategy-call') return null;
 
   return (
     <footer className="bg-[#FAF9F6] text-foreground pt-20 md:pt-28 pb-8 border-t border-border-custom">
