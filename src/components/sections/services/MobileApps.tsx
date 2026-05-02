@@ -48,10 +48,10 @@ const techStack = [
 
 export default function MobileApps() {
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-[#faf8f5] min-h-screen font-['Sora',_sans-serif] text-slate-800 selection:bg-[#E8C547]/30">
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#686BAB]/10 rounded-full blur-[120px] -z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#E8C547]/10 rounded-full blur-[120px] -z-10" />
         
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -60,18 +60,20 @@ export default function MobileApps() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="section-label mb-6">Service Vertical</div>
-              <h1 className="text-5xl md:text-7xl font-black text-foreground font-heading tracking-tighter leading-[1] mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8C547]/10 border border-[#E8C547]/20 text-[#E8C547] font-bold uppercase tracking-wider text-xs mb-8">
+                <Smartphone size={14} /> Mobile Apps
+              </div>
+              <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-8">
                 Mobile App <br />
-                <span className="text-[#686BAB] italic">Development</span>
+                <span className="text-[#E8C547]">Development</span>
               </h1>
-              <p className="text-xl text-muted font-medium leading-relaxed mb-10 max-w-lg">
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-10 max-w-lg">
                 We design and build fluid, high-performance mobile experiences that 
                 engage users and drive long-term retention on every platform.
               </p>
               <Link 
                 href="/contact" 
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#1A1A1A] text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-xl shadow-[#686BAB]/20"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#E8C547] hover:bg-[#d4b33c] text-slate-900 font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(232,197,71,0.2)] hover:shadow-[0_0_30px_rgba(232,197,71,0.4)]"
               >
                 Start Building <ArrowUpRight size={18} />
               </Link>
@@ -81,7 +83,7 @@ export default function MobileApps() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-square md:aspect-video lg:aspect-square rounded-[40px] overflow-hidden border border-border-custom shadow-2xl"
+              className="relative aspect-square md:aspect-video lg:aspect-square rounded-[32px] overflow-hidden border border-slate-200 shadow-2xl shadow-[#E8C547]/5"
             >
               <Image 
                 src="/images/zonet/mobile-app.png"
@@ -95,13 +97,13 @@ export default function MobileApps() {
       </section>
 
       {/* Tech Stack section */}
-      <section className="py-10 border-y border-border-custom bg-card/30">
+      <section className="py-10 border-y border-slate-200 bg-white/50">
         <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
             {techStack.map(tech => (
-              <div key={tech.name} className="flex items-center gap-3">
-                <tech.icon size={20} className="text-foreground" />
-                <span className="font-black uppercase tracking-widest text-[11px]">{tech.name}</span>
+              <div key={tech.name} className="flex items-center gap-3 group">
+                <tech.icon size={20} className="text-slate-700 group-hover:text-[#E8C547] transition-colors" />
+                <span className="font-bold uppercase tracking-widest text-[11px] text-slate-700 group-hover:text-[#E8C547] transition-colors">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -109,13 +111,13 @@ export default function MobileApps() {
       </section>
 
       {/* Capabilities */}
-      <section className="section-padding px-6">
-        <div className="container mx-auto max-w-6xl">
+      <section className="py-20 md:py-32 px-6 relative">
+        <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black text-foreground font-heading tracking-tighter mb-6">
-              Native-Grade <span className="text-muted">Performance</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+              Native-Grade <span className="text-slate-400">Performance</span>
             </h2>
-            <p className="text-muted text-lg max-w-2xl mx-auto font-medium">
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               From complex fintech apps to social reward ecosystems, we build mobile 
               solutions that thrive in the competitive app marketplace.
             </p>
@@ -129,13 +131,13 @@ export default function MobileApps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-[32px] bg-card border border-border-custom hover:border-[#686BAB]/20 transition-all group"
+                className="p-8 rounded-[24px] bg-white border border-slate-200 hover:border-[#E8C547]/40 hover:shadow-xl transition-all group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#686BAB]/5 flex items-center justify-center text-[#686BAB] mb-6 group-hover:bg-[#686BAB] group-hover:text-white transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547] mb-6 group-hover:scale-110 group-hover:bg-[#E8C547] group-hover:text-white transition-all duration-300">
                   <feature.icon size={22} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-2xl font-black text-foreground font-heading mb-3 tracking-tight">{feature.title}</h3>
-                <p className="text-muted leading-relaxed font-medium">{feature.desc}</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">{feature.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -143,14 +145,16 @@ export default function MobileApps() {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding bg-section-alt border-y border-border-custom">
-        <div className="container mx-auto max-w-6xl px-6">
+      <section className="py-20 md:py-32 bg-slate-50 border-y border-slate-200 relative">
+        <div className="container mx-auto max-w-6xl px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-12">
               <div className="space-y-4">
-                <div className="section-label">Mobile Lifecycle</div>
-                <h2 className="text-4xl md:text-5xl font-black text-foreground font-heading tracking-tighter leading-tight">
-                  From Design to <span className="text-[#686BAB] italic">App Store</span>
+                <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 border border-slate-300 text-slate-600 font-bold uppercase tracking-wider text-xs">
+                  Mobile Lifecycle
+                </div>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                  From Design to <span className="text-[#E8C547]">App Store</span>
                 </h2>
               </div>
 
@@ -161,10 +165,10 @@ export default function MobileApps() {
                   { step: '03', title: 'Store Submission', desc: 'Handling the entire process of Apple App Store and Google Play Store reviews and optimization.' }
                 ].map((item) => (
                   <div key={item.step} className="flex gap-6">
-                    <div className="text-4xl font-black text-[#686BAB]/20 font-heading leading-none">{item.step}</div>
+                    <div className="text-4xl font-extrabold text-[#E8C547]/30 leading-none">{item.step}</div>
                     <div>
-                      <h4 className="text-xl font-black text-foreground font-heading mb-2 tracking-tight">{item.title}</h4>
-                      <p className="text-muted leading-relaxed font-medium">{item.desc}</p>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -172,82 +176,86 @@ export default function MobileApps() {
             </div>
 
             <div className="relative flex justify-center">
-               <div className="relative w-[280px] h-[580px] bg-foreground rounded-[3rem] border-[8px] border-card shadow-2xl overflow-hidden">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-foreground rounded-b-2xl z-20" />
-                  <div className="relative w-full h-full bg-card p-6">
-                    <div className="mt-8 space-y-6">
+               <div className="relative w-[280px] h-[580px] bg-slate-800 rounded-[3rem] border-[8px] border-slate-100 shadow-2xl overflow-hidden ring-1 ring-slate-200">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-20" />
+                  <div className="relative w-full h-full bg-white p-6 pt-12">
+                    <div className="space-y-6">
                       <div className="flex items-center justify-between">
-                         <div className="w-12 h-12 rounded-2xl bg-[#686BAB]/10 flex items-center justify-center text-[#686BAB]">
+                         <div className="w-12 h-12 rounded-2xl bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547]">
                             <Zap size={20} />
                          </div>
                          <div className="flex -space-x-3">
-                            <div className="w-8 h-8 rounded-full bg-[#E6E4DF] border-2 border-card" />
-                            <div className="w-8 h-8 rounded-full bg-[#686BAB]/20 border-2 border-card" />
-                            <div className="w-8 h-8 rounded-full bg-[#F7F6F3] border-2 border-card" />
+                            <div className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white" />
+                            <div className="w-8 h-8 rounded-full bg-slate-300 border-2 border-white" />
+                            <div className="w-8 h-8 rounded-full bg-[#E8C547]/20 border-2 border-white" />
                          </div>
                       </div>
                       <div className="space-y-3">
-                         <div className="h-4 w-full bg-foreground/5 rounded-full" />
-                         <div className="h-4 w-3/4 bg-foreground/5 rounded-full" />
+                         <div className="h-4 w-full bg-slate-100 rounded-full" />
+                         <div className="h-4 w-3/4 bg-slate-100 rounded-full" />
                       </div>
-                      <div className="aspect-[4/3] rounded-3xl bg-[#686BAB]/5 border border-[#686BAB]/10 flex items-center justify-center">
-                         <Map className="text-[#686BAB]/20" size={40} />
+                      <div className="aspect-[4/3] rounded-3xl bg-[#E8C547]/5 border border-[#E8C547]/10 flex items-center justify-center">
+                         <Map className="text-[#E8C547]/30" size={40} />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
-                         <div className="h-20 rounded-2xl bg-foreground/5" />
-                         <div className="h-20 rounded-2xl bg-foreground/5" />
+                         <div className="h-20 rounded-2xl bg-slate-100" />
+                         <div className="h-20 rounded-2xl bg-slate-100" />
                       </div>
                     </div>
                   </div>
                </div>
-               {/* Decorative floating elements */}
-               <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#686BAB]/10 rounded-3xl blur-xl animate-pulse" />
-               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/10 rounded-full blur-2xl" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Case Studies */}
-      <section className="section-padding px-6">
+      <section className="py-20 md:py-32 px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
             <div className="max-w-xl">
-              <div className="section-label mb-4">Case Studies</div>
-              <h2 className="text-4xl md:text-5xl font-black text-foreground font-heading tracking-tighter">
-                Mobile <span className="text-muted">Success Stories</span>
+              <div className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 font-bold uppercase tracking-wider text-xs mb-4">
+                Case Studies
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                Mobile <span className="text-slate-400">Success Stories</span>
               </h2>
             </div>
-            <Link href="/case-studies" className="text-[#686BAB] font-black uppercase tracking-widest text-[11px] hover:underline underline-offset-8">
-              View All Projects →
+            <Link href="/case-studies" className="text-[#E8C547] font-bold uppercase tracking-widest text-xs hover:text-[#d4b33c] transition-colors flex items-center gap-2 group">
+              View All Projects <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {mobileCaseStudies.slice(0, 2).map((project) => (
               <Link key={project.slug} href={`/case-studies/${project.slug}`} className="group">
-                <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-border-custom mb-6">
+                <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden border border-slate-200 mb-6 shadow-md">
                   <Image 
                     src={project.photo}
                     alt={project.name}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-6 left-6">
-                    <span className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md text-white border border-white/10 text-[9px] font-black uppercase tracking-widest">
+                    <span className="px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md text-slate-900 shadow-sm text-[10px] font-bold uppercase tracking-widest">
                       {project.industry}
                     </span>
                   </div>
                 </div>
-                <h3 className="text-2xl font-black text-foreground font-heading mb-2 group-hover:text-[#686BAB] transition-colors">{project.name}</h3>
-                <p className="text-muted font-medium line-clamp-2">{project.tagline}</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-[#E8C547] transition-colors tracking-tight">{project.name}</h3>
+                <p className="text-slate-600 line-clamp-2">{project.tagline}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <ContactForm />
+      <div className="border-t border-slate-200 bg-white">
+        <div className="[&>div]:bg-transparent [&>div]:border-none [&_h2]:text-slate-900 [&_p]:text-slate-600 [&_label]:text-slate-700 [&_input]:bg-slate-50 [&_input]:border-slate-200 [&_input]:text-slate-900 [&_textarea]:bg-slate-50 [&_textarea]:border-slate-200 [&_textarea]:text-slate-900">
+          <ContactForm />
+        </div>
+      </div>
     </div>
   );
 }
