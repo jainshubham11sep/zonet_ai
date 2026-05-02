@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown, Globe, Smartphone, Bot } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -35,6 +36,7 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
@@ -48,6 +50,8 @@ const Header = () => {
   function closeServices() {
     closeTimer.current = setTimeout(() => setIsServicesOpen(false), 120);
   }
+
+  if (pathname === '/strategy-call') return null;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#faf8f5]! border-b border-[#E6E4DF]">
