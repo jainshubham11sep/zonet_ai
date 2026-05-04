@@ -79,7 +79,7 @@ const Footer = () => {
               <h4 className="text-foreground font-black text-xs uppercase tracking-[0.15em]">Company</h4>
             </div>
             <ul className="flex flex-col">
-              {['Home', 'Case Studies', 'Services', 'AI Tools', 'Contact'].map((item, idx, arr) => (
+              {['Home', 'Case Studies', 'Services', 'AI Tools', 'Careers', 'Contact'].map((item, idx, arr) => (
                 <li key={item} className={`py-3.5 ${idx !== arr.length - 1 ? 'border-b border-black/5' : ''}`}>
                   <Link 
                     href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
@@ -166,9 +166,11 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-[13px] text-muted font-semibold">
             <p>© {new Date().getFullYear()} ZonetTech. All Rights Reserved.</p>
             <div className="hidden sm:block w-px h-3.5 bg-black/10/20"></div>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+            <div className="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2">
+              <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+              <Link href="/terms-and-conditions" className="hover:text-foreground transition-colors">Terms & Conditions</Link>
+              <Link href="/cookie-policy" className="hover:text-foreground transition-colors">Cookie Policy</Link>
+              <Link href="/disclaimer" className="hover:text-foreground transition-colors">Disclaimer</Link>
             </div>
           </div>
           
