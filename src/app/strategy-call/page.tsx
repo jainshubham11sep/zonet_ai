@@ -314,8 +314,19 @@ export default function StrategyCallPage() {
                     <select name="source" value={form.source} onChange={handleChange} required className={selectBase}>
                       <option value="" disabled>Select an option</option>
                       <option>Google Search</option>
-                      <option>Social Media</option>
-                      <option>Referral</option>
+                      <option>LinkedIn</option>
+                      <option>Instagram</option>
+                      <option>Twitter / X</option>
+                      <option>Facebook</option>
+                      <option>YouTube</option>
+                      <option>Friend or Colleague Referral</option>
+                      <option>Client Referral</option>
+                      <option>Clutch / Agency Directory</option>
+                      <option>Upwork / Freelance Platform</option>
+                      <option>Blog / Article</option>
+                      <option>Podcast</option>
+                      <option>Newsletter</option>
+                      <option>Event / Conference</option>
                       <option>Other</option>
                     </select>
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -354,10 +365,10 @@ export default function StrategyCallPage() {
                 <div className="relative">
                   <select name="budget" value={form.budget} onChange={handleChange} className={selectBase}>
                     <option value="" disabled>Select your budget range</option>
-                    <option>Under $5,000</option>
-                    <option>$5,000 – $15,000</option>
-                    <option>$15,000 – $50,000</option>
-                    <option>$50,000+</option>
+                    <option>Under ₹10,000</option>
+                    <option>₹10,000 – ₹50,000</option>
+                    <option>₹50,000 – ₹2,00,000</option>
+                    <option>₹2,00,000+</option>
                   </select>
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
