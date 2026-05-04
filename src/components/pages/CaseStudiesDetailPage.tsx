@@ -115,7 +115,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 {project.detail.solution}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[18px] max-w-[560px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[18px]">
                 {project.detail.features.map((feat, i) => {
                   const Icon = iconMap[feat.icon as keyof typeof iconMap] ?? Zap;
                   return (

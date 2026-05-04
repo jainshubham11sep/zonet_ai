@@ -30,6 +30,11 @@ export const caseStudies = [
         'Real-time tracking of over 20 Crore products',
         'Average 4.5/5 star rating across all platforms'
       ],
+      impact: [
+        { value: '1.5 Million+', label: 'Active monthly users' },
+        { value: '20 Crore+', label: 'Products tracked in real-time' },
+        { value: '4.5 / 5', label: 'Average rating across platforms' },
+      ],
       tech: ['React', 'Node.js', 'Puppeteer', 'Chrome Extension API', 'Firebase'],
       features: [
         { title: 'Browser Extension', desc: 'Real-time price graph overlays and automated coupon injection.', icon: 'Puzzle' },
@@ -65,6 +70,11 @@ export const caseStudies = [
         'Over 1 Lakh active earners on the platform',
         'Integrated with 200+ major partner stores',
         'Maintained a top-tier app ranking in reward categories'
+      ],
+      impact: [
+        { value: '1 Lakh+', label: 'Active earners on the platform' },
+        { value: '200+', label: 'Major partner stores integrated' },
+        { value: '4.4 / 5', label: 'App rating in reward categories' },
       ],
       tech: ['Next.js', 'PostgreSQL', 'Affiliate API Engine', 'React Native'],
       features: [
@@ -102,6 +112,11 @@ export const caseStudies = [
         'Built a network of 2,000+ thoroughly verified mentors',
         'Achieved a 4.8/5 satisfaction rating for learning outcomes'
       ],
+      impact: [
+        { value: '50,000+', label: 'Active students onboarded' },
+        { value: '2,000+', label: 'Thoroughly verified mentors' },
+        { value: '4.8 / 5', label: 'Satisfaction rating for outcomes' },
+      ],
       tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Verification AI Hub'],
       features: [
         { title: 'Mentor Matching', desc: 'AI algorithm that matches students with mentors based on learning style and goals.', icon: 'Zap' },
@@ -137,6 +152,11 @@ export const caseStudies = [
         'Reached 500k+ registered players in under 12 months',
         'Maintained 99.9% uptime despite peak traffic events',
         'Consistently high user retention due to smooth gameplay'
+      ],
+      impact: [
+        { value: '500,000+', label: 'Registered players in 12 months' },
+        { value: '99.9%', label: 'Uptime during peak traffic' },
+        { value: '4.7 / 5', label: 'Average user satisfaction rating' },
       ],
       tech: ['Next.js', 'Socket.io', 'Redis', 'AWS Elastic Beanstalk'],
       features: [
@@ -174,6 +194,11 @@ export const caseStudies = [
         'Successfully managed 10k+ client interactions through the new platform',
         'Onboarded 50+ industry experts into the searchable directory'
       ],
+      impact: [
+        { value: '3×', label: 'Qualified leads in 3 months' },
+        { value: '10,000+', label: 'Client interactions managed' },
+        { value: '50+', label: 'Industry experts onboarded' },
+      ],
       tech: ['Next.js', 'Sanity CMS', 'Tailwind CSS', 'Framer Motion'],
       features: [
         { title: 'Expert Directory', desc: 'High-speed searchable database of qualified consultants.', icon: 'Users' },
@@ -209,6 +234,11 @@ export const caseStudies = [
         'Achieved a massive install base of 1M+ users',
         'Maintained a stellar 4.9/5 star rating on the Chrome Web Store',
         'Proven to block 100% of standard Twitch ad formats'
+      ],
+      impact: [
+        { value: '1 Million+', label: 'Active installs on Chrome Web Store' },
+        { value: '4.9 / 5', label: 'Star rating from verified users' },
+        { value: '100%', label: 'Standard Twitch ad formats blocked' },
       ],
       tech: ['Vanilla JS', 'Content Scripts', 'Manifest v3', 'Stream API Manipulation'],
       features: [
@@ -246,6 +276,11 @@ export const caseStudies = [
         'Reported 40% increase in team operational efficiency',
         'Currently managing over 5 Million tasks across the platform'
       ],
+      impact: [
+        { value: '100,000+', label: 'High-growth teams worldwide' },
+        { value: '40%', label: 'Increase in operational efficiency' },
+        { value: '5 Million+', label: 'Tasks managed on the platform' },
+      ],
       tech: ['React', 'NestJS', 'PostgreSQL', 'Socket.io', 'ElasticSearch'],
       features: [
         { title: 'AI Assistant', desc: 'Automatically categorizes tasks and suggests project timelines.', icon: 'Zap' },
@@ -281,6 +316,11 @@ export const caseStudies = [
         'Rapidly grew to a community of 2M+ active members',
         'Facilitated over 10 Million community-generated posts',
         'Consistently high engagement rates compared to traditional social apps'
+      ],
+      impact: [
+        { value: '2 Million+', label: 'Active community members' },
+        { value: '10 Million+', label: 'Community-generated posts' },
+        { value: '4.6 / 5', label: 'Average rating across platforms' },
       ],
       tech: ['React Native', 'Node.js', 'MongoDB', 'Redis'],
       features: [
@@ -318,6 +358,11 @@ export const caseStudies = [
         'Provides access to over 1 Million verified deals daily',
         'Highly trusted by 500k+ savvy shoppers in India'
       ],
+      impact: [
+        { value: '₹1 Billion+', label: 'Saved in cumulative purchases' },
+        { value: '1 Million+', label: 'Verified deals available daily' },
+        { value: '500,000+', label: 'Savvy shoppers in India' },
+      ],
       tech: ['Next.js', 'PyScript (for AI logic)', 'Redis', 'Node.js'],
       features: [
         { title: 'Price Checker', desc: 'AI agent that validates every deal against historical lows.', icon: 'ShieldCheck' },
@@ -353,6 +398,11 @@ export const caseStudies = [
         'Successfully processed over ₹5 Billion in transaction volume',
         'Used by 100k+ merchants for daily high-volume operations',
         'Achieved a bank-grade AAA security certification'
+      ],
+      impact: [
+        { value: '₹5 Billion+', label: 'Transaction volume processed' },
+        { value: '100,000+', label: 'Merchants using daily' },
+        { value: 'AAA', label: 'Bank-grade security certification' },
       ],
       tech: ['Go', 'Rust (for crypto ops)', 'PostgreSQL', 'AI Smart-Router'],
       features: [
