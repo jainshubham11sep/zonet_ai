@@ -248,7 +248,7 @@ function DashboardVisual() {
 
 export default function WebEngineering() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-screen pb-16 pt-12" style={{ fontFamily: "var(--font-sora), 'Inter', sans-serif" }}>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-screen pb-16 pt-12" style={{ fontFamily: "var(--font-sora-family)" }}>
 
       {/* ── HERO ────────────────────────────────── */}
       <section className="pt-16 pb-12 md:pt-24 overflow-hidden">
@@ -266,7 +266,7 @@ export default function WebEngineering() {
                 Core Service
               </span>
 
-              <h1 className="font-sora! text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.08] text-[#1A1A1A] mb-4">
+              <h1 className="font-sora-family! text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.08] text-[#1A1A1A] mb-4">
                 Custom Web<br />
                 <em className="text-[#E8C547] italic">Engineering</em>
               </h1>
@@ -324,7 +324,7 @@ export default function WebEngineering() {
       {/* ── FULL-STACK CAPABILITIES ─────────────── */}
       <section className="py-12 sm:py-16 lg:py-24 text-center">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-sora! text-3xl sm:text-4xl lg:text-[44px] font-semibold text-[#1A1A1A] mb-4">
+          <h2 className="font-sora-family! text-3xl sm:text-4xl lg:text-[44px] font-semibold text-[#1A1A1A] mb-4">
             Full-Stack <em className="text-[#E8C547] italic">Capabilities</em>
           </h2>
           <p className="text-sm sm:text-base md:text-[15px] text-[#686B6B] leading-[1.7] max-w-[520px] mx-auto mb-12 sm:mb-16">

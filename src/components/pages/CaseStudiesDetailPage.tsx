@@ -58,7 +58,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 {project.industry} Case Study
               </div>
 
-            <h1 className="font-sora! font-semibold leading-none tracking-tight text-[#0d1424] text-[52px] md:text-[68px] lg:text-[88px] mb-12">
+            <h1 className="font-sora-family! font-semibold leading-none tracking-tight text-[#0d1424] text-[52px] md:text-[68px] lg:text-[88px] mb-12">
               {project.name}
             </h1>
 

@@ -150,13 +150,13 @@ const Footer = () => {
               <p className="text-foreground text-[15px] leading-relaxed font-semibold mb-6 pr-2">
                 We're currently accepting new projects for Q2 2026.
               </p>
-              <button
-                onClick={() => setIsCalendlyOpen(true)}
+              <Link 
+                href="/strategy-call"
                 className="w-full flex items-center justify-between px-6 py-4 rounded-[1.25rem] bg-[#111] text-white font-black text-xs uppercase tracking-[0.15em] hover:opacity-90 transition-all shadow-md group"
               >
                 Book a call
                 <ArrowUpRight size={18} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

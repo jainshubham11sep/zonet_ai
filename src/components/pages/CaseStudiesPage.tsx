@@ -11,7 +11,7 @@ function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
     <div className="bg-white rounded-2xl overflow-hidden border border-[#e4dfd5] cursor-pointer transition-all duration-220 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)]">
       {/* Photo with chip overlay */}
       <div className="relative w-full h-[180px] overflow-hidden">
-        <span className="absolute top-3 left-3 z-10 bg-white/95 border border-[#e4dfd5] rounded-full px-3 py-1 text-[9px] font-bold tracking-[1.5px] uppercase text-[#1a1a1a] font-sora">
+        <span className="absolute top-3 left-3 z-10 bg-white/95 border border-[#e4dfd5] rounded-full px-3 py-1 text-[9px] font-bold tracking-[1.5px] uppercase text-[#1a1a1a] font-sora-family">
           {cs.badge}
         </span>
         <Image
@@ -31,7 +31,7 @@ function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
               <Image src={cs.logo} alt={cs.name} width={24} height={24} className="object-contain w-full h-full" />
             </div>
             <div>
-              <p className="text-[14px] font-semibold text-[#1a1a1a] leading-tight font-sora">{cs.name}</p>
+              <p className="text-[14px] font-semibold text-[#1a1a1a] leading-tight font-sora-family">{cs.name}</p>
               <p className="text-[11px] text-[#6b6b6b]">{cs.tagline}</p>
             </div>
           </div>
@@ -46,7 +46,7 @@ function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
         <p className="text-[12.5px] text-[#6b6b6b] leading-[1.55] my-2.5 mb-3.5">
           {cs.description.map((seg, i) =>
             seg.highlight ? (
-              <strong key={i} className="text-[#1a1a1a] font-semibold font-sora">{seg.text}</strong>
+              <strong key={i} className="text-[#1a1a1a] font-semibold font-sora-family">{seg.text}</strong>
             ) : (
               <span key={i}>{seg.text}</span>
             )
@@ -56,7 +56,7 @@ function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
         <div className="flex border-t border-[#ede9e0] pt-3.5">
           {cs.stats.map((s, i) => (
             <div key={i} className={`flex-1 text-center ${i > 0 ? 'border-l border-[#ede9e0]' : ''}`}>
-              <p className="text-[13px] font-bold text-[#1a1a1a] font-sora">{s.value}</p>
+              <p className="text-[13px] font-bold text-[#1a1a1a] font-sora-family">{s.value}</p>
               <p className="text-[9px] tracking-[1.2px] uppercase text-[#6b6b6b] mt-0.5">{s.label}</p>
             </div>
           ))}
@@ -82,13 +82,13 @@ export default function CaseStudiesPage() {
 
       {/* ── HERO ── */}
       <section className="text-center px-4 sm:px-6 pt-10 sm:pt-14 pb-8">
-        <span className="inline-block border border-[#1a1a1a] rounded-full px-4 py-[5px] text-[9px] sm:text-[10px] font-semibold tracking-[2px] uppercase text-[#1a1a1a] mb-5 sm:mb-6 font-sora">
+        <span className="inline-block border border-[#1a1a1a] rounded-full px-4 py-[5px] text-[9px] sm:text-[10px] font-semibold tracking-[2px] uppercase text-[#1a1a1a] mb-5 sm:mb-6 font-sora-family">
           Proven Growth · Real Results
         </span>
 
         <h1
           className="font-extrabold leading-[1.1] mb-4 text-[#1a1a1a] text-[26px] sm:text-[40px] md:text-[52px] lg:text-[64px]"
-          style={{ fontFamily: "var(--font-sora), sans-serif" }}
+          style={{ fontFamily: "var(--font-sora-family)" }}
         >
           Our Work{' '}
           <span className="text-[#E8C547]">Speaks For Itself.</span>
@@ -108,11 +108,11 @@ export default function CaseStudiesPage() {
             <div key={l}>
               <p
                 className="font-bold text-[28px] sm:text-[36px] md:text-[40px] text-[#E8C547] leading-none"
-                style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                style={{ fontFamily: "var(--font-sora-family)" }}
               >{n}</p>
               <p
                 className="text-[9px] sm:text-[10px] tracking-[2px] uppercase font-bold mt-1 text-[#6b6b6b]"
-                style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                style={{ fontFamily: "var(--font-sora-family)" }}
               >{l}</p>
             </div>
           ))}
@@ -127,7 +127,7 @@ export default function CaseStudiesPage() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`whitespace-nowrap shrink-0 px-4 sm:px-[18px] py-1.5 sm:py-2 rounded-full text-[12px] sm:text-[13px] font-medium cursor-pointer border-[1.5px] transition-all duration-200 font-sora ${
+              className={`whitespace-nowrap shrink-0 px-4 sm:px-[18px] py-1.5 sm:py-2 rounded-full text-[12px] sm:text-[13px] font-medium cursor-pointer border-[1.5px] transition-all duration-200 font-sora-family ${
                 activeTab === tab
                   ? 'bg-[#1a1a1a] text-white border-[#1a1a1a]'
                   : 'bg-transparent text-[#6b6b6b] border-transparent hover:border-[#1a1a1a] hover:text-[#1a1a1a]'
@@ -143,7 +143,7 @@ export default function CaseStudiesPage() {
           <select
             value={activeIndustry}
             onChange={(e) => setActiveIndustry(e.target.value)}
-            className="font-sora text-[12px] sm:text-[13px] font-medium text-[#1a1a1a] bg-white border-[1.5px] border-[#e4dfd5] rounded-full py-1.5 sm:py-2 pl-4 sm:pl-[18px] pr-8 cursor-pointer outline-none appearance-none"
+            className="font-sora-family text-[12px] sm:text-[13px] font-medium text-[#1a1a1a] bg-white border-[1.5px] border-[#e4dfd5] rounded-full py-1.5 sm:py-2 pl-4 sm:pl-[18px] pr-8 cursor-pointer outline-none appearance-none"
           >
             {industries.map((ind) => (
               <option key={ind} value={ind}>{ind}</option>
@@ -159,7 +159,7 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* ── SECTION LABEL ── */}
-      <p className="max-w-6xl mx-auto mt-7 sm:mt-9 mb-4 sm:mb-5 px-4 sm:px-6 text-[11px] tracking-[2.5px] uppercase font-semibold text-[#E8C547] font-sora">
+      <p className="max-w-6xl mx-auto mt-7 sm:mt-9 mb-4 sm:mb-5 px-4 sm:px-6 text-[11px] tracking-[2.5px] uppercase font-semibold text-[#E8C547] font-sora-family">
         Case Studies
       </p>
 
@@ -167,10 +167,10 @@ export default function CaseStudiesPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {filtered.length === 0 ? (
           <div className="col-span-3 text-center py-24">
-            <p className="text-[#6b6b6b] mb-6 font-sora">No case studies match your filters.</p>
+            <p className="text-[#6b6b6b] mb-6 font-sora-family">No case studies match your filters.</p>
             <button
               onClick={() => { setActiveTab('All'); setActiveIndustry('All Industries'); }}
-              className="px-6 py-2.5 rounded-full bg-[#1a1a1a] text-white text-sm font-sora font-semibold"
+              className="px-6 py-2.5 rounded-full bg-[#1a1a1a] text-white text-sm font-sora-family font-semibold"
             >
               Reset Filters
             </button>
@@ -218,11 +218,11 @@ export default function CaseStudiesPage() {
 
           {/* Content */}
           <div className="relative z-10 px-6">
-            <span className="inline-block border border-[#E8C547] rounded-full px-4 py-1 text-[9px] font-bold tracking-[2px] uppercase text-[#E8C547] mb-5 font-sora">
+            <span className="inline-block border border-[#E8C547] rounded-full px-4 py-1 text-[9px] font-bold tracking-[2px] uppercase text-[#E8C547] mb-5 font-sora-family">
               Ready To Scale Your Product?
             </span>
 
-            <h2 className="font-extrabold text-[clamp(26px,4vw,44px)] leading-tight mb-3 text-[#1a1a1a]" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+            <h2 className="font-extrabold text-[clamp(26px,4vw,44px)] leading-tight mb-3 text-[#1a1a1a]" style={{ fontFamily: "var(--font-sora-family)" }}>
               Let&apos;s build your <span className="text-[#E8C547]">success story.</span>
             </h2>
 
@@ -233,7 +233,7 @@ export default function CaseStudiesPage() {
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#111111] text-white rounded-full font-bold text-sm transition-colors"
-              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+              style={{ fontFamily: "var(--font-sora-family)" }}
             >
               Start Your Project
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

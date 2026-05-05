@@ -3,12 +3,67 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+// Text animation component with smooth wave effect
+function AnimatedTitle({ text }: { text: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    text.split('').forEach((ch, i) => {
+      const s = document.createElement('span');
+      s.textContent = ch;
+      s.style.display = 'inline-block';
+      s.style.whiteSpace = 'pre';
+
+      const delay = i * 0.08;
+      s.style.animation = `waveFlow 2s ease-in-out ${delay}s infinite`;
+
+      container.appendChild(s);
+    });
+
+    // Inject CSS animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes waveFlow {
+        0%, 100% { opacity: 0.7; transform: translateY(0) scale(1); }
+        50% { opacity: 1; transform: translateY(-3px) scale(1.05); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [text]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        fontSize: 'clamp(28px, 4vw, 52px)',
+        color: '#1A1410',
+        lineHeight: 1.05,
+        letterSpacing: '-0.02em',
+        fontWeight: 600,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '0.05em',
+      }}
+    />
+  );
+}
+
 const TECH = [
   // Row 1
   { name: 'Amazon',      img: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',                               tag: 'E-Commerce',   color: '#FF9900' },
-  { name: 'Flipkart',    img: 'https://www.vectorlogo.zone/logos/flipkart/flipkart-icon.svg',                                        tag: 'E-Commerce',   color: '#2874F0' },
-  { name: 'Myntra',      img: 'https://upload.wikimedia.org/wikipedia/en/e/e5/Myntra_logo.svg',                                      tag: 'Fashion',      color: '#FF3F6C' },
-  { name: 'Google Play', img: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Google_Play_Logo_%282023%29.svg',                 tag: 'Mobile',       color: '#01875F' },
+  { name: 'Flipkart',    img: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Flipkart_logo_%282026%29.svg',                                        tag: 'E-Commerce',   color: '#2874F0' },
+  { name: 'Myntra',      img: 'https://upload.wikimedia.org/wikipedia/commons/f/f0/65c5da9f878952603e370d03_Myntra-Logo_1.svg',                                      tag: 'Fashion',      color: '#FF3F6C' },
+  { name: 'Google Play', img: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg',                 tag: 'Mobile',       color: '#01875F' },
   { name: 'App Store',   img: 'https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg',                         tag: 'Mobile',       color: '#0D84E8' },
   { name: 'Meta',        img: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg',                    tag: 'Social',       color: '#0866FF' },
   { name: 'Amazon AWS',  img: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',                    tag: 'Cloud',        color: '#FF9900' },
@@ -16,7 +71,7 @@ const TECH = [
   { name: 'OpenAI',      img: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg',                                tag: 'AI / ML',      color: '#10A37F' },
   { name: 'Vercel',      img: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Vercel_logo_black.svg',                           tag: 'Deployment',   color: '#555555' },
   { name: 'Stripe',      img: 'https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg',                 tag: 'Payments',     color: '#635BFF' },
-  { name: 'MongoDB',     img: 'https://upload.wikimedia.org/wikipedia/en/4/45/MongoDB-Logo.svg',                                     tag: 'Database',     color: '#4DB33D' },
+  { name: 'MongoDB',     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mongodb-ar21.svg/960px-Mongodb-ar21.svg.png',                                     tag: 'Database',     color: '#4DB33D' },
   { name: 'Firebase',    img: 'https://upload.wikimedia.org/wikipedia/commons/3/37/Firebase_Logo.svg',                              tag: 'Backend',      color: '#FFA000' },
   { name: 'Docker',      img: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg',          tag: 'DevOps',       color: '#099CEC' },
   { name: 'Slack',       img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg',                             tag: 'Communication',color: '#E01E5A' },
@@ -69,13 +124,21 @@ const SCATTER_DOTS = [
 
 export default function TrustedIntegrations() {
   const areaRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ w: 0, h: 520 });
+  const [state, setState] = useState({ w: 0, h: 520, isMobile: false, isTablet: false });
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const measure = () => {
       if (areaRef.current) {
-        setSize({ w: areaRef.current.offsetWidth, h: 520 });
+        const width = areaRef.current.offsetWidth;
+        const mobile = width < 768;
+        const tablet = width >= 768 && width < 1024;
+        setState({ 
+          w: width, 
+          h: mobile ? 850 : (tablet ? 600 : 520), 
+          isMobile: mobile,
+          isTablet: tablet
+        });
         setReady(true);
       }
     };
@@ -84,16 +147,36 @@ export default function TrustedIntegrations() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  const { w: W, h: H } = size;
-  const pad = W * 0.12;
+  const { w: W, h: H, isMobile, isTablet } = state;
+  const pad = isMobile ? W * 0.05 : (isTablet ? W * 0.05 : W * 0.12);
   const usable = W - pad * 2;
   const y1 = H * 0.26, y2 = H * 0.74;
   const cx = W / 2, cy = H / 2;
 
-  const positions: Point[] = [
-    ...Array.from({ length: 7 }, (_, i) => ({ x: pad + (usable / 6) * i, y: y1 })),
-    ...Array.from({ length: 7 }, (_, i) => ({ x: pad + (usable / 6) * i, y: y2 })),
-  ];
+  let positions: Point[] = [];
+  if (isMobile) {
+    const r1y = H * 0.08, r2y = H * 0.24, r3y = H * 0.40;
+    const r4y = H * 0.60, r5y = H * 0.76, r6y = H * 0.92;
+    positions = [
+      // Row 1 (2)
+      { x: W * 0.3, y: r1y }, { x: W * 0.7, y: r1y },
+      // Row 2 (3)
+      { x: W * 0.15, y: r2y }, { x: W * 0.5, y: r2y }, { x: W * 0.85, y: r2y },
+      // Row 3 (2)
+      { x: W * 0.3, y: r3y }, { x: W * 0.7, y: r3y },
+      // Row 4 (2)
+      { x: W * 0.3, y: r4y }, { x: W * 0.7, y: r4y },
+      // Row 5 (3)
+      { x: W * 0.15, y: r5y }, { x: W * 0.5, y: r5y }, { x: W * 0.85, y: r5y },
+      // Row 6 (2)
+      { x: W * 0.3, y: r6y }, { x: W * 0.7, y: r6y },
+    ];
+  } else {
+    positions = [
+      ...Array.from({ length: 7 }, (_, i) => ({ x: pad + (usable / 6) * i, y: y1 })),
+      ...Array.from({ length: 7 }, (_, i) => ({ x: pad + (usable / 6) * i, y: y2 })),
+    ];
+  }
 
   const allColors = TECH.map(t => t.color);
 
@@ -108,7 +191,7 @@ export default function TrustedIntegrations() {
       }}
     >
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: 32 }}>
+      <div style={{ textAlign: 'center', marginBottom: 32, padding: '0 16px' }}>
         <div
           style={{
             display: 'inline-flex',
@@ -127,40 +210,7 @@ export default function TrustedIntegrations() {
         >
           Trusted Integrations
         </div>
-        <h2
-          style={{
-            fontSize: 'clamp(28px, 4vw, 52px)',
-            fontWeight: 800,
-            color: '#1A1410',
-            lineHeight: 1.05,
-            letterSpacing: '-0.02em',
-            fontFamily: 'Georgia, serif',
-          }}
-        >
-          The{' '}
-          <em
-            style={{
-              fontStyle: 'italic',
-              position: 'relative',
-              display: 'inline-block',
-            }}
-          >
-            Technology
-            <span
-              style={{
-                position: 'absolute',
-                bottom: -3,
-                left: 0,
-                right: 0,
-                height: 3,
-                background: '#C8922A',
-                borderRadius: 2,
-                display: 'block',
-              }}
-            />
-          </em>{' '}
-          We Power.
-        </h2>
+        <AnimatedTitle text="The Technology We Power." />
         <p style={{ marginTop: 12, fontSize: 15, color: '#7A6E60', lineHeight: 1.65 }}>
           We work with the best platforms and tools to build scalable,
           <br />
@@ -286,6 +336,13 @@ export default function TrustedIntegrations() {
               const p = positions[i];
               const tagStyle = TAG_STYLES[tech.tag] ?? { bg: '#eee', color: '#333' };
               const delay = (0.3 + i * 0.12).toFixed(2);
+              
+              const cardW = isMobile ? 84 : 108;
+              const cardH = isMobile ? 84 : 108;
+              const iconSize = isMobile ? 30 : 38;
+              const nameSize = isMobile ? 9 : 10.5;
+              const tagSize = isMobile ? 7 : 8.5;
+
               return (
                 <div
                   key={tech.name}
@@ -294,8 +351,8 @@ export default function TrustedIntegrations() {
                     left: p.x,
                     top: p.y,
                     transform: 'translate(-50%, -50%)',
-                    width: 108,
-                    height: 108,
+                    width: cardW,
+                    height: cardH,
                     background: 'rgba(255,255,255,0.9)',
                     border: '1px solid rgba(255,255,255,0.97)',
                     borderRadius: 22,
@@ -314,14 +371,14 @@ export default function TrustedIntegrations() {
                   <img
                     src={tech.img}
                     alt={tech.name}
-                    style={{ width: 38, height: 38, objectFit: 'contain' }}
+                    style={{ width: iconSize, height: iconSize, objectFit: 'contain' }}
                   />
-                  <span style={{ fontSize: 10.5, fontWeight: 700, color: '#1E1A16', textAlign: 'center', letterSpacing: '-0.01em' }}>
+                  <span style={{ fontSize: nameSize, fontWeight: 700, color: '#1E1A16', textAlign: 'center', letterSpacing: '-0.01em' }}>
                     {tech.name}
                   </span>
                   <span
                     style={{
-                      fontSize: 8.5,
+                      fontSize: tagSize,
                       fontWeight: 700,
                       letterSpacing: '0.08em',
                       padding: '2px 8px',
