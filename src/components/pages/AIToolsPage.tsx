@@ -99,7 +99,7 @@ export default function AITools() {
   return (
     <div
       className="bg-[#F7F5F0] min-h-screen pb-16 pt-12"
-      style={{ fontFamily: "var(--font-sora), 'Inter', sans-serif" }}
+      style={{ fontFamily: "var(--font-sora-family)" }}
     >
       {/* ── HERO ── */}
       <section className="max-w-7xl mx-auto px-6 pt-[52px] grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-5 items-center">
@@ -119,7 +119,7 @@ export default function AITools() {
           {/* Title */}
           <h1
             className="text-[40px] lg:text-[58px] font-extrabold leading-[1.06] text-[#0D0D0D] mb-1"
-            style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            style={{ fontFamily: "var(--font-sora-family)" }}
           >
             Proprietary<br />
             <span className="text-[#F5A623]">AI Technology</span>

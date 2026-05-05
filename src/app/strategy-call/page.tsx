@@ -67,6 +67,8 @@ const CubeIllustration = () => (
 export default function StrategyCallPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
   const [form, setForm] = useState({
     name: '',
     company: '',
@@ -84,12 +86,56 @@ export default function StrategyCallPage() {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    const params = new URLSearchParams();
-    if (form.name) params.set('name', form.name);
-    router.push(`${CALENDLY_URL}?${params.toString()}`);
+    setError('');
+
+    try {
+      const payload = {
+        full_name: form.name,
+        company_name: form.company,
+        work_email: form.email,
+        website_url: form.website,
+        project_details: form.project,
+        source: form.source,
+        timeline: form.timeline,
+        budget_range: form.budget,
+      };
+
+      const response = await fetch('https://team.flipshope.com/api/zonet/contactus', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      setSuccess(true);
+      setForm({
+        name: '',
+        company: '',
+        email: '',
+        website: '',
+        project: '',
+        source: '',
+        timeline: '',
+        budget: '',
+      });
+
+      const params = new URLSearchParams();
+      if (form.name) params.set('name', form.name);
+      setTimeout(() => {
+        router.push(`${CALENDLY_URL}?${params.toString()}`);
+      }, 1500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit form');
+      setLoading(false);
+    }
   }
 
   const inputBase =
@@ -212,6 +258,20 @@ export default function StrategyCallPage() {
               </div>
             </div>
 
+            {/* Error Message */}
+            {error && (
+              <div className="p-3.5 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-700">{error}</p>
+              </div>
+            )}
+
+            {/* Success Message */}
+            {success && (
+              <div className="p-3.5 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-sm text-green-700">✓ Your information has been submitted. Redirecting to book your call...</p>
+              </div>
+            )}
+
             {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
@@ -314,8 +374,19 @@ export default function StrategyCallPage() {
                     <select name="source" value={form.source} onChange={handleChange} required className={selectBase}>
                       <option value="" disabled>Select an option</option>
                       <option>Google Search</option>
-                      <option>Social Media</option>
-                      <option>Referral</option>
+                      <option>LinkedIn</option>
+                      <option>Instagram</option>
+                      <option>Twitter / X</option>
+                      <option>Facebook</option>
+                      <option>YouTube</option>
+                      <option>Friend or Colleague Referral</option>
+                      <option>Client Referral</option>
+                      <option>Clutch / Agency Directory</option>
+                      <option>Upwork / Freelance Platform</option>
+                      <option>Blog / Article</option>
+                      <option>Podcast</option>
+                      <option>Newsletter</option>
+                      <option>Event / Conference</option>
                       <option>Other</option>
                     </select>
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -354,10 +425,10 @@ export default function StrategyCallPage() {
                 <div className="relative">
                   <select name="budget" value={form.budget} onChange={handleChange} className={selectBase}>
                     <option value="" disabled>Select your budget range</option>
-                    <option>Under $5,000</option>
-                    <option>$5,000 – $15,000</option>
-                    <option>$15,000 – $50,000</option>
-                    <option>$50,000+</option>
+                    <option>Under ₹10,000</option>
+                    <option>₹10,000 – ₹50,000</option>
+                    <option>₹50,000 – ₹2,00,000</option>
+                    <option>₹2,00,000+</option>
                   </select>
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

@@ -4,34 +4,69 @@ import { motion } from 'motion/react';
 import { Mail, MapPin, CheckCircle2, Phone, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
-const projectTypes = [
-  'SaaS', 'AI / ML', 'Web App', 'Mobile App', 'Design System', 'Other'
-];
-
 const budgets = [
-  '< $10K', '$10K - $25K', '$25K - $50K', '$50K+'
+  'Under ₹10,000', '₹10,000 – ₹50,000', '₹50,000 – ₹2,00,000', '₹2,00,000+'
 ];
 
 const timelines = [
-  'Immediately', 'Within 1 month', '1-3 months', '3+ months'
+  '7–14 days', '15–30 days', '1–3 months', '3+ months'
 ];
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    projectType: 'SaaS',
-    budget: '$10K - $25K',
+    budget: '₹10,000 – ₹50,000',
     timeline: '',
     message: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    setLoading(true);
+    setError('');
+
+    try {
+      const payload = {
+        full_name: formData.name,
+        company_name: '',
+        work_email: formData.email,
+        website_url: '',
+        project_details: formData.message,
+        source: '',
+        timeline: formData.timeline,
+        budget_range: formData.budget,
+      };
+
+      const response = await fetch('https://team.flipshope.com/api/zonet/contactus', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        budget: '₹10,000 – ₹50,000',
+        timeline: '',
+        message: ''
+      });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit form');
+      setLoading(false);
+    }
   };
 
   return (
@@ -166,7 +201,14 @@ const ContactForm = () => {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
-                  
+
+                  {/* Error Message */}
+                  {error && (
+                    <div className="p-3.5 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-sm text-red-700">{error}</p>
+                    </div>
+                  )}
+
                   {/* Step 1 */}
                   <div className="space-y-5">
                     <div className="flex items-center gap-3">
@@ -175,7 +217,7 @@ const ContactForm = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <input
-                        type="text" 
+                        type="text"
                         required
                         placeholder="Full Name"
                         value={formData.name}
@@ -183,7 +225,7 @@ const ContactForm = () => {
                         className="w-full bg-[#FCFCF9] border border-[#E6E4DF] rounded-[14px] px-5 py-3.5 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] font-medium text-[13px] placeholder:text-[#686B6B]/50"
                       />
                       <input
-                        type="email" 
+                        type="email"
                         required
                         placeholder="Email Address"
                         value={formData.email}
@@ -193,34 +235,11 @@ const ContactForm = () => {
                     </div>
                   </div>
 
-                  {/* Step 2 */}
-                  <div className="space-y-5">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-black text-[#E8C547] tracking-widest">02</span>
-                      <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">What are we building?</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2.5">
-                      {projectTypes.map((type) => (
-                        <button
-                          key={type}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, projectType: type })}
-                          className={`px-5 py-2 rounded-full text-[12px] transition-all duration-300 border ${formData.projectType === type
-                              ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                              : 'bg-[#FCFCF9] text-[#686B6B] border-[#E6E4DF] hover:border-[#1A1A1A]/30'
-                            }`}
-                        >
-                          {type}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
                   {/* Step 3 & 4 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-5">
                       <div className="flex items-center gap-3">
-                        <span className="text-[11px] font-black text-[#E8C547] tracking-widest">03</span>
+                        <span className="text-[11px] font-black text-[#E8C547] tracking-widest">02</span>
                         <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Estimate Budget</span>
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -241,7 +260,7 @@ const ContactForm = () => {
                     </div>
                     <div className="space-y-5">
                       <div className="flex items-center gap-3">
-                        <span className="text-[11px] font-black text-[#E8C547] tracking-widest">04</span>
+                        <span className="text-[11px] font-black text-[#E8C547] tracking-widest">03</span>
                         <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Project Timeline</span>
                       </div>
                       <div className="relative">
@@ -261,7 +280,7 @@ const ContactForm = () => {
                   {/* Step 5 */}
                   <div className="space-y-5">
                     <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-black text-[#E8C547] tracking-widest">05</span>
+                      <span className="text-[11px] font-black text-[#E8C547] tracking-widest">04</span>
                       <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Project Details</span>
                     </div>
                     <textarea 
@@ -277,9 +296,10 @@ const ContactForm = () => {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full bg-[#1A1A1A] text-white rounded-[16px] py-4 font-bold text-[13px] hover:bg-[#1A1A1A]/90 transition-all flex items-center justify-center gap-3 group uppercase tracking-widest shadow-sm"
+                      disabled={loading}
+                      className="w-full bg-[#1A1A1A] text-white rounded-[16px] py-4 font-bold text-[13px] hover:bg-[#1A1A1A]/90 transition-all flex items-center justify-center gap-3 group uppercase tracking-widest shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Kickstart Your Project <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      {loading ? 'Submitting...' : 'Kickstart Your Project'} {!loading && <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
                     </button>
                   </div>
                 </form>

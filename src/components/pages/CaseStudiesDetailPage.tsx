@@ -1,333 +1,304 @@
 'use client';
 
-import { use, useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { 
-  ArrowLeft, ArrowRight, CheckCircle2, Cpu, Zap, Globe, 
-  Smartphone, Puzzle, Rocket, BarChart3, ShieldCheck, 
-  Users, Star, TrendingUp, Sparkles, MessageSquare, PlayCircle
-} from 'lucide-react';
+import { use } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+  ArrowRight, Calendar, Globe, Target,
+  Users, Star, TrendingUp, Puzzle, Smartphone,
+  Zap, Rocket, BarChart3, ShieldCheck,
+} from 'lucide-react';
 import { caseStudies } from '@/lib/case-studies';
-import ContactForm from '@/components/sections/landing/ContactForm';
 
 const iconMap = {
-  Users, Star, TrendingUp, Globe, Smartphone, Puzzle, Rocket, BarChart3, ShieldCheck, Zap, PlayCircle, MessageSquare
+  Users, Star, TrendingUp, Globe, Smartphone, Puzzle, Rocket, BarChart3, ShieldCheck, Zap,
 };
 
-/* ─────────────────────────────────────────────────────────
-   REUSABLE COMPONENTS
-───────────────────────────────────────────────────────── */
-
-function Breadcrumbs({ name }: { name: string }) {
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-6">
-      <Link href="/" className="hover:text-[#E8C547] transition-colors">Home</Link>
-      <span className="opacity-30">/</span>
-      <Link href="/case-studies" className="hover:text-[#E8C547] transition-colors">Case Studies</Link>
-      <span className="opacity-30">/</span>
-      <span className="text-slate-900">{name}</span>
-    </nav>
-  );
-}
-
-function HighlightCard({ title, desc, icon: iconName, variant = 'amber' }: { title: string; desc: React.ReactNode; icon: keyof typeof iconMap | string; variant?: 'indigo' | 'amber' | 'emerald' }) {
-  const Icon = iconMap[iconName as keyof typeof iconMap] || Zap;
-  const colors = {
-    indigo: 'text-[#E8C547] bg-[#E8C547]/10 border-[#E8C547]/20',
-    amber: 'text-[#E8C547] bg-[#E8C547]/10 border-[#E8C547]/20',
-    emerald: 'text-[#E8C547] bg-[#E8C547]/10 border-[#E8C547]/20',
-  };
-
-  return (
-    <div className="p-7 rounded-[28px] bg-white border border-slate-200 hover:border-[#E8C547]/40 hover:shadow-lg transition-all duration-500 group">
-      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 border ${colors[variant]}`}>
-        <Icon size={20} strokeWidth={2.5} />
-      </div>
-      <h3 className="text-lg font-bold text-slate-900 mb-2.5 tracking-tight">{title}</h3>
-      <p className="text-slate-600 text-sm leading-relaxed">
-        {desc}
-      </p>
+    <div className="flex items-center gap-[10px] text-[#E8C547] text-[11px] tracking-[0.2em] font-bold uppercase">
+      <span className="w-[22px] h-[2px] bg-[#E8C547] rounded-full shrink-0" />
+      {children}
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────
-   MAIN PAGE
-───────────────────────────────────────────────────────── */
-
 export default function CaseStudyDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const unwrappedParams = use(params);
-  const slug = unwrappedParams?.slug;
-  const project = caseStudies.find(p => p.slug === slug) || caseStudies[0];
-  
-  const { scrollY } = useScroll();
-  const heroScale = useTransform(scrollY, [0, 800], [1, 1.02]);
-  const heroY = useTransform(scrollY, [0, 800], [0, 50]);
-
-  // Next/Prev Project Navigation
+  const { slug } = use(params);
+  const project = caseStudies.find(p => p.slug === slug) ?? caseStudies[0];
   const currentIndex = caseStudies.findIndex(p => p.slug === project.slug);
   const nextProject = caseStudies[(currentIndex + 1) % caseStudies.length];
-
-  if (!project) return null;
+  const heroDesc = project.description.map(d => d.text).join('');
 
   return (
-    <div className="relative bg-[#faf8f5] overflow-x-clip min-h-screen font-['Sora',_sans-serif] text-slate-800 selection:bg-[#E8C547]/30">
-      
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#E8C547]/10 rounded-full blur-[140px] -z-10 pointer-events-none" />
+    <div className="bg-[#F7F6F3] min-h-screen">
+      <div className="max-w-7xl mx-auto px-6 mt-24">
 
-      {/* ───────────────────────────────────────────────────
-          HERO SECTION
-      ─────────────────────────────────────────────────── */}
-      <section className="pt-28 md:pt-40 pb-16 border-b border-slate-200 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <Breadcrumbs name={project.name} />
+        {/* ── Breadcrumb ── */}
+        <nav className="pt-9 pb-12 flex items-center gap-[6px] text-[13px]">
+          <Link href="/" className="text-[#9AA1AC] hover:text-[#1A1A1A] transition-colors duration-200 font-medium">Home</Link>
+          <svg width="5" height="9" viewBox="0 0 5 9" fill="none" className="shrink-0 text-[#C9C5BB]">
+            <path d="M1 1l3 3.5L1 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <Link href="/case-studies" className="text-[#9AA1AC] hover:text-[#1A1A1A] transition-colors duration-200 font-medium">Case Studies</Link>
+          <svg width="5" height="9" viewBox="0 0 5 9" fill="none" className="shrink-0 text-[#C9C5BB]">
+            <path d="M1 1l3 3.5L1 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-[#1A1A1A] font-semibold">{project.name}</span>
+        </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
-            <div className="max-w-3xl space-y-6">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8C547]/10 border border-[#E8C547]/20 text-[#E8C547] font-bold uppercase tracking-wider text-[10px]"
-              >
-                <Sparkles size={11} className="mr-1" />
-                Case Study · {project.industry}
-              </motion.div>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.05] tracking-tight"
-              >
-                {project.name.split(' ')[0]} <br />
-                <span className="text-[#E8C547]">
-                  {project.name.split(' ').slice(1).join(' ')}
-                </span>
-              </motion.h1>
+        {/* ── Hero ── */}
+        <section className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 items-center pb-14">
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-2xl text-slate-600 leading-normal max-w-2xl"
-              >
-                {project.tagline}.
-              </motion.p>
-            </div>
+          {/* Left: text */}
+          <div>
+             <div className="inline-flex items-center gap-2 border border-[#E6E4DF] rounded-full px-4 py-1.5 text-[9px] font-semibold tracking-[0.15em] text-[#686B6B] mb-2 bg-white/60 backdrop-blur-sm uppercase">
+                <span className="w-1 h-1 rounded-full bg-[#E8C547]" />
+                {project.industry} Case Study
+              </div>
 
-            {/* Metrics Row */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap gap-3 lg:mb-2"
-            >
-              {project.stats.slice(0, 3).map((stat, i) => (
-                <div key={i} className="px-6 py-4 rounded-[24px] bg-white border border-slate-200 shadow-sm flex flex-col justify-center min-w-[160px] group hover:border-[#E8C547]/40 transition-all">
-                  <span className="text-2xl font-extrabold text-[#E8C547] tracking-tight group-hover:scale-105 transition-transform origin-left">{stat.value}</span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-slate-500 mt-1">{stat.label}</span>
-                </div>
-              ))}
-            </motion.div>
+            <h1 className="font-sora-family! font-semibold leading-none tracking-tight text-[#0d1424] text-[52px] md:text-[68px] lg:text-[88px] mb-12">
+              {project.name}
+            </h1>
+
+            <p className="font-semibold text-[18px] text-[#1A1A1A] mb-2">{project.tagline}.</p>
+            <p className="text-[#686B6B] text-xs leading-[1.7]">{heroDesc}</p>
           </div>
-        </div>
-      </section>
 
-      {/* ───────────────────────────────────────────────────
-          DEVICE MOCKUP SECTION
-      ─────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-slate-50 border-b border-slate-200">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            style={{ y: heroY, scale: 1 }}
-            className="relative max-w-5xl mx-auto"
-          >
-            {/* Professional Mac-style Mockup Header */}
-            <div className="relative rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] border border-slate-200 bg-white outline outline-4 outline-slate-100">
-              <div className="w-full h-8 md:h-11 bg-slate-50 border-b border-slate-200 flex items-center px-6 gap-2.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                <div className="mx-auto text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-                  {project.slug}.bricxlabs.com
+          {/* Right: 3 stat cards in one horizontal row */}
+          <div className="grid grid-cols-3 gap-3">
+            {project.stats.slice(0, 3).map((stat, i) => {
+              const Icon = iconMap[stat.icon as keyof typeof iconMap] ?? Zap;
+              return (
+                <div key={i} className="bg-white border border-[#E6E4DF] rounded-2xl p-5 flex flex-col items-center text-center gap-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="w-[42px] h-[42px] rounded-[12px] bg-[#fff7dc] flex items-center justify-center text-[#E8C547]">
+                    <Icon size={20} />
+                  </div>
+                  <div>
+                    <b className="block text-[22px] font-bold tracking-tight text-[#0d1424]">{stat.value}</b>
+                    <span className="text-[12px] text-[#686B6B] leading-snug">{stat.label}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
-                 <Image 
-                  src={project.photo} 
-                  alt={`${project.name} interface`} 
-                  fill
-                  className="object-cover object-top hover:scale-[1.02] transition-transform duration-[2000ms]"
-                  priority
-                />
-              </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ── Product Mockup ── */}
+        <div className="w-full mb-16 rounded-3xl overflow-hidden shadow-sm border border-[#E5E5E5] bg-white group">
+            <Image
+              src={project.photo}
+              alt={`${project.name} product preview`}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+          </div>
+
+        {/* ── Content Grid ── */}
+        <section className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 items-start">
+
+          {/* Left: Challenge + Approach */}
+          <div>
+            <div className="mb-8">
+              <Eyebrow>The Challenge</Eyebrow>
+              <h2 className="font-serif text-[26px] leading-[1.35] mt-[14px] mb-7 font-semibold text-[#1A1A1A]">
+                {project.detail.problem}
+              </h2>
             </div>
 
-            {/* Decorative Side Accents */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#E8C547]/20 rounded-full blur-[60px] -z-10" />
-            <div className="absolute -bottom-16 -left-16 w-52 h-52 bg-[#E8C547]/10 rounded-full blur-[60px] -z-10" />
-          </motion.div>
-        </div>
-      </section>
+            <div>
+              <Eyebrow>Our Approach</Eyebrow>
+              <p className="text-[#686B6B] text-[14.5px] leading-[1.7] max-w-[560px] mt-[14px] mb-[26px]">
+                {project.detail.solution}
+              </p>
 
-      {/* ───────────────────────────────────────────────────
-          CONTENT GRID
-      ─────────────────────────────────────────────────── */}
-      <section className="py-20 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            
-            {/* Story Side */}
-            <div className="lg:col-span-7 space-y-24">
-              
-              <div className="space-y-12">
-                <div className="space-y-6">
-                  <h2 className="text-xl font-extrabold text-slate-900 uppercase tracking-widest flex items-center gap-4">
-                    <span className="w-10 h-0.5 bg-[#E8C547] rounded-full" />
-                    The Challenge
-                  </h2>
-                  <p className="text-2xl md:text-3xl font-bold text-slate-900 leading-snug tracking-tight">
-                    {project.detail.problem}
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  <h2 className="text-xl font-extrabold text-slate-900 uppercase tracking-widest flex items-center gap-4">
-                    <span className="w-10 h-0.5 bg-[#E8C547] rounded-full" />
-                    The Strategy
-                  </h2>
-                  <p className="text-lg text-slate-600 leading-relaxed">
-                    {project.detail.solution}
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[18px]">
+                {project.detail.features.map((feat, i) => {
+                  const Icon = iconMap[feat.icon as keyof typeof iconMap] ?? Zap;
+                  return (
+                    <div
+                      key={i}
+                      className="bg-white border border-[#E6E4DF] rounded-[14px] p-[18px] shadow-sm hover:shadow-md transition-shadow duration-200"
+                    >
+                      <div className="w-[34px] h-[34px] rounded-[10px] bg-[#fff7dc] flex items-center justify-center text-[#E8C547] mb-[14px]">
+                        <Icon size={18} />
+                      </div>
+                      <h4 className="text-[15px] font-bold text-[#1A1A1A] mb-[6px]">{feat.title}</h4>
+                      <p className="text-[13px] text-[#686B6B] leading-[1.6] m-0">{feat.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
+            </div>
+          </div>
 
-              {/* Feature Highlights */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {project.detail.features.map((f, i) => (
-                  <HighlightCard 
-                    key={i} 
-                    title={f.title} 
-                    desc={f.desc} 
-                    icon={f.icon}
-                    variant={i % 3 === 0 ? 'indigo' : i % 3 === 1 ? 'emerald' : 'amber'}
-                  />
+          {/* Right: Sidebar */}
+          <aside className="lg:sticky lg:top-6 flex flex-col gap-[18px]">
+
+            {/* Project Overview */}
+            <div className="bg-white border border-[#E6E4DF] rounded-[18px] p-[22px] shadow-[0_8px_24px_rgba(15,20,40,0.06)]">
+              <p className="text-[#E8C547] text-[11px] tracking-[0.2em] font-bold uppercase">Project Overview</p>
+              <hr className="border-t border-[#E6E4DF] my-[18px]" />
+
+              <p className="text-[11px] text-[#686B6B] tracking-[0.18em] font-semibold uppercase mb-3">Expertise Stack</p>
+              <div className="flex flex-wrap gap-2 mb-[14px]">
+                {project.detail.tech.map(t => (
+                  <span key={t} className="border border-[#E6E4DF] rounded-lg px-3 py-2 text-[11px] font-semibold tracking-[0.06em] uppercase text-[#374151] bg-white">
+                    {t}
+                  </span>
                 ))}
               </div>
 
-              {/* Result List */}
-              <div className="p-10 md:p-14 rounded-[48px] bg-white border border-slate-200 shadow-xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#E8C547]/10 rounded-full blur-[80px] -z-10" />
-                
-                <h2 className="text-xl font-extrabold text-slate-900 uppercase tracking-widest mb-12 flex items-center gap-4">
-                   <div className="w-10 h-10 rounded-xl bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547]">
-                    <CheckCircle2 size={22} strokeWidth={3} />
-                   </div>
-                   Verified Impact
-                </h2>
-
-                <div className="space-y-0">
-                  {project.detail.results.map((result, i) => (
-                    <motion.div 
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      className="border-b border-slate-200 py-8 last:border-0 last:pb-0 first:pt-0"
-                    >
-                      <p className="text-2xl md:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight">
-                        {result}
-                      </p>
-                    </motion.div>
-                  ))}
+              <div className="flex items-center gap-3 mt-[14px]">
+                <div className="w-9 h-9 rounded-[10px] bg-[#fff7dc] flex items-center justify-center text-[#E8C547] shrink-0">
+                  <Calendar size={18} />
+                </div>
+                <div>
+                  <p className="text-[11px] text-[#686B6B] tracking-[0.16em] uppercase font-semibold">Timeline</p>
+                  <p className="text-[14px] font-semibold text-[#1A1A1A]">30 Days Launch</p>
                 </div>
               </div>
 
+              <div className="flex items-center gap-3 mt-[14px]">
+                <div className="w-9 h-9 rounded-[10px] bg-[#fff7dc] flex items-center justify-center text-[#E8C547] shrink-0">
+                  <Globe size={18} />
+                </div>
+                <div>
+                  <p className="text-[11px] text-[#686B6B] tracking-[0.16em] uppercase font-semibold">Industry</p>
+                  <p className="text-[14px] font-semibold text-[#1A1A1A]">{project.industry}</p>
+                </div>
+              </div>
+
+              <hr className="border-t border-[#E6E4DF] my-[18px]" />
+
+              <Link
+                href="/contact"
+                className="flex items-center justify-center gap-2 w-full text-white font-semibold rounded-[10px] py-3 px-4 text-[14px] hover:opacity-90 transition-opacity duration-200 shadow-[0_10px_22px_-10px_rgba(230,162,0,0.7)]"
+                style={{ background: 'linear-gradient(180deg,#fac11a,#e6a200)' }}
+              >
+                Build Yours <ArrowRight size={14} />
+              </Link>
             </div>
 
-            {/* Sidebar Details */}
-            <aside className="lg:col-span-5 space-y-10">
-              <div className="lg:sticky lg:top-36 space-y-8">
-                
-                {/* Tech Stack Card */}
-                <div className="p-10 rounded-[40px] bg-white border border-slate-200 shadow-xl space-y-10 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1.5 bg-[#E8C547]" />
-                  
-                  <div>
-                    <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-6">Expertise Stack</h3>
-                    <div className="flex flex-wrap gap-2.5">
-                      {project.detail.tech.map((t) => (
-                        <span key={t} className="px-5 py-2.5 rounded-[14px] bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-widest text-slate-900 hover:border-[#E8C547]/50 transition-all cursor-default shadow-sm">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-8 pt-8 border-t border-slate-200">
-                    <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 rounded-[20px] bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547] border border-[#E8C547]/20">
-                        <Cpu size={24} strokeWidth={2} />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-0.5">Timeline</p>
-                        <p className="text-lg font-extrabold text-slate-900">30 Days Launch</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 rounded-[20px] bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547] border border-[#E8C547]/20">
-                        <Globe size={24} strokeWidth={2} />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-0.5">Industry</p>
-                        <p className="text-lg font-extrabold text-slate-900">{project.industry}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-4">
-                    <Link 
-                      href="/contact" 
-                      className="group flex items-center justify-center gap-3 w-full py-6 rounded-[22px] bg-[#E8C547] text-slate-900 font-bold text-lg transition-all hover:bg-[#d4b33c] shadow-lg shadow-[#E8C547]/20"
-                    >
-                      Build Yours <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Next Project Nav */}
-                <Link 
-                  href={`/case-studies/${nextProject.slug}`}
-                  className="block p-8 rounded-[40px] border border-slate-200 bg-white shadow-lg hover:border-[#E8C547] transition-all group overflow-hidden relative"
-                >
-                  <div className="relative z-10 flex items-center justify-between">
-                    <div className="space-y-1.5">
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-0.5">Next Case Study</p>
-                      <p className="text-2xl font-extrabold text-slate-900 tracking-tight group-hover:text-[#E8C547] transition-colors">{nextProject.name}</p>
-                    </div>
-                    <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-slate-900 group-hover:bg-[#E8C547] transition-all duration-300 shadow-sm">
-                      <ArrowRight size={22} />
-                    </div>
-                  </div>
-                </Link>
-
+            {/* Next Case Study */}
+            <Link
+              href={`/case-studies/${nextProject.slug}`}
+              className="bg-white border border-[#E6E4DF] rounded-[18px] p-[22px] flex items-center justify-between shadow-sm hover:shadow-md transition-shadow duration-200 group"
+            >
+              <div>
+                <p className="text-[11px] text-[#E8C547] tracking-[0.18em] uppercase font-bold">Next Case Study</p>
+                <p className="font-serif text-[18px] font-bold mt-1 text-[#1A1A1A]">{nextProject.name}</p>
               </div>
-            </aside>
-          </div>
-        </div>
-      </section>
+              <div className="w-9 h-9 rounded-full bg-[#fff7dc] flex items-center justify-center text-[#E8C547] group-hover:bg-[#E8C547] group-hover:text-white transition-all duration-200 shrink-0">
+                <ArrowRight size={14} />
+              </div>
+            </Link>
+          </aside>
+        </section>
 
-      {/* ───────────────────────────────────────────────────
-          BOTTOM SECTION
-      ─────────────────────────────────────────────────── */}
-      <div className="border-t border-slate-200 bg-white">
-        <div className="[&>div]:bg-transparent [&>div]:border-none [&_h2]:text-slate-900 [&_p]:text-slate-600 [&_label]:text-slate-700 [&_input]:bg-slate-50 [&_input]:border-slate-200 [&_input]:text-slate-900 [&_textarea]:bg-slate-50 [&_textarea]:border-slate-200 [&_textarea]:text-slate-900">
-          <ContactForm />
-        </div>
+        {/* ── Verified Impact ── */}
+        <section className="mt-[60px] mb-[22px] bg-white border border-[#E6E4DF] rounded-[22px] px-10 py-[38px] relative overflow-hidden">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(700px 220px at 95% 0%,rgba(245,184,0,.07),transparent 60%),radial-gradient(500px 200px at 5% 100%,rgba(245,184,0,.05),transparent 60%)' }}
+          />
+          {/* Label */}
+          <div className="flex items-center gap-[10px] mb-8">
+            <span className="w-[28px] h-[28px] rounded-full bg-[#fff7dc] border border-[#E8C547]/30 flex items-center justify-center shrink-0">
+              <Target size={13} strokeWidth={2} style={{ color: '#E8C547' }} />
+            </span>
+            <span
+              className="text-[11px] font-bold uppercase tracking-[0.2em]"
+              style={{ color: '#E8C547', fontFamily: 'var(--font-inter)' }}
+            >
+              Verified Impact
+            </span>
+          </div>
+
+          {/* Stats row */}
+          <div className="flex flex-col sm:flex-row sm:items-stretch sm:divide-x sm:divide-[#E6E4DF]">
+            {project.detail.impact.map((item, i) => (
+              <div
+                key={i}
+                className={`mb-8 last:mb-0 sm:mb-0 sm:flex-1 ${i === 0 ? 'sm:pr-10' : i === project.detail.impact.length - 1 ? 'sm:pl-10' : 'sm:px-10'}`}
+              >
+                <p
+                  className="leading-none tracking-tight mb-3"
+                  style={{
+                    fontFamily: 'var(--font-playfair)',
+                    fontWeight: 700,
+                    fontSize: '42px',
+                    color: '#0d1424',
+                  }}
+                >
+                  {item.value}
+                </p>
+                <p
+                  className="leading-snug"
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontWeight: 400,
+                    fontSize: '13px',
+                    color: '#6b7280',
+                  }}
+                >
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section className="bg-white border border-[#E6E4DF] rounded-[22px] py-[30px] px-9 grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-7 mb-20">
+          <div className="w-[140px] h-[120px] hidden md:block shrink-0">
+            <svg viewBox="0 0 160 130" width="100%" height="100%">
+              <defs>
+                <linearGradient id="ctabk" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#ffe79a" /><stop offset="1" stopColor="#f0b300" />
+                </linearGradient>
+              </defs>
+              <g>
+                <polygon points="20,80 60,100 100,80 60,60" fill="url(#ctabk)" />
+                <polygon points="20,80 60,100 60,118 20,98" fill="#c98c00" />
+                <polygon points="100,80 60,100 60,118 100,98" fill="#e0a000" />
+              </g>
+              <g transform="translate(60,-12)">
+                <polygon points="20,80 60,100 100,80 60,60" fill="url(#ctabk)" />
+                <polygon points="20,80 60,100 60,118 20,98" fill="#c98c00" />
+                <polygon points="100,80 60,100 60,118 100,98" fill="#e0a000" />
+              </g>
+              <g transform="translate(20,-30) scale(.7)">
+                <polygon points="20,80 60,100 100,80 60,60" fill="url(#ctabk)" />
+                <polygon points="20,80 60,100 60,118 20,98" fill="#c98c00" />
+                <polygon points="100,80 60,100 60,118 100,98" fill="#e0a000" />
+              </g>
+            </svg>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-[10px] text-[#E8C547] text-[11px] tracking-[0.2em] font-bold uppercase mb-[14px]">
+              <span className="w-[22px] h-[2px] bg-[#E8C547] rounded-full shrink-0" />
+              Have a Similar Idea?
+            </div>
+            <h3 className="font-serif text-[28px] font-semibold tracking-[-0.01em] text-[#1A1A1A] mb-[6px]">
+              Let&apos;s build something amazing <em className="not-italic text-[#E8C547]">together.</em>
+            </h3>
+            <p className="text-[#686B6B] text-[14px]">Book a free strategy call and bring your idea to life.</p>
+          </div>
+
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 text-white font-semibold rounded-[10px] py-3 px-[22px] text-[14px] hover:opacity-90 transition-opacity duration-200 whitespace-nowrap shadow-[0_10px_22px_-10px_rgba(230,162,0,0.7)]"
+            style={{ background: 'linear-gradient(180deg,#fac11a,#e6a200)' }}
+          >
+            Schedule a Free Call <ArrowRight size={14} />
+          </Link>
+        </section>
+
       </div>
     </div>
   );
