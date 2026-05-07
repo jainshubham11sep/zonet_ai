@@ -54,7 +54,7 @@ const Hero = () => {
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-nowrap items-center gap-3 sm:gap-4 md:gap-6">
+            <div className="flex flex-nowrap items-center gap-3 sm:gap-4 md:gap-6 pb-12 md:pb-0">
               <Link
                 href="/case-studies"
                 className="inline-flex shrink-0 items-center gap-2 px-5 py-3 sm:px-8 sm:py-3.5 bg-[#1A1A1A] text-white font-bold text-sm rounded-full hover:bg-[#2A2A2A] transition-all hover:scale-105 active:scale-95 whitespace-nowrap"

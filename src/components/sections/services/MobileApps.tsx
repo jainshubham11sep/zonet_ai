@@ -1,260 +1,568 @@
 'use client';
 
-import { caseStudies } from '@/lib/case-studies';
 import { motion } from 'motion/react';
-import { 
-  Smartphone, Zap, ArrowUpRight, CheckCircle2, 
-  Layers, Code2, Rocket, BarChart3, 
-  Search, Layout, Boxes, ShieldCheck,
-  Server, Cpu, Database, Wifi, Tablet, Map
+import {
+  Smartphone, Zap, Layout, Wifi, ShieldCheck, Database, Server,
+  Layers, Activity, CheckCircle2, ShoppingBag, CreditCard, Apple, Play,
+  Fingerprint, ArrowRight, BarChart3, TrendingUp
 } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ContactForm from '@/components/sections/landing/ContactForm';
 
-const mobileCaseStudies = caseStudies.filter(cs => cs.category === 'Applications' || cs.slug === 'hyyfam');
+const techStack = [
+  { name: 'REACT NATIVE', Icon: Layers },
+  { name: 'FLUTTER', Icon: Layout },
+  { name: 'SWIFT', Icon: Zap },
+  { name: 'KOTLIN', Icon: Smartphone },
+  { name: 'FIREBASE', Icon: Database },
+  { name: 'NODE.JS', Icon: Server },
+  { name: 'GRAPHQL', Icon: Activity },
+];
 
 const features = [
   {
     title: 'React Native & Expo',
     desc: 'Cross-platform applications that share 90%+ code between iOS and Android without sacrificing native performance.',
-    icon: Smartphone
+    Icon: Smartphone,
   },
   {
     title: 'Offline-First Reliability',
     desc: 'Advanced caching and background sync ensuring your app works perfectly even in zero-connectivity environments.',
-    icon: Wifi
+    Icon: Wifi,
   },
   {
     title: 'Biometric Security',
-    desc: 'FaceID, TouchID, and Fingerprint integration for bank-grade security and frictionless user authentication.',
-    icon: ShieldCheck
+    desc: 'Face ID, Touch ID, and Fingerprint integration for bank-grade security and frictionless user authentication.',
+    Icon: ShieldCheck,
   },
   {
     title: 'Real-time Sync',
-    desc: 'Powered by WebSockets and Supabase/Firebase for instantaneous data updates across all user devices.',
-    icon: Zap
-  }
+    desc: 'Powered by WebSockets and Firebase for instantaneous data updates across all user devices.',
+    Icon: Zap,
+  },
 ];
 
-const techStack = [
-  { name: 'React Native', icon: Smartphone },
-  { name: 'Expo', icon: Layers },
-  { name: 'Firebase', icon: Database },
-  { name: 'Node.js', icon: Server },
-  { name: 'Redux/Zustand', icon: Boxes },
-  { name: 'App Store SEO', icon: Search }
+const processSteps = [
+  {
+    num: '01',
+    title: 'UX/UI Design & Prototyping',
+    desc: 'Interactive high-fidelity prototypes focused on mobile navigation patterns and gesture interactions.',
+  },
+  {
+    num: '02',
+    title: 'Cross-Platform Development',
+    desc: 'Building with React Native or Flutter to ensure speed-to-market without compromising on native functionality.',
+  },
+  {
+    num: '03',
+    title: 'Testing & Quality Assurance',
+    desc: 'Rigorous testing across real devices to ensure performance, functionality, and security.',
+  },
+  {
+    num: '04',
+    title: 'App Store Deployment',
+    desc: 'Handling the entire submission process for Apple App Store and Google Play Store with ASO best practices.',
+  },
 ];
+
+const mobileProjects = [
+  {
+    tag: 'FINTECH',
+    name: 'Finmate',
+    desc: 'Personal Finance Management App',
+    stats: [
+      { value: '100K+', label: 'DOWNLOADS', star: false },
+      { value: '4.8', label: 'PLAY STORE RATING', star: true },
+      { value: '20%', label: 'INCREASE IN RETENTION', star: false },
+    ],
+    href: '/case-studies/finmate',
+    variant: 'fintech' as const,
+  },
+  {
+    tag: 'E-COMMERCE',
+    name: 'FreshBasket',
+    desc: 'Grocery Shopping & Delivery App',
+    stats: [
+      { value: '250K+', label: 'DOWNLOADS', star: false },
+      { value: '4.7', label: 'APP STORE RATING', star: true },
+      { value: '35%', label: 'REPEAT ORDERS', star: false },
+    ],
+    href: '/case-studies/freshbasket',
+    variant: 'ecommerce' as const,
+  },
+];
+
+function HeroPhoneVisual() {
+  return (
+    <div className="relative w-full pt-16 pb-20 px-8 flex justify-center">
+      {/* Background circles for presentation */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[450px] h-[450px] bg-[#E8C547]/[0.03] rounded-full border border-[#E8C547]/[0.1]" />
+        <div className="absolute w-[350px] h-[350px] bg-[#E8C547]/[0.05] rounded-full" />
+      </div>
+
+      {/* Main Phone */}
+      <div className="relative w-[280px] h-[580px] bg-[#121212] rounded-[40px] border-[10px] border-[#1A1A1A] shadow-[0_32px_80px_rgba(0,0,0,0.4)] overflow-hidden z-20 shrink-0">
+        {/* Dynamic Island */}
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-30" />
+
+        {/* Screen Content */}
+        <div className="absolute inset-0 bg-[#0A0A0A] text-white flex flex-col p-5 pt-12">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex gap-3 items-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#E8C547] to-orange-500 flex items-center justify-center p-[2px]">
+                <div className="w-full h-full bg-[#1A1A1A] rounded-full border-2 border-transparent" />
+              </div>
+              <div>
+                <div className="text-[10px] text-white/50">Welcome back,</div>
+                <div className="text-sm font-semibold flex items-center gap-1">Alec <span className="text-[#E8C547]">★</span></div>
+              </div>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
+              <div className="w-1 h-1 bg-white rounded-full relative">
+                <div className="absolute -left-2 w-1 h-1 bg-white rounded-full" />
+                <div className="absolute -right-2 w-1 h-1 bg-white rounded-full" />
+              </div>
+            </div>
+          </div>
+
+          {/* Balance Card */}
+          <div className="bg-[#1A1A1A] rounded-2xl p-5 mb-6 border border-white/5">
+            <div className="text-[11px] text-white/50 mb-1">Total Balance</div>
+            <div className="text-3xl font-bold mb-3 tracking-tight">$24,580.00</div>
+            <div className="flex items-center gap-1.5 text-[10px] text-[#E8C547]">
+              <TrendingUp size={12} />
+              <span>+12.5% this month</span>
+            </div>
+          </div>
+
+          {/* Chart Section */}
+          <div className="mb-6">
+            <div className="text-[11px] font-medium text-white/70 mb-4">Spending Overview</div>
+            <div className="flex items-end justify-between h-20 gap-2 px-1">
+              {[40, 60, 30, 80, 50, 90, 70].map((h, i) => (
+                <div key={i} className="w-full bg-[#1A1A1A] rounded-sm relative group overflow-hidden">
+                  <div className="absolute bottom-0 left-0 right-0 bg-[#E8C547] rounded-sm transition-all" style={{ height: `${h}%` }} />
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between mt-2 text-[8px] text-white/30 px-2 uppercase">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+
+          {/* Recent Transactions */}
+          <div className="flex-1">
+            <div className="flex justify-between items-center mb-4">
+              <div className="text-[11px] font-medium text-white/70">Recent Transactions</div>
+              <div className="text-[9px] text-[#E8C547]">View all</div>
+            </div>
+            <div className="space-y-3">
+              {[
+                { icon: ShoppingBag, name: 'Amazon', cat: 'Shopping', amount: '-$158.00', color: 'bg-orange-500' },
+                { name: 'Dribbble', cat: 'Subscription', amount: '-$29.00', color: 'bg-pink-500' },
+                { icon: Database, name: 'Salary', cat: 'Income', amount: '+$2,650.00', color: 'bg-[#E8C547]', pos: true },
+              ].map((tx, i) => (
+                <div key={i} className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-9 h-9 rounded-xl ${tx.color}/20 flex items-center justify-center text-${tx.color.split('-')[1]}-500`}>
+                       {tx.icon ? <tx.icon size={14} /> : <div className="w-3 h-3 bg-current rounded-full" />}
+                    </div>
+                    <div>
+                      <div className="text-[12px] font-semibold">{tx.name}</div>
+                      <div className="text-[9px] text-white/40">{tx.cat}</div>
+                    </div>
+                  </div>
+                  <div className={`text-[12px] font-semibold ${tx.pos ? 'text-[#E8C547]' : 'text-white'}`}>
+                    {tx.amount}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Badges */}
+      <div className="absolute top-10 right-0 sm:right-[15%] bg-white rounded-xl px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.08)] border border-[#E6E4DF] z-30 flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547]">
+          <Zap size={16} />
+        </div>
+        <div>
+          <div className="text-[12px] font-bold text-[#1A1A1A]">Smooth<br/>Performance</div>
+          <div className="text-[10px] text-[#686B6B]">60 FPS</div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-[20%] right-[-5%] sm:right-[5%] bg-white rounded-xl px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.08)] border border-[#E6E4DF] z-30 flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-600">
+          <ShieldCheck size={16} />
+        </div>
+        <div>
+          <div className="text-[12px] font-bold text-[#1A1A1A]">Secure by<br/>Design</div>
+          <div className="text-[10px] text-[#686B6B]">100%</div>
+        </div>
+      </div>
+
+      <div className="absolute top-[40%] left-[-10%] sm:left-[10%] bg-white rounded-xl px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.08)] border border-[#E6E4DF] z-30 flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
+          <Layers size={16} />
+        </div>
+        <div>
+          <div className="text-[12px] font-bold text-[#1A1A1A]">Cross Platform</div>
+          <div className="text-[10px] text-[#686B6B]">iOS & Android</div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-10 left-0 sm:left-[15%] bg-white rounded-xl px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.08)] border border-[#E6E4DF] z-30 flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-black/5 flex items-center justify-center text-[#1A1A1A]">
+          <Apple size={16} />
+        </div>
+        <div>
+          <div className="text-[12px] font-bold text-[#1A1A1A]">App Store<br/>Ready</div>
+          <div className="text-[10px] text-[#686B6B]">Guaranteed</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProcessPhoneVisual() {
+  return (
+    <div className="relative w-full pt-10 pb-16 flex justify-center lg:justify-end pr-0 lg:pr-8">
+      {/* Main Light Phone */}
+      <div className="relative w-[260px] h-[540px] bg-white rounded-[40px] border-[8px] border-[#E6E4DF] shadow-[0_24px_64px_rgba(0,0,0,0.1)] overflow-hidden z-20 shrink-0">
+        {/* Dynamic Island */}
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full z-30" />
+
+        {/* Screen Content */}
+        <div className="absolute inset-0 bg-[#F9F9F9] flex flex-col p-5 pt-12">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-6">
+            <div className="w-8 h-8 rounded-full bg-[#E8C547]/20 flex items-center justify-center text-[#E8C547] font-bold text-xs">
+              K
+            </div>
+            <div className="w-8 h-8 bg-white rounded-full shadow-sm flex items-center justify-center border border-[#E6E4DF]">
+              <div className="w-3 h-3 border border-[#1A1A1A] rounded-sm" />
+            </div>
+          </div>
+
+          {/* Yellow Card */}
+          <div className="bg-gradient-to-br from-[#E8C547] to-[#d4b33c] rounded-2xl p-5 mb-6 shadow-md text-white">
+            <div className="text-[10px] font-medium opacity-90 mb-1">Total Balance</div>
+            <div className="text-2xl font-bold mb-3 tracking-tight">$24,580.00</div>
+            <div className="text-[14px] opacity-70 tracking-widest">•••• ••••</div>
+          </div>
+
+          {/* Line Chart */}
+          <div className="mb-6 bg-white p-4 rounded-2xl shadow-sm border border-[#E6E4DF]">
+             <div className="text-[11px] font-bold text-[#1A1A1A] mb-4">Statistics</div>
+             <svg viewBox="0 0 200 60" className="w-full h-16 overflow-visible">
+               <path d="M0 50 Q 20 40, 40 45 T 80 30 T 120 40 T 160 20 T 200 10" fill="none" stroke="#E8C547" strokeWidth="3" strokeLinecap="round" />
+               <path d="M0 50 Q 20 40, 40 45 T 80 30 T 120 40 T 160 20 T 200 10 L 200 60 L 0 60 Z" fill="url(#gradLight)" opacity="0.2" />
+               <defs>
+                 <linearGradient id="gradLight" x1="0" y1="0" x2="0" y2="1">
+                   <stop offset="0%" stopColor="#E8C547" />
+                   <stop offset="100%" stopColor="transparent" />
+                 </linearGradient>
+               </defs>
+               <circle cx="160" cy="20" r="4" fill="#E8C547" stroke="white" strokeWidth="2" />
+             </svg>
+             <div className="flex justify-between mt-2 text-[8px] text-[#999] uppercase">
+                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+             </div>
+          </div>
+
+          {/* Recent Activity */}
+          <div className="flex-1 bg-white p-4 rounded-2xl shadow-sm border border-[#E6E4DF]">
+            <div className="flex justify-between items-center mb-4">
+              <div className="text-[11px] font-bold text-[#1A1A1A]">Recent Activity</div>
+              <div className="text-[9px] text-[#E8C547] font-semibold">View All</div>
+            </div>
+            <div className="space-y-4">
+               {[
+                { name: 'Amazon', cat: 'Shopping', amount: '-$158.00', bg: 'bg-orange-100', color: 'text-orange-500' },
+                { name: 'Dribbble', cat: 'Subscription', amount: '-$20.00', bg: 'bg-pink-100', color: 'text-pink-500' },
+                { name: 'Salary', cat: 'Income', amount: '+$2,650.00', bg: 'bg-green-100', color: 'text-green-500', pos: true },
+               ].map((item, i) => (
+                 <div key={i} className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                       <div className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center ${item.color}`}>
+                          <div className="w-3 h-3 bg-current rounded-full" />
+                       </div>
+                       <div>
+                         <div className="text-[11px] font-bold text-[#1A1A1A]">{item.name}</div>
+                         <div className="text-[9px] text-[#999]">{item.cat}</div>
+                       </div>
+                    </div>
+                    <div className={`text-[11px] font-bold ${item.pos ? 'text-green-500' : 'text-[#1A1A1A]'}`}>
+                       {item.amount}
+                    </div>
+                 </div>
+               ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Light Badges */}
+      <div className="absolute top-[30%] left-0 lg:left-[-15%] bg-white w-12 h-12 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] border border-[#E6E4DF] z-30 flex items-center justify-center text-[#E8C547]">
+         <Zap size={20} fill="currentColor" />
+      </div>
+
+      <div className="absolute top-[20%] right-[-10%] bg-white w-14 h-14 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] border border-[#E6E4DF] z-30 flex items-center justify-center text-[#E8C547]">
+         <BarChart3 size={24} />
+      </div>
+
+      <div className="absolute bottom-[25%] right-[-5%] bg-white w-12 h-12 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] border border-[#E6E4DF] z-30 flex items-center justify-center text-[#E8C547]">
+         <ShieldCheck size={20} />
+      </div>
+    </div>
+  );
+}
 
 export default function MobileApps() {
   return (
-    <div className="bg-[#faf8f5] min-h-screen font-['Sora',_sans-serif] text-slate-800 selection:bg-[#E8C547]/30">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#E8C547]/10 rounded-full blur-[120px] -z-10" />
-        
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8C547]/10 border border-[#E8C547]/20 text-[#E8C547] font-bold uppercase tracking-wider text-xs mb-8">
-                <Smartphone size={14} /> Mobile Apps
-              </div>
-              <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-8">
-                Mobile App <br />
-                <span className="text-[#E8C547]">Development</span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-10 max-w-lg">
-                We design and build fluid, high-performance mobile experiences that 
-                engage users and drive long-term retention on every platform.
-              </p>
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#E8C547] hover:bg-[#d4b33c] text-slate-900 font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(232,197,71,0.2)] hover:shadow-[0_0_30px_rgba(232,197,71,0.4)]"
-              >
-                Start Building <ArrowUpRight size={18} />
-              </Link>
-            </motion.div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-screen pb-16 pt-12" style={{ fontFamily: "var(--font-sora-family)" }}>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-square md:aspect-video lg:aspect-square rounded-[32px] overflow-hidden border border-slate-200 shadow-2xl shadow-[#E8C547]/5"
-            >
-              <Image 
-                src="/images/zonet/mobile-app.png"
-                alt="Mobile Development"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+      {/* ── HERO ────────────────────────────────── */}
+      <section className="pt-16 pb-12 md:pt-24 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center">
+
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="w-full max-w-[500px]"
+          >
+            <span className="inline-block text-[10px] font-semibold tracking-[0.12em] uppercase text-[#E8C547] bg-[#E8C547]/10 px-3 py-1 rounded-full mb-6">
+              Our Service
+            </span>
+
+            <h1 className="font-sora-family! text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold leading-[1.05] text-[#1A1A1A] mb-6">
+              Mobile App<br />
+              <em className="text-[#E8C547] not-italic">Development</em>
+            </h1>
+
+            <p className="text-sm sm:text-base md:text-[16px] leading-[1.6] text-[#686B6B] mb-10 max-w-[420px]">
+              We design and build fluid, high-performance mobile experiences that engage users and drive long-term retention on every platform.
+            </p>
+
+            <div className="flex items-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 bg-[#E8C547] text-[#1A1A1A] font-bold text-sm rounded-full shadow-[0_4px_14px_rgba(232,197,71,0.35)] hover:bg-[#d4b33c] hover:shadow-[0_6px_20px_rgba(232,197,71,0.45)] hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Start Building <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="/case-studies"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-white border border-[#E6E4DF] text-[#1A1A1A] font-bold text-sm rounded-full hover:bg-[#FAFAF8] transition-colors duration-200"
+              >
+                View Our Work <ArrowRight size={16} className="text-[#999]" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Hero Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="w-full flex justify-center"
+          >
+            <HeroPhoneVisual />
+          </motion.div>
         </div>
       </section>
 
-      {/* Tech Stack section */}
-      <section className="py-10 border-y border-slate-200 bg-white/50">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            {techStack.map(tech => (
-              <div key={tech.name} className="flex items-center gap-3 group">
-                <tech.icon size={20} className="text-slate-700 group-hover:text-[#E8C547] transition-colors" />
-                <span className="font-bold uppercase tracking-widest text-[11px] text-slate-700 group-hover:text-[#E8C547] transition-colors">{tech.name}</span>
+      {/* ── TECH BAR ────────────────────────────── */}
+      <section className="border border-[#E6E4DF] py-5 sm:py-6 bg-white rounded-2xl mb-24 shadow-sm">
+        <div className="w-full px-4 sm:px-8">
+          <div className="flex items-center justify-center sm:justify-between gap-6 sm:gap-8 flex-wrap">
+            {techStack.map(({ name, Icon }) => (
+              <div key={name} className="flex items-center gap-2 text-[11px] sm:text-[12px] font-bold tracking-[0.05em] text-[#1A1A1A] whitespace-nowrap">
+                <Icon size={18} className="text-[#1A1A1A]" />
+                <span>{name}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Capabilities */}
-      <section className="py-20 md:py-32 px-6 relative">
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-              Native-Grade <span className="text-slate-400">Performance</span>
-            </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              From complex fintech apps to social reward ecosystems, we build mobile 
-              solutions that thrive in the competitive app marketplace.
-            </p>
-          </div>
+      {/* ── CAPABILITIES ─────────────── */}
+      <section className="py-12 sm:py-16 text-center">
+        <div className="max-w-[1140px] mx-auto">
+          <span className="inline-block text-[10px] font-semibold tracking-[0.12em] uppercase text-[#E8C547] bg-[#E8C547]/10 px-4 py-1.5 rounded-full mb-6">
+            What We Deliver
+          </span>
+          <h2 className="font-sora-family! text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1A1A1A] mb-4 tracking-tight">
+            Native-Grade <em className="text-[#E8C547] not-italic">Performance</em>
+          </h2>
+          <p className="text-sm sm:text-base text-[#686B6B] leading-[1.6] max-w-[560px] mx-auto mb-16">
+            From complex fintech apps to social reward ecosystems, we build mobile
+            solutions that thrive in the competitive app marketplace.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.map((feature, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            {features.map(({ title, desc, Icon }, i) => (
               <motion.div
-                key={feature.title}
+                key={title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-[24px] bg-white border border-slate-200 hover:border-[#E8C547]/40 hover:shadow-xl transition-all group"
+                className="bg-white p-8 sm:p-10 rounded-2xl border border-[#E6E4DF] shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547] mb-6 group-hover:scale-110 group-hover:bg-[#E8C547] group-hover:text-white transition-all duration-300">
-                  <feature.icon size={22} strokeWidth={2.5} />
+                <div className="w-14 h-14 rounded-2xl bg-[#FFF3DC] flex items-center justify-center mb-6">
+                  <Icon size={24} className="text-[#E8C547]" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">{title}</h3>
+                <p className="text-[14px] leading-[1.6] text-[#686B6B]">{desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 md:py-32 bg-slate-50 border-y border-slate-200 relative">
-        <div className="container mx-auto max-w-6xl px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-12">
-              <div className="space-y-4">
-                <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 border border-slate-300 text-slate-600 font-bold uppercase tracking-wider text-xs">
-                  Mobile Lifecycle
-                </div>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                  From Design to <span className="text-[#E8C547]">App Store</span>
-                </h2>
-              </div>
+      {/* ── OUR PROCESS ─────────────── */}
+      <section className="py-16 sm:py-24 bg-[#F9F9F9] rounded-[40px] border border-[#E6E4DF] px-6 sm:px-12 my-12">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-              <div className="space-y-10">
-                {[
-                  { step: '01', title: 'UX/UI Prototyping', desc: 'Interactive high-fidelity prototypes focused on mobile navigation patterns and gesture interactions.' },
-                  { step: '02', title: 'Cross-Platform Dev', desc: 'Building with React Native to ensure speed-to-market without compromising on native functionality.' },
-                  { step: '03', title: 'Store Submission', desc: 'Handling the entire process of Apple App Store and Google Play Store reviews and optimization.' }
-                ].map((item) => (
-                  <div key={item.step} className="flex gap-6">
-                    <div className="text-4xl font-extrabold text-[#E8C547]/30 leading-none">{item.step}</div>
-                    <div>
-                      <h4 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">{item.title}</h4>
-                      <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+            {/* Steps */}
+            <div>
+              <span className="inline-block text-[10px] font-bold tracking-[0.14em] uppercase text-[#E8C547] mb-4">
+                Our Process
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1A1A1A] mb-12 tracking-tight">
+                From Design to <em className="text-[#E8C547] not-italic">App Store</em>
+              </h2>
+              
+              <div className="flex flex-col gap-8">
+                {processSteps.map(({ num, title, desc }, i) => (
+                  <div key={num} className="flex gap-6 items-start">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#E8C547] flex items-center justify-center text-[#E8C547] font-bold text-lg shrink-0">
+                      {num}
+                    </div>
+                    <div className="pt-1">
+                      <h4 className="text-lg font-bold text-[#1A1A1A] mb-2">{title}</h4>
+                      <p className="text-[14px] leading-[1.6] text-[#686B6B] max-w-[400px]">{desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="relative flex justify-center">
-               <div className="relative w-[280px] h-[580px] bg-slate-800 rounded-[3rem] border-[8px] border-slate-100 shadow-2xl overflow-hidden ring-1 ring-slate-200">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-20" />
-                  <div className="relative w-full h-full bg-white p-6 pt-12">
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                         <div className="w-12 h-12 rounded-2xl bg-[#E8C547]/10 flex items-center justify-center text-[#E8C547]">
-                            <Zap size={20} />
-                         </div>
-                         <div className="flex -space-x-3">
-                            <div className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white" />
-                            <div className="w-8 h-8 rounded-full bg-slate-300 border-2 border-white" />
-                            <div className="w-8 h-8 rounded-full bg-[#E8C547]/20 border-2 border-white" />
-                         </div>
-                      </div>
-                      <div className="space-y-3">
-                         <div className="h-4 w-full bg-slate-100 rounded-full" />
-                         <div className="h-4 w-3/4 bg-slate-100 rounded-full" />
-                      </div>
-                      <div className="aspect-[4/3] rounded-3xl bg-[#E8C547]/5 border border-[#E8C547]/10 flex items-center justify-center">
-                         <Map className="text-[#E8C547]/30" size={40} />
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                         <div className="h-20 rounded-2xl bg-slate-100" />
-                         <div className="h-20 rounded-2xl bg-slate-100" />
-                      </div>
-                    </div>
-                  </div>
-               </div>
-            </div>
+            {/* Process Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="w-full flex justify-center lg:justify-end"
+            >
+              <ProcessPhoneVisual />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section className="py-20 md:py-32 px-6">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
-            <div className="max-w-xl">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 font-bold uppercase tracking-wider text-xs mb-4">
+      {/* ── CASE STUDIES ────────────────────────── */}
+      <section className="py-16 sm:py-24">
+        <div className="max-w-[1140px] mx-auto">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <span className="inline-block text-[10px] font-bold tracking-[0.14em] uppercase text-[#E8C547] bg-[#E8C547]/10 px-3 py-1 rounded-full mb-4">
                 Case Studies
-              </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-                Mobile <span className="text-slate-400">Success Stories</span>
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1A1A1A] tracking-tight">
+                Mobile <em className="text-[#E8C547] not-italic">Success Stories</em>
               </h2>
             </div>
-            <Link href="/case-studies" className="text-[#E8C547] font-bold uppercase tracking-widest text-xs hover:text-[#d4b33c] transition-colors flex items-center gap-2 group">
-              View All Projects <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <Link
+              href="/case-studies"
+              className="text-[14px] font-bold text-[#E8C547] hover:text-[#d4b33c] transition-colors flex items-center gap-1"
+            >
+              View All Projects <ArrowRight size={16} />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {mobileCaseStudies.slice(0, 2).map((project) => (
-              <Link key={project.slug} href={`/case-studies/${project.slug}`} className="group">
-                <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden border border-slate-200 mb-6 shadow-md">
-                  <Image 
-                    src={project.photo}
-                    alt={project.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-6 left-6">
-                    <span className="px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md text-slate-900 shadow-sm text-[10px] font-bold uppercase tracking-widest">
-                      {project.industry}
-                    </span>
+            {mobileProjects.map((project) => (
+              <div key={project.name} className="flex flex-col">
+                <div className={`h-[300px] rounded-3xl mb-6 relative overflow-hidden flex items-end justify-center p-6 ${
+                  project.variant === 'fintech' ? 'bg-[#5B3DF5]' : 'bg-[#EAF6E3]'
+                }`}>
+                  <span className="absolute top-6 left-6 text-[10px] font-bold tracking-widest uppercase bg-white text-[#1A1A1A] px-3 py-1.5 rounded-full z-10 shadow-sm">
+                    {project.tag}
+                  </span>
+                  
+                  {/* Mockup visualization based on variant */}
+                  {project.variant === 'fintech' ? (
+                     <div className="flex gap-4 items-end -mb-8">
+                        <div className="w-32 h-[220px] bg-[#3B28A8] rounded-2xl border-4 border-[#4A32D6] shadow-xl transform -rotate-12 translate-x-4">
+                           <div className="w-full h-1/3 bg-[#4A32D6] rounded-t-xl opacity-50" />
+                        </div>
+                        <div className="w-40 h-[260px] bg-[#2E1F85] rounded-2xl border-4 border-[#3B28A8] shadow-2xl z-10">
+                           <div className="w-full h-1/2 bg-[#3B28A8] rounded-t-xl flex flex-col items-center justify-center gap-2">
+                              <div className="w-12 h-12 rounded-full bg-white/20" />
+                              <div className="w-20 h-3 bg-white/20 rounded-full" />
+                           </div>
+                        </div>
+                        <div className="w-32 h-[200px] bg-[#4A32D6] rounded-2xl border-4 border-[#5B3DF5] shadow-xl transform rotate-12 -translate-x-4">
+                           <div className="w-full h-1/4 bg-[#5B3DF5] rounded-t-xl opacity-50" />
+                        </div>
+                     </div>
+                  ) : (
+                     <div className="flex gap-4 items-end -mb-8">
+                        <div className="w-32 h-[220px] bg-white rounded-2xl shadow-xl transform -rotate-12 translate-x-4 p-2 flex flex-col gap-2">
+                           <div className="w-full h-1/2 bg-[#D1E8C5] rounded-xl" />
+                           <div className="w-full h-4 bg-[#D1E8C5] rounded-full" />
+                        </div>
+                        <div className="w-40 h-[260px] bg-white rounded-2xl shadow-2xl z-10 p-3 flex flex-col gap-3">
+                           <div className="w-full h-32 bg-[#EAF6E3] rounded-xl flex items-center justify-center">
+                              <div className="w-16 h-16 rounded-full bg-white" />
+                           </div>
+                           <div className="w-full h-4 bg-[#EAF6E3] rounded-full" />
+                           <div className="w-3/4 h-4 bg-[#EAF6E3] rounded-full" />
+                        </div>
+                        <div className="w-32 h-[200px] bg-white rounded-2xl shadow-xl transform rotate-12 -translate-x-4 p-2 flex flex-col gap-2">
+                           <div className="w-full h-1/3 bg-[#D1E8C5] rounded-xl" />
+                           <div className="flex gap-2"><div className="w-1/2 h-10 bg-[#D1E8C5] rounded-lg" /><div className="w-1/2 h-10 bg-[#D1E8C5] rounded-lg" /></div>
+                        </div>
+                     </div>
+                  )}
+                </div>
+
+                <div className="px-2">
+                  <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">{project.name}</h3>
+                  <p className="text-[14px] text-[#686B6B] mb-6">{project.desc}</p>
+                  
+                  <div className="flex gap-8 sm:gap-12 pt-6 border-t border-[#E6E4DF]">
+                    {project.stats.map((stat) => (
+                      <div key={stat.label} className="flex flex-col gap-1">
+                        <span className="text-xl sm:text-2xl font-bold text-[#1A1A1A] flex items-center gap-1">
+                          {stat.value}
+                          {stat.star && <span className="text-[#E8C547] text-lg">★</span>}
+                        </span>
+                        <span className="text-[9px] sm:text-[10px] tracking-[0.05em] text-[#999] font-medium max-w-[80px]">
+                          {stat.label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-[#E8C547] transition-colors tracking-tight">{project.name}</h3>
-                <p className="text-slate-600 line-clamp-2">{project.tagline}</p>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="border-t border-slate-200 bg-white">
-        <div className="[&>div]:bg-transparent [&>div]:border-none [&_h2]:text-slate-900 [&_p]:text-slate-600 [&_label]:text-slate-700 [&_input]:bg-slate-50 [&_input]:border-slate-200 [&_input]:text-slate-900 [&_textarea]:bg-slate-50 [&_textarea]:border-slate-200 [&_textarea]:text-slate-900">
-          <ContactForm />
-        </div>
+      {/* ── CONTACT FORM ────────────────────────── */}
+      <div className="border-t border-[#E6E4DF] bg-white pt-12 mt-12 rounded-3xl mx-[-16px] sm:mx-[-24px] px-4 sm:px-6">
+        <ContactForm />
       </div>
     </div>
   );
