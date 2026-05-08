@@ -3,11 +3,11 @@
 import { motion } from 'motion/react';
 import {
   Smartphone, Zap, Layout, Wifi, ShieldCheck, Database, Server,
-  Layers, Activity, CheckCircle2, ShoppingBag, CreditCard, Apple, Play,
-  Fingerprint, ArrowRight, BarChart3, TrendingUp
+  Layers, Activity, ShoppingBag, Apple, ArrowRight, BarChart3, TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
 import ContactForm from '@/components/sections/landing/ContactForm';
+import CaseStudiesSection, { CaseStudyProject } from '@/components/common/CaseStudiesSection';
 
 const techStack = [
   { name: 'REACT NATIVE', Icon: Layers },
@@ -65,30 +65,30 @@ const processSteps = [
   },
 ];
 
-const mobileProjects = [
+const mobileProjects: CaseStudyProject[] = [
   {
     tag: 'FINTECH',
     name: 'Finmate',
     desc: 'Personal Finance Management App',
     stats: [
-      { value: '100K+', label: 'DOWNLOADS', star: false },
+      { value: '100K+', label: 'DOWNLOADS' },
       { value: '4.8', label: 'PLAY STORE RATING', star: true },
-      { value: '20%', label: 'INCREASE IN RETENTION', star: false },
+      { value: '20%', label: 'INCREASE IN RETENTION' },
     ],
     href: '/case-studies/finmate',
-    variant: 'fintech' as const,
+    image: '/images/zonet/finmate.png',
   },
   {
     tag: 'E-COMMERCE',
     name: 'FreshBasket',
     desc: 'Grocery Shopping & Delivery App',
     stats: [
-      { value: '250K+', label: 'DOWNLOADS', star: false },
+      { value: '250K+', label: 'DOWNLOADS' },
       { value: '4.7', label: 'APP STORE RATING', star: true },
-      { value: '35%', label: 'REPEAT ORDERS', star: false },
+      { value: '35%', label: 'REPEAT ORDERS' },
     ],
     href: '/case-studies/freshbasket',
-    variant: 'ecommerce' as const,
+    image: '/images/zonet/freshbasket.png',
   },
 ];
 
@@ -469,96 +469,11 @@ export default function MobileApps() {
         </div>
       </section>
 
-      {/* ── CASE STUDIES ────────────────────────── */}
-      <section className="py-16 sm:py-24">
-        <div className="max-w-[1140px] mx-auto">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <span className="inline-block text-[10px] font-bold tracking-[0.14em] uppercase text-[#E8C547] bg-[#E8C547]/10 px-3 py-1 rounded-full mb-4">
-                Case Studies
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1A1A1A] tracking-tight">
-                Mobile <em className="text-[#E8C547] not-italic">Success Stories</em>
-              </h2>
-            </div>
-            <Link
-              href="/case-studies"
-              className="text-[14px] font-bold text-[#E8C547] hover:text-[#d4b33c] transition-colors flex items-center gap-1"
-            >
-              View All Projects <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {mobileProjects.map((project) => (
-              <div key={project.name} className="flex flex-col">
-                <div className={`h-[300px] rounded-3xl mb-6 relative overflow-hidden flex items-end justify-center p-6 ${
-                  project.variant === 'fintech' ? 'bg-[#5B3DF5]' : 'bg-[#EAF6E3]'
-                }`}>
-                  <span className="absolute top-6 left-6 text-[10px] font-bold tracking-widest uppercase bg-white text-[#1A1A1A] px-3 py-1.5 rounded-full z-10 shadow-sm">
-                    {project.tag}
-                  </span>
-                  
-                  {/* Mockup visualization based on variant */}
-                  {project.variant === 'fintech' ? (
-                     <div className="flex gap-4 items-end -mb-8">
-                        <div className="w-32 h-[220px] bg-[#3B28A8] rounded-2xl border-4 border-[#4A32D6] shadow-xl transform -rotate-12 translate-x-4">
-                           <div className="w-full h-1/3 bg-[#4A32D6] rounded-t-xl opacity-50" />
-                        </div>
-                        <div className="w-40 h-[260px] bg-[#2E1F85] rounded-2xl border-4 border-[#3B28A8] shadow-2xl z-10">
-                           <div className="w-full h-1/2 bg-[#3B28A8] rounded-t-xl flex flex-col items-center justify-center gap-2">
-                              <div className="w-12 h-12 rounded-full bg-white/20" />
-                              <div className="w-20 h-3 bg-white/20 rounded-full" />
-                           </div>
-                        </div>
-                        <div className="w-32 h-[200px] bg-[#4A32D6] rounded-2xl border-4 border-[#5B3DF5] shadow-xl transform rotate-12 -translate-x-4">
-                           <div className="w-full h-1/4 bg-[#5B3DF5] rounded-t-xl opacity-50" />
-                        </div>
-                     </div>
-                  ) : (
-                     <div className="flex gap-4 items-end -mb-8">
-                        <div className="w-32 h-[220px] bg-white rounded-2xl shadow-xl transform -rotate-12 translate-x-4 p-2 flex flex-col gap-2">
-                           <div className="w-full h-1/2 bg-[#D1E8C5] rounded-xl" />
-                           <div className="w-full h-4 bg-[#D1E8C5] rounded-full" />
-                        </div>
-                        <div className="w-40 h-[260px] bg-white rounded-2xl shadow-2xl z-10 p-3 flex flex-col gap-3">
-                           <div className="w-full h-32 bg-[#EAF6E3] rounded-xl flex items-center justify-center">
-                              <div className="w-16 h-16 rounded-full bg-white" />
-                           </div>
-                           <div className="w-full h-4 bg-[#EAF6E3] rounded-full" />
-                           <div className="w-3/4 h-4 bg-[#EAF6E3] rounded-full" />
-                        </div>
-                        <div className="w-32 h-[200px] bg-white rounded-2xl shadow-xl transform rotate-12 -translate-x-4 p-2 flex flex-col gap-2">
-                           <div className="w-full h-1/3 bg-[#D1E8C5] rounded-xl" />
-                           <div className="flex gap-2"><div className="w-1/2 h-10 bg-[#D1E8C5] rounded-lg" /><div className="w-1/2 h-10 bg-[#D1E8C5] rounded-lg" /></div>
-                        </div>
-                     </div>
-                  )}
-                </div>
-
-                <div className="px-2">
-                  <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">{project.name}</h3>
-                  <p className="text-[14px] text-[#686B6B] mb-6">{project.desc}</p>
-                  
-                  <div className="flex gap-8 sm:gap-12 pt-6 border-t border-[#E6E4DF]">
-                    {project.stats.map((stat) => (
-                      <div key={stat.label} className="flex flex-col gap-1">
-                        <span className="text-xl sm:text-2xl font-bold text-[#1A1A1A] flex items-center gap-1">
-                          {stat.value}
-                          {stat.star && <span className="text-[#E8C547] text-lg">★</span>}
-                        </span>
-                        <span className="text-[9px] sm:text-[10px] tracking-[0.05em] text-[#999] font-medium max-w-[80px]">
-                          {stat.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CaseStudiesSection
+        title="Mobile"
+        titleHighlight="Success Stories"
+        projects={mobileProjects}
+      />
 
       {/* ── CONTACT FORM ────────────────────────── */}
       <div className="border-t border-[#E6E4DF] bg-white pt-12 mt-12 rounded-3xl mx-[-16px] sm:mx-[-24px] px-4 sm:px-6">
