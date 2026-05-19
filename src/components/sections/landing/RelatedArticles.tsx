@@ -5,6 +5,7 @@ import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { SectionBadge } from '@/components/ui';
 
 const articles = [
   {
@@ -51,13 +52,7 @@ export default function RelatedArticles() {
           
           {/* Left Column */}
           <div className="lg:col-span-4 flex flex-col justify-center">
-            {/* Yellow Dot Badge */}
-            <div className="flex items-center gap-2 mb-8">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#E8C547]"></div>
-              <span className="text-[11px] font-black text-[#1A1A1A] tracking-[0.15em] uppercase">
-                Blogs & Insights
-              </span>
-            </div>
+            <SectionBadge variant="dot" className="mb-8">Blogs &amp; Insights</SectionBadge>
             
             <motion.h2
               variants={fadeUp}
@@ -141,7 +136,7 @@ export default function RelatedArticles() {
                     </div>
                     
                     <div className="p-6 md:p-7 flex flex-col flex-grow">
-                      <h3 className="text-[17px] font-bold text-[#1A1A1A] leading-snug font-heading tracking-tight mb-3 group-hover:text-[#E8C547] transition-colors">
+                      <h3 className="text-[17px] font-semibold text-[#1A1A1A] leading-snug font-heading tracking-tight mb-3 group-hover:text-[#E8C547] transition-colors">
                         {article.title}
                       </h3>
                       <p className="text-[13px] text-[#686B6B] leading-relaxed mb-8 flex-grow">

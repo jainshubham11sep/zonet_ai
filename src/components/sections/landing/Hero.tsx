@@ -5,6 +5,7 @@ import { ArrowRight, TrendingUp } from 'lucide-react';
 import { slideInLeft, slideInRight, fadeUp } from '@/lib/animations';
 import Image from 'next/image';
 import Link from 'next/link';
+import { SectionBadge } from '@/components/ui';
 
 const Hero = () => {
   return (
@@ -18,13 +19,7 @@ const Hero = () => {
             animate="visible"
             className="pt-8"
           >
-            {/* Yellow Dot Badge */}
-            <div className="flex items-center gap-2 mb-12">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#E8C547]"></div>
-              <span className="text-[11px] font-black text-[#1A1A1A] tracking-[0.15em] uppercase">
-                Digital Products. Real Impact.
-              </span>
-            </div>
+            <SectionBadge variant="dot" className="mb-12">Digital Products. Real Impact.</SectionBadge>
 
             {/* Heading with inline underline */}
             <div className="mb-8">

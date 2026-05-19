@@ -3,105 +3,113 @@
 import { motion } from "motion/react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import Image from "next/image";
+import { SectionBadge } from "@/components/ui";
 
 const projects = [
   {
-    id: 'flipshope',
-    logo: '/images/clients/flipshope-logo.png',
-    name: 'Flipshope',
-    location: 'India',
-    badges: ['Shopping AI'],
-    platforms: ['Web', 'App', 'Extension'],
+    id: "flipshope",
+    logo: "/images/clients/flipshope-logo.png",
+    name: "Flipshope",
+    location: "India",
+    badges: ["Shopping AI"],
+    platforms: ["Web", "App", "Extension"],
     platformLinks: {
-      web: 'https://flipshope.com',
-      app: 'https://play.google.com/store/apps/details?id=com.flipshopeApp&pcampaignid=web_share',
-      extension: 'https://chromewebstore.google.com/detail/adikhbfjdbjkhelbdnffogkobkekkkej?utm_source=item-share-cb'
+      web: "https://flipshope.com",
+      app: "https://play.google.com/store/apps/details?id=com.flipshopeApp&pcampaignid=web_share",
+      extension:
+        "https://chromewebstore.google.com/detail/adikhbfjdbjkhelbdnffogkobkekkkej?utm_source=item-share-cb",
     },
-    timeline: '6 Weeks Build',
+    timeline: "6 Weeks Build",
     description: [
       { text: "Built an " },
-      { text: 'AI-powered shopping assistant', highlight: true },
-      { text: ' for 1.5M+ users, featuring ' },
-      { text: 'real-time price tracking', highlight: true },
-      { text: ' and ' },
-      { text: '#1 auto-coupon engine', highlight: true },
-      { text: ' in the region.' },
+      { text: "AI-powered shopping assistant", highlight: true },
+      { text: " for 1.5M+ users, featuring " },
+      { text: "real-time price tracking", highlight: true },
+      { text: " and " },
+      { text: "#1 auto-coupon engine", highlight: true },
+      { text: " in the region." },
     ],
     stats: [
-      { value: '1.5M+', label: 'Active Users' },
-      { value: '4.5/5', label: 'Play Store Rating' },
-      { value: '10+', label: 'Major Retailers' },
+      { value: "1.5M+", label: "Active Users" },
+      { value: "4.5/5", label: "Play Store Rating" },
+      { value: "10+", label: "Major Retailers" },
     ],
-    quote: "The Zonet team transformed our complex data tracking into a seamless, high-performance UI that our users love.",
-    client: { name: 'Ashutosh Goyal', role: 'Founder @ Flipshope' },
-    mainImg: '/images/zonet/flipshope-1.png',
-    subImg1: '/images/zonet/flipshope-2.png',
-    subImg2: '/images/zonet/flipshope-3.png',
+    quote:
+      "The Zonet team transformed our complex data tracking into a seamless, high-performance UI that our users love.",
+    client: { name: "Ashutosh Goyal", role: "Founder @ Flipshope" },
+    mainImg: "/images/zonet/flipshope-1.png",
+    subImg1: "/images/zonet/flipshope-2.png",
+    subImg2: "/images/zonet/flipshope-3.png",
   },
   {
-    id: 'hyyzo',
-    logo: '/images/clients/hyyzo-logo.png',
-    name: 'Hyyzo',
-    location: 'India',
-    badges: ['FinTech'],
-    platforms: ['Web', 'App', 'Extension'],
+    id: "hyyzo",
+    logo: "/images/clients/hyyzo-logo.png",
+    name: "Hyyzo",
+    location: "India",
+    badges: ["FinTech"],
+    platforms: ["Web", "App", "Extension"],
     platformLinks: {
-      web: 'https://hyyzo.com',
-      app: 'https://play.google.com/store/apps/details?id=com.hyyzoApp&pcampaignid=web_share',
-      extension: 'https://chromewebstore.google.com/detail/phcfbbmblbcbchdlfmcfcakhcpdlnhdk?utm_source=item-share-cb'
+      web: "https://hyyzo.com",
+      app: "https://play.google.com/store/apps/details?id=com.hyyzoApp&pcampaignid=web_share",
+      extension:
+        "https://chromewebstore.google.com/detail/phcfbbmblbcbchdlfmcfcakhcpdlnhdk?utm_source=item-share-cb",
     },
-    timeline: '8 Weeks Build',
+    timeline: "8 Weeks Build",
     description: [
-      { text: 'Developed India\'s ' },
-      { text: 'highest-paying cashback platform', highlight: true },
-      { text: ' with a robust ' },
-      { text: 'Profit Link affiliate engine', highlight: true },
-      { text: ' supporting ' },
-      { text: '200+ partner stores', highlight: true },
-      { text: ' globally.' },
+      { text: "Developed India's " },
+      { text: "highest-paying cashback platform", highlight: true },
+      { text: " with a robust " },
+      { text: "Profit Link affiliate engine", highlight: true },
+      { text: " supporting " },
+      { text: "200+ partner stores", highlight: true },
+      { text: " globally." },
     ],
     stats: [
-      { value: '100k+', label: 'Active Earners' },
-      { value: '200+', label: 'Partner Brands' },
-      { value: '4.4★', label: 'App Rating' },
+      { value: "100k+", label: "Active Earners" },
+      { value: "200+", label: "Partner Brands" },
+      { value: "4.4★", label: "App Rating" },
     ],
-    quote: "ZonetTech built our Profit Links feature from scratch, and it's now our highest-converting acquisition channel.",
-    client: { name: 'Aarav Jain', role: 'Product Head @ Hyyzo' },
-    mainImg: '/images/zonet/hyyzo-1.png',
-    subImg1: '/images/zonet/hyyzo-2.png',
-    subImg2: '/images/zonet/hyyzo-3.png',
+    quote:
+      "ZonetTech built our Profit Links feature from scratch, and it's now our highest-converting acquisition channel.",
+    client: { name: "Aarav Jain", role: "Product Head @ Hyyzo" },
+    mainImg: "/images/zonet/hyyzo-1.png",
+    subImg1: "/images/zonet/hyyzo-2.png",
+    subImg2: "/images/zonet/hyyzo-3.png",
   },
   {
-    id: 'teacherdekho',
-    logo: '/images/clients/teacherdekho-logo.png',
-    name: 'TeacherDekho',
-    location: 'India',
-    badges: ['Ed-Tech'],
-    platforms: ['Web', 'App', 'Extension'],
+    id: "teacherdekho",
+    logo: "/images/clients/teacherdekho-logo.png",
+    name: "TeacherDekho",
+    location: "India",
+    badges: ["Ed-Tech"],
+    platforms: ["Web", "App", "Extension"],
     platformLinks: {
-      web: 'https://dev.thebestdeals.app',
-      app: 'https://dev.thebestdeals.app',
+      web: "https://dev.thebestdeals.app",
+      app: "https://dev.thebestdeals.app",
     },
-    timeline: '5 Weeks Build',
+    timeline: "5 Weeks Build",
     description: [
-      { text: 'Architected a ' },
-      { text: 'verified mentor network', highlight: true },
-      { text: ' for 50k+ students (live on dev.thebestdeals.app), delivering ' },
-      { text: 'personalized learning paths', highlight: true },
-      { text: ' and ' },
-      { text: 'real-time progress analytics', highlight: true },
-      { text: '.' },
+      { text: "Architected a " },
+      { text: "verified mentor network", highlight: true },
+      {
+        text: " for 50k+ students (live on dev.thebestdeals.app), delivering ",
+      },
+      { text: "personalized learning paths", highlight: true },
+      { text: " and " },
+      { text: "real-time progress analytics", highlight: true },
+      { text: "." },
     ],
     stats: [
-      { value: '50k+', label: 'Students' },
-      { value: '2k+', label: 'Verified Mentors' },
-      { value: '4.8★', label: 'Learning Rating' },
+      { value: "50k+", label: "Students" },
+      { value: "2k+", label: "Verified Mentors" },
+      { value: "4.8★", label: "Learning Rating" },
     ],
-    quote: "Finding quality education shouldn't be a luxury. Zonet helped us build a platform that democratizes access to expert mentors.",
-    client: { name: 'Himanshu Jain', role: 'Operations Lead @ TeacherDekho' },
-    mainImg: '/images/zonet/teacherdekho-1.png',
-    subImg1: '/images/zonet/teacherdekho-2.png',
-    subImg2: '/images/zonet/teacherdekho-3.png',
+    quote:
+      "Finding quality education shouldn't be a luxury. Zonet helped us build a platform that democratizes access to expert mentors.",
+    client: { name: "Himanshu Jain", role: "Operations Lead @ TeacherDekho" },
+    mainImg: "/images/zonet/teacherdekho-1.png",
+    subImg1: "/images/zonet/teacherdekho-2.png",
+    subImg2: "/images/zonet/teacherdekho-3.png",
   },
 ];
 
@@ -113,10 +121,18 @@ const BLOB_PATH =
 
 const services = [
   {
-    image: '/images/zonet/screenshot-1.png',
+    image: "/images/zonet/screenshot-1.png",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
-        <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
       </svg>
     ),
     title: "Web Design",
@@ -124,10 +140,18 @@ const services = [
     tags: ["UI/UX", "NEXT.JS", "MOTION"],
   },
   {
-    image: '/images/zonet/screenshot-2.png',
+    image: "/images/zonet/screenshot-2.png",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
-        <rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
     ),
     title: "Mobile Apps",
@@ -135,9 +159,16 @@ const services = [
     tags: ["REACT NATIVE", "IOS", "ANDROID"],
   },
   {
-    image: '/images/zonet/screenshot-3.png',
+    image: "/images/zonet/screenshot-3.png",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
         <circle cx="12" cy="12" r="3" />
         <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
       </svg>
@@ -147,9 +178,16 @@ const services = [
     tags: ["LLMS", "AUTOMATION", "GPT-4"],
   },
   {
-    image: '/images/zonet/flipshope-1.png',
+    image: "/images/zonet/flipshope-1.png",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
@@ -158,9 +196,16 @@ const services = [
     tags: ["REACT", "NODE.JS", "CLOUD"],
   },
   {
-    image: '/images/zonet/hyyzo-1.png',
+    image: "/images/zonet/hyyzo-1.png",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
         <path d="M21.5 2l-11 20-3-8-8-3 22-9z" />
       </svg>
     ),
@@ -169,10 +214,19 @@ const services = [
     tags: ["PERFORMANCE", "SEO", "NEXT.JS"],
   },
   {
-    image: '/images/zonet/teacherdekho-1.png',
+    image: "/images/zonet/teacherdekho-1.png",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8C547" strokeWidth="2">
-        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
+        <line x1="18" y1="20" x2="18" y2="10" />
+        <line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
       </svg>
     ),
     title: "Conversion Audit",
@@ -184,7 +238,13 @@ const services = [
 /* ─────────────────────────────────────────────
    CARD
 ───────────────────────────────────────────── */
-function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: (typeof services)[0];
+  index: number;
+}) {
   return (
     <motion.div
       variants={fadeUp}
@@ -302,7 +362,16 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
                 variants={{ hovered: { x: 4, y: -4 } }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <line x1="7" y1="17" x2="17" y2="7" />
                   <polyline points="7 7 17 7 17 17" />
                 </svg>
@@ -328,11 +397,8 @@ export default function ServicesSection() {
         viewport={{ once: true, margin: "-40px" }}
         className="text-center mb-14 max-w-3xl mx-auto"
       >
-        <div className="inline-flex items-center gap-2 border border-[#E6E4DF] rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-[#686B6B] mb-7 bg-white/60 backdrop-blur-sm uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E8C547]" />
-          Our Services
-        </div>
-        <h2 className="text-[42px] md:text-5xl font-black text-[#1A1A1A] leading-[1.1] mb-5 tracking-tight font-heading">
+        <SectionBadge className="mb-7">Our Services</SectionBadge>
+        <h2 className="text-[42px] md:text-5xl font-bold text-[#1A1A1A] leading-[1.1] mb-5 tracking-tight font-heading">
           Your full-stack design partner to
           <br />
           solve all your{" "}

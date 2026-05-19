@@ -1,68 +1,74 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Play, X, Settings, Maximize2, Volume2 } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Play, X, Settings, Maximize2, Volume2 } from "lucide-react";
+import { SectionBadge } from "@/components/ui";
 
 const videos = [
   {
-    id: 'v1',
-    title: 'How We Built a SaaS Dashboard in 14 Days',
-    category: 'Case Study',
-    duration: '04:32',
-    thumbnail: '/images/zonet/screenshot-1.png',
-    youtubeId: 'dQw4w9WgXcQ',
-    description: 'Full breakdown of our design-to-development process for a VC-backed AI SaaS company.',
+    id: "v1",
+    title: "How We Built a SaaS Dashboard in 14 Days",
+    category: "Case Study",
+    duration: "04:32",
+    thumbnail: "/images/zonet/screenshot-1.png",
+    youtubeId: "dQw4w9WgXcQ",
+    description:
+      "Full breakdown of our design-to-development process for a VC-backed AI SaaS company.",
     progress: 28,
   },
   {
-    id: 'v2',
-    title: 'AI-First Design: Building for 1M+ Users',
-    category: 'Process',
-    duration: '06:15',
-    thumbnail: '/images/zonet/screenshot-2.png',
-    youtubeId: 'dQw4w9WgXcQ',
-    description: 'Learn how we design AI-native interfaces that scale seamlessly for massive user bases.',
+    id: "v2",
+    title: "AI-First Design: Building for 1M+ Users",
+    category: "Process",
+    duration: "06:15",
+    thumbnail: "/images/zonet/screenshot-2.png",
+    youtubeId: "dQw4w9WgXcQ",
+    description:
+      "Learn how we design AI-native interfaces that scale seamlessly for massive user bases.",
     progress: 0,
   },
   {
-    id: 'v3',
-    title: 'From Figma to Production in 7 Days',
-    category: 'Speed Run',
-    duration: '04:44',
-    thumbnail: '/images/zonet/screenshot-3.png',
-    youtubeId: 'dQw4w9WgXcQ',
-    description: 'Watch our team take a complex Figma design and ship it to production in a single week.',
+    id: "v3",
+    title: "From Figma to Production in 7 Days",
+    category: "Speed Run",
+    duration: "04:44",
+    thumbnail: "/images/zonet/screenshot-3.png",
+    youtubeId: "dQw4w9WgXcQ",
+    description:
+      "Watch our team take a complex Figma design and ship it to production in a single week.",
     progress: 0,
   },
   {
-    id: 'v4',
-    title: 'Integrating LLMs into Enterprise Workflows',
-    category: 'AI Special',
-    duration: '05:20',
-    thumbnail: '/images/zonet/screenshot-4.png',
-    youtubeId: 'dQw4w9WgXcQ',
-    description: 'A deep dive into how we use LangChain and Vector databases to power custom AI agents.',
+    id: "v4",
+    title: "Integrating LLMs into Enterprise Workflows",
+    category: "AI Special",
+    duration: "05:20",
+    thumbnail: "/images/zonet/screenshot-4.png",
+    youtubeId: "dQw4w9WgXcQ",
+    description:
+      "A deep dive into how we use LangChain and Vector databases to power custom AI agents.",
     progress: 0,
   },
   {
-    id: 'v5',
-    title: 'Scaling React Native Apps to Global Markets',
-    category: 'Mobile',
-    duration: '06:18',
-    thumbnail: '/images/zonet/screenshot-5.png',
-    youtubeId: 'dQw4w9WgXcQ',
-    description: 'Best practices for internationalization, offline support, and performance in mobile apps.',
+    id: "v5",
+    title: "Scaling React Native Apps to Global Markets",
+    category: "Mobile",
+    duration: "06:18",
+    thumbnail: "/images/zonet/screenshot-5.png",
+    youtubeId: "dQw4w9WgXcQ",
+    description:
+      "Best practices for internationalization, offline support, and performance in mobile apps.",
     progress: 0,
   },
 ];
 
 const categoryColors: Record<string, string> = {
-  'Case Study': '#E8C547',
-  'Process': '#E8C547',
-  'Speed Run': '#E8C547',
-  'AI Special': '#E8C547',
-  'Mobile': '#E8C547',
+  "Case Study": "#E8C547",
+  Process: "#E8C547",
+  "Speed Run": "#E8C547",
+  "AI Special": "#E8C547",
+  Mobile: "#E8C547",
 };
 
 const VideoShowcase = () => {
@@ -70,20 +76,14 @@ const VideoShowcase = () => {
   const [playing, setPlaying] = useState(false);
 
   const current = videos[activeVideo];
-  const categoryColor = categoryColors[current.category] ?? '#E8C547';
+  const categoryColor = categoryColors[current.category] ?? "#E8C547";
 
   return (
     <section className="py-24 md:py-32 bg-[#F7F6F3] overflow-hidden relative border-t border-[#E6E4DF]">
       <div className="max-w-[1300px] mx-auto px-6 relative z-10">
-
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="w-2 h-2 rounded-full bg-[#E8C547]" />
-            <span className="text-[11px] font-black text-[#1A1A1A] tracking-[0.15em] uppercase">
-              Inside ZonetTech
-            </span>
-          </div>
+          <SectionBadge className="mb-4">Inside ZonetTech</SectionBadge>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -96,10 +96,10 @@ const VideoShowcase = () => {
               className="italic relative inline-block font-normal"
               style={{
                 backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23E8C547' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: '0 100%',
-                backgroundSize: '100% 0.35em',
-                paddingBottom: '0.1em',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "0 100%",
+                backgroundSize: "100% 0.35em",
+                paddingBottom: "0.1em",
               }}
             >
               The Future Of AI
@@ -115,7 +115,6 @@ const VideoShowcase = () => {
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-6 items-start max-w-[1200px] mx-auto">
-
           {/* LEFT: Video Player */}
           <div className="flex flex-col">
             <AnimatePresence mode="wait">
@@ -158,7 +157,10 @@ const VideoShowcase = () => {
                       {/* Center play button */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-[68px] h-[68px] rounded-full bg-white/92 flex items-center justify-center shadow-2xl group-hover:scale-105 transition-transform duration-300">
-                          <Play size={24} className="fill-[#1A1A1A] text-[#1A1A1A] translate-x-0.5" />
+                          <Play
+                            size={24}
+                            className="fill-[#1A1A1A] text-[#1A1A1A] translate-x-0.5"
+                          />
                         </div>
                       </div>
 
@@ -183,7 +185,10 @@ const VideoShowcase = () => {
                           className="text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors duration-200"
                           aria-label="Play"
                         >
-                          <Play size={17} className="fill-[#1A1A1A]/50 hover:fill-[#1A1A1A]" />
+                          <Play
+                            size={17}
+                            className="fill-[#1A1A1A]/50 hover:fill-[#1A1A1A]"
+                          />
                         </button>
                         <button
                           className="text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors duration-200"
@@ -232,14 +237,14 @@ const VideoShowcase = () => {
             {/* Title & description below player */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={current.id + '-meta'}
+                key={current.id + "-meta"}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="mt-5 px-1"
               >
-                <h3 className="text-[18px] md:text-[20px] font-bold text-[#1A1A1A] font-heading leading-snug mb-1.5">
+                <h3 className="text-[18px] md:text-[20px] font-semibold text-[#1A1A1A] font-heading leading-snug mb-1.5">
                   {current.title}
                 </h3>
                 <p className="text-[14px] text-[#686B6B] leading-relaxed">
@@ -263,9 +268,14 @@ const VideoShowcase = () => {
               {videos.map((video, idx) => (
                 <button
                   key={video.id}
-                  onClick={() => { setActiveVideo(idx); setPlaying(false); }}
+                  onClick={() => {
+                    setActiveVideo(idx);
+                    setPlaying(false);
+                  }}
                   className={`w-full flex items-center gap-4 px-4 py-4 text-left transition-colors duration-200 group ${
-                    activeVideo === idx ? 'bg-[#F5F4FF]' : 'bg-white hover:bg-[#FAFAFA]'
+                    activeVideo === idx
+                      ? "bg-[#F5F4FF]"
+                      : "bg-white hover:bg-[#FAFAFA]"
                   }`}
                 >
                   {/* Thumbnail */}
@@ -279,13 +289,19 @@ const VideoShowcase = () => {
                     {activeVideo === idx ? (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/15">
                         <div className="w-7 h-7 rounded-full bg-[#4F46E5] flex items-center justify-center shadow-md">
-                          <Play size={10} className="fill-white text-white translate-x-px" />
+                          <Play
+                            size={10}
+                            className="fill-white text-white translate-x-px"
+                          />
                         </div>
                       </div>
                     ) : (
                       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                         <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center">
-                          <Play size={10} className="fill-[#1A1A1A] translate-x-px" />
+                          <Play
+                            size={10}
+                            className="fill-[#1A1A1A] translate-x-px"
+                          />
                         </div>
                       </div>
                     )}
@@ -300,11 +316,16 @@ const VideoShowcase = () => {
                   <div className="flex-1 min-w-0">
                     <span
                       className="block text-[9px] font-black uppercase tracking-[0.14em] mb-1"
-                      style={{ color: activeVideo === idx ? categoryColors[video.category] ?? '#4F46E5' : '#686B6B' }}
+                      style={{
+                        color:
+                          activeVideo === idx
+                            ? (categoryColors[video.category] ?? "#4F46E5")
+                            : "#686B6B",
+                      }}
                     >
                       {video.category}
                     </span>
-                    <h4 className="text-[12.5px] font-semibold text-[#1A1A1A] leading-[1.35] line-clamp-2 font-heading">
+                    <h4 className="text-[12.5px] font-medium text-[#1A1A1A] leading-[1.35] line-clamp-2 font-heading">
                       {video.title}
                     </h4>
                   </div>

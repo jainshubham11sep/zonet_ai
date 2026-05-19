@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { fadeUp, fadeIn } from '@/lib/animations';
 import { Plus, Minus, ChevronUp, ChevronDown, MessageSquare, ArrowRight } from 'lucide-react';
+import { SectionBadge } from '@/components/ui';
 
 const faqs = [
   { 
@@ -42,7 +43,7 @@ const FAQItem = ({ question, answer, isDefaultOpen = false }: FAQItemProps) => {
         <div className={`w-[24px] h-[24px] rounded-full flex-shrink-0 flex items-center justify-center transition-colors bg-[#E8C547] text-[#1A1A1A]`}>
           {isOpen ? <Minus size={14} strokeWidth={3} /> : <Plus size={14} strokeWidth={3} />}
         </div>
-        <span className={`text-[15px] md:text-[17px] font-bold font-heading tracking-tight leading-tight transition-colors text-[#1A1A1A]`}>
+        <span className={`text-[15px] md:text-[17px] font-semibold font-sans tracking-tight leading-tight transition-colors text-[#1A1A1A]`}>
           {question}
         </span>
         <div className="ml-auto flex-shrink-0 text-[#1A1A1A]">
@@ -76,13 +77,7 @@ const FAQs = () => {
           
           {/* Left Column: Heading & Content */}
           <div className="lg:col-span-5 flex flex-col justify-start relative z-10 pt-4">
-            {/* Yellow Dot Badge */}
-            <div className="flex items-center gap-2 mb-8">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#E8C547]"></div>
-              <span className="text-[11px] font-black text-[#1A1A1A] tracking-[0.15em] uppercase">
-                Support & Insights
-              </span>
-            </div>
+            <SectionBadge variant="dot" className="mb-8">Support &amp; Insights</SectionBadge>
             
             <motion.h2
               variants={fadeUp}
@@ -128,7 +123,7 @@ const FAQs = () => {
                   <MessageSquare size={22} className="text-[#1A1A1A] fill-transparent" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="text-[17px] font-bold text-[#1A1A1A] mb-2 font-heading">Still have questions?</h4>
+                  <h4 className="text-[17px] font-semibold text-[#1A1A1A] mb-2 font-heading">Still have questions?</h4>
                   <p className="text-[13px] text-[#686B6B] mb-5 leading-relaxed max-w-[240px]">Our senior engineers are ready to discuss your custom roadmap today.</p>
                   <button 
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}

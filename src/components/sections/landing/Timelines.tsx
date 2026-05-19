@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { fadeUp, staggerContainer } from '@/lib/animations';
 import { Search, PenTool, Code, Rocket, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import { SectionBadge } from '@/components/ui';
 
 const steps = [
   { 
@@ -60,18 +61,13 @@ const Timelines = () => {
         {/* Header Area */}
         <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 mb-16 md:mb-20">
           <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#D1AC45]" />
-              <span className="text-[10px] font-black text-[#1A1A1A] tracking-[0.2em] uppercase">
-                Our Process
-              </span>
-            </div>
+            <SectionBadge variant="dot" className="mb-5">Our Process</SectionBadge>
             <motion.h2
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-[60px] font-medium text-[#1A1A1A] tracking-tight leading-[1.1] font-heading max-w-2xl"
+              className="text-4xl md:text-5xl lg:text-[60px] font-bold text-[#1A1A1A] tracking-tight leading-[1.1] font-heading max-w-2xl"
             >
               Launch Your Product <br />
               <span className="relative inline-block">
