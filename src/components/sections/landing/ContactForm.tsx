@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin, CheckCircle2, Phone, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { SectionBadge } from '@/components/ui';
 
 const budgets = [
   'Under ₹10,000', '₹10,000 – ₹50,000', '₹50,000 – ₹2,00,000', '₹2,00,000+'
@@ -76,12 +77,7 @@ const ContactForm = () => {
           
           {/* Left Side: Copy */}
           <div className="lg:col-span-5 space-y-10 relative z-10 pt-4">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#E8C547]"></div>
-              <span className="text-[11px] font-black text-[#1A1A1A] tracking-[0.15em] uppercase">
-                Get in Touch
-              </span>
-            </div>
+            <SectionBadge variant="dot" className="mb-6">Get in Touch</SectionBadge>
             
             <div className="space-y-6">
               <h2 className="text-5xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.05] text-[#1A1A1A] font-heading">
@@ -189,7 +185,7 @@ const ContactForm = () => {
                     <CheckCircle2 size={44} className="text-[#E8C547]" />
                   </div>
                   <div className="space-y-3">
-                    <h3 className="text-3xl font-black text-[#1A1A1A] font-heading">Message Received!</h3>
+                    <h3 className="text-3xl font-semibold text-[#1A1A1A] font-heading">Message Received!</h3>
                     <p className="text-[#686B6B] font-medium">Our team will get back to you within 24 hours.</p>
                   </div>
                   <button
