@@ -74,11 +74,11 @@ const ContactForm = () => {
     <section id="contact" className="py-24 md:py-32 bg-[#F7F6F3] overflow-hidden border-t border-[#E6E4DF] relative">
       <div className="max-w-[1300px] mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10 items-start relative">
-          
+
           {/* Left Side: Copy */}
           <div className="lg:col-span-5 space-y-10 relative z-10 pt-4">
             <SectionBadge variant="dot" className="mb-6">Get in Touch</SectionBadge>
-            
+
             <div className="space-y-6">
               <h2 className="text-5xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.05] text-[#1A1A1A] font-heading">
                 Let's build <br />
@@ -115,7 +115,7 @@ const ContactForm = () => {
                 </div>
                 <ArrowUpRight size={18} className="text-[#1A1A1A] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
-              
+
               {/* Contact item 2 */}
               <div className="flex items-center justify-between py-5 border-b border-[#E6E4DF] group cursor-pointer">
                 <div className="flex items-center gap-5">
@@ -124,7 +124,7 @@ const ContactForm = () => {
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <p className="text-[10px] font-black text-[#686B6B] uppercase tracking-widest">Call Us</p>
-                    <p className="text-[14px] font-bold text-[#1A1A1A]">+91 9166572332</p>
+                    <p className="text-[14px] font-bold text-[#1A1A1A]">+91 7023122071</p>
                   </div>
                 </div>
                 <ArrowUpRight size={18} className="text-[#1A1A1A] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -163,7 +163,7 @@ const ContactForm = () => {
 
           {/* Right Side: Form Card */}
           <div className="lg:col-span-7 relative z-10">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -245,8 +245,8 @@ const ContactForm = () => {
                             type="button"
                             onClick={() => setFormData({ ...formData, budget: b })}
                             className={`px-4 py-2 rounded-full text-[11px] font-medium transition-all duration-300 border ${formData.budget === b
-                                ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                                : 'bg-[#FCFCF9] text-[#686B6B] border-[#E6E4DF] hover:border-[#1A1A1A]/30'
+                              ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
+                              : 'bg-[#FCFCF9] text-[#686B6B] border-[#E6E4DF] hover:border-[#1A1A1A]/30'
                               }`}
                           >
                             {b}
@@ -279,7 +279,7 @@ const ContactForm = () => {
                       <span className="text-[11px] font-black text-[#E8C547] tracking-widest">04</span>
                       <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Project Details</span>
                     </div>
-                    <textarea 
+                    <textarea
                       rows={4}
                       placeholder="Briefly describe your vision..."
                       value={formData.message}

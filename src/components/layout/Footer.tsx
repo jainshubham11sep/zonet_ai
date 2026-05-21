@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Mail, MapPin, Phone, Globe, MessageSquare, Send, ArrowUpRight, Heart } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, MapPin, Phone, ArrowUpRight, Heart } from 'lucide-react';
 
 const XLogo = ({ size = 18, className = "" }: { size?: number, className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -20,9 +19,29 @@ const LinkedinLogo = ({ size = 18, className = "" }: { size?: number, className?
   </svg>
 );
 
+const InstagramLogo = ({ size = 18, className = "" }: { size?: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const FacebookLogo = ({ size = 18, className = "" }: { size?: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const YoutubeLogo = ({ size = 18, className = "" }: { size?: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20.06 12 20.06 12 20.06s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+  </svg>
+);
+
 const Footer = () => {
   const pathname = usePathname();
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   if (pathname === '/strategy-call') return null;
 
@@ -30,7 +49,7 @@ const Footer = () => {
     <footer className="bg-[#FAF9F6] text-foreground pt-20 md:pt-28 pb-8 border-t border-border-custom">
       <div className="container mx-auto px-6 max-w-[1400px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
-          
+
           {/* Logo & Intro */}
           <div className="lg:col-span-4 flex flex-col items-start lg:pr-8">
             <Link href="/" className="flex items-center gap-3 mb-10">
@@ -42,27 +61,29 @@ const Footer = () => {
                 className="w-auto h-8 md:h-9 object-contain"
               />
             </Link>
-            
+
             <h3 className="text-[22px] md:text-[26px] font-serif text-foreground mb-6 leading-snug tracking-tight">
               The #1 Rated Fastest Website<br />
-              & UX Agency For <span className="relative inline-block whitespace-nowrap"><span className="italic">B2B & AI SaaS.</span><svg className="absolute w-[105%] h-3 -bottom-1 -left-1 text-[#F4BE37]" viewBox="0 0 100 20" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 15 Q 50 2 98 12" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/></svg></span>
+              & UX Agency For <span className="relative inline-block whitespace-nowrap"><span className="italic">B2B & AI SaaS.</span><svg className="absolute w-[105%] h-3 -bottom-1 -left-1 text-[#F4BE37]" viewBox="0 0 100 20" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 15 Q 50 2 98 12" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" /></svg></span>
             </h3>
-            
+
             <p className="text-muted text-[15px] leading-relaxed max-w-xs mb-10 font-medium">
               We build high-converting digital products for fast-moving companies.
             </p>
-            
+
             <div className="flex items-center gap-3">
               {[
-                { icon: Globe, label: "Website" },
-                { icon: LinkedinLogo, label: "LinkedIn" },
-                { icon: XLogo, label: "X" },
-                { icon: MessageSquare, label: "Messages" },
-                { icon: Send, label: "Telegram" }
+                { icon: LinkedinLogo, label: "LinkedIn", href: "https://www.linkedin.com/company/zonettech" },
+                { icon: InstagramLogo, label: "Instagram", href: "https://www.instagram.com/zonet.ai/" },
+                { icon: FacebookLogo, label: "Facebook", href: "https://www.facebook.com/zonettechai" },
+                { icon: XLogo, label: "X", href: "https://x.com/zonettech" },
+                { icon: YoutubeLogo, label: "YouTube", href: "https://www.youtube.com/@ZonetAiTech" },
               ].map((item, idx) => (
-                <a 
-                  key={idx} 
-                  href="#" 
+                <a
+                  key={idx}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={item.label}
                   className="w-11 h-11 flex items-center justify-center rounded-2xl border border-black/5 text-muted hover:text-foreground hover:border-foreground/30 hover:shadow-sm transition-all bg-white"
                 >
@@ -81,7 +102,7 @@ const Footer = () => {
             <ul className="flex flex-col">
               {['Home', 'Case Studies', 'Services', 'AI Tools', 'Careers', 'Contact'].map((item, idx, arr) => (
                 <li key={item} className={`py-3.5 ${idx !== arr.length - 1 ? 'border-b border-black/5' : ''}`}>
-                  <Link 
+                  <Link
                     href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
                     className="flex items-center gap-4 text-muted hover:text-foreground transition-all text-[15px] font-medium"
                   >
@@ -123,7 +144,7 @@ const Footer = () => {
                   <Phone size={20} className="text-muted" strokeWidth={1.5} />
                 </div>
                 <div className="flex flex-col justify-center pt-1">
-                  <span className="text-[15px] font-semibold text-foreground">+91 9166572332</span>
+                  <span className="text-[15px] font-semibold text-foreground">+91 7023122071</span>
                   <span className="text-[9px] font-black text-muted uppercase tracking-[0.15em] mt-1">Phone</span>
                 </div>
               </li>
@@ -138,11 +159,11 @@ const Footer = () => {
             </div>
             <div className="relative bg-white border border-black/5 p-7 rounded-[2rem] overflow-hidden shadow-sm">
               {/* Diagonal lines pattern for top right */}
-              <div 
-                className="absolute -top-16 -right-16 w-48 h-48 opacity-[0.03] pointer-events-none rounded-full" 
+              <div
+                className="absolute -top-16 -right-16 w-48 h-48 opacity-[0.03] pointer-events-none rounded-full"
                 style={{ backgroundImage: 'repeating-linear-gradient(-45deg, #000, #000 1.5px, transparent 1.5px, transparent 8px)' }}
               ></div>
-              
+
               <div className="flex items-center gap-2.5 text-[11px] font-black text-[#EAB308] uppercase tracking-[0.15em] mb-5 pb-5 border-b border-black/5">
                 <div className="w-2 h-2 rounded-full bg-[#EAB308]"></div>
                 2 Slots Open
@@ -150,7 +171,7 @@ const Footer = () => {
               <p className="text-foreground text-[15px] leading-relaxed font-semibold mb-6 pr-2">
                 We're currently accepting new projects for Q2 2026.
               </p>
-              <Link 
+              <Link
                 href="/strategy-call"
                 className="w-full flex items-center justify-between px-6 py-4 rounded-[1.25rem] bg-[#111] text-white font-black text-xs uppercase tracking-[0.15em] hover:opacity-90 transition-all shadow-md group"
               >
@@ -173,10 +194,10 @@ const Footer = () => {
               <Link href="/disclaimer" className="hover:text-foreground transition-colors">Disclaimer</Link>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2 text-[10px] font-black text-muted uppercase tracking-[0.15em]">
             <Heart className="w-[14px] h-[14px] text-[#EAB308] fill-[#EAB308]" />
-            Made with passion for SaaS
+            Crafted for founders who move fast
           </div>
         </div>
       </div>
