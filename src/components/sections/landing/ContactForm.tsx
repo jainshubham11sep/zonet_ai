@@ -80,21 +80,10 @@ const ContactForm = () => {
             <SectionBadge variant="dot" className="mb-6">Get in Touch</SectionBadge>
 
             <div className="space-y-6">
-              <h2 className="text-5xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.05] text-[#1A1A1A] font-heading">
+              <h2 className="text-5xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.05] text-[#1A1A1A] font-sora">
                 Let's build <br />
                 something <br />
-                <em
-                  className="italic relative inline-block pr-3"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23F5C518' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "0 95%",
-                    backgroundSize: "100% 0.35em",
-                    paddingBottom: "0.05em",
-                  }}
-                >
-                  great.
-                </em>
+                great.
               </h2>
               <p className="text-[15px] md:text-[16px] text-[#686B6B] max-w-sm leading-relaxed font-medium">
                 Share your idea with us and our team will get back to you within 24 hours.

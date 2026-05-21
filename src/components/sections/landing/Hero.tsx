@@ -23,21 +23,9 @@ const Hero = () => {
 
             {/* Heading with inline underline */}
             <div className="mb-8">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl! font-bold! text-[#1A1A1A] leading-[1.1] font-heading">
-                We turn bold ideas<br />
-                into {" "}
-                <em
-                  className="italic"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23F5C518' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "0 92%",
-                    backgroundSize: "100% 0.5em",
-                    paddingBottom: "0.05em",
-                  }}
-                >
-                  digital products
-                </em>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl text-[#1A1A1A] leading-[1.1] font-heading" style={{ fontFamily: "var(--font-sora-family)" }}>
+                We turn bold ideas into <br />
+                <span className='text-[#E8C547]'>digital products</span>
                 <br />
                 that scale.
               </h1>
@@ -84,7 +72,7 @@ const Hero = () => {
             </div>
 
             {/* The Building Image */}
-            <div className="absolute w-100 top-10 left-[-64px] right-48 bottom-10 rounded-[24px] overflow-hidden shadow-2xl">
+            <div className="absolute w-100 top-10 -left-2 bottom-10 rounded-[24px] overflow-hidden shadow-2xl">
               <Image
                 src="/images/zonet/hero-building.jpg"
                 alt="Architecture building"

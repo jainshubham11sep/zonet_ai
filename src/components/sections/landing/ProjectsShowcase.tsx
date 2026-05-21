@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, Globe, Smartphone, Puzzle } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { SectionBadge } from '@/components/ui';
 
 const projects = [
   {
@@ -149,12 +150,12 @@ const MobileImageCarousel = ({ images, projectName }: { images: string[]; projec
           />
         </motion.div>
       </AnimatePresence>
-      
+
       {/* Indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/20 backdrop-blur-md px-3 py-2 rounded-full">
         {images.map((_, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-4 bg-[#D1AC45]' : 'w-1.5 bg-white/70'}`}
           />
         ))}
@@ -172,32 +173,26 @@ const ProjectShowcase = () => {
 
   return (
     <section id="work" className="py-24 md:py-32 bg-[#F8F6F0] relative border-t border-[#E5E5E5]">
-      
+
       <div className="max-w-[1300px] mx-auto px-6">
-        
+
         {/* Header Area */}
-        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 mb-20 md:mb-28">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 mb-20">
           <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#D1AC45]" />
-              <span className="text-[10px] font-black text-[#1A1A1A] tracking-[0.2em] uppercase">
-                Featured Work
-              </span>
-            </div>
-            <motion.h2 
+            <SectionBadge variant='dot' className="mb-3 ml-3">Featured Work</SectionBadge>
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-[60px] font-medium text-[#1A1A1A] tracking-tight leading-[1.1] font-heading max-w-2xl"
+              className="text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] tracking-tight leading-[1.1] font-sora font-bold max-w-3xl"
             >
               Building Iconic Products <br />
-              <span className="relative inline-block">
-                <em className="italic pr-2 text-[#6A6A6A]">For Visionary Founders</em>
-                <svg className="absolute -bottom-1 left-0 w-full h-[12px] text-[#D1AC45]" viewBox="0 0 200 12" preserveAspectRatio="none">
-                  <path d="M2,10 Q50,0 100,5 T198,8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-              </span>
             </motion.h2>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative inline-block text-3xl font-sans text-[#E8C547]">For Visionary Founders</motion.span>
           </div>
         </div>
 
@@ -210,7 +205,7 @@ const ProjectShowcase = () => {
 
               {/* ── LEFT: Sticky unified Card ── */}
               <div className="w-full lg:w-[45%] h-fit lg:sticky lg:top-[88px] flex flex-col gap-8 bg-white p-8 lg:p-10 rounded-[32px] border border-[#E5E5E5] shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
-                
+
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
                   <div className="flex items-center gap-5">
@@ -234,7 +229,7 @@ const ProjectShowcase = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Platform Links */}
                   <div className="flex gap-2">
                     {project.platformLinks.web && (
@@ -301,8 +296,8 @@ const ProjectShowcase = () => {
 
                 {/* CTA */}
                 <div className="pt-2">
-                  <Link 
-                    href={`/case-studies/${project.id}`} 
+                  <Link
+                    href={`/case-studies/${project.id}`}
                     className="w-full flex items-center justify-center gap-3 px-8 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white hover:bg-black transition-all group shadow-xl shadow-black/5"
                   >
                     <span className="text-[10px] font-black uppercase tracking-[0.25em]">Read Case Study</span>
@@ -344,7 +339,7 @@ const ProjectShowcase = () => {
             </span>
             <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
           </div>
-          
+
           <Link
             href="/case-studies"
             className="inline-flex items-center gap-3 px-10 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white font-black uppercase tracking-[0.2em] text-[11px] hover:bg-black active:scale-95 transition-all shadow-xl shadow-black/10 group"

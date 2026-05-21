@@ -111,26 +111,15 @@ const Clients = () => {
     <section className="section-padding bg-[#F7F6F3] border-t border-[#E6E4DF] overflow-hidden">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center mb-16">
-        <SectionBadge className="mb-5">Our Portfolio</SectionBadge>
+        <SectionBadge>Our Portfolio</SectionBadge>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-bold text-[#1A1A1A] font-heading leading-tight mb-5"
+          className="text-5xl md:text-6xl font-bold text-[#1A1A1A] font-sora leading-tight mb-5"
         >
-          Trusted by{" "}
-          <em
-            style={{
-              backgroundImage: underlineSvg,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "0 95%",
-              backgroundSize: "100% 0.45em",
-              paddingBottom: "0.1em",
-            }}
-          >
-            Global Brands
-          </em>
+          Trusted by <span className="text-[#E8C547]">Global Brands</span>
         </motion.h2>
 
         <motion.p

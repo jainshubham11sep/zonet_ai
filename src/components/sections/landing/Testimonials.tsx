@@ -85,28 +85,16 @@ const Testimonials = () => {
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <SectionBadge className="mb-4">Testimonials</SectionBadge>
+          <SectionBadge>Testimonials</SectionBadge>
 
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-heading mb-6 tracking-tight"
+            className="text-4xl md:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-sora mb-6 tracking-tight"
           >
-            Loved By{" "}
-            <em
-              className="italic relative inline-block pr-2"
-              style={{
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23F5C518' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "0 95%",
-                backgroundSize: "100% 0.3em",
-                paddingBottom: "0.05em",
-              }}
-            >
-              Founders & Teams
-            </em>
+            Loved By <span className="text-[#E8C547]">Founders & Teams</span>
           </motion.h2>
 
           <motion.p
