@@ -89,22 +89,13 @@ const VideoShowcase = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl lg:text-[72px] font-bold text-[#1A1A1A] tracking-tight leading-[1.05] font-heading max-w-3xl mb-6"
+            className="text-5xl md:text-6xl font-bold text-[#1A1A1A] tracking-tight leading-[1.05] font-sora max-w-3xl"
           >
             Watch Us Build <br />
-            <em
-              className="italic relative inline-block font-normal"
-              style={{
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23E8C547' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "0 100%",
-                backgroundSize: "100% 0.35em",
-                paddingBottom: "0.1em",
-              }}
-            >
-              The Future Of AI
-            </em>
           </motion.h2>
+          <span className="font-sans text-4xl text-[#E8C547] mb-6">
+            The Future Of AI
+          </span>
 
           <p className="text-[15px] md:text-[16px] text-[#686B6B] max-w-[560px] leading-relaxed mx-auto">
             Explore how we turn complex ideas into intelligent products
@@ -272,11 +263,10 @@ const VideoShowcase = () => {
                     setActiveVideo(idx);
                     setPlaying(false);
                   }}
-                  className={`w-full flex items-center gap-4 px-4 py-4 text-left transition-colors duration-200 group ${
-                    activeVideo === idx
-                      ? "bg-[#F5F4FF]"
-                      : "bg-white hover:bg-[#FAFAFA]"
-                  }`}
+                  className={`w-full flex items-center gap-4 px-4 py-4 text-left transition-colors duration-200 group ${activeVideo === idx
+                    ? "bg-[#F5F4FF]"
+                    : "bg-white hover:bg-[#FAFAFA]"
+                    }`}
                 >
                   {/* Thumbnail */}
                   <div className="relative w-[88px] h-[60px] flex-shrink-0 rounded-lg overflow-hidden bg-[#1A1A1A]">

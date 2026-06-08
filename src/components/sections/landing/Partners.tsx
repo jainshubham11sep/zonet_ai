@@ -54,6 +54,7 @@ function AnimatedTitle({ text }: { text: string }) {
         flexWrap: "wrap",
         justifyContent: "center",
         gap: "0.05em",
+        fontFamily: 'var(--font-sora)!important'
       }}
     />
   );
@@ -302,7 +303,7 @@ export default function TrustedIntegrations() {
     >
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 32, padding: "0 16px" }}>
-        <SectionBadge className="mb-0">Trusted Integrations</SectionBadge>
+        <SectionBadge>Trusted Integrations</SectionBadge>
         <AnimatedTitle text="The Technology We Power." />
         <p
           style={{

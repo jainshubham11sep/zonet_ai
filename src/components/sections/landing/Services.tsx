@@ -395,14 +395,14 @@ export default function ServicesSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-40px" }}
-        className="text-center mb-14 max-w-3xl mx-auto"
+        className="text-center mb-14 max-w-5xl mx-auto"
       >
         <SectionBadge className="mb-7">Our Services</SectionBadge>
-        <h2 className="text-[42px] md:text-5xl font-bold text-[#1A1A1A] leading-[1.1] mb-5 tracking-tight font-heading">
+        <h2 className="text-[42px] md:text-6xl font-bold text-[#1A1A1A] leading-[1.1] mb-5 tracking-tight font-sora">
           Your full-stack design partner to
           <br />
           solve all your{" "}
-          <em className="not-italic text-[#E8C547]">creative problems</em>
+          <span className="font-sans text-[#E8C547]">creative problems</span>
         </h2>
         <p className="text-[#686B6B] text-base leading-relaxed max-w-lg mx-auto">
           We combine strategy, design and technology to build digital products

@@ -49,31 +49,20 @@ export default function RelatedArticles() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Column */}
           <div className="lg:col-span-4 flex flex-col justify-center">
-            <SectionBadge variant="dot" className="mb-8">Blogs &amp; Insights</SectionBadge>
-            
+            <SectionBadge variant="dot" className="mb-5">Blogs &amp; Insights</SectionBadge>
+
             <motion.h2
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-heading mb-8 tracking-[-0.02em]"
+              className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-sora mb-8 tracking-[-0.02em]"
             >
               Ideas, insights <br />
-              <em
-                className="italic relative inline-block pr-2"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><path d='M3 11 C 60 3, 140 3, 220 8 S 290 14, 297 9' stroke='%23F5C518' stroke-width='6' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "0 95%",
-                  backgroundSize: "100% 0.3em",
-                  paddingBottom: "0.05em",
-                }}
-              >
-                & inspiration.
-              </em>
+              <span className="text-[#E8C547]">& inspiration.</span>
             </motion.h2>
 
             <motion.p
@@ -92,7 +81,7 @@ export default function RelatedArticles() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Link 
+              <Link
                 href="/blogs"
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#1A1A1A] text-white font-bold text-[13px] rounded-full hover:bg-[#2A2A2A] transition-all w-fit"
               >
@@ -105,7 +94,7 @@ export default function RelatedArticles() {
           <div className="lg:col-span-8 relative w-full pt-12 lg:pt-0">
             {/* Faint connecting line behind cards */}
             <div className="absolute top-[50%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E6E4DF] to-transparent z-0 hidden lg:block"></div>
-            
+
             <motion.div
               className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10"
               variants={staggerContainer}
@@ -134,7 +123,7 @@ export default function RelatedArticles() {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="p-6 md:p-7 flex flex-col flex-grow">
                       <h3 className="text-[17px] font-semibold text-[#1A1A1A] leading-snug font-heading tracking-tight mb-3 group-hover:text-[#E8C547] transition-colors">
                         {article.title}
@@ -142,7 +131,7 @@ export default function RelatedArticles() {
                       <p className="text-[13px] text-[#686B6B] leading-relaxed mb-8 flex-grow">
                         {article.description}
                       </p>
-                      
+
                       <div className="flex items-center justify-between w-full mt-auto">
                         <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#1A1A1A] group-hover:text-[#E8C547] transition-colors">
                           Read More <ArrowUpRight size={14} strokeWidth={2.5} />

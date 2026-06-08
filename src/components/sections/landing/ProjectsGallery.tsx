@@ -35,10 +35,10 @@ const ProjectsGallery = () => {
     <section className="bg-[#F7F6F3] border-t border-[#E6E4DF] overflow-hidden">
       {/* ── Section Header ── */}
       <div className="pt-16 pb-12 flex flex-col items-center text-center px-6">
-        <SectionBadge className="mb-2">Project Gallery</SectionBadge>
+        <SectionBadge>Project Gallery</SectionBadge>
 
-        <h2 className="text-4xl md:text-[52px] font-black text-[#1A1A1A] font-heading tracking-tight leading-[1.1] max-w-2xl mb-4">
-          Work that speaks <span className="text-[#E8C547]">for itself</span>
+        <h2 className="text-4xl md:text-6xl font-black text-[#1A1A1A] font-sora tracking-tight leading-[1.1] max-w-4xl mb-4">
+          Work that speaks <span className="font-sans text-[#E8C547]">for itself</span>
         </h2>
 
         <p className="text-[#686B6B] text-base leading-relaxed max-w-md">

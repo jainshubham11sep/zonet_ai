@@ -163,28 +163,19 @@ const DataDrivenStats = () => {
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <SectionBadge className="mb-4">Data Driven</SectionBadge>
+          <SectionBadge>Data Driven</SectionBadge>
 
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-[48px] md:text-[60px] lg:text-[68px] font-bold text-[#1A1A1A] tracking-tight leading-[1.1] font-heading mb-5"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] tracking-tight leading-[1.1] font-sora mb-5"
           >
             Numbers That{" "}
-            <em
-              className="italic"
-              style={{
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 14' preserveAspectRatio='none'><path d='M2 9 C 55 2, 130 2, 210 7 S 272 12, 278 7' stroke='%23E8C547' stroke-width='5.5' stroke-linecap='round' fill='none' opacity='0.95'/></svg>")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "0 100%",
-                backgroundSize: "100% 0.32em",
-                paddingBottom: "0.08em",
-              }}
-            >
+            <span className="font-sora text-7xl text-[#E8C547]">
               Actualize
-            </em>{" "}
+            </span>{" "}
             Our Impact
           </motion.h2>
 
