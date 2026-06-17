@@ -1,32 +1,46 @@
 {
+  "autoMemoryEnabled": true,
   "permissions": {
     "allow": [
       "Bash(npm run *)",
+      "Bash(npm install *)",
       "Bash(npm test *)",
-      "Bash(npm install)",
+      "Bash(npx biome *)",
+      "Bash(npx tsc *)",
       "Bash(git status)",
       "Bash(git log *)",
-      "Bash(git diff *)"
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git branch *)",
+      "Bash(git pull)",
+      "Bash(mkdir -p *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(find * -type f)"
     ],
     "deny": [
       "Bash(rm -rf *)",
-      "Bash(git push --force *)"
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)"
     ]
   },
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": "Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Remember to follow design system guidelines from .claude/design/'"
+            "command": "cd frontend && npx biome check --no-errors-on-unmatched 2>/dev/null | head -10 || true"
           }
         ]
       }
     ]
   },
   "env": {
-    "NEXT_PUBLIC_SITE_URL": "http://localhost:3307"
+    "NEXT_PUBLIC_SITE_URL": "http://localhost:3307",
+    "NEXT_PUBLIC_API_URL": "http://localhost:4000"
   }
 }
