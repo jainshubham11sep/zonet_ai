@@ -37,6 +37,17 @@ When invoked:
 - Server vs client components correctly chosen
 - No hardcoded env values
 
+**Backend specific** (when reviewing backend/src/* files)
+- Every controller export wrapped in `catchAsync`
+- Validation via `zodValidator` on route — never inside controller/service
+- Services throw `AppError`, never `res.status().json()`
+- All Mongoose queries in `repository/` only — no model calls in services
+- All Redis ops in `cache/` only — no direct `redis.*` calls in services
+- `SuccessResponse` / `ErrorResponse` used — never raw `res.json()`
+- `StatusCodes.X` from `http-status-codes` — no raw numbers
+- ENV read from `src/config/env.ts` — never `process.env.*` directly
+- TypeScript strict — no `any`, use `TypedRequest<T>` in controllers
+
 **Audit tool specific** (when reviewing audit/* files)
 - Teaser shows score + issue count ONLY (no details before unlock)
 - Locked sections use `blur-sm pointer-events-none`
