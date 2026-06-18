@@ -129,8 +129,7 @@ const Clients = () => {
           transition={{ delay: 0.1 }}
           className="text-base text-[#686B6B] max-w-lg leading-relaxed"
         >
-          We partner with innovative companies across industries to build
-          digital products that drive growth and create real impact.
+          Your partner for IT software solutions. We build the websites and apps that help your business develop, scale, and stand out.
         </motion.p>
       </div>
 

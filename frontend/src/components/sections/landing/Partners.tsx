@@ -304,7 +304,7 @@ export default function TrustedIntegrations() {
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 32, padding: "0 16px" }}>
         <SectionBadge>Trusted Integrations</SectionBadge>
-        <AnimatedTitle text="The Technology We Power." />
+        <AnimatedTitle text='The Technology That We Bring To Life' />
         <p
           style={{
             marginTop: 12,
@@ -313,9 +313,9 @@ export default function TrustedIntegrations() {
             lineHeight: 1.65,
           }}
         >
-          We work with the best platforms and tools to build scalable,
+          We use leading platforms and tools to scale, secure,
           <br />
-          secure and future-ready digital products.
+          and future-ready your digital products.
         </p>
       </div>
 
@@ -337,20 +337,20 @@ export default function TrustedIntegrations() {
                 pointerEvents: "none",
                 zIndex: 1,
               }}
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns='http://www.w3.org/2000/svg'
             >
               <defs>
                 <filter
-                  id="ti-glow"
-                  x="-80%"
-                  y="-80%"
-                  width="260%"
-                  height="260%"
+                  id='ti-glow'
+                  x='-80%'
+                  y='-80%'
+                  width='260%'
+                  height='260%'
                 >
-                  <feGaussianBlur stdDeviation="2.5" result="b" />
+                  <feGaussianBlur stdDeviation='2.5' result='b' />
                   <feMerge>
-                    <feMergeNode in="b" />
-                    <feMergeNode in="SourceGraphic" />
+                    <feMergeNode in='b' />
+                    <feMergeNode in='SourceGraphic' />
                   </feMerge>
                 </filter>
                 <style>{`
@@ -394,7 +394,7 @@ export default function TrustedIntegrations() {
                   cx={cx}
                   cy={cy}
                   r={r}
-                  fill="none"
+                  fill='none'
                   stroke={stroke}
                   strokeWidth={sw}
                   strokeDasharray={dash}
@@ -426,7 +426,7 @@ export default function TrustedIntegrations() {
                 const del = ((i * 0.7) % 5).toFixed(1);
                 const dur2 = (parseFloat(dur) * 1.6).toFixed(1);
                 const del2 = (parseFloat(del) + parseFloat(dur) * 0.6).toFixed(
-                  1,
+                  1
                 );
                 const dashDur = (parseFloat(dur) * 1.2).toFixed(1);
                 return (
@@ -434,10 +434,10 @@ export default function TrustedIntegrations() {
                     <path
                       id={pid}
                       d={d}
-                      fill="none"
+                      fill='none'
                       stroke={color}
                       strokeWidth={1.3}
-                      strokeDasharray="7 11"
+                      strokeDasharray='7 11'
                       opacity={0.38}
                       style={{
                         animation: `ti-dash ${dashDur}s ${del}s linear infinite`,
@@ -447,26 +447,26 @@ export default function TrustedIntegrations() {
                     <circle
                       r={5}
                       fill={color}
-                      filter="url(#ti-glow)"
+                      filter='url(#ti-glow)'
                       opacity={0.92}
                     >
                       <animateMotion
                         dur={`${dur}s`}
                         begin={`${del}s`}
-                        repeatCount="indefinite"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.6 1"
+                        repeatCount='indefinite'
+                        calcMode='spline'
+                        keySplines='0.4 0 0.6 1'
                       >
                         <mpath href={`#${pid}`} />
                       </animateMotion>
                     </circle>
-                    <circle r={2.2} fill="#fff" opacity={0.9}>
+                    <circle r={2.2} fill='#fff' opacity={0.9}>
                       <animateMotion
                         dur={`${dur}s`}
                         begin={`${del}s`}
-                        repeatCount="indefinite"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.6 1"
+                        repeatCount='indefinite'
+                        calcMode='spline'
+                        keySplines='0.4 0 0.6 1'
                       >
                         <mpath href={`#${pid}`} />
                       </animateMotion>
@@ -475,17 +475,17 @@ export default function TrustedIntegrations() {
                     <circle
                       r={3.5}
                       fill={color}
-                      filter="url(#ti-glow)"
+                      filter='url(#ti-glow)'
                       opacity={0.55}
                     >
                       <animateMotion
                         dur={`${dur2}s`}
                         begin={`${del2}s`}
-                        repeatCount="indefinite"
-                        keyPoints="1;0"
-                        keyTimes="0;1"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.6 1"
+                        repeatCount='indefinite'
+                        keyPoints='1;0'
+                        keyTimes='0;1'
+                        calcMode='spline'
+                        keySplines='0.4 0 0.6 1'
                       >
                         <mpath href={`#${pid}`} />
                       </animateMotion>
@@ -595,11 +595,11 @@ export default function TrustedIntegrations() {
               }}
             >
               <Image
-                src="/images/zonet/logo-icon.png"
-                alt="Zonet Tech"
+                src='/images/zonet/logo-icon.png'
+                alt='Zonet Tech'
                 width={42}
                 height={42}
-                className="object-contain"
+                className='object-contain'
               />
             </div>
 

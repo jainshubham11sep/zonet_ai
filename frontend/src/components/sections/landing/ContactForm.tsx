@@ -13,6 +13,12 @@ const timelines = [
   '7–14 days', '15–30 days', '1–3 months', '3+ months'
 ];
 
+const contacts = [
+  { icon: Mail, label: 'Email Us At', value: 'business@zonettech.com' },
+  { icon: Phone, label: 'Call Us', value: '+91 7023122071' },
+  { icon: MapPin, label: 'Our HQ', value: 'Jaipur Rajasthan, India' },
+];
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -45,24 +51,14 @@ const ContactForm = () => {
 
       const response = await fetch('https://team.flipshope.com/api/zonet/contactus', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`API error: ${response.status}`);
 
       setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        budget: '₹10,000 – ₹50,000',
-        timeline: '',
-        message: ''
-      });
+      setFormData({ name: '', email: '', budget: '₹10,000 – ₹50,000', timeline: '', message: '' });
       setTimeout(() => setSubmitted(false), 5000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit form');
@@ -71,143 +67,102 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#F7F6F3] overflow-hidden border-t border-[#E6E4DF] relative">
-      <div className="max-w-[1300px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10 items-start relative">
+    <section id="contact" className="bg-[#F7F6F3] border-t border-[#E6E4DF] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr]">
 
-          {/* Left Side: Copy */}
-          <div className="lg:col-span-5 space-y-10 relative z-10 pt-4">
-            <SectionBadge variant="dot" className="mb-6">Get in Touch</SectionBadge>
+          {/* ── LEFT: Cream Panel ── */}
+          <div className="bg-[#F7F6F3] px-8 py-16 md:px-12 md:py-20 flex flex-col justify-between gap-12 border-b lg:border-b-0 lg:border-r border-[#E6E4DF]">
+            <div>
+              <SectionBadge variant="dot" className="mb-8">Get in Touch</SectionBadge>
 
-            <div className="space-y-6">
-              <h2 className="text-5xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.05] text-[#1A1A1A] font-sora">
-                Let's build <br />
+              <h2 className="font-sora text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-[1.08] tracking-tight mb-5">
+                Let&apos;s build <br />
                 something <br />
-                great.
+                <span className="text-[#E8C547]">great.</span>
               </h2>
-              <p className="text-[15px] md:text-[16px] text-[#686B6B] max-w-sm leading-relaxed font-medium">
-                Share your idea with us and our team will get back to you within 24 hours.
+
+              <p className="font-sans text-sm text-[#686B6B] leading-relaxed max-w-xs">
+                Share your idea and our team will get back to you within 24 hours.
               </p>
             </div>
 
-            <div className="flex flex-col pt-8 max-w-[340px]">
-              {/* Contact item 1 */}
-              <div className="flex items-center justify-between py-5 border-t border-b border-[#E6E4DF] group cursor-pointer">
-                <div className="flex items-center gap-5">
-                  <div className="w-11 h-11 rounded-full bg-[#E6E4DF]/50 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-all duration-300 shrink-0">
-                    <Mail size={18} />
+            {/* Contact Items */}
+            <div className="flex flex-col gap-1">
+              {contacts.map(({ icon: Icon, label, value }) => (
+                <div key={label} className="group flex items-center gap-4 py-4 border-t border-[#E6E4DF] cursor-pointer">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#E6E4DF] group-hover:bg-[#1A1A1A] group-hover:border-[#1A1A1A] flex items-center justify-center shrink-0 transition-all duration-300">
+                    <Icon size={16} className="text-[#1A1A1A] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <div className="flex flex-col gap-0.5">
-                    <p className="text-[10px] font-black text-[#686B6B] uppercase tracking-widest">Email Us At</p>
-                    <p className="text-[14px] font-bold text-[#1A1A1A]">business@zonettech.com</p>
+                  <div className="flex flex-col gap-0.5 min-w-0">
+                    <span className="font-sans text-[9px] font-black text-[#686B6B] uppercase tracking-[0.18em]">{label}</span>
+                    <span className="font-sans text-[13px] font-semibold text-[#1A1A1A] truncate">{value}</span>
                   </div>
+                  <ArrowUpRight size={14} className="text-[#686B6B] group-hover:text-[#1A1A1A] ml-auto shrink-0 transition-colors duration-300" />
                 </div>
-                <ArrowUpRight size={18} className="text-[#1A1A1A] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
-
-              {/* Contact item 2 */}
-              <div className="flex items-center justify-between py-5 border-b border-[#E6E4DF] group cursor-pointer">
-                <div className="flex items-center gap-5">
-                  <div className="w-11 h-11 rounded-full bg-[#E6E4DF]/50 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-all duration-300 shrink-0">
-                    <Phone size={18} />
-                  </div>
-                  <div className="flex flex-col gap-0.5">
-                    <p className="text-[10px] font-black text-[#686B6B] uppercase tracking-widest">Call Us</p>
-                    <p className="text-[14px] font-bold text-[#1A1A1A]">+91 7023122071</p>
-                  </div>
-                </div>
-                <ArrowUpRight size={18} className="text-[#1A1A1A] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
-
-              {/* Contact item 3 */}
-              <div className="flex items-center justify-between py-5 border-b border-[#E6E4DF] group cursor-pointer">
-                <div className="flex items-center gap-5">
-                  <div className="w-11 h-11 rounded-full bg-[#E6E4DF]/50 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-all duration-300 shrink-0">
-                    <MapPin size={18} />
-                  </div>
-                  <div className="flex flex-col gap-0.5">
-                    <p className="text-[10px] font-black text-[#686B6B] uppercase tracking-widest">Our HQ</p>
-                    <p className="text-[14px] font-bold text-[#1A1A1A]">Jaipur Rajasthan, India</p>
-                  </div>
-                </div>
-                <ArrowUpRight size={18} className="text-[#1A1A1A] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
+              ))}
+              <div className="border-t border-[#E6E4DF]" />
             </div>
+
+            {/* Decorative dot grid */}
+            <div
+              className="hidden lg:block absolute bottom-0 left-0 w-48 h-48 opacity-30 pointer-events-none"
+              style={{ backgroundImage: 'radial-gradient(circle, #E6E4DF 1px, transparent 1px)', backgroundSize: '16px 16px' }}
+            />
           </div>
 
-          {/* Connector Graphic (Desktop Only) */}
-          <div className="hidden lg:block absolute left-[38%] top-[60%] -translate-y-1/2 w-[120px] h-[350px] z-0 pointer-events-none">
-            {/* The line */}
-            <svg width="100%" height="100%" viewBox="0 0 100 350" preserveAspectRatio="none" className="overflow-visible absolute top-0 left-0">
-              <path d="M 0 175 L 45 175 L 45 50 L 100 10" stroke="#E6E4DF" strokeWidth="1.5" fill="none" />
-            </svg>
-            {/* The dotted grid pattern */}
-            <div className="absolute top-[135px] left-[-30px] w-24 h-24 bg-[radial-gradient(#E6E4DF_1.5px,transparent_1.5px)] [background-size:6px_6px] opacity-70"></div>
-            {/* The glowing dot */}
-            <div className="absolute left-[0px] top-[175px] -translate-x-1/2 -translate-y-1/2">
-              <div className="w-2 h-2 rounded-full bg-[#E8C547] relative z-10"></div>
-              <div className="w-6 h-6 rounded-full border border-[#E8C547]/40 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-            </div>
-          </div>
-
-          {/* Right Side: Form Card */}
-          <div className="lg:col-span-7 relative z-10">
+          {/* ── RIGHT: Form ── */}
+          <div className="bg-white px-6 py-12 sm:px-10 sm:py-16 md:px-14 md:py-20">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative bg-[#FCFCF9] p-8 md:p-12 rounded-[32px] border border-[#E6E4DF] shadow-[0_10px_40px_rgba(0,0,0,0.03)] overflow-hidden"
+              className="max-w-xl"
             >
-              {/* Diagonal lines pattern at bottom right */}
-              <div className="absolute -bottom-16 -right-16 w-64 h-64 opacity-50 pointer-events-none" style={{
-                backgroundImage: `repeating-linear-gradient(45deg, #E6E4DF, #E6E4DF 1px, transparent 1px, transparent 6px)`
-              }}></div>
-
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-20 text-center space-y-6 relative z-10"
+                  className="flex flex-col items-center justify-center py-24 text-center gap-6"
                 >
                   <div className="w-20 h-20 rounded-full bg-[#E8C547]/10 flex items-center justify-center">
-                    <CheckCircle2 size={44} className="text-[#E8C547]" />
+                    <CheckCircle2 size={40} className="text-[#E8C547]" />
                   </div>
-                  <div className="space-y-3">
-                    <h3 className="text-3xl font-semibold text-[#1A1A1A] font-heading">Message Received!</h3>
-                    <p className="text-[#686B6B] font-medium">Our team will get back to you within 24 hours.</p>
+                  <div className="space-y-2">
+                    <h3 className="font-sora text-2xl font-bold text-[#1A1A1A]">Message Received!</h3>
+                    <p className="font-sans text-sm text-[#686B6B]">Our team will get back to you within 24 hours.</p>
                   </div>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-[#1A1A1A] font-black text-xs uppercase tracking-widest hover:underline"
+                    className="font-sans text-[#1A1A1A] font-black text-[10px] uppercase tracking-widest hover:underline underline-offset-4"
                   >
                     Send another message
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-10">
 
-                  {/* Error Message */}
                   {error && (
-                    <div className="p-3.5 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-sm text-red-700">{error}</p>
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-xl">
+                      <p className="font-sans text-sm text-red-700">{error}</p>
                     </div>
                   )}
 
-                  {/* Step 1 */}
-                  <div className="space-y-5">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-black text-[#E8C547] tracking-widest">01</span>
-                      <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Tell us about your project</span>
+                  {/* 01 — Name & Email */}
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-sans text-[10px] font-black text-[#E8C547] tracking-[0.15em]">01</span>
+                      <span className="font-sans text-[10px] font-black text-[#686B6B] tracking-[0.15em] uppercase">Tell us about your project</span>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
                         type="text"
                         required
                         placeholder="Full Name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[#FCFCF9] border border-[#E6E4DF] rounded-[14px] px-5 py-3.5 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] font-medium text-[13px] placeholder:text-[#686B6B]/50"
+                        className="font-sans w-full bg-[#F7F6F3] border border-[#E6E4DF] rounded-xl px-4 py-3.5 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] text-sm placeholder:text-[#686B6B]/50"
                       />
                       <input
                         type="email"
@@ -215,82 +170,86 @@ const ContactForm = () => {
                         placeholder="Email Address"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#FCFCF9] border border-[#E6E4DF] rounded-[14px] px-5 py-3.5 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] font-medium text-[13px] placeholder:text-[#686B6B]/50"
+                        className="font-sans w-full bg-[#F7F6F3] border border-[#E6E4DF] rounded-xl px-4 py-3.5 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] text-sm placeholder:text-[#686B6B]/50"
                       />
                     </div>
                   </div>
 
-                  {/* Step 3 & 4 */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="space-y-5">
-                      <div className="flex items-center gap-3">
-                        <span className="text-[11px] font-black text-[#E8C547] tracking-widest">02</span>
-                        <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Estimate Budget</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {budgets.map((b) => (
-                          <button
-                            key={b}
-                            type="button"
-                            onClick={() => setFormData({ ...formData, budget: b })}
-                            className={`px-4 py-2 rounded-full text-[11px] font-medium transition-all duration-300 border ${formData.budget === b
-                              ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                              : 'bg-[#FCFCF9] text-[#686B6B] border-[#E6E4DF] hover:border-[#1A1A1A]/30'
-                              }`}
-                          >
-                            {b}
-                          </button>
-                        ))}
-                      </div>
+                  {/* 02 — Budget */}
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-sans text-[10px] font-black text-[#E8C547] tracking-[0.15em]">02</span>
+                      <span className="font-sans text-[10px] font-black text-[#686B6B] tracking-[0.15em] uppercase">Estimate Budget</span>
                     </div>
-                    <div className="space-y-5">
-                      <div className="flex items-center gap-3">
-                        <span className="text-[11px] font-black text-[#E8C547] tracking-widest">03</span>
-                        <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Project Timeline</span>
-                      </div>
-                      <div className="relative">
-                        <select
-                          value={formData.timeline}
-                          onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                          className={`w-full bg-[#FCFCF9] border border-[#E6E4DF] rounded-[14px] px-5 py-3.5 outline-none focus:border-[#1A1A1A] transition-all font-medium text-[13px] appearance-none cursor-pointer ${formData.timeline === '' ? 'text-[#686B6B]/50' : 'text-[#1A1A1A]'}`}
+                    <div className="flex flex-wrap gap-2">
+                      {budgets.map((b) => (
+                        <button
+                          key={b}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, budget: b })}
+                          className={`font-sans px-4 py-2 rounded-full text-[11px] font-semibold transition-all duration-200 border ${
+                            formData.budget === b
+                              ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
+                              : 'bg-white text-[#686B6B] border-[#E6E4DF] hover:border-[#1A1A1A]/40'
+                          }`}
                         >
-                          <option value="" disabled hidden>Select Timeline</option>
-                          {timelines.map(t => <option key={t} value={t} className="text-[#1A1A1A]">{t}</option>)}
-                        </select>
-                        <ChevronDown size={16} className="absolute right-5 top-1/2 -translate-y-1/2 text-[#686B6B] pointer-events-none" />
-                      </div>
+                          {b}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Step 5 */}
-                  <div className="space-y-5">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-black text-[#E8C547] tracking-widest">04</span>
-                      <span className="text-[11px] font-black text-[#686B6B] tracking-widest uppercase">Project Details</span>
+                  {/* 03 — Timeline */}
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-sans text-[10px] font-black text-[#E8C547] tracking-[0.15em]">03</span>
+                      <span className="font-sans text-[10px] font-black text-[#686B6B] tracking-[0.15em] uppercase">Project Timeline</span>
+                    </div>
+                    <div className="relative">
+                      <select
+                        value={formData.timeline}
+                        onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+                        className={`font-sans w-full bg-[#F7F6F3] border border-[#E6E4DF] rounded-xl px-4 py-3.5 outline-none focus:border-[#1A1A1A] transition-all text-sm appearance-none cursor-pointer ${
+                          formData.timeline === '' ? 'text-[#686B6B]/50' : 'text-[#1A1A1A]'
+                        }`}
+                      >
+                        <option value="" disabled hidden>Select Timeline</option>
+                        {timelines.map(t => <option key={t} value={t} className="text-[#1A1A1A]">{t}</option>)}
+                      </select>
+                      <ChevronDown size={15} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#686B6B] pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* 04 — Message */}
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-sans text-[10px] font-black text-[#E8C547] tracking-[0.15em]">04</span>
+                      <span className="font-sans text-[10px] font-black text-[#686B6B] tracking-[0.15em] uppercase">Project Details</span>
                     </div>
                     <textarea
                       rows={4}
                       placeholder="Briefly describe your vision..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-[#FCFCF9] border border-[#E6E4DF] rounded-[14px] px-5 py-4 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] font-medium text-[13px] resize-none placeholder:text-[#686B6B]/50"
-                    ></textarea>
+                      className="font-sans w-full bg-[#F7F6F3] border border-[#E6E4DF] rounded-xl px-4 py-4 outline-none focus:border-[#1A1A1A] transition-all text-[#1A1A1A] text-sm resize-none placeholder:text-[#686B6B]/50"
+                    />
                   </div>
 
                   {/* Submit */}
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full bg-[#1A1A1A] text-white rounded-[16px] py-4 font-bold text-[13px] hover:bg-[#1A1A1A]/90 transition-all flex items-center justify-center gap-3 group uppercase tracking-widest shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
-                    >
-                      {loading ? 'Submitting...' : 'Kickstart Your Project'} {!loading && <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="font-sans w-full bg-[#1A1A1A] text-white rounded-xl py-4 font-bold text-[11px] uppercase tracking-[0.18em] hover:bg-black transition-all flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {loading ? 'Submitting...' : 'Kickstart Your Project'}
+                    {!loading && <ArrowUpRight size={16} className="text-[#E8C547] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
+                  </button>
+
                 </form>
               )}
             </motion.div>
           </div>
+
         </div>
       </div>
     </section>

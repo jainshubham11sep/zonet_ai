@@ -121,6 +121,25 @@ const BLOB_PATH =
 
 const services = [
   {
+    image: "/images/zonet/screenshot-3.png",
+    icon: (
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#E8C547"
+        strokeWidth="2"
+      >
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+      </svg>
+    ),
+    title: "AI-Automation",
+    desc: "Reduce manual efforts, streamline workflows, and boost productivity with custom AI solutions.",
+    tags: ["LLMS", "AUTOMATION", "GPT-4"],
+  },
+  {
     image: "/images/zonet/screenshot-1.png",
     icon: (
       <svg
@@ -135,8 +154,8 @@ const services = [
         <path d="M8 21h8M12 17v4" />
       </svg>
     ),
-    title: "Web Design",
-    desc: "Premium, high-converting websites built with modern frameworks and a severe focus on user experience.",
+    title: "Web Engineering",
+    desc: "Build fast, scalable websites and web apps using modern technologies and best practices.",
     tags: ["UI/UX", "NEXT.JS", "MOTION"],
   },
   {
@@ -154,28 +173,9 @@ const services = [
         <line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
     ),
-    title: "Mobile Apps",
-    desc: "Sleek, performant mobile applications tailored for iOS and Android platforms.",
+    title: "Mobile App Development",
+    desc: "Design powerful, user-friendly and custom mobile apps for iOS and Android platforms.",
     tags: ["REACT NATIVE", "IOS", "ANDROID"],
-  },
-  {
-    image: "/images/zonet/screenshot-3.png",
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#E8C547"
-        strokeWidth="2"
-      >
-        <circle cx="12" cy="12" r="3" />
-        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
-      </svg>
-    ),
-    title: "AI Tools & Agents",
-    desc: "Custom AI integrations and autonomous agents designed to revolutionize your workflows.",
-    tags: ["LLMS", "AUTOMATION", "GPT-4"],
   },
   {
     image: "/images/zonet/flipshope-1.png",
@@ -192,7 +192,7 @@ const services = [
       </svg>
     ),
     title: "MVP Development",
-    desc: "From idea to reality in 7–30 days. Fast, scalable, and production-ready architectures.",
+    desc: "Launch your core product quickly, validate your ideas, and scale efficiently with real user feedback.",
     tags: ["REACT", "NODE.JS", "CLOUD"],
   },
   {
@@ -210,7 +210,7 @@ const services = [
       </svg>
     ),
     title: "Website Upgrades",
-    desc: "Modernizing legacy systems into lightning-fast, highly optimized digital experiences.",
+    desc: "Keep your digital presence fresh, modern, and perfectly aligned with your evolving business goals.",
     tags: ["PERFORMANCE", "SEO", "NEXT.JS"],
   },
   {
@@ -230,7 +230,7 @@ const services = [
       </svg>
     ),
     title: "Conversion Audit",
-    desc: "Data-driven analysis and meticulous optimization to skyrocket your website's overall ROI.",
+    desc: "Analyse user behaviour, eliminate friction points, and optimise your funnels to turn traffic into revenue.",
     tags: ["ANALYTICS", "CRO", "A/B TEST"],
   },
 ];
@@ -315,13 +315,13 @@ function ServiceCard({
         {/* Body */}
         <div className="relative z-10 p-4">
           <h3
-            className="font-bold text-[#1A1A1A] tracking-tight mb-3"
+            className="font-sans font-bold text-[#1A1A1A] tracking-tight mb-3"
             style={{ fontSize: 22, lineHeight: 1.3 }}
           >
             {service.title}
           </h3>
 
-          <p className="text-[#686B6B] text-xs leading-relaxed mb-6">
+          <p className="font-sans text-[#686B6B] text-xs leading-relaxed mb-6">
             {service.desc}
           </p>
 
@@ -399,14 +399,12 @@ export default function ServicesSection() {
       >
         <SectionBadge className="mb-7">Our Services</SectionBadge>
         <h2 className="text-[42px] md:text-6xl font-bold text-[#1A1A1A] leading-[1.1] mb-5 tracking-tight font-sora">
-          Your full-stack design partner to
+          Your One-Stop Destination To Build A
           <br />
-          solve all your{" "}
-          <span className="font-sans text-[#E8C547]">creative problems</span>
+          <span className="font-sans text-[#E8C547]">High-Performance Digital Platform</span>
         </h2>
         <p className="text-[#686B6B] text-base leading-relaxed max-w-lg mx-auto">
-          We combine strategy, design and technology to build digital products
-          that are beautiful, functional and built to scale.
+          We blend strategies and AI-integrated designs to deliver services that actually help you grow digitally worldwide.
         </p>
       </motion.div>
 

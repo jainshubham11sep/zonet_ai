@@ -170,18 +170,14 @@ const DataDrivenStats = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] tracking-tight leading-[1.1] font-sora mb-5"
+            className="font-sora text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] tracking-tight leading-[1.1] mb-5"
           >
-            Numbers That{" "}
-            <span className="font-sora text-7xl text-[#E8C547]">
-              Actualize
-            </span>{" "}
-            Our Impact
+            The Numbers That{" "}
+            <span className="text-[#E8C547]">Showcase Our Impact</span>
           </motion.h2>
 
-          <p className="text-[15px] md:text-[16px] text-[#686B6B] leading-relaxed max-w-[520px] mx-auto">
-            We combine creativity, engineering, and AI to deliver measurable
-            results that drive real business growth.
+          <p className="font-sans text-[15px] md:text-[16px] text-[#686B6B] leading-relaxed max-w-[520px] mx-auto">
+            We blend coding with AI integration and design into tangible milestones that drive your brand&apos;s market success.
           </p>
         </div>
 

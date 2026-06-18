@@ -3,52 +3,43 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { fadeUp, fadeIn } from '@/lib/animations';
-import { Plus, Minus, ChevronUp, ChevronDown, MessageSquare, ArrowRight } from 'lucide-react';
+import { Plus, Minus, MessageSquare, ArrowRight } from 'lucide-react';
 import { SectionBadge } from '@/components/ui';
 
 const faqs = [
   {
-    question: 'How do you deliver so fast?',
-    answer: 'We leverage advanced AI agents to automate the tedious parts of development (boilerplate, testing, deployment). This allows our senior engineers to focus purely on business logic and custom features, delivering 10x faster than traditional agencies.'
+    question: 'What is your approach to AI integration?',
+    answer: 'Our approach to AI integration is simple. Instead of just adding features, we build advanced products that turn complex logic into high-performance tools that lead the market.'
   },
   {
-    question: 'Is your code secure?',
-    answer: 'Absolutely. We use AI to assist in writing code, but every line is reviewed, tested, and audited by our senior human engineers. We also use AI security scanners to ensure there are no vulnerabilities.'
+    question: 'How long does it take you to deliver the results?',
+    answer: 'We usually take from 7 to 30 days to deliver the final results, depending on the complexity of the project. This timeline ensures every technical detail is precision-engineered, and every user flow is fully validated before you go live.'
   },
   {
-    question: 'Can you handle custom designs?',
-    answer: 'Yes, we specialize in custom UI/UX. We can take your existing Figma designs and turn them into high-performance code, or our design team can create a brand new identity for you.'
+    question: 'Can you handle custom designs for websites and apps?',
+    answer: 'Yes, we specialise in custom UI/UX. We can take your existing Figma designs and turn them into high-performance code, or our design team can create a brand new identity for you.'
   },
   {
-    question: 'What happens after the launch?',
-    answer: 'We offer maintenance packages and ongoing support. Since we build with modern, scalable architectures (Next.js, Tailwind), your site is easy to hand over to your internal team if needed.'
+    question: 'Do you work with existing brands or only new startups?',
+    answer: 'We work with both. Whether you are building your website or app from scratch or need to refine a complex user flow, we specialise in scalable design and visual identity. We can help reimagine your existing interface to make it faster, more intuitive, and ready for a larger user base. Our custom design service lets you decide what you want to be shown digitally.'
   },
 ];
 
-interface FAQItemProps {
-  question: string;
-  answer: string;
-  isDefaultOpen?: boolean;
-}
-
-const FAQItem = ({ question, answer, isDefaultOpen = false }: FAQItemProps) => {
+const FAQItem = ({ question, answer, isDefaultOpen = false }: { question: string; answer: string; isDefaultOpen?: boolean }) => {
   const [isOpen, setIsOpen] = useState(isDefaultOpen);
 
   return (
-    <div className={`transition-all duration-300 border-b border-[#E6E4DF] last:border-0 bg-[#FCFCF9]`}>
+    <div className="border-b border-[#E6E4DF] last:border-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 md:py-7 px-6 md:px-8 flex items-center gap-4 md:gap-5 text-left group"
+        className="w-full py-5 md:py-6 px-6 md:px-8 flex items-center gap-4 text-left group"
       >
-        <div className={`w-[24px] h-[24px] rounded-full flex-shrink-0 flex items-center justify-center transition-colors bg-[#E8C547] text-[#1A1A1A]`}>
-          {isOpen ? <Minus size={14} strokeWidth={3} /> : <Plus size={14} strokeWidth={3} />}
+        <div className={`w-6 h-6 rounded-full shrink-0 flex items-center justify-center transition-colors duration-200 ${isOpen ? 'bg-[#1A1A1A] text-white' : 'bg-[#E8C547] text-[#1A1A1A]'}`}>
+          {isOpen ? <Minus size={12} strokeWidth={3} /> : <Plus size={12} strokeWidth={3} />}
         </div>
-        <span className={`text-[15px] md:text-[17px] font-semibold font-sans tracking-tight leading-tight transition-colors text-[#1A1A1A]`}>
+        <span className="font-sans text-[14px] md:text-[16px] font-semibold text-[#1A1A1A] leading-snug tracking-tight flex-1">
           {question}
         </span>
-        <div className="ml-auto flex-shrink-0 text-[#1A1A1A]">
-          {isOpen ? <ChevronUp size={20} strokeWidth={2} /> : <ChevronDown size={20} strokeWidth={2} />}
-        </div>
       </button>
       <AnimatePresence>
         {isOpen && (
@@ -59,7 +50,7 @@ const FAQItem = ({ question, answer, isDefaultOpen = false }: FAQItemProps) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="pb-7 pl-[64px] md:pl-[76px] pr-6 md:pr-12 text-[#686B6B] text-[13px] md:text-[14px] leading-relaxed max-w-[500px]">
+            <div className="pb-6 pl-[64px] pr-6 md:pr-10 font-sans text-[#686B6B] text-[13px] md:text-[14px] leading-relaxed">
               {answer}
             </div>
           </motion.div>
@@ -71,56 +62,23 @@ const FAQItem = ({ question, answer, isDefaultOpen = false }: FAQItemProps) => {
 
 const FAQs = () => {
   return (
-    <section id="faq" className="py-24 md:py-32 bg-[#F7F6F3] overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+    <section id="faq" className="py-20 md:py-28 bg-[#F7F6F3] border-t border-[#E6E4DF] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
-          {/* Left Column: FAQ List */}
-          <div className="lg:col-span-7 relative w-full pt-10 lg:pt-0">
-            {/* The Black Background Area — extends to the left */}
-            <div className="absolute top-[-60px] left-[-50vw] bottom-[-60px] right-8 md:right-[10%] bg-[#1A1A1A] rounded-tr-[32px] rounded-br-[32px] z-0 hidden lg:block">
-              {/* Thin white lines */}
-              <div className="absolute right-[30%] top-[40%] w-px h-[60%] bg-white/20"></div>
-              <div className="absolute right-[30%] top-[40%] w-[70%] h-px bg-white/20"></div>
-              <svg className="absolute right-[calc(30%-60px)] top-[calc(40%-60px)] w-[60px] h-[60px]" viewBox="0 0 100 100">
-                <line x1="0" y1="0" x2="100" y2="100" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-              </svg>
-            </div>
-
-            <div className="relative z-10 w-full bg-[#FCFCF9] rounded-[24px] border border-[#E6E4DF] shadow-xl overflow-hidden">
-              {faqs.map((faq, idx) => (
-                <FAQItem key={idx} {...faq} isDefaultOpen={idx === 0} />
-              ))}
-            </div>
-
-            {/* Mobile-only CTA */}
-            <div className="mt-12 lg:hidden text-center bg-[#FCFCF9] p-6 rounded-[24px] border border-[#E6E4DF] shadow-sm">
-              <div className="w-[48px] h-[48px] rounded-full bg-[#E8C547] flex items-center justify-center mx-auto mb-4">
-                <MessageSquare size={22} className="text-[#1A1A1A] fill-transparent" strokeWidth={1.5} />
-              </div>
-              <h4 className="text-[17px] font-bold text-[#1A1A1A] mb-2 font-heading">Still have questions?</h4>
-              <p className="text-[13px] text-[#686B6B] mb-5 leading-relaxed">Our senior engineers are ready to discuss your custom roadmap today.</p>
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-[13px] font-bold text-[#1A1A1A] hover:text-[#E8C547] transition-colors flex items-center gap-1.5 border-b border-[#1A1A1A] pb-0.5 mx-auto"
-              >
-                Connect with us <ArrowRight size={14} className="-rotate-45" strokeWidth={2.5} />
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column: Heading & Content */}
-          <div className="lg:col-span-5 flex flex-col justify-start relative z-10 pt-4">
-            <SectionBadge variant="dot" className="mb-2">Support &amp; Insights</SectionBadge>
+          {/* ── RIGHT column in DOM but visually LEFT on mobile via order ── */}
+          {/* Heading — renders first on mobile */}
+          <div className="lg:col-span-5 order-first lg:order-last flex flex-col justify-start">
+            <SectionBadge variant="dot" className="mb-5">FAQs</SectionBadge>
 
             <motion.h2
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-sora mb-8 tracking-[-0.02em]"
+              className="font-sora text-4xl lg:text-5xl xl:text-[56px] font-bold text-[#1A1A1A] leading-[1.08] tracking-tight mb-5"
             >
-              Everything you need to know
+              Everything You <br className="hidden sm:block" />Need To Know
             </motion.h2>
 
             <motion.p
@@ -128,9 +86,9 @@ const FAQs = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-[#686B6B] text-[15px] mb-12 max-w-[380px] leading-relaxed"
+              className="font-sans text-[#686B6B] text-sm md:text-[15px] leading-relaxed max-w-sm mb-10"
             >
-              Explore common questions, get expert guidance, and discover how Zonet leverages AI to build the future of digital products.
+              Explore common questions, get expert guidance, and discover how Zonet works with AI to build the future of your digital products.
             </motion.p>
 
             <motion.div
@@ -138,24 +96,33 @@ const FAQs = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="p-6 md:p-8 rounded-[24px] bg-[#FCFCF9] border border-[#E6E4DF] shadow-sm hidden lg:block"
+              className="p-6 rounded-[20px] bg-white border border-[#E6E4DF] shadow-sm"
             >
-              <div className="flex gap-5">
-                <div className="w-[48px] h-[48px] rounded-full bg-[#E8C547] flex items-center justify-center flex-shrink-0">
-                  <MessageSquare size={22} className="text-[#1A1A1A] fill-transparent" strokeWidth={1.5} />
+              <div className="flex gap-4">
+                <div className="w-11 h-11 rounded-full bg-[#E8C547] flex items-center justify-center shrink-0">
+                  <MessageSquare size={18} className="text-[#1A1A1A]" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="text-[17px] font-semibold text-[#1A1A1A] mb-2 font-heading">Still have questions?</h4>
-                  <p className="text-[13px] text-[#686B6B] mb-5 leading-relaxed max-w-[240px]">Our senior engineers are ready to discuss your custom roadmap today.</p>
+                  <h4 className="font-sans text-[15px] font-bold text-[#1A1A1A] mb-1">Still have questions?</h4>
+                  <p className="font-sans text-[12px] text-[#686B6B] mb-4 leading-relaxed">Our senior engineers are ready to discuss your custom roadmap today.</p>
                   <button
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-[13px] font-bold text-[#1A1A1A] hover:text-[#E8C547] transition-colors flex items-center gap-1.5 border-b border-[#1A1A1A] pb-0.5 max-w-fit"
+                    className="font-sans text-[12px] font-bold text-[#1A1A1A] hover:text-[#E8C547] transition-colors flex items-center gap-1.5 border-b border-[#1A1A1A] pb-0.5"
                   >
-                    Connect with us <ArrowRight size={14} className="-rotate-45" strokeWidth={2.5} />
+                    Connect with us <ArrowRight size={13} className="-rotate-45" strokeWidth={2.5} />
                   </button>
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          {/* FAQ List — renders second on mobile */}
+          <div className="lg:col-span-7 order-last lg:order-first">
+            <div className="bg-white rounded-[24px] border border-[#E6E4DF] shadow-sm overflow-hidden">
+              {faqs.map((faq, idx) => (
+                <FAQItem key={idx} {...faq} isDefaultOpen={idx === 0} />
+              ))}
+            </div>
           </div>
 
         </div>

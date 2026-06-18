@@ -23,23 +23,23 @@ export const caseStudies = [
       { value: '20Cr', label: 'Products', icon: 'TrendingUp' },
     ],
     detail: {
-      problem: 'Online shoppers struggle with volatile prices and manual coupon hunting across multiple platforms like Amazon and Flipkart, often missing the best possible deals.',
-      solution: 'We engineered a high-performance browser extension and mobile app suite that automates price tracking, provides AI-driven "Buy vs Wait" scoring, and auto-applies coupons at checkout.',
+      problem: 'Checking five different apps just to find the best discount is exhausting. By the time you find a deal, the price has already gone back up, or the prices of your favourite product have gone up.',
+      solution: 'We created a high-performance website, a browser extension, and a mobile app. These platforms automatically track prices and find the best coupons and deals for shoppers.',
       results: [
-        '1.5 Million+ active monthly users',
-        'Real-time tracking of over 20 Crore products',
+        '1.5 Million+ active users on the platform',
+        'Real-time price tracking from more than 200 stores',
         'Average 4.5/5 star rating across all platforms'
       ],
       impact: [
-        { value: '1.5 Million+', label: 'Active monthly users' },
-        { value: '20 Crore+', label: 'Products tracked in real-time' },
+        { value: '1.5 Million+', label: 'Active users on the platform' },
+        { value: '200+', label: 'Stores tracked in real-time' },
         { value: '4.5 / 5', label: 'Average rating across platforms' },
       ],
       tech: ['React', 'Node.js', 'Puppeteer', 'Chrome Extension API', 'Firebase'],
       features: [
-        { title: 'Browser Extension', desc: 'Real-time price graph overlays and automated coupon injection.', icon: 'Puzzle' },
-        { title: 'Mobile App', desc: 'Price drop push notifications and personalized deal feeds.', icon: 'Smartphone' },
-        { title: 'AI Scoring', desc: 'Predictive algorithms that analyze price history to recommend the best time to buy.', icon: 'Zap' }
+        { title: 'Browser Extension', desc: 'Built an extension that tracks products\' price history.', icon: 'Puzzle' },
+        { title: 'Web Development', desc: 'AI-powered delivery of deals and coupons for shoppers.', icon: 'Globe' },
+        { title: 'Mobile App', desc: 'Built a seamless app which helps users shop smarter with price drop alerts.', icon: 'Smartphone' }
       ]
     }
   },
@@ -64,23 +64,23 @@ export const caseStudies = [
       { value: '4.4★', label: 'App Rank', icon: 'Star' },
     ],
     detail: {
-      problem: 'The affiliate marketing space for individuals was fragmented, with low payouts and complex tracking systems for casual sharers.',
-      solution: 'Developed a robust rewards ecosystem featuring "Profit Links"—automated affiliate tools that allow anyone to earn commissions by sharing store links with zero friction.',
+      problem: 'The affiliate marketing space was fragmented, and shoppers didn\'t understand the concept of cashback in depth.',
+      solution: 'Developed a platform that creates a powerful, rewarding system with features like profit links, automated affiliate marketing, refer & earn, and cashback on online shopping.',
       results: [
         'Over 1 Lakh active earners on the platform',
-        'Integrated with 200+ major partner stores',
+        'Integrated with 200+ major partner stores globally',
         'Maintained a top-tier app ranking in reward categories'
       ],
       impact: [
         { value: '1 Lakh+', label: 'Active earners on the platform' },
-        { value: '200+', label: 'Major partner stores integrated' },
+        { value: '200+', label: 'Global partner stores integrated' },
         { value: '4.4 / 5', label: 'App rating in reward categories' },
       ],
       tech: ['Next.js', 'PostgreSQL', 'Affiliate API Engine', 'React Native'],
       features: [
-        { title: 'Profit Links', desc: 'One-click conversion of any store link into a trackable, high-paying earning link.', icon: 'TrendingUp' },
-        { title: 'Dynamic Cashback', desc: 'Real-time calculation and distribution of rewards across multiple tiers.', icon: 'Zap' },
-        { title: 'PWA Integration', desc: 'Seamless mobile experience with instant notifications for earnings.', icon: 'Globe' }
+        { title: 'Profit Links', desc: 'Users can earn a profit simply by sharing links with their friends and family.', icon: 'TrendingUp' },
+        { title: 'Cashback Rewards', desc: 'Shopping via Hyyzo\'s website, extension, and app rewards exciting cashback.', icon: 'Zap' },
+        { title: 'Affiliate Marketing', desc: 'Built a feature where users can earn commission via affiliate marketing.', icon: 'Globe' }
       ]
     }
   },
@@ -105,23 +105,23 @@ export const caseStudies = [
       { value: '4.8★', label: 'Rating', icon: 'TrendingUp' },
     ],
     detail: {
-      problem: 'Finding verified, high-quality mentors for specialized subjects was a manual, trust-deficient process for students and parents.',
-      solution: 'Built a marketplace with a rigorous background verification system, AI-driven mentor matching, and a comprehensive student progress dashboard.',
+      problem: 'Finding a qualified, trustworthy, and verified tutor online was almost impossible for students with suitable time slots.',
+      solution: 'We built a website that not only finds high-quality tutors but also tracks students\' educational progress. With our built-in system, students can find teachers for their desired subjects in any language.',
       results: [
         'Successfully onboarded 50k+ active students',
         'Built a network of 2,000+ thoroughly verified mentors',
         'Achieved a 4.8/5 satisfaction rating for learning outcomes'
       ],
       impact: [
-        { value: '50,000+', label: 'Active students onboarded' },
-        { value: '2,000+', label: 'Thoroughly verified mentors' },
+        { value: '50,000+', label: 'Active students on the platform' },
+        { value: '2,000+', label: 'Verified mentors onboarded' },
         { value: '4.8 / 5', label: 'Satisfaction rating for outcomes' },
       ],
       tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Verification AI Hub'],
       features: [
-        { title: 'Mentor Matching', desc: 'AI algorithm that matches students with mentors based on learning style and goals.', icon: 'Zap' },
-        { title: 'Progress Dashboard', desc: 'Visual analytics for students to track their curriculum mastery.', icon: 'BarChart3' },
-        { title: 'Verification Engine', desc: 'Automated document and credential validation for mentor onboarding.', icon: 'ShieldCheck' }
+        { title: 'Mentor Matching', desc: 'With our AI-built system, students can find mentors for all subjects with a suitable time slot.', icon: 'Zap' },
+        { title: 'Progress Analytics', desc: 'A progressive dashboard for students to track their tutoring journey & analytics.', icon: 'BarChart3' },
+        { title: 'Documented Verification', desc: 'Mentors & students are verified before onboarding with authorised documentation.', icon: 'ShieldCheck' }
       ]
     }
   },
@@ -146,23 +146,23 @@ export const caseStudies = [
       { value: '4.7★', label: 'Rating', icon: 'Star' },
     ],
     detail: {
-      problem: 'Online gaming portals often suffer from high latency and unstable servers, especially with concurrent players in multiplayer modes.',
-      solution: 'Engineered a horizontally scalable cloud architecture with high-performance WebSockets to handle real-time game states for thousands of simultaneous players.',
+      problem: 'Finding a high-quality game online is not easy; either they crash while playing or they don\'t support multiplayer.',
+      solution: 'We created an online gaming platform that not only supports multiplayer gaming but also delivers high performance, allowing users to play for longer without technical errors.',
       results: [
         'Reached 500k+ registered players in under 12 months',
         'Maintained 99.9% uptime despite peak traffic events',
         'Consistently high user retention due to smooth gameplay'
       ],
       impact: [
-        { value: '500,000+', label: 'Registered players in 12 months' },
+        { value: '500,000+', label: 'Registered players on the platform' },
         { value: '99.9%', label: 'Uptime during peak traffic' },
         { value: '4.7 / 5', label: 'Average user satisfaction rating' },
       ],
       tech: ['Next.js', 'Socket.io', 'Redis', 'AWS Elastic Beanstalk'],
       features: [
-        { title: 'Real-time Multiplay', desc: 'Low-latency sync for competitive browser-based gaming.', icon: 'Rocket' },
-        { title: 'Global Leaderboards', desc: 'Live ranking system fueled by cached Redis stores.', icon: 'TrendingUp' },
-        { title: 'Instant Rewards', desc: 'Automated achievement and token system for active players.', icon: 'Zap' }
+        { title: 'Multiplayer Feature', desc: 'To make the game more fun and engaging, we added a multiplayer feature.', icon: 'Rocket' },
+        { title: 'Score Board', desc: 'The scoreboard helps players to know their score and rank in the game.', icon: 'TrendingUp' },
+        { title: 'Instant Rewards', desc: 'Instant rewards are given to gamers after they cross levels successfully.', icon: 'Zap' }
       ]
     }
   },
@@ -187,23 +187,23 @@ export const caseStudies = [
       { value: '10k+', label: 'Clients', icon: 'Star' },
     ],
     detail: {
-      problem: 'A legacy consultancy firm was struggling with an outdated digital presence that failed to capture younger, digitally native clients.',
-      solution: 'Rebranded and rebuilt the entire platform with a focus on conversion-centric UX, automated lead capture, and an interactive expert directory.',
+      problem: 'The goal was to move away from the boring text-like contest and bring out the liveliness and fun within users.',
+      solution: 'Our approach was simple: we wanted to create a quiz that is not only fun but also a learning experience.',
       results: [
         'Triple the number of qualified leads generated within 3 months',
         'Successfully managed 10k+ client interactions through the new platform',
-        'Onboarded 50+ industry experts into the searchable directory'
+        'Smart AI algorithms that suggest new contests based on user interests'
       ],
       impact: [
-        { value: '3×', label: 'Qualified leads in 3 months' },
+        { value: '3×', label: 'Lead generation growth' },
         { value: '10,000+', label: 'Client interactions managed' },
         { value: '50+', label: 'Industry experts onboarded' },
       ],
       tech: ['Next.js', 'Sanity CMS', 'Tailwind CSS', 'Framer Motion'],
       features: [
-        { title: 'Expert Directory', desc: 'High-speed searchable database of qualified consultants.', icon: 'Users' },
-        { title: 'Lead Capture AI', desc: 'Conversational intake forms that increase completion rates.', icon: 'Zap' },
-        { title: 'Client Dashboard', desc: 'Secure area for clients to manage their ongoing projects.', icon: 'ShieldCheck' }
+        { title: 'User-Friendly Portal', desc: 'We created an easy-to-use interface for smooth navigation of quizzes and contests.', icon: 'Users' },
+        { title: 'AI-Powered Leads', desc: 'Smart AI algorithms that suggest new contests and quizzes according to the user\'s interests.', icon: 'Zap' },
+        { title: 'Real-time Leaderboard', desc: 'A scoreboard that records all your achievements and scores in one place.', icon: 'BarChart3' }
       ]
     }
   },
@@ -228,8 +228,8 @@ export const caseStudies = [
       { value: '0', label: 'Ads', icon: 'Users' },
     ],
     detail: {
-      problem: 'Twitch users were increasingly frustrated by repeated, unskippable ads that interrupted live gameplay moments.',
-      solution: 'Created a specialized browser extension that bypasses mid-roll ads by dynamically adjusting stream quality during ad segments, ensuring zero interruptions.',
+      problem: 'Users were frustrated with the constant, unwanted, and unskippable ads played during gaming or video sessions.',
+      solution: 'Created a browser extension that eliminates unwanted ads and improves the streaming quality without any interruptions.',
       results: [
         'Achieved a massive install base of 1M+ users',
         'Maintained a stellar 4.9/5 star rating on the Chrome Web Store',
@@ -242,9 +242,9 @@ export const caseStudies = [
       ],
       tech: ['Vanilla JS', 'Content Scripts', 'Manifest v3', 'Stream API Manipulation'],
       features: [
-        { title: 'Zero Interrupt', desc: 'Seamlessly switches to a temporary proxy stream during ad breaks.', icon: 'Zap' },
-        { title: 'Low Latency', desc: 'Optimized code execution to ensure zero delay in the live stream.', icon: 'Rocket' },
-        { title: 'Auto-Update', desc: 'Push updates to bypass new ad delivery mechanisms instantly.', icon: 'Smartphone' }
+        { title: 'No Interruption', desc: 'Stream without any interruption and enjoy high-quality streaming videos or gaming sessions.', icon: 'Zap' },
+        { title: 'Enhanced Browser Experience', desc: 'Blocking ads can reduce CPU load, resulting in a faster, smoother browsing experience.', icon: 'Rocket' },
+        { title: 'Privacy Focused', desc: 'We have created a system that protects users\' data and confidential information.', icon: 'ShieldCheck' }
       ]
     }
   },
@@ -269,8 +269,8 @@ export const caseStudies = [
       { value: '5M+', label: 'Tasks', icon: 'Star' },
     ],
     detail: {
-      problem: 'Teams were suffering from "app fatigue," switching between 5+ different tools to manage tasks, docs, chats, and projects.',
-      solution: 'Built a unified productivity workspace that integrates AI-powered task management, real-time collaboration, and centralized documentation.',
+      problem: 'Manually switching apps and tools one by one was getting too hectic, and finding the right file at the right moment seemed almost impossible.',
+      solution: 'We built a platform that not only manages all apps and tools in one place but also keeps important documents and files safe and secure.',
       results: [
         'Used by over 100k+ high-growth teams worldwide',
         'Reported 40% increase in team operational efficiency',
@@ -283,9 +283,9 @@ export const caseStudies = [
       ],
       tech: ['React', 'NestJS', 'PostgreSQL', 'Socket.io', 'ElasticSearch'],
       features: [
-        { title: 'AI Assistant', desc: 'Automatically categorizes tasks and suggests project timelines.', icon: 'Zap' },
-        { title: 'Unified View', desc: 'Consolidated dashboard for tasks, docs, and communication.', icon: 'Globe' },
-        { title: 'Smart Search', desc: 'Lightning-fast search across all projects and documents.', icon: 'Smartphone' }
+        { title: 'Accurate Context Search', desc: 'With our system, Kroolo can remember users\' exact documents, files, and tasks.', icon: 'Zap' },
+        { title: 'Voice Workflow', desc: 'Kroolo lets you speak your concern and guides you accordingly. This makes the workflow reliable.', icon: 'Globe' },
+        { title: 'Expert Prompts', desc: 'We have made the workflow extremely easy by setting some expert prompts as the default.', icon: 'Smartphone' }
       ]
     }
   },
@@ -310,8 +310,8 @@ export const caseStudies = [
       { value: '4.6★', label: 'Rating', icon: 'Star' },
     ],
     detail: {
-      problem: 'Social platforms often fail to reward users for high-quality content and community contributions.',
-      solution: 'Launched a social ecosystem where engagement (posts, likes, helpfulness) is directly tied to a tangible tokens/rewards system.',
+      problem: 'Influencers were not able to find the brands and monetize their content on social media platforms like Instagram.',
+      solution: 'We built a platform that both brands and influencers can use to collab and start their income via social media apps.',
       results: [
         'Rapidly grew to a community of 2M+ active members',
         'Facilitated over 10 Million community-generated posts',
@@ -324,9 +324,9 @@ export const caseStudies = [
       ],
       tech: ['React Native', 'Node.js', 'MongoDB', 'Redis'],
       features: [
-        { title: 'Engagement Mining', desc: 'Algorithm that rewards users based on verified community value.', icon: 'Zap' },
-        { title: 'Social Loops', desc: 'Gamified interactive features that drive repeat daily visits.', icon: 'Rocket' },
-        { title: 'Redemption Hub', desc: 'Instant conversion of social tokens into real rewards.', icon: 'ShieldCheck' }
+        { title: 'Automation Tool', desc: 'With our automated tool feature, followers can get the link to their desired products in their DMs.', icon: 'Zap' },
+        { title: 'Analytical Dashboard', desc: 'The analytical dashboard helps influencers track their earnings and rewards in just one place.', icon: 'BarChart3' },
+        { title: 'Pre-Schedule Posts', desc: 'Influencers can pre-schedule their product links before posting their next post on Instagram.', icon: 'Rocket' }
       ]
     }
   },
@@ -351,23 +351,23 @@ export const caseStudies = [
       { value: '₹1B+', label: 'Savings', icon: 'Star' },
     ],
     detail: {
-      problem: 'The web is flooded with fake "deals" and expired coupons, costing shoppers time and money.',
-      solution: 'Rebuilt the aggregator with an AI-verification layer that cross-references live prices across 500+ sources to ensure only genuine deals are shown.',
+      problem: 'Online shoppers were scammed by fake deals and expired coupons, with limited stores to choose from.',
+      solution: 'We created an app that finds the best deals across 200+ stores with various shopping categories to explore.',
       results: [
         'Proven to have saved users over ₹1 Billion in cumulative purchases',
-        'Provides access to over 1 Million verified deals daily',
+        'Provides access to deals across 200+ stores',
         'Highly trusted by 500k+ savvy shoppers in India'
       ],
       impact: [
         { value: '₹1 Billion+', label: 'Saved in cumulative purchases' },
-        { value: '1 Million+', label: 'Verified deals available daily' },
+        { value: '200+', label: 'Stores with verified deals' },
         { value: '500,000+', label: 'Savvy shoppers in India' },
       ],
       tech: ['Next.js', 'PyScript (for AI logic)', 'Redis', 'Node.js'],
       features: [
-        { title: 'Price Checker', desc: 'AI agent that validates every deal against historical lows.', icon: 'ShieldCheck' },
-        { title: 'Real-time Feed', desc: 'Low-latency updates for flash sales and limited time offers.', icon: 'Zap' },
-        { title: 'Merchant API', desc: 'Direct integrations with major retailers for early access.', icon: 'Globe' }
+        { title: 'All-in-one Platform', desc: 'Shoppers can compare product prices from multiple stores without switching between different apps.', icon: 'Globe' },
+        { title: 'Instant Notifications', desc: 'We created a feature that instantly notifies users when the app spots the best deal.', icon: 'Zap' },
+        { title: 'Personalised Deals Groups', desc: 'We created a deals group that helps users find their desired items by category.', icon: 'ShieldCheck' }
       ]
     }
   },
@@ -392,8 +392,8 @@ export const caseStudies = [
       { value: 'AAA', label: 'Security', icon: 'Star' },
     ],
     detail: {
-      problem: 'High-volume merchants needed a faster, more cost-effective payment gateway with lower rejection rates for international payments.',
-      solution: 'Architected a smart-routing payment gateway that uses machine learning to predict and use the most successful processing route for every transaction.',
+      problem: 'Telegrammers and influencers were finding it difficult to earn money with broken affiliate links and fake conversions.',
+      solution: 'We created a platform where influencers and telegrammers can collectively earn money via sharing affiliate links.',
       results: [
         'Successfully processed over ₹5 Billion in transaction volume',
         'Used by 100k+ merchants for daily high-volume operations',
@@ -406,9 +406,9 @@ export const caseStudies = [
       ],
       tech: ['Go', 'Rust (for crypto ops)', 'PostgreSQL', 'AI Smart-Router'],
       features: [
-        { title: 'Smart Router', desc: 'AI engine that chooses the gateway route with the highest success probability.', icon: 'Zap' },
-        { title: 'Auto-Reconciliation', desc: 'Real-time financial matching to eliminate manual accounting errors.', icon: 'BarChart3' },
-        { title: 'Fraud Guard', desc: 'Advanced behavioral analysis to detect and block suspicious payments.', icon: 'ShieldCheck' }
+        { title: 'Reliable Automated Bots', desc: 'Reliable automated bots help to resolve users\' queries efficiently and securely.', icon: 'Zap' },
+        { title: 'Analytical Reporting', desc: 'Users can have their own scoreboard to track their earnings and rewards.', icon: 'BarChart3' },
+        { title: 'Effortless Earnings', desc: 'With our reliable platform, you can withdraw your rewards or earnings at any time.', icon: 'ShieldCheck' }
       ]
     }
   },

@@ -9,102 +9,116 @@ import { SectionBadge } from '@/components/ui';
 
 const projects = [
   {
-    id: 'flipshope',
-    logo: '/images/clients/flipshope-logo.png',
-    name: 'Flipshope',
-    location: 'India',
-    badges: ['Shopping AI'],
-    platforms: ['Web', 'App', 'Extension'],
+    id: "flipshope",
+    logo: "/images/clients/flipshope-logo.png",
+    name: "Flipshope",
+    location: "India",
+    badges: ["Shopping AI"],
+    platforms: ["Web", "App", "Extension"],
     platformLinks: {
-      web: 'https://flipshope.com',
-      app: 'https://play.google.com/store/apps/details?id=com.flipshopeApp&pcampaignid=web_share',
-      extension: 'https://chromewebstore.google.com/detail/adikhbfjdbjkhelbdnffogkobkekkkej?utm_source=item-share-cb'
+      web: "https://flipshope.com",
+      app: "https://play.google.com/store/apps/details?id=com.flipshopeApp&pcampaignid=web_share",
+      extension:
+        "https://chromewebstore.google.com/detail/adikhbfjdbjkhelbdnffogkobkekkkej?utm_source=item-share-cb",
     },
-    timeline: '6 Weeks Build',
+    timeline: "6 Weeks Build",
     description: [
-      { text: "Built an " },
-      { text: 'AI-powered shopping assistant', highlight: true },
-      { text: ' for 1.5M+ users, featuring ' },
-      { text: 'real-time price tracking', highlight: true },
-      { text: ' and the ' },
-      { text: '#1 auto-coupon engine', highlight: true },
-      { text: ' in the region.' },
+      { text: "Engineered an " },
+      { text: "AI shopping assistant", highlight: true },
+      { text: " for 1.5M+ users that " },
+      {
+        text: "automates savings  ",
+        highlight: true,
+      },
+      {
+        text: " with real-time  ",
+      },
+      {
+        text: " price tracking  ",
+        highlight: true,
+      },
+      { text: " and the region's leading " },
+      { text: "auto-coupon engine.", highlight: true },
     ],
     stats: [
-      { value: '1.5M+', label: 'Active Users' },
-      { value: '4.5/5', label: 'Store Rating' },
-      { value: '10+', label: 'Retailers' },
+      { value: "1.5M+", label: "Active Users" },
+      { value: "4.5/5", label: "Store Rating" },
+      { value: "10+", label: "Retailers" },
     ],
-    quote: "The Zonet team transformed our complex data tracking into a seamless, high-performance UI that our users love.",
-    client: { name: 'Ashutosh Goyal', role: 'Founder @ Flipshope' },
-    mainImg: '/images/zonet/flipshope-1.png',
-    subImg1: '/images/zonet/flipshope-2.png',
-    subImg2: '/images/zonet/flipshope-3.png',
+    quote:
+      "The Zonet team transformed our complex data tracking into a seamless, high-performance UI that our users love.",
+    client: { name: "Ashutosh Goyal", role: "Founder @ Flipshope" },
+    mainImg: "/images/zonet/flipshope-1.png",
+    subImg1: "/images/zonet/flipshope-2.png",
+    subImg2: "/images/zonet/flipshope-3.png",
   },
   {
-    id: 'hyyzo',
-    logo: '/images/clients/hyyzo-logo.png',
-    name: 'Hyyzo',
-    location: 'India',
-    badges: ['FinTech'],
-    platforms: ['Web', 'App', 'Extension'],
+    id: "hyyzo",
+    logo: "/images/clients/hyyzo-logo.png",
+    name: "Hyyzo",
+    location: "India",
+    badges: ["FinTech"],
+    platforms: ["Web", "App", "Extension"],
     platformLinks: {
-      web: 'https://hyyzo.com',
-      app: 'https://play.google.com/store/apps/details?id=com.hyyzoApp&pcampaignid=web_share',
-      extension: 'https://chromewebstore.google.com/detail/phcfbbmblbcbchdlfmcfcakhcpdlnhdk?utm_source=item-share-cb'
+      web: "https://hyyzo.com",
+      app: "https://play.google.com/store/apps/details?id=com.hyyzoApp&pcampaignid=web_share",
+      extension:
+        "https://chromewebstore.google.com/detail/phcfbbmblbcbchdlfmcfcakhcpdlnhdk?utm_source=item-share-cb",
     },
-    timeline: '8 Weeks Build',
+    timeline: "8 Weeks Build",
     description: [
-      { text: 'Developed India\'s ' },
-      { text: 'highest-paying cashback platform', highlight: true },
-      { text: ' with a robust ' },
-      { text: 'Profit Link affiliate engine', highlight: true },
-      { text: ' supporting ' },
-      { text: '200+ partner stores', highlight: true },
-      { text: ' globally.' },
+      { text: "Powering a " },
+      { text: "top-tier Indian cashback platform", highlight: true },
+      { text: " with a scalable " },
+      { text: "Profit Link engine", highlight: true },
+      { text: " linked to " },
+      { text: "200+ global brands", highlight: true },
+      { text: "." },
     ],
     stats: [
-      { value: '100k+', label: 'Earners' },
-      { value: '200+', label: 'Brands' },
-      { value: '4.4★', label: 'App Rating' },
+      { value: "100k+", label: "Earners" },
+      { value: "200+", label: "Brands" },
+      { value: "4.4★", label: "App Rating" },
     ],
-    quote: "ZonetTech built our Profit Links feature from scratch, and it's now our highest-converting acquisition channel.",
-    client: { name: 'Aarav Jain', role: 'Product Head @ Hyyzo' },
-    mainImg: '/images/zonet/hyyzo-1.png',
-    subImg1: '/images/zonet/hyyzo-2.png',
-    subImg2: '/images/zonet/hyyzo-3.png',
+    quote:
+      "ZonetTech built our Profit Links feature from scratch, and it's now our highest-converting acquisition channel.",
+    client: { name: "Aarav Jain", role: "Product Head @ Hyyzo" },
+    mainImg: "/images/zonet/hyyzo-1.png",
+    subImg1: "/images/zonet/hyyzo-2.png",
+    subImg2: "/images/zonet/hyyzo-3.png",
   },
   {
-    id: 'teacherdekho',
-    logo: '/images/clients/teacherdekho-logo.png',
-    name: 'TeacherDekho',
-    location: 'India',
-    badges: ['Ed-Tech'],
-    platforms: ['Web', 'App'],
+    id: "teacherdekho",
+    logo: "/images/clients/teacherdekho-logo.png",
+    name: "TeacherDekho",
+    location: "India",
+    badges: ["Ed-Tech"],
+    platforms: ["Web", "App"],
     platformLinks: {
-      web: 'https://dev.thebestdeals.app',
-      app: 'https://dev.thebestdeals.app',
+      web: "https://dev.thebestdeals.app",
+      app: "https://dev.thebestdeals.app",
     },
-    timeline: '5 Weeks Build',
+    timeline: "5 Weeks Build",
     description: [
-      { text: 'Architected a ' },
-      { text: 'verified mentor network', highlight: true },
-      { text: ' for 50k+ students, delivering ' },
-      { text: 'personalized learning paths', highlight: true },
-      { text: ' and ' },
-      { text: 'real-time progress analytics', highlight: true },
-      { text: '.' },
+      { text: "Built a " },
+      { text: "trusted mentor network", highlight: true },
+      { text: " for 50k+ students, delivering " },
+      { text: "tailored learning paths", highlight: true },
+      { text: " and " },
+      { text: "real-time progress insights", highlight: true },
+      { text: "." },
     ],
     stats: [
-      { value: '50k+', label: 'Students' },
-      { value: '2k+', label: 'Mentors' },
-      { value: '4.8★', label: 'Rating' },
+      { value: "50k+", label: "Students" },
+      { value: "2k+", label: "Mentors" },
+      { value: "4.8★", label: "Rating" },
     ],
-    quote: "Finding quality education shouldn't be a luxury. Zonet helped us build a platform that democratizes access to expert mentors.",
-    client: { name: 'Himanshu Jain', role: 'Operations Lead @ TeacherDekho' },
-    mainImg: '/images/zonet/teacherdekho-1.png',
-    subImg1: '/images/zonet/teacherdekho-2.png',
-    subImg2: '/images/zonet/teacherdekho-3.png',
+    quote:
+      "Finding quality education shouldn't be a luxury. Zonet helped us build a platform that democratizes access to expert mentors.",
+    client: { name: "Himanshu Jain", role: "Operations Lead @ TeacherDekho" },
+    mainImg: "/images/zonet/teacherdekho-1.png",
+    subImg1: "/images/zonet/teacherdekho-2.png",
+    subImg2: "/images/zonet/teacherdekho-3.png",
   },
 ];
 
@@ -219,13 +233,13 @@ const ProjectShowcase = () => {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <h3 className="text-[28px] lg:text-[32px] font-heading font-medium text-[#1A1A1A] leading-none tracking-tight">
+                      <h3 className="text-[28px] lg:text-[32px] font-sans font-medium text-[#1A1A1A] leading-none tracking-tight">
                         {project.name}
                       </h3>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[9.5px] font-black uppercase tracking-[0.2em] text-[#6A6A6A]">{project.location}</span>
+                        <span className="font-sans text-[9.5px] font-black uppercase tracking-[0.2em] text-[#6A6A6A]">{project.location}</span>
                         <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
-                        <span className="text-[9.5px] font-black uppercase tracking-[0.2em] text-[#D1AC45]">{project.badges[0]}</span>
+                        <span className="font-sans text-[9.5px] font-black uppercase tracking-[0.2em] text-[#D1AC45]">{project.badges[0]}</span>
                       </div>
                     </div>
                   </div>
@@ -254,7 +268,7 @@ const ProjectShowcase = () => {
                 {mounted && <MobileImageCarousel images={[project.mainImg, project.subImg1, project.subImg2]} projectName={project.name} />}
 
                 {/* Description */}
-                <p className="text-[14.5px] leading-[1.8] text-[#6A6A6A]">
+                <p className="font-sans text-[14.5px] leading-[1.8] text-[#6A6A6A]">
                   {project.description.map((seg, i) =>
                     seg.highlight ? (
                       <span key={i} className="text-[#1A1A1A] font-bold">
@@ -271,8 +285,8 @@ const ProjectShowcase = () => {
                 <div className="grid grid-cols-3 gap-4">
                   {project.stats.map((stat, i) => (
                     <div key={i} className={`flex flex-col gap-1.5 ${i !== project.stats.length - 1 ? 'border-r border-[#E5E5E5]' : ''}`}>
-                      <span className="text-[22px] font-heading font-medium text-[#1A1A1A] leading-none">{stat.value}</span>
-                      <span className="text-[8.5px] font-black uppercase tracking-[0.2em] text-[#6A6A6A] leading-tight">{stat.label}</span>
+                      <span className="font-sans text-[22px] font-medium text-[#1A1A1A] leading-none">{stat.value}</span>
+                      <span className="font-sans text-[8.5px] font-black uppercase tracking-[0.2em] text-[#6A6A6A] leading-tight">{stat.label}</span>
                     </div>
                   ))}
                 </div>
@@ -280,7 +294,7 @@ const ProjectShowcase = () => {
 
                 {/* Quote Box */}
                 <div className="bg-[#F8F6F0] rounded-[24px] p-7 flex flex-col gap-5 border border-[#E5E5E5]/50">
-                  <p className="text-[14px] italic text-[#1A1A1A] leading-relaxed">
+                  <p className="font-sans text-[14px] italic text-[#1A1A1A] leading-relaxed">
                     "{project.quote}"
                   </p>
                   <div className="flex items-center gap-3">
@@ -288,8 +302,8 @@ const ProjectShowcase = () => {
                       {project.client.name.charAt(0)}
                     </div>
                     <div className="flex flex-col justify-center">
-                      <span className="text-[11px] font-bold text-[#1A1A1A] mb-0.5">{project.client.name}</span>
-                      <span className="text-[8.5px] font-black text-[#6A6A6A] uppercase tracking-widest">{project.client.role}</span>
+                      <span className="font-sans text-[11px] font-bold text-[#1A1A1A] mb-0.5">{project.client.name}</span>
+                      <span className="font-sans text-[8.5px] font-black text-[#6A6A6A] uppercase tracking-widest">{project.client.role}</span>
                     </div>
                   </div>
                 </div>
@@ -300,7 +314,7 @@ const ProjectShowcase = () => {
                     href={`/case-studies/${project.id}`}
                     className="w-full flex items-center justify-center gap-3 px-8 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white hover:bg-black transition-all group shadow-xl shadow-black/5"
                   >
-                    <span className="text-[10px] font-black uppercase tracking-[0.25em]">Read Case Study</span>
+                    <span className="font-sans text-[10px] font-black uppercase tracking-[0.25em]">Read Case Study</span>
                     <ArrowUpRight size={16} className="text-[#D1AC45] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </Link>
                 </div>
@@ -334,7 +348,7 @@ const ProjectShowcase = () => {
         >
           <div className="flex items-center gap-3">
             <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
-            <span className="text-[10px] font-black text-[#6A6A6A] tracking-[0.2em] uppercase">
+            <span className="font-sans text-[10px] font-black text-[#6A6A6A] tracking-[0.2em] uppercase">
               Ready to be our next success story?
             </span>
             <div className="w-[3px] h-[3px] rounded-full bg-[#D1AC45]" />
@@ -342,7 +356,7 @@ const ProjectShowcase = () => {
 
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-3 px-10 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white font-black uppercase tracking-[0.2em] text-[11px] hover:bg-black active:scale-95 transition-all shadow-xl shadow-black/10 group"
+            className="inline-flex items-center gap-3 px-10 py-[22px] rounded-[16px] bg-[#1A1A1A] text-white font-sans font-black uppercase tracking-[0.2em] text-[11px] hover:bg-black active:scale-95 transition-all shadow-xl shadow-black/10 group"
           >
             Discover All Projects
             <ArrowUpRight size={18} className="text-[#D1AC45] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

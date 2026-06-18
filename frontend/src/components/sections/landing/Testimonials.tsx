@@ -1,228 +1,174 @@
 "use client";
 
-import { motion } from "motion/react";
-import { fadeUp, fadeIn, scaleIn } from "@/lib/animations";
-import { Star, ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Star, ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import { useState, useEffect } from "react";
 import { SectionBadge } from "@/components/ui";
 
 const testimonials = [
   {
-    text: "ZonetTech transformed our idea into a high-performing product. Their technical expertise and attention to detail are second to none.",
-    author: "Arjun Mehta",
-    role: "CTO, HyFam",
-    initials: "AM",
+    text: "We needed a platform that wouldn't crash the moment we hit a few thousand users. The team at Zonettech didn't just build it — they built a foundation that handles our growth effortlessly. They made the complex stuff feel easy.",
+    author: "Rahul Sharma",
+    role: "Founder, Scale-Up Startup",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
   },
   {
-    text: "The ZonetTech team feels like an extension of our own. They delivered our platform 3x faster without compromising on quality.",
-    author: "Priya Sharma",
-    role: "Product Head, MyFlipshope",
-    initials: "PS",
+    text: "Adding AI felt intimidating until we started working with this team. They integrated smart features that actually make sense for our customers, all while keeping our brand voice perfectly intact. It's rare to find engineers who 'get' storytelling this well.",
+    author: "Priya Mehta",
+    role: "Product Lead, AI Integration",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face",
   },
   {
-    text: "From strategy to deployment, everything was seamless. Our users love the new experience and so do we!",
-    author: "Rohit Verma",
-    role: "Founder, Kroolo",
-    initials: "RV",
+    text: "From strategy to deployment, everything was smooth and perfect. Our users love the new experience, and so do we!",
+    author: "Arjun Kapoor",
+    role: "Co-Founder, Digital Product",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
   },
   {
-    text: "Working with ZonetTech was a game changer for us. Their UI/UX design is beautiful and the frontend performance is incredibly fast.",
-    author: "Sarah Jenkins",
-    role: "VP of Product, FinServe",
-    initials: "SJ",
-  },
-  {
-    text: "They quickly understood our complex domain and delivered an AI integration that saved our team hundreds of hours a week.",
-    author: "Michael Chang",
-    role: "CEO, DataBridge",
-    initials: "MC",
-  },
-  {
-    text: "I was blown away by their speed. They went from Figma to a fully functional and scalable web application in less than three weeks.",
-    author: "Elena Rodriguez",
-    role: "Founder, MarketMind",
-    initials: "ER",
+    text: "Never knew before that AI could help our website and app grow faster. Thanks to the Zonet team for the wonderful integration of AI in our business.",
+    author: "Sneha Joshi",
+    role: "Business Owner, E-Commerce",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
   },
 ];
 
 const Testimonials = () => {
+  const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(3);
 
   useEffect(() => {
     setMounted(true);
-    const handleResize = () => {
-      setItemsPerView(window.innerWidth < 768 ? 1 : 3);
-    };
-    handleResize(); // Set initial value
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
-  const maxIndex = Math.max(0, testimonials.length - itemsPerView);
+  const prev = () => setActive((p) => (p === 0 ? testimonials.length - 1 : p - 1));
+  const next = () => setActive((p) => (p + 1) % testimonials.length);
 
-  useEffect(() => {
-    if (!mounted) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [maxIndex, mounted]);
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  };
+  const current = testimonials[active];
 
   return (
-    <section className="py-24 md:py-32 bg-[#F7F6F3] border-t border-[#E6E4DF] overflow-hidden relative">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E8C547]/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="py-20 md:py-28 bg-[#F7F6F3] border-t border-[#E6E4DF] overflow-hidden relative">
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <SectionBadge>Testimonials</SectionBadge>
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
 
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl xl:text-6xl font-bold text-[#1A1A1A] leading-[1.1] font-sora mb-6 tracking-tight"
-          >
-            Loved By <span className="text-[#E8C547]">Founders & Teams</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-[#686B6B] text-[15px] max-w-[500px] leading-relaxed mx-auto"
-          >
-            We partner with ambitious companies and help them build products
-            that users love and businesses rely on.
-          </motion.p>
+        {/* Header */}
+        <div className="flex flex-col items-center text-center mb-14">
+          <SectionBadge className="mb-6">Testimonials</SectionBadge>
+          <h2 className="font-sora text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-[1.08] tracking-tight mb-4">
+            Trusted By{" "}
+            <span className="text-[#E8C547]">Founders & Teams</span>
+          </h2>
+          <p className="font-sans text-sm text-[#686B6B] max-w-md leading-relaxed">
+            Zonet Tech is pleased to share the success stories of the businesses we have worked with. We would love to add yours next!
+          </p>
         </div>
 
-        {/* Carousel Area */}
-        <motion.div
-          variants={scaleIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex items-center justify-center gap-6 w-full relative"
-        >
-          {/* Left Arrow */}
-          <button
-            onClick={handlePrev}
-            className="hidden md:flex absolute -left-4 xl:-left-12 z-10 w-12 h-12 rounded-full bg-white border border-[#E6E4DF] items-center justify-center text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#F7F6F3] transition-all shadow-sm group"
-          >
-            <ArrowLeft
-              size={20}
-              className="group-hover:-translate-x-0.5 transition-transform"
-            />
-          </button>
-
-          {/* Cards Container */}
-          <div className="w-full max-w-[1040px] mx-auto z-0 overflow-hidden">
+        {/* Main Card */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
             <motion.div
-              className="flex"
-              animate={{ x: `-${activeIndex * (100 / itemsPerView)}%` }}
-              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+              key={active}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="bg-white border border-[#E6E4DF] rounded-[28px] p-8 md:p-12 shadow-sm"
             >
-              {testimonials.map((t, idx) => {
-                return (
-                  <div
-                    key={idx}
-                    className="w-full md:w-1/3 flex-shrink-0 px-3 md:px-4 flex"
-                  >
-                    <div
-                      className={`relative p-8 md:p-10 rounded-[24px] flex flex-col justify-between shadow-sm transition-all duration-300 bg-[#FCFCF9] border border-[#E6E4DF] hover:border-[#1A1A1A]/30 hover:shadow-md h-full w-full`}
-                    >
-                      <div>
-                        <div className="flex justify-between items-start mb-8">
-                          <div
-                            className={`w-10 h-10 rounded-full flex items-center justify-center bg-[#1A1A1A]/5 text-[#1A1A1A]/40`}
-                          >
-                            <svg
-                              width="18"
-                              height="18"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M14.017 21L16.417 14.39C16.5938 13.9165 16.6853 13.4095 16.685 12.9V4H23V12.9C23 16.035 21.687 18.89 19.417 21H14.017ZM2.01703 21L4.41703 14.39C4.59385 13.9165 4.68532 13.4095 4.68503 12.9V4H11.001V12.9C11.001 16.035 9.68803 18.89 7.41703 21H2.01703Z" />
-                            </svg>
-                          </div>
-                          <div className="flex gap-1">
-                            {[1, 2, 3, 4, 5].map((s) => (
-                              <Star
-                                key={s}
-                                size={14}
-                                className="fill-[#E8C547] text-[#E8C547]"
-                              />
-                            ))}
-                          </div>
-                        </div>
+              {/* Quote icon */}
+              <div className="w-10 h-10 rounded-xl bg-[#F7F6F3] flex items-center justify-center mb-8">
+                <Quote size={18} className="text-[#1A1A1A]" />
+              </div>
 
-                        <p
-                          className={`text-[14px] md:text-[15px] leading-relaxed mb-8 text-[#1A1A1A]`}
-                        >
-                          "{t.text}"
-                        </p>
-                      </div>
+              {/* Stars */}
+              <div className="flex gap-1 mb-6">
+                {[1,2,3,4,5].map((s) => (
+                  <Star key={s} size={14} className="fill-[#E8C547] text-[#E8C547]" />
+                ))}
+              </div>
 
-                      <div className="pt-6 border-t border-[#E6E4DF] flex items-center gap-4 mt-auto">
-                        <div
-                          className={`w-11 h-11 rounded-full flex items-center justify-center text-[13px] font-black flex-shrink-0 border bg-[#F7F6F3] border-[#E6E4DF] text-[#1A1A1A]`}
-                        >
-                          {t.initials}
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="font-bold text-[#1A1A1A] text-[14px] md:text-[15px]">
-                            {t.author}
-                          </span>
-                          <span className="text-[11px] md:text-[12px] text-[#686B6B] mt-0.5">
-                            {t.role}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+              {/* Text */}
+              <p className="font-sans text-lg md:text-xl text-[#1A1A1A] leading-relaxed mb-10 max-w-3xl">
+                &ldquo;{current.text}&rdquo;
+              </p>
+
+              {/* Author */}
+              <div className="flex items-center gap-4 pt-8 border-t border-[#E6E4DF]">
+                <img
+                  src={current.avatar}
+                  alt={current.author}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-[#E6E4DF]"
+                />
+                <div>
+                  <p className="font-sans font-bold text-[#1A1A1A] text-[15px]">{current.author}</p>
+                  <p className="font-sans text-[12px] text-[#686B6B] mt-0.5">{current.role}</p>
+                </div>
+              </div>
             </motion.div>
-          </div>
+          </AnimatePresence>
+        </div>
 
-          {/* Right Arrow */}
-          <button
-            onClick={handleNext}
-            className="hidden md:flex absolute -right-4 xl:-right-12 z-10 w-12 h-12 rounded-full bg-white border border-[#E6E4DF] items-center justify-center text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#F7F6F3] transition-all shadow-sm group"
-          >
-            <ArrowRight
-              size={20}
-              className="group-hover:translate-x-0.5 transition-transform"
-            />
-          </button>
-        </motion.div>
+        {/* Controls */}
+        <div className="flex items-center justify-between mt-8">
 
-        {/* Pagination Dots */}
-        <div className="flex items-center justify-center gap-2 mt-12 md:mt-16">
-          {mounted &&
-            Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+          {/* Dots */}
+          <div className="flex items-center gap-2">
+            {mounted && testimonials.map((_, i) => (
               <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-6 bg-[#E8C547] shadow-sm" : "w-2 bg-[#E6E4DF] hover:bg-[#1A1A1A]/30"}`}
-                aria-label={`Go to slide ${idx + 1}`}
+                key={i}
+                onClick={() => setActive(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  active === i ? "w-6 bg-[#E8C547]" : "w-1.5 bg-[#E6E4DF] hover:bg-[#686B6B]/30"
+                }`}
               />
             ))}
+          </div>
+
+          {/* Arrows */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prev}
+              className="w-11 h-11 rounded-full border border-[#E6E4DF] bg-white flex items-center justify-center text-[#686B6B] hover:border-[#1A1A1A] hover:text-[#1A1A1A] transition-all duration-200 group"
+            >
+              <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
+            </button>
+            <button
+              onClick={next}
+              className="w-11 h-11 rounded-full border border-[#E6E4DF] bg-white flex items-center justify-center text-[#686B6B] hover:border-[#1A1A1A] hover:text-[#1A1A1A] transition-all duration-200 group"
+            >
+              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
         </div>
+
+        {/* Mini previews */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
+          {testimonials.map((t, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-200 text-left ${
+                active === i
+                  ? "border-[#1A1A1A] bg-white"
+                  : "border-[#E6E4DF] bg-white hover:border-[#1A1A1A]/30"
+              }`}
+            >
+              <img
+                src={t.avatar}
+                alt={t.author}
+                className="w-8 h-8 rounded-full object-cover shrink-0 border border-[#E6E4DF]"
+              />
+              <div className="min-w-0">
+                <p className={`font-sans text-[11px] font-bold truncate transition-colors ${active === i ? "text-[#1A1A1A]" : "text-[#686B6B]"}`}>
+                  {t.author.split(" ")[0]}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
+
       </div>
     </section>
   );

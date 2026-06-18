@@ -8,25 +8,25 @@ import ContactForm from '@/components/sections/landing/ContactForm';
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const processSteps = [
-  { num: '01', title: 'Discover & Define', desc: 'We understand your goals, challenges, and opportunities.', Icon: Search },
-  { num: '02', title: 'Plan & Strategize', desc: 'We craft a tailored strategy and technical roadmap.', Icon: Compass },
-  { num: '03', title: 'Design & Prototype', desc: 'We design intuitive experiences and validate early.', Icon: PenLine },
-  { num: '04', title: 'Build & Integrate', desc: 'We develop, integrate, and test with precision.', Icon: Code2 },
-  { num: '05', title: 'Launch & Scale', desc: 'We launch fast and help you scale with confidence.', Icon: Rocket },
+  { num: '01', title: 'Research & Align', desc: 'We dive deep into your vision, challenges, and growth opportunities.', Icon: Search },
+  { num: '02', title: 'Strategy & Roadmapping', desc: 'We build a focused execution plan with clear technical direction.', Icon: Compass },
+  { num: '03', title: 'Experience & Prototyping', desc: 'We craft seamless user experiences and validate ideas early.', Icon: PenLine },
+  { num: '04', title: 'Development & Deployment', desc: 'We engineer, integrate, and optimize solutions for real-world performance.', Icon: Code2 },
+  { num: '05', title: 'Growth & Optimization', desc: 'We launch, refine, and scale your product for long-term success.', Icon: Rocket },
 ];
 
 const testimonials = [
   {
-    text: 'Zennetech transformed our idea into a scalable SaaS platform. Their team is incredibly capable and truly invested in our success.',
-    name: 'Arjun Patel', role: 'Co-Founder, Hyzna', initials: 'AP',
+    text: "I've worked with many developers, but this was the first time a project felt truly stress-free. They took our complex requirements and delivered a high-performance app in record time. The UI is simple, the backend is solid, and the support since launch has been incredible.",
+    name: 'Enterprise Client', role: 'Mobile App Project', initials: 'EC',
   },
   {
-    text: 'The AI automation they built for us reduced manual work by 80%. The impact on our operations has been massive.',
-    name: 'Neha Sharma', role: 'CTO, Finsole', initials: 'NS',
+    text: "It's refreshing to work with a team that actually speaks your language. No confusing jargon, just honest advice and high-quality engineering. They felt more like a partner in our success than just another service provider.",
+    name: 'Startup Founder', role: 'Web Engineering Client', initials: 'SF',
   },
   {
-    text: 'Design, engineering, and strategy — everything was top-notch. Highly recommended for any serious digital product.',
-    name: 'Rohit Verma', role: 'CEO, Laadner', initials: 'RV',
+    text: "We had so many small, manual tasks that were eating up our team's time. The AI automation tools built by the team completely changed that. Now, everything runs on autopilot, and we can finally focus on growing our brand instead of just managing it.",
+    name: 'Operations Manager', role: 'AI Automation Client', initials: 'OM',
   },
 ];
 
@@ -456,10 +456,10 @@ export default function ServicesPage() {
             AI · Automation · Digital Products
           </div>
           <h1 className="text-[clamp(2.8rem,5vw,4.2rem)] font-extrabold leading-[1.08] tracking-[-2px] text-[#0e0e0e] mb-5" style={{ fontFamily: 'Sora'}}>
-            Intelligent Systems.<br />Real Business <span className="text-[#E8C547]">Impact.</span>
+            From Vision To <span className="text-[#E8C547]">Digital Reality.</span>
           </h1>
           <p className="text-base text-[#6b6b6b] font-normal max-w-[420px] leading-[1.7] mb-9">
-            We build AI-powered products, automate workflows, and engineer scalable digital systems that drive growth.
+            We offer AI software development services that help your business to launch fast, stay secure, and remain ahead in the market.
           </p>
           <div className="flex gap-4 items-center flex-wrap">
             <Link href="/contact" className="inline-flex items-center gap-2 bg-[#E8C547] text-[#1a1a1a] text-[0.85rem] font-bold px-7 py-[13px] rounded-full transition-all duration-200 hover:bg-[#c9a82e] hover:-translate-y-px">
@@ -490,10 +490,10 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 text-center">
         <div className="text-[0.68rem] font-bold uppercase tracking-[2px] text-[#E8C547] mb-[14px]">What We Do</div>
         <h2 className="text-[clamp(1.9rem,3.5vw,2.8rem)] font-extrabold tracking-[-1.5px] text-[#1a1a1a] leading-[1.1]">
-          End-to-End Digital Solutions<br /><span className="text-[#E8C547]">Powered by AI</span>
+          Turning Complex Ideas into Digital Solutions<br /><span className="text-[#E8C547]">With AI Integration</span>
         </h2>
         <p className="text-[0.95rem] text-[#6b6b6b] leading-[1.7] max-w-[500px] mx-auto mt-[14px]">
-          From intelligent automation to digital product engineering, we help startups and enterprises build, scale, and lead.
+          From AI &amp; Custom Software Development Services to digital product engineering, we help startups and enterprises build, scale, and lead.
         </p>
         </div>
       </section>
@@ -501,39 +501,39 @@ export default function ServicesPage() {
       {/* ── SERVICES ── */}
       <section className="max-w-7xl mx-auto px-6">
         <ServiceRow
-          num="01" title="AI Automation"
-          desc="Automate repetitive tasks, streamline operations, and unlock productivity with custom AI solutions."
-          bullets={['Process Automation', 'AI-Powered Integrations', 'Intelligent Data Processing']}
+          num="01" title="AI-Automation"
+          desc="Reduce manual efforts, streamline workflows, and boost productivity with custom AI solutions."
+          bullets={['Workflow Automation', 'AI-Driven Integrations', 'Advanced Data Processing']}
           metric={{ val: '1,200+', label: 'Automation Saves Hours This Month' }}
           imgLeft={false}
           svg={<AiAutomationSvg />}
         />
         <ServiceRow
           num="02" title="Web Engineering"
-          desc="High-performance websites and web applications built with modern technologies and best practices."
-          bullets={['Custom Web Applications', 'Scalable Architecture', 'Performance Optimized']}
+          desc="Build fast, scalable websites and web apps using modern technologies and best practices."
+          bullets={['Tailored Web Applications', 'Flexible & Scalable Design', 'Speed and Performance Focused']}
           metric={{ val: '98', label: 'Lighthouse Score Performance' }}
           imgLeft={true}
           svg={<WebEngineeringSvg />}
         />
         <ServiceRow
           num="03" title="Mobile App Development"
-          desc="Build powerful, intuitive, and scalable mobile apps for iOS and Android platforms."
-          bullets={['iOS & Android Development', 'Cross-Platform Solutions', 'Robust & Scalable Apps']}
+          desc="Design powerful, user-friendly and custom mobile apps for iOS and Android platforms."
+          bullets={['Native iOS & Android Platforms', 'Seamless Cross-Platform Builds', 'High-Performance App Solutions']}
           metric={{ val: '250K+', label: 'Active Platform Downloads' }}
           imgLeft={false}
           svg={<MobileAppSvg />}
         />
         <ServiceRow
           num="04" title="Branding & Product Design"
-          desc="Design identities and digital products that connect, engage, and leave a lasting impact."
+          desc="Our team designs identities and digital products that connect, engage, and leave a lasting impact."
           bullets={['Brand Strategy & Identity', 'UI/UX Design', 'Product Design']}
           metric={{ val: '+87%', label: 'Increased Brand Recall' }}
           imgLeft={true}
           svg={<BrandingSvg />}
         />
         <ServiceRow
-          num="05" title="AI Agents & Workflows"
+          num="05" title="AI-Agents & Workflow"
           desc="Build intelligent AI agents that think, act, and automate complex business processes."
           bullets={['Custom AI Agents', 'Workflow Automation', 'Smart Decision Systems']}
           metric={{ val: '10K+', label: 'Tasks Completed by AI Agents' }}
@@ -541,10 +541,10 @@ export default function ServicesPage() {
           svg={<AiAgentsSvg />}
         />
         <ServiceRow
-          num="06" title="SaaS Development"
-          desc="Launch and scale SaaS products with secure, multi-tenant, and future-ready architectures."
-          bullets={['SaaS Product Development', 'Multi-tenant Architecture', 'Secure & Reliable Systems']}
-          metric={{ val: '+215%', label: 'MRR Growth' }}
+          num="06" title="MVP Development"
+          desc="Launch your core product quickly, validate your ideas, and scale efficiently with real user feedback."
+          bullets={['Rapid Prototype Engineering', 'Core Feature Prioritisation', 'Lean Agile Deployment']}
+          metric={{ val: '7-30', label: 'Days to Launch Your MVP' }}
           imgLeft={true}
           svg={<SaasSvg />}
         />
@@ -555,7 +555,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 text-center">
         <div className="text-[0.68rem] font-bold uppercase tracking-[2px] text-[#E8C547] mb-[14px]">Our Process</div>
         <h2 className="text-[clamp(1.9rem,3.5vw,2.8rem)] font-extrabold tracking-[-1.5px] text-[#1a1a1a] leading-[1.1]">
-          A Proven Process for<br />Predictable Results
+          Our Trusted Process To Bring<br />The Best Results To Life
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-12">
           {processSteps.map((step, i) => (
@@ -587,7 +587,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 text-center">
         <div className="text-[0.68rem] font-bold uppercase tracking-[2px] text-[#E8C547] mb-[14px]">Featured Work</div>
         <h2 className="text-[clamp(1.9rem,3.5vw,2.8rem)] font-extrabold tracking-[-1.5px] text-[#1a1a1a] leading-[1.1]">
-          Digital Products That Drive<br />Real Results
+          Digital Projects That Showcase<br />Real-Time Results
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
           {/* Card 1 */}
