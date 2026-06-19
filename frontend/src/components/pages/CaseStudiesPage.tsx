@@ -8,7 +8,7 @@ import { caseStudies, categories, industries } from '@/lib/case-studies';
 /* ── CARD ── */
 function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-[#e4dfd5] cursor-pointer transition-all duration-220 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)]">
+    <Link href={`/case-studies/${cs.slug}`} className="block bg-white rounded-2xl overflow-hidden border border-[#e4dfd5] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)]">
       {/* Photo with chip overlay */}
       <div className="relative w-full h-[180px] overflow-hidden">
         <span className="absolute top-3 left-3 z-10 bg-white/95 border border-[#e4dfd5] rounded-full px-3 py-1 text-[9px] font-bold tracking-[1.5px] uppercase text-[#1a1a1a] font-sora-family">
@@ -35,12 +35,7 @@ function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
               <p className="text-[11px] text-[#6b6b6b]">{cs.tagline}</p>
             </div>
           </div>
-          <Link
-            href={`/case-studies/${cs.slug}`}
-            className="text-[#6b6b6b] text-base leading-none hover:text-[#1a1a1a] transition-colors duration-150 no-underline"
-          >
-            ↗
-          </Link>
+          <span className="text-[#6b6b6b] text-base leading-none">↗</span>
         </div>
 
         <p className="text-[12.5px] text-[#6b6b6b] leading-[1.55] my-2.5 mb-3.5">
@@ -62,7 +57,7 @@ function Card({ cs }: { cs: (typeof caseStudies)[number] }) {
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -95,8 +90,7 @@ export default function CaseStudiesPage() {
         </h1>
 
         <p className="text-[13px] sm:text-[15px] text-[#6b6b6b] max-w-sm sm:max-w-md mx-auto mb-8 sm:mb-10 leading-[1.6] px-2 sm:px-0">
-          We don&apos;t just build beautiful interfaces — we engineer product experiences
-          that drive user adoption and scale revenue.
+          We build IT-powered solutions to upscale your business, engage your audience, and deliver real results.
         </p>
 
         <div className="flex justify-center gap-8 sm:gap-12 md:gap-[60px]">

@@ -100,14 +100,22 @@ const Footer = () => {
               <h4 className="text-foreground font-black text-xs uppercase tracking-[0.15em]">Company</h4>
             </div>
             <ul className="flex flex-col">
-              {['Home', 'Case Studies', 'Services', 'AI Tools', 'Careers', 'Contact'].map((item, idx, arr) => (
-                <li key={item} className={`py-3.5 ${idx !== arr.length - 1 ? 'border-b border-black/5' : ''}`}>
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'Case Studies', href: '/case-studies' },
+                { label: 'Services', href: '/services' },
+                { label: 'AI Tools', href: '/ai-tools' },
+                { label: 'Refer & Earn', href: '/refer-and-earn' },
+                { label: 'Careers', href: '/careers' },
+                { label: 'Contact', href: '/contact' },
+              ].map(({ label, href }, idx, arr) => (
+                <li key={label} className={`py-3.5 ${idx !== arr.length - 1 ? 'border-b border-black/5' : ''}`}>
                   <Link
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+                    href={href}
                     className="flex items-center gap-4 text-muted hover:text-foreground transition-all text-[15px] font-medium"
                   >
                     <div className="w-1.5 h-1.5 rounded-full border-[1.5px] border-muted-foreground/40 shrink-0" />
-                    {item}
+                    {label}
                   </Link>
                 </li>
               ))}

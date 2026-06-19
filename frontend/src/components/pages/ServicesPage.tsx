@@ -291,6 +291,78 @@ function AiAgentsSvg() {
   );
 }
 
+function WebsiteUpgradesSvg() {
+  return (
+    <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" className="w-[90%] max-w-[360px] relative z-[2]">
+      <rect x="30" y="20" width="300" height="190" rx="12" fill="#111" stroke="#E8C547" strokeWidth="0.8" strokeOpacity="0.4" />
+      <rect x="30" y="20" width="300" height="28" rx="12" fill="#1a1a1a" />
+      <circle cx="50" cy="34" r="4" fill="#ff5f57" opacity="0.7" />
+      <circle cx="64" cy="34" r="4" fill="#febc2e" opacity="0.7" />
+      <circle cx="78" cy="34" r="4" fill="#28c840" opacity="0.7" />
+      <rect x="44" y="60" width="100" height="8" rx="3" fill="#E8C547" fillOpacity="0.3" />
+      <rect x="44" y="76" width="160" height="5" rx="2" fill="#fff" fillOpacity="0.08" />
+      <rect x="44" y="87" width="130" height="5" rx="2" fill="#fff" fillOpacity="0.06" />
+      <rect x="44" y="98" width="90" height="5" rx="2" fill="#fff" fillOpacity="0.05" />
+      <rect x="44" y="115" width="70" height="22" rx="6" fill="#E8C547" fillOpacity="0.9" />
+      <text x="79" y="130" textAnchor="middle" fill="#111" fontFamily="Inter,sans-serif" fontSize="9" fontWeight="700">Upgrade Now</text>
+      <g>
+        <rect x="190" y="55" width="120" height="90" rx="8" fill="#1a1a1a" stroke="#E8C547" strokeWidth="0.5" strokeOpacity="0.35" />
+        <rect x="198" y="63" width="104" height="6" rx="2" fill="#E8C547" fillOpacity="0.2" />
+        <rect x="198" y="75" width="80" height="4" rx="2" fill="#fff" fillOpacity="0.07" />
+        <rect x="198" y="85" width="95" height="4" rx="2" fill="#fff" fillOpacity="0.05" />
+        <rect x="198" y="95" width="60" height="4" rx="2" fill="#fff" fillOpacity="0.05" />
+        <line x1="198" y1="110" x2="302" y2="110" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.2" />
+        <rect x="198" y="118" width="50" height="18" rx="5" fill="#E8C547" fillOpacity="0.15" stroke="#E8C547" strokeWidth="0.5" strokeOpacity="0.4" />
+        <text x="223" y="130" textAnchor="middle" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="7" fontWeight="600">Modern</text>
+      </g>
+      <g transform="translate(30,0)">
+        <line x1="170" y1="95" x2="188" y2="95" stroke="#E8C547" strokeWidth="1" strokeOpacity="0.5" strokeDasharray="3 3" />
+        <polygon points="186,91 192,95 186,99" fill="#E8C547" fillOpacity="0.6" />
+      </g>
+      <rect x="44" y="152" width="70" height="28" rx="6" fill="#fff" fillOpacity="0.95" />
+      <text x="79" y="163" textAnchor="middle" fill="#111" fontFamily="Inter,sans-serif" fontSize="6.5" fontWeight="600">Performance</text>
+      <text x="79" y="175" textAnchor="middle" fill="#22c55e" fontFamily="Inter,sans-serif" fontSize="11" fontWeight="800">+40%</text>
+      <rect x="125" y="152" width="65" height="28" rx="6" fill="#fff" fillOpacity="0.95" />
+      <text x="157" y="163" textAnchor="middle" fill="#111" fontFamily="Inter,sans-serif" fontSize="6.5" fontWeight="600">Bounce Rate</text>
+      <text x="157" y="175" textAnchor="middle" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="11" fontWeight="800">-35%</text>
+    </svg>
+  );
+}
+
+function ConversionAuditSvg() {
+  return (
+    <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" className="w-[90%] max-w-[360px] relative z-[2]">
+      <rect x="30" y="20" width="300" height="190" rx="12" fill="#111" stroke="#E8C547" strokeWidth="0.8" strokeOpacity="0.4" />
+      <rect x="44" y="36" width="272" height="14" rx="4" fill="#1e1e1e" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.25" />
+      <rect x="44" y="36" width="190" height="14" rx="4" fill="#E8C547" fillOpacity="0.18" />
+      <text x="139" y="47" textAnchor="middle" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="7" fontWeight="700">Funnel Progress</text>
+      <rect x="44" y="60" width="272" height="18" rx="5" fill="#1e1e1e" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.2" />
+      <rect x="44" y="60" width="240" height="18" rx="5" fill="#E8C547" fillOpacity="0.22" />
+      <text x="58" y="73" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600">Visit</text>
+      <text x="290" y="73" textAnchor="end" fill="#aaa" fontFamily="Inter,sans-serif" fontSize="7">12,400</text>
+      <rect x="44" y="84" width="272" height="18" rx="5" fill="#1e1e1e" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.2" />
+      <rect x="44" y="84" width="180" height="18" rx="5" fill="#E8C547" fillOpacity="0.16" />
+      <text x="58" y="97" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600">Engaged</text>
+      <text x="290" y="97" textAnchor="end" fill="#aaa" fontFamily="Inter,sans-serif" fontSize="7">8,100</text>
+      <rect x="44" y="108" width="272" height="18" rx="5" fill="#1e1e1e" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.2" />
+      <rect x="44" y="108" width="110" height="18" rx="5" fill="#E8C547" fillOpacity="0.12" />
+      <text x="58" y="121" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600">Add to Cart</text>
+      <text x="290" y="121" textAnchor="end" fill="#aaa" fontFamily="Inter,sans-serif" fontSize="7">4,900</text>
+      <rect x="44" y="132" width="272" height="18" rx="5" fill="#1e1e1e" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.2" />
+      <rect x="44" y="132" width="60" height="18" rx="5" fill="#E8C547" fillOpacity="0.08" />
+      <text x="58" y="145" fill="#E8C547" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600">Checkout</text>
+      <text x="290" y="145" textAnchor="end" fill="#aaa" fontFamily="Inter,sans-serif" fontSize="7">2,100</text>
+      <rect x="44" y="156" width="272" height="18" rx="5" fill="#1e1e1e" stroke="#E8C547" strokeWidth="0.4" strokeOpacity="0.2" />
+      <rect x="44" y="156" width="30" height="18" rx="5" fill="#22c55e" fillOpacity="0.35" />
+      <text x="58" y="169" fill="#22c55e" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="700">Convert</text>
+      <text x="290" y="169" textAnchor="end" fill="#22c55e" fontFamily="Inter,sans-serif" fontSize="7" fontWeight="700">870</text>
+      <rect x="190" y="178" width="80" height="22" rx="6" fill="#fff" fillOpacity="0.95" />
+      <text x="230" y="188" textAnchor="middle" fill="#111" fontFamily="Inter,sans-serif" fontSize="6.5" fontWeight="600">CVR Lift</text>
+      <text x="230" y="197" textAnchor="middle" fill="#22c55e" fontFamily="Inter,sans-serif" fontSize="10" fontWeight="800">+2.4x</text>
+    </svg>
+  );
+}
+
 function SaasSvg() {
   return (
     <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" className="w-[90%] max-w-[360px] relative z-[2]">
@@ -393,7 +465,7 @@ interface ServiceRowProps {
 function ServiceRow({ num, title, desc, bullets, metric, imgLeft, svg }: ServiceRowProps) {
   console.log(num)
   const textCell = (
-    <div className={`bg-[#faf8f5] px-10 lg:px-[52px] py-10 lg:py-[48px] flex flex-col justify-center border border-black/[0.06] ${num == '01' ? 'rounded-tl-xl' : 'rounded-tl-none'} ${num == '06' ? 'rounded-br-xl' : 'rounded-bl-none'}`}>
+    <div className={`bg-[#faf8f5] px-10 lg:px-[52px] py-10 lg:py-[48px] flex flex-col justify-center border border-black/[0.06] ${num == '01' ? 'rounded-tl-xl' : 'rounded-tl-none'} ${num == '08' ? 'rounded-br-xl' : 'rounded-bl-none'}`}>
       <div className="text-[0.72rem] font-bold text-[#E8C547] tracking-[2px] mb-[14px]">{num}</div>
       <h3 className="text-[1.55rem] font-extrabold text-[#1a1a1a] tracking-tight mb-3">{title}</h3>
       <p className="text-[0.875rem] text-[#6b6b6b] leading-[1.7] mb-5 max-w-[340px]">{desc}</p>
@@ -413,7 +485,7 @@ function ServiceRow({ num, title, desc, bullets, metric, imgLeft, svg }: Service
   );
 
   const imgCell = (
-    <div className={`bg-[#111111] relative overflow-hidden min-h-[300px] flex items-center justify-center border border-black/[0.06] ${num == '01' ? 'rounded-tr-xl' : 'rounded-tr-none'} ${num == '06' ? 'rounded-bl-xl' : 'rounded-br-none'}`}
+    <div className={`bg-[#111111] relative overflow-hidden min-h-[300px] flex items-center justify-center border border-black/[0.06] ${num == '01' ? 'rounded-tr-xl' : 'rounded-tr-none'} ${num == '08' ? 'rounded-bl-xl' : 'rounded-br-none'}`}
       style={{
         backgroundImage: 'linear-gradient(rgba(232,197,71,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,197,71,0.04) 1px, transparent 1px)',
         backgroundSize: '32px 32px',
@@ -547,6 +619,22 @@ export default function ServicesPage() {
           metric={{ val: '7-30', label: 'Days to Launch Your MVP' }}
           imgLeft={true}
           svg={<SaasSvg />}
+        />
+        <ServiceRow
+          num="07" title="Website Upgrades"
+          desc="Keep your digital presence fresh, modern, and perfectly aligned with your evolving business goals."
+          bullets={['Legacy Redesign Systems', 'Feature & Content Iteration', 'Continuous Performance Tuning']}
+          metric={{ val: '+40%', label: 'Performance Boost After Upgrade' }}
+          imgLeft={false}
+          svg={<WebsiteUpgradesSvg />}
+        />
+        <ServiceRow
+          num="08" title="Conversion Audit"
+          desc="Analyse user behaviour, eliminate friction points, and optimise your funnels to turn traffic into revenue."
+          bullets={['User Behaviour Analytics', 'Friction Point Identification', 'Funnel Drop-off Optimisation']}
+          metric={{ val: '+2.4x', label: 'Average Conversion Rate Lift' }}
+          imgLeft={true}
+          svg={<ConversionAuditSvg />}
         />
       </section>
 

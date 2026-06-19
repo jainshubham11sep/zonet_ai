@@ -32,6 +32,7 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Case Studies', href: '/case-studies' },
   { name: 'AI Tools', href: '/ai-tools' },
+  { name: 'Refer & Earn', href: '/refer-and-earn' },
   { name: 'Resources', href: '/resources' },
 ];
 
