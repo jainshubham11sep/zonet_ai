@@ -1,0 +1,141 @@
+'use client';
+
+import { motion } from 'motion/react';
+import { ArrowRight, TrendingUp } from 'lucide-react';
+import { slideInLeft, slideInRight, fadeUp } from '@/lib/animations';
+import Image from 'next/image';
+import Link from 'next/link';
+import { SectionBadge } from '@/components/ui';
+
+const Hero = () => {
+  return (
+    <section className='bg-[#F7F6F3] pt-24 md:pt-32 pb-0 overflow-visible'>
+      <div className='max-w-7xl mx-auto px-6'>
+        <div className='grid md:grid-cols-2 gap-8 items-start md:items-center'>
+          {/* Left Column */}
+          <motion.div
+            variants={slideInLeft}
+            initial='hidden'
+            animate='visible'
+            className='pt-8'
+          >
+            <SectionBadge variant='dot' className='mb-12'>
+              Digital Products. Real Impact.
+            </SectionBadge>
+
+            {/* Heading with inline underline */}
+            <div className='mb-8'>
+              <h1
+                className='text-4xl lg:text-5xl xl:text-6xl text-[#1A1A1A] leading-[1.1] font-heading'
+                style={{ fontFamily: "var(--font-sora-family)" }}
+              >
+                Elevate your business with <br />
+                <span className='text-[#E8C547]'>results-driven AI</span>
+                <br />
+                software development services
+              </h1>
+            </div>
+
+            {/* Subtitle */}
+            <p className='text-xs text-[#686B6B] mb-12 leading-relaxed max-w-sm'>
+              At Zonettech, we offer AI-powered development services to grow
+              your business's digital presence.
+            </p>
+
+            {/* Buttons */}
+            <div className='flex flex-nowrap items-center gap-3 sm:gap-4 md:gap-6 pb-12 md:pb-0'>
+              <Link
+                href='/case-studies'
+                className='inline-flex shrink-0 items-center gap-2 px-5 py-3 sm:px-8 sm:py-3.5 bg-[#1A1A1A] text-white font-bold text-sm rounded-full hover:bg-[#2A2A2A] transition-all hover:scale-105 active:scale-95 whitespace-nowrap'
+              >
+                See Our Work <ArrowRight size={16} />
+              </Link>
+              <Link
+                href='/services'
+                className='inline-flex shrink-0 items-center gap-2 px-5 py-3 sm:px-8 sm:py-3.5 text-[#1A1A1A] font-bold text-sm hover:underline whitespace-nowrap'
+              >
+                Explore Services <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Hidden on Mobile */}
+          <motion.div
+            variants={slideInRight}
+            initial='hidden'
+            animate='visible'
+            transition={{ delay: 0.2 }}
+            className='hidden md:block relative h-[550px] w-full'
+          >
+            {/* The Black Background Area */}
+            <div className='absolute top-[-54px] right-0 bottom-0 left-32 bg-[#1A1A1A] rounded-bl-2xl rounded-tl-2xl'>
+              {/* Thin white lines */}
+              <div className='absolute left-[35%] top-[60%] w-px h-[40%] bg-white/20'></div>
+              <div className='absolute left-[35%] top-[60%] w-[65%] h-px bg-white/20'></div>
+              <svg
+                className='absolute left-[calc(35%-60px)] top-[calc(60%-60px)] w-[60px] h-[60px]'
+                viewBox='0 0 100 100'
+              >
+                <line
+                  x1='0'
+                  y1='0'
+                  x2='100'
+                  y2='100'
+                  stroke='rgba(255,255,255,0.2)'
+                  strokeWidth='1'
+                />
+              </svg>
+            </div>
+
+            {/* The Building Image */}
+            <div className='absolute w-100 top-10 -left-2 bottom-10 rounded-[24px] overflow-hidden shadow-2xl'>
+              <Image
+                src='/images/zonet/hero-building.jpg'
+                alt='Architecture building'
+                fill
+                priority
+                className='object-cover'
+              />
+            </div>
+
+            {/* Built for Growth Card */}
+            <motion.div
+              variants={fadeUp}
+              initial='hidden'
+              animate='visible'
+              transition={{ delay: 0.4 }}
+              className='absolute top-20 right-24 w-[240px] bg-[#FCFCF9] rounded-[20px] p-5 shadow-2xl z-10'
+            >
+              <div className='flex items-center gap-3 mb-4'>
+                <div className='w-10 h-10 rounded-full bg-[#E8C547] flex items-center justify-center'>
+                  <TrendingUp
+                    size={20}
+                    className='text-[#1A1A1A]'
+                    strokeWidth={2.5}
+                  />
+                </div>
+              </div>
+              <h3 className='text-[17px] font-bold text-[#1A1A1A] mb-2 font-heading'>
+                Built for Growth
+              </h3>
+              <p className='text-[13px] text-[#686B6B] mb-5 leading-relaxed'>
+                Digital products engineered to scale with your business.
+              </p>
+              <Link
+                href='#'
+                className='text-sm font-bold text-[#1A1A1A] hover:text-[#E8C547] transition-colors inline-flex items-center gap-1.5'
+              >
+                Learn more <ArrowRight size={16} className='-rotate-45' />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom divider line */}
+      <div className='border-t border-[#E6E4DF]'></div>
+    </section>
+  );
+};
+
+export default Hero;
