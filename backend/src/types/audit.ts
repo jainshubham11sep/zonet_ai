@@ -12,12 +12,21 @@ export const SECTION_KEYS: SectionKey[] = [
 
 export type SectionRunStatus = 'idle' | 'running' | 'complete' | 'failed';
 
+export interface CheckExplainer {
+  what: string;
+  how: string;
+  fix: string;
+  /** Official documentation only — Google Search Central, web.dev, MDN, OWASP. */
+  docs: Array<{ label: string; url: string }>;
+}
+
 export interface AuditCheck {
   id: string;
   label: string;
   status: CheckStatus;
   value?: string;
   impact?: string;
+  explainer?: CheckExplainer;
 }
 
 export interface AuditMetric {

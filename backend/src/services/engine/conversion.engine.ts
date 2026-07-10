@@ -1,4 +1,5 @@
 import type { AuditCheck, AuditMetric, SectionResult } from '../../types/audit';
+import { explainerFor } from './explainer.templates';
 import { fetchPage } from './fetch-page';
 import { impactFor } from './impact.templates';
 import { scoreFromChecks } from './scoring';
@@ -28,6 +29,7 @@ export async function runConversionSection(url: string): Promise<SectionResult> 
       status,
       value,
       impact: status === 'pass' ? undefined : impactFor(id),
+      explainer: explainerFor(id),
     });
   };
 

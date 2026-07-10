@@ -1,11 +1,145 @@
-import type { AuditCheck, AuditMetric, SectionKey } from "./audit-types";
+import type {
+  AuditCheck,
+  AuditMetric,
+  CheckExplainer,
+  SectionKey,
+} from "./audit-types";
 
 /**
  * Mock section results used when the backend is not reachable.
  * Shapes match the real API exactly so swapping to live data is a no-op.
  */
 
-export const MOCK_QUICK_CHECKS: AuditCheck[] = [
+/** A representative subset of the backend's explainer map — enough to test the "?" panel in mock mode. */
+const MOCK_EXPLAINERS: Record<string, CheckExplainer> = {
+  https: {
+    what: "Checks whether the page is served securely over HTTPS rather than plain HTTP.",
+    how: "The final resolved URL (after redirects) is checked for the 'https://' scheme.",
+    fix: "Install an SSL/TLS certificate and redirect all HTTP traffic to HTTPS.",
+    docs: [
+      {
+        label: "web.dev — Why HTTPS matters",
+        url: "https://web.dev/articles/why-https-matters",
+      },
+    ],
+  },
+  "meta-desc": {
+    what: "Checks for a meta description and whether it is an effective length.",
+    how: 'Reads the <meta name="description"> content attribute; 120–160 characters is the target range.',
+    fix: "Write a compelling, unique meta description between 120 and 160 characters per page.",
+    docs: [
+      {
+        label: "Google Search Central — Meta descriptions",
+        url: "https://developers.google.com/search/docs/appearance/snippet",
+      },
+    ],
+  },
+  "perf-mobile": {
+    what: "Google's Lighthouse performance score for the mobile version of your page.",
+    how: "PageSpeed Insights runs a simulated mobile load and scores Core Web Vitals and related metrics from 0–100.",
+    fix: "Improve LCP, TBT, and CLS — the score is a weighted average of them.",
+    docs: [
+      {
+        label: "web.dev — Performance scoring",
+        url: "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+      },
+    ],
+  },
+  "img-optim": {
+    what: "Checks whether images are compressed, modern-format, and appropriately sized.",
+    how: "Lighthouse's uses-optimized-images, modern-image-formats, and uses-responsive-images audits.",
+    fix: "Compress images, serve WebP/AVIF, and size images to their display dimensions.",
+    docs: [
+      {
+        label: "web.dev — Efficiently encode images",
+        url: "https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images",
+      },
+    ],
+  },
+  "title-len": {
+    what: "Checks your <title> tag is present and an effective length for search results.",
+    how: "Character count of the <title> element; 30–60 characters avoids truncation in search results.",
+    fix: "Write a unique, descriptive title between 30 and 60 characters.",
+    docs: [
+      {
+        label: "Google Search Central — Title links",
+        url: "https://developers.google.com/search/docs/appearance/title-link",
+      },
+    ],
+  },
+  sitemap: {
+    what: "Checks whether a sitemap.xml file exists at the site root.",
+    how: "Requests /sitemap.xml and checks for a successful response.",
+    fix: "Generate an XML sitemap listing your indexable pages and submit it in Search Console.",
+    docs: [
+      {
+        label: "Google Search Central — Sitemaps",
+        url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+      },
+    ],
+  },
+  "tap-targets": {
+    what: "Checks that clickable elements are large enough and spaced apart for touch use.",
+    how: "Lighthouse's tap-targets audit measures element size and spacing.",
+    fix: "Make buttons/links at least 48x48px with enough spacing between them.",
+    docs: [
+      {
+        label: "web.dev — Tap targets are not sized appropriately",
+        url: "https://developer.chrome.com/docs/lighthouse/seo/tap-targets",
+      },
+    ],
+  },
+  contrast: {
+    what: "Checks that text has sufficient color contrast against its background.",
+    how: "Lighthouse's color-contrast audit measures contrast ratios against WCAG thresholds.",
+    fix: "Increase contrast between text and background colors to meet WCAG AA (4.5:1 for normal text).",
+    docs: [
+      {
+        label: "WCAG 2 — Contrast (Minimum)",
+        url: "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html",
+      },
+    ],
+  },
+  hsts: {
+    what: "Checks for the Strict-Transport-Security header, which forces browsers to use HTTPS.",
+    how: "Checks the HTTP response headers for strict-transport-security.",
+    fix: "Add a Strict-Transport-Security header with an appropriate max-age.",
+    docs: [
+      {
+        label: "MDN — Strict-Transport-Security",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security",
+      },
+    ],
+  },
+  whatsapp: {
+    what: "Checks for a WhatsApp click-to-chat link (wa.me or api.whatsapp.com).",
+    how: "Scans all page links for WhatsApp chat URL patterns.",
+    fix: "Add a WhatsApp click-to-chat link or button using the wa.me format.",
+    docs: [
+      {
+        label: "WhatsApp Business — Click to Chat",
+        url: "https://faq.whatsapp.com/425247423114725",
+      },
+    ],
+  },
+  ga4: {
+    what: "Checks whether Google Analytics is installed on the page.",
+    how: "Scans the page HTML for Google Analytics / gtag.js signatures.",
+    fix: "Install Google Analytics (GA4) via gtag.js or Google Tag Manager.",
+    docs: [
+      {
+        label: "Google Analytics — Get started",
+        url: "https://support.google.com/analytics/answer/9304153",
+      },
+    ],
+  },
+};
+
+function withExplainers(checks: AuditCheck[]): AuditCheck[] {
+  return checks.map((c) => ({ ...c, explainer: MOCK_EXPLAINERS[c.id] }));
+}
+
+const RAW_QUICK_CHECKS: AuditCheck[] = [
   { id: "reachable", label: "Website is reachable", status: "pass" },
   { id: "https", label: "Served over HTTPS", status: "pass" },
   {
@@ -24,7 +158,9 @@ export const MOCK_QUICK_CHECKS: AuditCheck[] = [
   { id: "favicon", label: "Favicon present", status: "warn" },
 ];
 
-export const MOCK_SECTIONS: Record<
+export const MOCK_QUICK_CHECKS: AuditCheck[] = withExplainers(RAW_QUICK_CHECKS);
+
+const RAW_SECTIONS: Record<
   SectionKey,
   { score: number; checks: AuditCheck[]; metrics: AuditMetric[] }
 > = {
@@ -312,6 +448,19 @@ export const MOCK_SECTIONS: Record<
     ],
   },
 };
+
+export const MOCK_SECTIONS: Record<
+  SectionKey,
+  { score: number; checks: AuditCheck[]; metrics: AuditMetric[] }
+> = Object.fromEntries(
+  Object.entries(RAW_SECTIONS).map(([key, section]) => [
+    key,
+    { ...section, checks: withExplainers(section.checks) },
+  ]),
+) as Record<
+  SectionKey,
+  { score: number; checks: AuditCheck[]; metrics: AuditMetric[] }
+>;
 
 export function mockOverallScore(
   completed: { score: number | null }[],

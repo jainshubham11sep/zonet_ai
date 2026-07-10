@@ -196,13 +196,23 @@ export default function AuditDashboardPage({
           {SECTION_KEYS.map((key) => (
             <SectionCard
               key={key}
+              auditId={auditId}
               section={audit.sections[key]}
               running={runningSections.has(key)}
               onRun={handleRun}
-              onUnlock={() => setGateOpen(true)}
             />
           ))}
         </div>
+
+        {!audit.unlocked && anySectionRun && (
+          <button
+            type="button"
+            onClick={() => setGateOpen(true)}
+            className="mt-8 h-12 px-6 rounded-full bg-[#E8C547] text-[#1A1A1A] font-sans text-sm font-medium hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 mx-auto flex"
+          >
+            Unlock full report for every section
+          </button>
+        )}
       </div>
 
       <EmailGateModal

@@ -1,4 +1,5 @@
 import type { AuditCheck, AuditMetric, SectionResult } from '../../types/audit';
+import { explainerFor } from './explainer.templates';
 import { impactFor } from './impact.templates';
 import type { PsiData } from './psi.engine';
 import { statusFromPsiScore } from './scoring';
@@ -39,6 +40,7 @@ export function buildPerformanceSection(psi: PsiData): SectionResult {
       status,
       value,
       impact: status === 'pass' ? undefined : impactFor(id),
+      explainer: explainerFor(id),
     });
   };
 

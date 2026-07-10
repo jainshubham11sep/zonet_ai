@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  ChevronRight,
+  ArrowRight,
   Loader2,
   MessageCircle,
   Search,
@@ -10,12 +10,10 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 import type { SectionKey, SectionResult } from "./audit-types";
-import { SECTION_META } from "./audit-types";
-import { CheckItem } from "./CheckItem";
-import { LockedOverlay } from "./LockedOverlay";
-import { MetricBar } from "./MetricBar";
-import { ScoreGauge } from "./ScoreGauge";
+import { countByStatus, SECTION_META, topIssues } from "./audit-types";
+import { StatusDonut } from "./StatusDonut";
 
 const sectionIcons = {
   performance: Zap,
@@ -26,26 +24,31 @@ const sectionIcons = {
 } as const;
 
 interface SectionCardProps {
+  auditId: string;
   section: SectionResult;
   running: boolean;
   onRun: (key: SectionKey) => void;
-  onUnlock: () => void;
 }
 
+/** Compact summary card — score, status donut, top 2 issues. Full detail lives on its own page. */
 export function SectionCard({
+  auditId,
   section,
   running,
   onRun,
-  onUnlock,
 }: SectionCardProps) {
   const meta = SECTION_META[section.key];
   const Icon = sectionIcons[section.key];
   const isIdle = section.status === "idle" && !running;
+  const isComplete = section.status === "complete" && !running;
+
+  const counts = isComplete ? countByStatus(section.checks) : null;
+  const worst = isComplete ? topIssues(section.checks, 2) : [];
 
   return (
     <motion.div
       layout
-      className="rounded-2xl p-6 border border-[#E6E4DF] bg-white transition-all duration-200"
+      className="rounded-2xl p-6 border border-[#E6E4DF] bg-white hover:shadow-lg transition-all duration-200 flex flex-col"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-4">
@@ -62,21 +65,31 @@ export function SectionCard({
             </p>
           </div>
         </div>
-        {section.status === "complete" && section.score !== null && (
-          <ScoreGauge score={section.score} size={56} showLabel={false} />
+        {isComplete && section.score !== null && (
+          <span
+            className={`text-2xl font-serif font-bold shrink-0 ${
+              section.score >= 80
+                ? "text-green-600"
+                : section.score >= 50
+                  ? "text-yellow-600"
+                  : "text-red-500"
+            }`}
+          >
+            {section.score}
+          </span>
         )}
       </div>
 
       {/* Idle — click to run */}
       {isIdle && (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 flex-1">
           <ul className="flex flex-col gap-2">
             {meta.includes.map((item) => (
               <li
                 key={item}
                 className="flex items-center gap-2 text-sm font-sans text-[#686B6B]"
               >
-                <ChevronRight size={14} className="text-[#E8C547] shrink-0" />
+                <ArrowRight size={14} className="text-[#E8C547] shrink-0" />
                 {item}
               </li>
             ))}
@@ -84,7 +97,7 @@ export function SectionCard({
           <button
             type="button"
             onClick={() => onRun(section.key)}
-            className="h-11 px-5 rounded-full border border-[#1A1A1A] text-[#1A1A1A] font-sans text-sm font-medium hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 self-start"
+            className="h-11 px-5 rounded-full border border-[#1A1A1A] text-[#1A1A1A] font-sans text-sm font-medium hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 self-start mt-auto"
           >
             Run this audit{meta.heavy ? " (~30s)" : ""}
           </button>
@@ -93,7 +106,7 @@ export function SectionCard({
 
       {/* Running */}
       {running && (
-        <div className="flex items-center gap-2 py-8 justify-center">
+        <div className="flex items-center gap-2 py-8 justify-center flex-1">
           <Loader2 size={20} className="text-[#E8C547] animate-spin" />
           <span className="text-sm font-sans text-[#686B6B]">
             Auditing {meta.title.toLowerCase()}…
@@ -103,7 +116,7 @@ export function SectionCard({
 
       {/* Failed */}
       {section.status === "failed" && !running && (
-        <div className="flex flex-col gap-2 py-4">
+        <div className="flex flex-col gap-2 py-4 flex-1">
           <p className="text-sm font-sans text-red-500">
             This section failed to run. The site may be blocking automated
             checks.
@@ -118,25 +131,52 @@ export function SectionCard({
         </div>
       )}
 
-      {/* Complete */}
-      {section.status === "complete" && !running && (
-        <div>
-          {section.metrics.length > 0 && (
-            <div className="mb-2">
-              {section.metrics.map((m) => (
-                <MetricBar key={m.id} metric={m} />
+      {/* Complete — compact summary */}
+      {isComplete && counts && (
+        <div className="flex flex-col gap-4 flex-1">
+          <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#E6E4DF]">
+            <StatusDonut counts={counts} size={64} />
+            <ul className="flex flex-col gap-1 text-right">
+              <li className="text-xs font-sans text-red-500">
+                {counts.fail} failed
+              </li>
+              <li className="text-xs font-sans text-yellow-600">
+                {counts.warn} warnings
+              </li>
+              <li className="text-xs font-sans text-green-600">
+                {counts.pass} passed
+              </li>
+            </ul>
+          </div>
+
+          {worst.length > 0 ? (
+            <ul className="flex flex-col gap-2">
+              {worst.map((c) => (
+                <li
+                  key={c.id}
+                  className="text-sm font-sans text-[#1A1A1A] leading-snug"
+                >
+                  <span
+                    className={`inline-block w-1.5 h-1.5 rounded-full mr-2 ${
+                      c.status === "fail" ? "bg-red-500" : "bg-yellow-600"
+                    }`}
+                  />
+                  {c.label}
+                </li>
               ))}
-            </div>
+            </ul>
+          ) : (
+            <p className="text-sm font-sans text-green-600">
+              No issues found — nicely done.
+            </p>
           )}
-          {section.checks.map((c) => (
-            <CheckItem key={c.id} check={c} />
-          ))}
-          {section.locked && section.hiddenCount > 0 && (
-            <LockedOverlay
-              hiddenCount={section.hiddenCount}
-              onUnlock={onUnlock}
-            />
-          )}
+
+          <Link
+            href={`/audit/${auditId}/${section.key}`}
+            className="mt-auto inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#1A1A1A] hover:underline underline-offset-4 transition-all duration-300"
+          >
+            View full report <ArrowRight size={14} />
+          </Link>
         </div>
       )}
     </motion.div>

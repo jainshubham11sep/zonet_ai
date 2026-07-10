@@ -9,12 +9,21 @@ export type SectionKey =
 
 export type SectionRunStatus = "idle" | "running" | "complete" | "failed";
 
+export interface CheckExplainer {
+  what: string;
+  how: string;
+  fix: string;
+  /** Official documentation only — Google Search Central, web.dev, MDN, OWASP. */
+  docs: Array<{ label: string; url: string }>;
+}
+
 export interface AuditCheck {
   id: string;
   label: string;
   status: CheckStatus;
   value?: string;
   impact?: string;
+  explainer?: CheckExplainer;
 }
 
 export interface AuditMetric {
@@ -120,4 +129,29 @@ export function scoreLabel(score: number): string {
   if (score >= 80) return "Good";
   if (score >= 50) return "Needs Work";
   return "Critical Issues";
+}
+
+export interface StatusCounts {
+  pass: number;
+  warn: number;
+  fail: number;
+}
+
+export function countByStatus(checks: AuditCheck[]): StatusCounts {
+  return checks.reduce<StatusCounts>(
+    (acc, c) => {
+      acc[c.status] += 1;
+      return acc;
+    },
+    { pass: 0, warn: 0, fail: 0 },
+  );
+}
+
+/** Worst-first — fails before warns, most-impactful items surface first in compact views. */
+export function topIssues(checks: AuditCheck[], limit: number): AuditCheck[] {
+  const rank: Record<CheckStatus, number> = { fail: 0, warn: 1, pass: 2 };
+  return [...checks]
+    .filter((c) => c.status !== "pass")
+    .sort((a, b) => rank[a.status] - rank[b.status])
+    .slice(0, limit);
 }

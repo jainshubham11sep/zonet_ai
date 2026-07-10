@@ -1,4 +1,5 @@
 import type { AuditCheck } from '../../types/audit';
+import { explainerFor } from './explainer.templates';
 import { fetchPage } from './fetch-page';
 import { impactFor } from './impact.templates';
 
@@ -14,6 +15,7 @@ export async function runQuickScan(url: string): Promise<AuditCheck[]> {
         label: 'Website is reachable',
         status: 'fail',
         impact: 'The site did not respond — visitors and Google see nothing at all.',
+        explainer: explainerFor('reachable'),
       },
     ];
   }
@@ -26,6 +28,7 @@ export async function runQuickScan(url: string): Promise<AuditCheck[]> {
     label: 'Website is reachable',
     status: ok ? 'pass' : 'fail',
     value: `HTTP ${page.status}`,
+    explainer: explainerFor('reachable'),
   });
 
   checks.push({
@@ -33,6 +36,7 @@ export async function runQuickScan(url: string): Promise<AuditCheck[]> {
     label: 'Served over HTTPS',
     status: finalUrl.startsWith('https://') ? 'pass' : 'fail',
     impact: finalUrl.startsWith('https://') ? undefined : impactFor('ssl'),
+    explainer: explainerFor('https'),
   });
 
   const title = $('head title').first().text().trim();
@@ -42,6 +46,7 @@ export async function runQuickScan(url: string): Promise<AuditCheck[]> {
     status: title ? 'pass' : 'fail',
     value: title ? `${title.length} chars` : undefined,
     impact: title ? undefined : impactFor('title-len'),
+    explainer: explainerFor('title'),
   });
 
   const metaDesc = $('head meta[name="description"]').attr('content')?.trim() ?? '';
@@ -51,6 +56,7 @@ export async function runQuickScan(url: string): Promise<AuditCheck[]> {
     status: metaDesc ? 'pass' : 'fail',
     value: metaDesc ? `${metaDesc.length} chars` : undefined,
     impact: metaDesc ? undefined : impactFor('meta-desc'),
+    explainer: explainerFor('meta-desc'),
   });
 
   const hasFaviconTag = $('head link[rel*="icon"]').length > 0;
@@ -59,6 +65,7 @@ export async function runQuickScan(url: string): Promise<AuditCheck[]> {
     label: 'Favicon present',
     status: hasFaviconTag ? 'pass' : 'warn',
     impact: hasFaviconTag ? undefined : impactFor('favicon'),
+    explainer: explainerFor('favicon'),
   });
 
   return checks;

@@ -5,7 +5,7 @@ import { ENV } from './config/env';
 import { connectDB } from './lib/mongoose';
 import { connectRedis } from './lib/redis';
 
-console.table(ENV)
+
 
 async function bootstrap() {
   await connectDB();

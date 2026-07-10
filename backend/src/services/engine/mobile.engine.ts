@@ -1,4 +1,5 @@
 import type { AuditCheck, AuditMetric, SectionResult } from '../../types/audit';
+import { explainerFor } from './explainer.templates';
 import { impactFor } from './impact.templates';
 import type { PsiData } from './psi.engine';
 import { scoreFromChecks, statusFromPsiScore } from './scoring';
@@ -16,6 +17,7 @@ export function buildMobileSection(psi: PsiData): SectionResult {
       status,
       value: audit?.displayValue,
       impact: status === 'pass' ? undefined : impactFor(id),
+      explainer: explainerFor(id),
     });
   };
 
