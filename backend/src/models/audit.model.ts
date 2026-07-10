@@ -1,16 +1,18 @@
-import { Document, model, Schema } from 'mongoose';
+import { type Document, Schema, model } from 'mongoose';
+import type { AuditCheck, SectionKey, SectionResult } from '../types/audit';
 
 export type AuditStatus = 'pending' | 'running' | 'complete' | 'failed';
 
 export interface IAudit extends Document {
   url: string;
   status: AuditStatus;
-  overallScore: number | null;
-  issueCount: number;
-  report: Record<string, unknown> | null;
+  quick: AuditCheck[];
+  sections: Partial<Record<SectionKey, SectionResult>>;
   leadEmail: string | null;
   leadName: string | null;
   unlocked: boolean;
+  unlockToken: string | null;
+  unlockTokenExpiry: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -23,12 +25,13 @@ const AuditSchema = new Schema<IAudit>(
       enum: ['pending', 'running', 'complete', 'failed'],
       default: 'pending',
     },
-    overallScore: { type: Number, default: null },
-    issueCount: { type: Number, default: 0 },
-    report: { type: Schema.Types.Mixed, default: null },
+    quick: { type: [Schema.Types.Mixed], default: [] },
+    sections: { type: Schema.Types.Mixed, default: {} },
     leadEmail: { type: String, default: null },
     leadName: { type: String, default: null },
     unlocked: { type: Boolean, default: false },
+    unlockToken: { type: String, default: null },
+    unlockTokenExpiry: { type: Date, default: null },
   },
   { timestamps: true }
 );

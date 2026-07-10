@@ -1,5 +1,5 @@
 import { redis } from '../lib/redis';
-import { IAudit } from '../models/audit.model';
+import type { IAudit } from '../models/audit.model';
 
 const TTL = 60 * 30; // 30 minutes per CLAUDE.md
 

@@ -1,7 +1,8 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { ZodSchema } from 'zod';
+import type { NextFunction, Request, RequestHandler, Response } from 'express';
+import type { ZodSchema } from 'zod';
 
-export const zodValidator = (schema: ZodSchema): RequestHandler =>
+export const zodValidator =
+  (schema: ZodSchema): RequestHandler =>
   (req: Request, _res: Response, next: NextFunction) => {
     const result = schema.safeParse({
       body: req.body ?? {},

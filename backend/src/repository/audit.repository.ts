@@ -1,36 +1,44 @@
-import { AuditModel, IAudit } from '../models/audit.model';
+import { AuditModel, type IAudit } from '../models/audit.model';
+import type { AuditCheck, SectionKey, SectionResult } from '../types/audit';
 
-export async function createAudit(url: string): Promise<IAudit> {
-  return AuditModel.create({ url, status: 'pending' });
+export async function createAudit(url: string, quick: AuditCheck[]): Promise<IAudit> {
+  return AuditModel.create({ url, status: 'complete', quick });
 }
 
 export async function findAuditById(id: string): Promise<IAudit | null> {
   return AuditModel.findById(id).lean<IAudit>();
 }
 
-export async function updateAuditById(
+export async function setSectionResult(
   id: string,
-  patch: Partial<IAudit>
-): Promise<IAudit | null> {
-  return AuditModel.findByIdAndUpdate(id, patch, { new: true }).lean<IAudit>();
-}
-
-export async function updateAuditStatus(
-  id: string,
-  status: IAudit['status'],
-  extra?: Partial<IAudit>
-): Promise<IAudit | null> {
-  return AuditModel.findByIdAndUpdate(id, { status, ...extra }, { new: true }).lean<IAudit>();
-}
-
-export async function unlockAudit(
-  id: string,
-  email: string,
-  name: string
+  key: SectionKey,
+  result: SectionResult
 ): Promise<IAudit | null> {
   return AuditModel.findByIdAndUpdate(
     id,
-    { unlocked: true, leadEmail: email, leadName: name },
+    { $set: { [`sections.${key}`]: result } },
+    { new: true }
+  ).lean<IAudit>();
+}
+
+export async function setUnlockToken(
+  id: string,
+  email: string,
+  name: string | null,
+  token: string,
+  expiry: Date
+): Promise<IAudit | null> {
+  return AuditModel.findByIdAndUpdate(
+    id,
+    { leadEmail: email, leadName: name, unlockToken: token, unlockTokenExpiry: expiry },
+    { new: true }
+  ).lean<IAudit>();
+}
+
+export async function markUnlocked(id: string): Promise<IAudit | null> {
+  return AuditModel.findByIdAndUpdate(
+    id,
+    { unlocked: true, unlockToken: null, unlockTokenExpiry: null },
     { new: true }
   ).lean<IAudit>();
 }

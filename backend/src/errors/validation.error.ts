@@ -1,6 +1,6 @@
-import { ZodError, ZodIssue } from 'zod';
-import { Response } from 'express';
+import type { Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { ZodError, type ZodIssue } from 'zod';
 
 function issueToMessage(issue: ZodIssue): string {
   const rawPath = issue.path;
@@ -27,8 +27,7 @@ function issueToMessage(issue: ZodIssue): string {
       if (issue.type === 'number') return `${field} must be at least ${issue.minimum}`;
       return `${field} is too small`;
     case 'too_big':
-      if (issue.type === 'string')
-        return `${field} must be at most ${issue.maximum} characters`;
+      if (issue.type === 'string') return `${field} must be at most ${issue.maximum} characters`;
       if (issue.type === 'number') return `${field} must be at most ${issue.maximum}`;
       return `${field} is too large`;
     case 'invalid_enum_value':

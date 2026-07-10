@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ENV } from '../config/env';
 import { handleMongoError, handleValidationError } from '../errors';
@@ -15,7 +15,13 @@ export const globalErrorHandler = (
   if (handleValidationError(err, res)) return;
   if (handleMongoError(err, res)) return;
 
-  const e = err as { statusCode?: number; message?: string; errors?: unknown[]; stack?: string; data?: unknown };
+  const e = err as {
+    statusCode?: number;
+    message?: string;
+    errors?: unknown[];
+    stack?: string;
+    data?: unknown;
+  };
   const statusCode = e.statusCode ?? StatusCodes.INTERNAL_SERVER_ERROR;
   const message = e.message ?? 'Internal Server Error';
 

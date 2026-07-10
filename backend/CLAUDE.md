@@ -26,9 +26,11 @@ npx biome check src/
 
 ```
 GET  /api/health
-POST /api/v1/audit              → { auditId, status }
-GET  /api/v1/audit/:id          → { status, overallScore, issueCount }
-POST /api/v1/audit/:id/unlock   → full report JSON
+POST /api/v1/audit                       → create audit + quick scan → AuditStatePayload
+GET  /api/v1/audit/:id                   → full state (sections teaser-gated until unlocked)
+POST /api/v1/audit/:id/section/:section  → run ONE section (performance|seo|mobile|security|conversion)
+POST /api/v1/audit/:id/unlock            → save lead + send magic-link email
+GET  /api/v1/audit/:id/verify?token=     → magic-link landing → unlocks full report
 ```
 
 ## Hard rules
